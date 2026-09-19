@@ -101,3 +101,4 @@ export const DomainTickerRibbon: React.FC<{ speed?: number }> = ({ speed = 45 })
     </div>
   );
 };
+

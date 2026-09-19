@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,22 +11,19 @@ import {
   GitBranch,
   Layers,
   Users,
-  Tag,
-  Check,
-  Copy,
   FileText,
   Download,
-  ShieldCheck,
   Briefcase,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { BRAND_DATA } from '@/data/brandData';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { CrpcCurriculumJourney } from '@/components/curriculum/CrpcCurriculumJourney';
+import { CrpcHeroCard } from '@/components/curriculum/CrpcHeroCard';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
+import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 import {
   AwsLogo,
   JenkinsLogo,
@@ -35,14 +32,7 @@ import {
 } from '@/components/icons/TechLogos';
 
 export const CrpcPage: React.FC = () => {
-  const [copiedCoupon, setCopiedCoupon] = useState(false);
   const { openCurriculum } = useCurriculumModal();
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(BRAND_DATA.offer.couponCode);
-    setCopiedCoupon(true);
-    setTimeout(() => setCopiedCoupon(false), 2200);
-  };
 
   const handleScrollToCurriculum = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -169,80 +159,10 @@ export const CrpcPage: React.FC = () => {
 
             {/* Right: Technical Cloud & Infrastructure Canvas */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-4 relative overflow-hidden">
-                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-xs font-mono font-bold text-brand-navy uppercase">
-                      CRPC Live Lab Environment
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono font-bold text-brand-blue px-2 py-0.5 rounded bg-brand-surface-blue border border-brand-blue/20">
-                    AWS + K8s Stack
-                  </span>
-                </div>
-
-                {/* Cloud Node 1 */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-2">
-                  <div className="flex items-center justify-between text-xs font-bold text-brand-navy">
-                    <span className="flex items-center gap-1.5">
-                      <Cloud className="w-4 h-4 text-brand-blue" />
-                      AWS Multi-Tier VPC
-                    </span>
-                    <span className="text-[10px] text-emerald-600 font-mono">Status: 200 OK</span>
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-mono">
-                    Public ALB → EC2 Autoscaling (us-east-1) → RDS Multi-AZ
-                  </div>
-                </div>
-
-                {/* Cloud Node 2: CI/CD Pipeline */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-2">
-                  <div className="flex items-center justify-between text-xs font-bold text-brand-navy">
-                    <span className="flex items-center gap-1.5">
-                      <Terminal className="w-4 h-4 text-brand-orange" />
-                      Jenkins Automated Pipeline
-                    </span>
-                    <span className="text-[10px] text-brand-blue font-mono">Build #48 Passed</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[11px] font-mono text-slate-600">
-                    <span className="px-2 py-0.5 rounded bg-white border border-brand-border">Docker Build</span>
-                    <span>→</span>
-                    <span className="px-2 py-0.5 rounded bg-white border border-brand-border">K8s Rollout</span>
-                    <span>→</span>
-                    <span className="text-emerald-600 font-bold">Healthy</span>
-                  </div>
-                </div>
-
-                {/* Cloud Node 3: ServiceNow ITSM */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-2">
-                  <div className="flex items-center justify-between text-xs font-bold text-brand-navy">
-                    <span className="flex items-center gap-1.5">
-                      <Layers className="w-4 h-4 text-[#0a6680]" />
-                      ServiceNow Platform Automation
-                    </span>
-                    <span className="text-[10px] text-slate-500 font-mono">CHG00201</span>
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-mono">
-                    ITSM Incident Routing · Change Approval Workflow
-                  </div>
-                </div>
-
-                {/* Footer Capstone Note */}
-                <div className="pt-2 border-t border-brand-border/60 flex items-center justify-between text-[11px] text-slate-500">
-                  <span className="flex items-center gap-1 font-semibold text-brand-navy">
-                    <ShieldCheck className="w-3.5 h-3.5 text-brand-blue" />
-                    Documented on GitHub
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('crpc')}
-                    className="text-brand-blue hover:underline font-bold"
-                  >
-                    Open Full PDF Schedule →
-                  </button>
-                </div>
-              </div>
+              <CrpcHeroCard
+                onOpenCurriculum={() => openCurriculum('crpc')}
+                onScrollToPathway={handleScrollToCurriculum}
+              />
             </div>
           </div>
         </div>
@@ -380,47 +300,9 @@ export const CrpcPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. ADMISSIONS CAMPAIGN CARD */}
+      {/* 6. VINAYAKA CHAVITHI ADMISSIONS SPECIAL OFFER */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark-section border border-brand-orange/40 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-xs font-extrabold uppercase tracking-wider">
-            <Tag className="w-3.5 h-3.5" />
-            <span>Admissions Campaign</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
-            {BRAND_DATA.offer.title}
-          </h2>
-
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Enroll in CRPC with full live instruction, cloud lab workstations, and placement coaching at ₹17,000 all-inclusive.
-          </p>
-
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-slate-400 text-xl line-through font-semibold">
-              {BRAND_DATA.offer.originalPrice}
-            </span>
-            <span className="text-4xl font-extrabold text-white font-heading">
-              {BRAND_DATA.offer.offerPrice}
-            </span>
-          </div>
-
-          <div className="inline-flex items-center gap-2 bg-brand-dark-surface px-4 py-2 rounded-xl border border-brand-orange/40">
-            <code className="text-base font-mono font-extrabold text-brand-orange">
-              {BRAND_DATA.offer.couponCode}
-            </code>
-            <button
-              type="button"
-              onClick={handleCopyCode}
-              className="p-1 text-slate-300 hover:text-white rounded transition-colors"
-              title="Copy code"
-            >
-              {copiedCoupon ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-            </button>
-          </div>
-        </div>
-      </section>
+      <VinayakaOfferCard />
     </div>
   );
 };

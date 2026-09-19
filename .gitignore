@@ -42,3 +42,6 @@ vite.config.d.ts
 
 .vercel
 .env*
+
+# Reference uploads
+public/brand/reference/

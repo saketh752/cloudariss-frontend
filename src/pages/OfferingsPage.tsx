@@ -3,9 +3,6 @@ import {
   ArrowRight,
   Briefcase,
   CheckCircle2,
-  Tag,
-  Check,
-  Copy,
   Building2,
   Users,
   Code2,
@@ -16,69 +13,71 @@ import {
   Wrench,
   FileText,
   Download,
-  Terminal,
-  Layers,
-  Cpu,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { BRAND_DATA } from '@/data/brandData';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { TechEcosystemVisual } from '@/components/home/TechEcosystemVisual';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
+import { OfferingsHeroCanvas } from '@/components/curriculum/OfferingsHeroCanvas';
+import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 
 export const OfferingsPage: React.FC = () => {
-  const [copiedCoupon, setCopiedCoupon] = useState(false);
   const { openCurriculum } = useCurriculumModal();
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(BRAND_DATA.offer.couponCode);
-    setCopiedCoupon(true);
-    setTimeout(() => setCopiedCoupon(false), 2200);
-  };
+  const [activeDomainFilter, setActiveDomainFilter] = useState<'all' | 'cloud' | 'data' | 'ai'>('all');
 
   // 01: Technical Learning Domains
   const technicalDomains = [
     {
       name: 'Cloud Computing',
+      category: 'cloud' as const,
       desc: 'Architecture, distributed computing, virtual networks (VPC), EC2, IAM policies, and high-availability design.',
       icon: <Cloud className="w-5 h-5 text-brand-blue" />,
       tag: 'AWS · Cloud Infrastructure',
     },
     {
       name: 'Data Engineering',
+      category: 'data' as const,
       desc: 'Relational data modeling, advanced SQL queries, data pipelines, schema design, and ETL workflows.',
       icon: <Database className="w-5 h-5 text-brand-blue" />,
       tag: 'PostgreSQL · SQL Modeling',
     },
     {
       name: 'DevOps & CI/CD',
+      category: 'cloud' as const,
       desc: 'Containerization with Docker, Kubernetes cluster orchestration, Jenkins automated build pipelines, and Linux administration.',
       icon: <Wrench className="w-5 h-5 text-brand-blue" />,
       tag: 'Docker · Jenkins · K8s',
     },
     {
       name: 'Business Analytics',
+      category: 'data' as const,
       desc: 'Interactive dashboards in Power BI, data analysis expressions (DAX), multi-table modeling, and KPI tracking.',
       icon: <LineChart className="w-5 h-5 text-brand-blue" />,
       tag: 'Power BI · DAX · Excel',
     },
     {
       name: 'Artificial Intelligence',
+      category: 'ai' as const,
       desc: 'Generative AI applications, Retrieval-Augmented Generation (RAG), and autonomous multi-agent analytics workflows.',
       icon: <Bot className="w-5 h-5 text-brand-blue" />,
       tag: 'RAG · Agentic AI · LLMs',
     },
     {
       name: 'Enterprise Technology',
+      category: 'cloud' as const,
       desc: 'ServiceNow ITSM workflows, incident and change management, system administration, and enterprise service automation.',
       icon: <Building2 className="w-5 h-5 text-brand-blue" />,
       tag: 'ServiceNow · ITSM Automation',
     },
   ];
+
+  const filteredDomains = technicalDomains.filter(
+    (d) => activeDomainFilter === 'all' || d.category === activeDomainFilter
+  );
 
   // 04: Documented Career Preparation Areas
   const careerSupportPillars = [
@@ -174,66 +173,9 @@ export const OfferingsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: What Cloudariss Enables Blueprint */}
+            {/* Right: Interactive Enablement Flight Deck */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-4">
-                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
-                  <span className="text-xs font-mono font-bold text-brand-navy uppercase tracking-wider">
-                    The Cloudariss Enablement Framework
-                  </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue font-bold">
-                    4 Foundations
-                  </span>
-                </div>
-
-                <div className="space-y-2.5">
-                  <div className="p-3 rounded-xl bg-brand-surface-blue/50 border border-brand-border/80 flex items-start gap-3">
-                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-blue shrink-0 mt-0.5">
-                      <Terminal className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold text-brand-navy">1. Structured Technical Learning</div>
-                      <div className="text-[11px] text-slate-500">Rigorous instructor-led modules grounding system architecture.</div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-brand-surface-orange/40 border border-brand-orange/20 flex items-start gap-3">
-                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-orange shrink-0 mt-0.5">
-                      <Layers className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold text-brand-navy">2. Hands-on Project Implementation</div>
-                      <div className="text-[11px] text-slate-500">Live cloud infrastructure and production database schemas.</div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-slate-50 border border-brand-border/80 flex items-start gap-3">
-                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-emerald-600 shrink-0 mt-0.5">
-                      <Cpu className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold text-brand-navy">3. Modern Technology Stacks</div>
-                      <div className="text-[11px] text-slate-500">AWS, Docker, K8s, Python, SQL, Power BI & Agentic AI.</div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-brand-surface-blue/50 border border-brand-border/80 flex items-start gap-3">
-                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-blue shrink-0 mt-0.5">
-                      <Briefcase className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold text-brand-navy">4. Weekend Career Readiness</div>
-                      <div className="text-[11px] text-slate-500">Saturday ATS resume tuning and Sunday live mock interviews.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-brand-border/60 text-center">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                    Zero Passive Video Watching · 100% Active Building
-                  </span>
-                </div>
-              </div>
+              <OfferingsHeroCanvas onOpenCurriculum={openCurriculum} />
             </div>
           </div>
         </div>
@@ -271,9 +213,62 @@ export const OfferingsPage: React.FC = () => {
           <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
             Structured instruction across modern technology domains. We replace superficial overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
           </p>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed font-medium">
+              Structured instruction across modern technology domains. We replace superficial overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
+            </p>
+
+            {/* Interactive Domain Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setActiveDomainFilter('all')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDomainFilter === 'all'
+                    ? 'bg-brand-navy text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                }`}
+              >
+                All (6)
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveDomainFilter('cloud')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDomainFilter === 'cloud'
+                    ? 'bg-brand-blue text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                }`}
+              >
+                Cloud &amp; DevOps
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveDomainFilter('data')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDomainFilter === 'data'
+                    ? 'bg-brand-orange text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                }`}
+              >
+                Data &amp; BI
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveDomainFilter('ai')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDomainFilter === 'ai'
+                    ? 'bg-purple-600 text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                }`}
+              >
+                AI
+              </button>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-            {technicalDomains.map((domain, idx) => (
+            {filteredDomains.map((domain, idx) => (
               <Card
                 key={idx}
                 variant="white"
@@ -365,7 +360,7 @@ export const OfferingsPage: React.FC = () => {
             Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows. Hover over any technology to inspect its role.
           </p>
 
-          <TechEcosystemVisual />
+          <TechEcosystemVisual hideHeader={true} />
         </div>
 
         {/* 04 — CAREER PREPARATION */}
@@ -542,47 +537,9 @@ export const OfferingsPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. ADMISSIONS CAMPAIGN CARD */}
+      {/* 6. FESTIVE ADMISSIONS CAMPAIGN CARD */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark-section border border-brand-orange/40 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-xs font-extrabold uppercase tracking-wider">
-            <Tag className="w-3.5 h-3.5" />
-            <span>Admissions Campaign</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
-            {BRAND_DATA.offer.title}
-          </h2>
-
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Enroll in CRPC or DAAP with complete live mentoring, lab workstations, and placement assistance at our special festive tuition.
-          </p>
-
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-slate-400 text-xl line-through font-semibold">
-              {BRAND_DATA.offer.originalPrice}
-            </span>
-            <span className="text-4xl font-extrabold text-white font-heading">
-              {BRAND_DATA.offer.offerPrice}
-            </span>
-          </div>
-
-          <div className="inline-flex items-center gap-2 bg-brand-dark-surface px-4 py-2 rounded-xl border border-brand-orange/40">
-            <code className="text-base font-mono font-extrabold text-brand-orange">
-              {BRAND_DATA.offer.couponCode}
-            </code>
-            <button
-              type="button"
-              onClick={handleCopyCode}
-              className="p-1 text-slate-300 hover:text-white rounded transition-colors"
-              title="Copy code"
-            >
-              {copiedCoupon ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-            </button>
-          </div>
-        </div>
-      </section>
+      <VinayakaOfferCard />
     </div>
   );
 };

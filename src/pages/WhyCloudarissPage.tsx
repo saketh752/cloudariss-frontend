@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ArrowRight,
   Code2,
@@ -19,6 +19,8 @@ import { BRAND_DATA } from '@/data/brandData';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
+import { WhyUsHeroFlywheel } from '@/components/curriculum/WhyUsHeroFlywheel';
+import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 import {
   AwsLogo,
   DockerLogo,
@@ -93,10 +95,13 @@ export const WhyCloudarissPage: React.FC = () => {
     },
   ];
 
+  const [activeTechFilter, setActiveTechFilter] = useState<'all' | 'crpc' | 'daap'>('all');
+
   // Structured Technology Ecosystem categories with SVG logos
   const techCategories = [
     {
       title: 'Cloud & Infrastructure',
+      track: 'crpc' as const,
       tools: [
         { name: 'AWS Cloud', logo: <AwsLogo className="w-4 h-4" /> },
         { name: 'Docker Containers', logo: <DockerLogo className="w-4 h-4" /> },
@@ -105,6 +110,7 @@ export const WhyCloudarissPage: React.FC = () => {
     },
     {
       title: 'DevOps & Enterprise Automation',
+      track: 'crpc' as const,
       tools: [
         { name: 'Jenkins CI/CD', logo: <JenkinsLogo className="w-4 h-4" /> },
         { name: 'GitHub Actions', logo: <GitHubLogo className="w-4 h-4" /> },
@@ -114,6 +120,7 @@ export const WhyCloudarissPage: React.FC = () => {
     },
     {
       title: 'Data & Business Intelligence',
+      track: 'daap' as const,
       tools: [
         { name: 'Python & Pandas', logo: <PythonLogo className="w-4 h-4" /> },
         { name: 'PostgreSQL / SQL', logo: <SqlLogo className="w-4 h-4" /> },
@@ -122,6 +129,7 @@ export const WhyCloudarissPage: React.FC = () => {
     },
     {
       title: 'Generative & Agentic AI',
+      track: 'daap' as const,
       tools: [
         { name: 'Generative AI & LLMs', logo: <ChatGptLogo className="w-4 h-4" /> },
         { name: 'RAG Architectures', logo: <RagLogo className="w-4 h-4" /> },
@@ -130,6 +138,10 @@ export const WhyCloudarissPage: React.FC = () => {
       ],
     },
   ];
+
+  const filteredTechCategories = techCategories.filter(
+    (c) => activeTechFilter === 'all' || c.track === activeTechFilter
+  );
 
   // 7 Documented Career Support Areas
   const careerSupportList = [
@@ -210,66 +222,7 @@ export const WhyCloudarissPage: React.FC = () => {
 
             {/* Right: The 5-Point Value Progression Visual */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-3">
-                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
-                  <span className="text-xs font-mono font-bold text-brand-navy uppercase tracking-wider">
-                    The Cloudariss Advantage
-                  </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue font-bold">
-                    Pedagogical Model
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
-                      <span className="w-5 h-5 rounded-full bg-brand-surface-blue text-brand-blue flex items-center justify-center font-mono text-[10px]">1</span>
-                      <span>Practical Learning</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">Live Labs</span>
-                  </div>
-
-                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
-
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
-                      <span className="w-5 h-5 rounded-full bg-brand-surface-orange text-brand-orange flex items-center justify-center font-mono text-[10px]">2</span>
-                      <span>Documented Projects</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">GitHub Repos</span>
-                  </div>
-
-                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
-
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
-                      <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-mono text-[10px]">3</span>
-                      <span>Modern Technology</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">AWS · AI Stacks</span>
-                  </div>
-
-                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
-
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
-                      <span className="w-5 h-5 rounded-full bg-brand-surface-blue text-brand-blue flex items-center justify-center font-mono text-[10px]">4</span>
-                      <span>Vizag IT Exposure</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">Rushikonda / VSEZ</span>
-                  </div>
-
-                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
-
-                  <div className="p-2.5 rounded-xl bg-brand-navy text-white flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
-                      <span className="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center font-mono text-[10px]">5</span>
-                      <span>Career Preparation</span>
-                    </div>
-                    <span className="text-[10px] text-brand-cyan font-mono">Weekend Circuits</span>
-                  </div>
-                </div>
-              </div>
+              <WhyUsHeroFlywheel />
             </div>
           </div>
         </div>
@@ -507,8 +460,45 @@ export const WhyCloudarissPage: React.FC = () => {
           subtitle="Every tool in our programs is selected for its direct relevance to modern software engineering, cloud infrastructure, and data workflows."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {techCategories.map((cat, idx) => (
+        {/* Interactive Track Filter Bar */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+          <button
+            type="button"
+            onClick={() => setActiveTechFilter('all')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              activeTechFilter === 'all'
+                ? 'bg-brand-navy text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+            }`}
+          >
+            All Stacks (4)
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTechFilter('crpc')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              activeTechFilter === 'crpc'
+                ? 'bg-brand-blue text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+            }`}
+          >
+            CRPC Track (Cloud &amp; DevOps)
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTechFilter('daap')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              activeTechFilter === 'daap'
+                ? 'bg-brand-orange text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+            }`}
+          >
+            DAAP Track (Data &amp; AI)
+          </button>
+        </div>
+
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${filteredTechCategories.length === 2 ? 'lg:grid-cols-2 max-w-4xl mx-auto' : 'lg:grid-cols-4'} gap-6`}>
+          {filteredTechCategories.map((cat, idx) => (
             <Card
               key={idx}
               variant="surface"
@@ -518,6 +508,16 @@ export const WhyCloudarissPage: React.FC = () => {
               <h3 className="text-sm font-extrabold text-brand-navy border-b border-brand-border/60 pb-2">
                 {cat.title}
               </h3>
+              <div className="flex items-center justify-between border-b border-brand-border/60 pb-2">
+                <h3 className="text-sm font-extrabold text-brand-navy">
+                  {cat.title}
+                </h3>
+                <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                  cat.track === 'crpc' ? 'bg-brand-surface-blue text-brand-blue' : 'bg-brand-orange/10 text-brand-orange'
+                }`}>
+                  {cat.track === 'crpc' ? 'CRPC' : 'DAAP'}
+                </span>
+              </div>
               <div className="space-y-2">
                 {cat.tools.map((t) => (
                   <div
@@ -588,6 +588,9 @@ export const WhyCloudarissPage: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* Admissions Offer Campaign */}
+      <VinayakaOfferCard />
 
       {/* ========================================================================= */}
       {/* 7. FINAL CTA */}

@@ -41,3 +41,4 @@ export const Marquee: React.FC<MarqueeProps> = ({
     </div>
   );
 };
+

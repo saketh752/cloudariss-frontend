@@ -39,7 +39,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '01',
       label: 'PYTHON',
       subtitle: 'Core Programming & Scripting',
-      icon: <Terminal className="w-5 h-5 text-brand-blue" />,
+      icon: <Terminal className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [<PythonLogo key="py" className="w-5 h-5" />],
       summary:
         'Establish core programming fluency. Master syntax, control structures, custom functions, object-oriented concepts, and automated system scripting.',
@@ -51,7 +51,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '02',
       label: 'DATA SCIENCE',
       subtitle: 'Analysis & Baseline ML',
-      icon: <Cpu className="w-5 h-5 text-[#0a6680]" />,
+      icon: <Cpu className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [<PythonLogo key="py2" className="w-5 h-5" />],
       summary:
         'Manipulate datasets and engineer baseline predictive models. Perform data wrangling, cleaning, exploratory visualizations, and statistical evaluations.',
@@ -63,7 +63,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '03',
       label: 'AWS / CLOUD',
       subtitle: 'Enterprise Infrastructure',
-      icon: <Cloud className="w-5 h-5 text-brand-blue" />,
+      icon: <Cloud className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [<AwsLogo key="aws" className="w-6 h-4" />],
       summary:
         'Architect high-availability cloud infrastructure on Amazon Web Services. Build isolated virtual networks, compute clusters, and secured storage.',
@@ -75,7 +75,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '04',
       label: 'DEVOPS',
       subtitle: 'CI/CD & Containers',
-      icon: <Layers className="w-5 h-5 text-brand-orange" />,
+      icon: <Layers className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [
         <DockerLogo key="dock" className="w-5 h-5" />,
         <KubernetesLogo key="k8s" className="w-5 h-5" />,
@@ -91,7 +91,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '05',
       label: 'SERVICENOW',
       subtitle: 'Enterprise IT Operations',
-      icon: <Wrench className="w-5 h-5 text-[#0a6680]" />,
+      icon: <Wrench className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [<ServiceNowLogo key="snow" className="w-5 h-5" />],
       summary:
         'Gain operational enterprise IT exposure through ServiceNow administration, IT Service Management (ITSM), incident workflows, and service catalogs.',
@@ -103,7 +103,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
       num: '06',
       label: 'CAREER PREP',
       subtitle: 'Placement Readiness Circuit',
-      icon: <Briefcase className="w-5 h-5 text-brand-blue" />,
+      icon: <Briefcase className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
       logos: [<Sparkles key="sp" className="w-5 h-5 text-brand-orange" />],
       summary:
         'Turn technical proficiency into hiring success with structured weekend career labs: ATS resume tuning, portfolio review, mock interviews, and live defense.',
@@ -116,45 +116,127 @@ export const CrpcCurriculumJourney: React.FC = () => {
   const current = stages[selectedIdx];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      {/* Interactive Curriculum Progression Metric Bar */}
+      <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <span className="w-2.5 h-2.5 rounded-full bg-brand-blue animate-pulse shadow-[0_0_6px_rgba(8,120,232,0.6)]" />
+          <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+            Curriculum Flow:
+          </span>
+          <span className="text-xs sm:text-sm font-black text-brand-navy">
+            Stage {current.num} of {stages.length} —{' '}
+            <span className="text-brand-blue font-heading">{current.label}</span>
+          </span>
+          <span className="text-xs text-slate-500 hidden md:inline">({current.subtitle})</span>
+        </div>
+
+        <div className="flex items-center gap-3 self-end sm:self-auto">
+          <div className="w-32 sm:w-48 h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-orange transition-all duration-500 ease-out shadow-xs"
+              style={{ width: `${((selectedIdx + 1) / stages.length) * 100}%` }}
+            />
+          </div>
+          <span className="text-xs font-mono font-extrabold text-brand-blue shrink-0">
+            {Math.round(((selectedIdx + 1) / stages.length) * 100)}%
+          </span>
+        </div>
+      </div>
+
       {/* Node Path Timeline */}
-      <div className="relative">
-        {/* Track Line (Desktop) */}
-        <div className="hidden lg:block absolute top-7 left-12 right-12 h-1 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-orange/80 rounded-full z-0 opacity-40" />
+      <div className="relative pt-1 pb-2">
+        {/* Base Inactive Track Line (Desktop) */}
+        <div className="hidden lg:block absolute top-10 left-[8.33%] right-[8.33%] h-1.5 bg-slate-200/80 rounded-full z-0 pointer-events-none" />
+
+        {/* Dynamic Active Filled Progress Line (Grows up to active stage) */}
+        <div
+          className="hidden lg:block absolute top-10 left-[8.33%] h-1.5 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-orange rounded-full z-0 transition-all duration-500 ease-out pointer-events-none shadow-[0_0_10px_rgba(8,120,232,0.5)]"
+          style={{
+            width: `${(selectedIdx / (stages.length - 1)) * 83.33}%`,
+          }}
+        />
 
         {/* Nodes Grid / Flex */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 relative z-10">
           {stages.map((stg, i) => {
             const isSelected = selectedIdx === i;
+            const isPassed = i < selectedIdx;
+
+            // Container styles highlighting logo when filling with color
+            const iconContainerStyles = {
+              blue: isSelected
+                ? 'bg-brand-blue text-white border-brand-blue shadow-md shadow-blue-500/30 scale-105'
+                : isPassed
+                ? 'bg-[#EEF5FF] text-brand-blue border-brand-blue/30'
+                : 'bg-slate-50 border-slate-200 text-slate-600 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue group-hover:shadow-sm',
+              cyan: isSelected
+                ? 'bg-[#0878E8] text-white border-[#0878E8] shadow-md shadow-blue-500/30 scale-105'
+                : isPassed
+                ? 'bg-[#F0F9FF] text-[#0878E8] border-cyan-300'
+                : 'bg-slate-50 border-slate-200 text-slate-600 group-hover:bg-[#0878E8] group-hover:text-white group-hover:border-[#0878E8] group-hover:shadow-sm',
+              orange: isSelected
+                ? 'bg-brand-orange text-white border-brand-orange shadow-md shadow-orange-500/30 scale-105'
+                : isPassed
+                ? 'bg-[#FFF7ED] text-brand-orange border-orange-300'
+                : 'bg-slate-50 border-slate-200 text-slate-600 group-hover:bg-brand-orange group-hover:text-white group-hover:border-brand-orange group-hover:shadow-sm',
+            }[stg.accent];
+
+            // 100% Solid Opaque Card Styling (Zero bleed-through of background line)
+            const buttonCardStyles = {
+              blue: isSelected
+                ? 'bg-[#EEF5FF] border-2 border-brand-blue shadow-lg shadow-blue-500/10 scale-[1.03] ring-4 ring-blue-500/10'
+                : 'bg-white border-slate-200/90 hover:border-brand-blue/60 hover:bg-slate-50 shadow-xs',
+              cyan: isSelected
+                ? 'bg-[#F0F9FF] border-2 border-[#0878E8] shadow-lg shadow-blue-500/10 scale-[1.03] ring-4 ring-cyan-500/10'
+                : 'bg-white border-slate-200/90 hover:border-cyan-400/60 hover:bg-slate-50 shadow-xs',
+              orange: isSelected
+                ? 'bg-[#FFF7ED] border-2 border-brand-orange shadow-lg shadow-orange-500/10 scale-[1.03] ring-4 ring-orange-500/10'
+                : 'bg-white border-slate-200/90 hover:border-brand-orange/60 hover:bg-slate-50 shadow-xs',
+            }[stg.accent];
+
+            const topAccentBar = {
+              blue: 'bg-brand-blue',
+              cyan: 'bg-[#0878E8]',
+              orange: 'bg-brand-orange',
+            }[stg.accent];
+
             return (
               <button
                 key={stg.num}
                 onClick={() => setSelectedIdx(i)}
-                className={`flex flex-col items-center text-center p-3 sm:p-4 rounded-xl transition-all duration-200 group border text-left cursor-pointer ${
-                  isSelected
-                    ? 'bg-brand-surface-blue border-brand-blue shadow-subtle scale-[1.02]'
-                    : 'bg-white border-brand-border hover:border-brand-blue/50 hover:bg-slate-50'
-                }`}
+                className={`relative flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl transition-all duration-300 group text-left cursor-pointer overflow-hidden select-none ${buttonCardStyles}`}
               >
-                {/* Node Number & Icon */}
+                {/* Top Accent Strip on Active Card */}
+                {isSelected && (
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 ${topAccentBar}`} />
+                )}
+
+                {/* Node Number & Icon Container with clear logo highlight */}
                 <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-2 transition-transform duration-200 group-hover:scale-105 ${
-                    isSelected
-                      ? 'bg-brand-blue text-white shadow-subtle'
-                      : 'bg-brand-surface-light text-brand-navy border border-brand-border'
-                  }`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-2 transition-all duration-300 border ${iconContainerStyles}`}
                 >
                   {stg.icon}
                 </div>
 
-                <div className="flex items-center gap-1 mb-1">
+                <div className="flex items-center gap-1.5 mb-1">
                   <span
-                    className={`text-[10px] font-black tracking-widest ${
-                      isSelected ? 'text-brand-blue' : 'text-slate-400'
+                    className={`text-[10px] font-mono font-black tracking-widest ${
+                      isSelected
+                        ? 'text-brand-blue'
+                        : isPassed
+                        ? 'text-emerald-600'
+                        : 'text-slate-400'
                     }`}
                   >
-                    {stg.num}
+                    STAGE {stg.num}
                   </span>
+                  {isPassed && (
+                    <span className="text-[10px] text-emerald-600 font-bold" title="Completed">✓</span>
+                  )}
+                  {isSelected && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-ping" />
+                  )}
                 </div>
 
                 <h4 className="text-xs sm:text-sm font-extrabold text-brand-navy font-heading tracking-tight leading-snug">
@@ -166,7 +248,7 @@ export const CrpcCurriculumJourney: React.FC = () => {
                 </p>
 
                 {/* Tech Logos Preview */}
-                <div className="flex items-center gap-1 mt-2 pt-2 border-t border-brand-border/60 w-full justify-center">
+                <div className="flex items-center gap-1 mt-2 pt-2 border-t border-slate-100 w-full justify-center">
                   {stg.logos.map((logo, lIdx) => (
                     <span key={lIdx} className="scale-75 inline-block opacity-80 group-hover:opacity-100">
                       {logo}
