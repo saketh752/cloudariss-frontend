@@ -10,8 +10,6 @@ import {
   CheckCircle2,
   Cloud,
   BarChart3,
-  FileText,
-  Sparkles,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
@@ -19,6 +17,7 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
+import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import {
   AwsLogo,
@@ -165,17 +164,14 @@ export const WhyCloudarissPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-20 lg:space-y-32 pb-20">
+    <div className="space-y-16 lg:space-y-24 pb-20">
       {/* ========================================================================= */}
-      {/* HERO SECTION WITH AUTHENTIC BROCHURE PHOTO */}
+      {/* 1. HERO SECTION WITH VALUE PROGRESSION FLYWHEEL */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Column */}
+            {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
                 <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
@@ -184,7 +180,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
                 Technology Skills That{' '}
                 <span className="text-gradient-tech">Move Beyond Theory.</span>
               </h1>
@@ -210,47 +206,68 @@ export const WhyCloudarissPage: React.FC = () => {
                   Talk to Us
                 </Button>
               </div>
-
-              {/* Fast Proof Points */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-brand-border/60">
-                <div>
-                  <div className="text-xl font-extrabold text-brand-navy font-mono">100%</div>
-                  <div className="text-xs text-slate-500">Live Instructors</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-brand-blue font-mono">10+</div>
-                  <div className="text-xs text-slate-500">Capstones</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-brand-orange font-mono">2</div>
-                  <div className="text-xs text-slate-500">Weekend Tracks</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-emerald-600 font-mono">Vizag</div>
-                  <div className="text-xs text-slate-500">IT Exposure</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Visual Image */}
-            <div className="lg:col-span-5 relative">
-              <div className="rounded-2xl overflow-hidden border-2 border-brand-blue/20 shadow-2xl bg-white group">
-                <img
-                  src="/brand/brochures/forward-deployed.jpg"
-                  alt="Cloudariss Forward Deployed Practical Engineering"
-                  className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-section/90 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5">
-                  <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
-                    Engineered for Capability
+            {/* Right: The 5-Point Value Progression Visual */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-3">
+                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
+                  <span className="text-xs font-mono font-bold text-brand-navy uppercase tracking-wider">
+                    The Cloudariss Advantage
                   </span>
-                  <div className="text-lg font-bold leading-tight">
-                    Forward-Deployed Engineering Mentorship & Practical Application
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue font-bold">
+                    Pedagogical Model
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <span className="w-5 h-5 rounded-full bg-brand-surface-blue text-brand-blue flex items-center justify-center font-mono text-[10px]">1</span>
+                      <span>Practical Learning</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">Live Labs</span>
                   </div>
-                  <p className="text-xs text-slate-300">
-                    Direct technical instruction with active practitioners from regional IT corridors.
-                  </p>
+
+                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <span className="w-5 h-5 rounded-full bg-brand-surface-orange text-brand-orange flex items-center justify-center font-mono text-[10px]">2</span>
+                      <span>Documented Projects</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">GitHub Repos</span>
+                  </div>
+
+                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-mono text-[10px]">3</span>
+                      <span>Modern Technology</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">AWS · AI Stacks</span>
+                  </div>
+
+                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-brand-border flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <span className="w-5 h-5 rounded-full bg-brand-surface-blue text-brand-blue flex items-center justify-center font-mono text-[10px]">4</span>
+                      <span>Vizag IT Exposure</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">Rushikonda / VSEZ</span>
+                  </div>
+
+                  <div className="flex justify-center -my-1 text-slate-300">↓</div>
+
+                  <div className="p-2.5 rounded-xl bg-brand-navy text-white flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-bold text-white">
+                      <span className="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center font-mono text-[10px]">5</span>
+                      <span>Career Preparation</span>
+                    </div>
+                    <span className="text-[10px] text-brand-cyan font-mono">Weekend Circuits</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,8 +275,11 @@ export const WhyCloudarissPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Rhythm Ribbon */}
+      <TechMarqueeRibbon />
+
       {/* ========================================================================= */}
-      {/* 6 CORE DIFFERENTIATORS */}
+      {/* 2. SIX CORE DIFFERENTIATORS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -289,7 +309,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-brand-navy">
+                  <h3 className="text-xl font-bold text-brand-navy font-heading">
                     {item.title}
                   </h3>
                   <div className="text-xs font-semibold text-brand-blue mt-0.5">
@@ -297,7 +317,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                   {item.desc}
                 </p>
               </div>
@@ -307,7 +327,7 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* CRPC + DAAP DIFFERENTIATION WITH BROCHURE COVERS & PDF TRIGGERS */}
+      {/* 3. CRPC + DAAP SPECIALIZATION: BALANCED PATHWAYS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -322,38 +342,23 @@ export const WhyCloudarissPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="blue"
-            className="flex flex-col justify-between space-y-6 overflow-hidden"
+            className="flex flex-col justify-between space-y-6"
           >
             <div className="space-y-5">
-              {/* Visual Brochure Snippet */}
-              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
-                <img
-                  src="/brand/brochures/crpc-brochure.jpg"
-                  alt="CRPC Program Brochure"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-3 left-3">
-                  <Badge variant="blue" size="sm">
-                    {crpc.code}
-                  </Badge>
-                </div>
-                <div className="absolute bottom-3 right-3">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-brand-cyan" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                </div>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <Badge variant="blue" size="md">
+                  {crpc.code}
+                </Badge>
+                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  Cloud, Data & Infrastructure
+                </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy">
+                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
                   Cloud & Data Career Accelerator
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
                   Focused on infrastructure architecture, automated cloud deployments, enterprise CI/CD, and IT service management.
                 </p>
               </div>
@@ -364,7 +369,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   <Cloud className="w-3.5 h-3.5" />
                   <span>Direction Focus</span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
                   Best suited for learners targeting roles in Cloud Engineering, DevOps Engineering, System Administration, Infrastructure Support, or ServiceNow Enterprise Management.
                 </p>
               </div>
@@ -389,7 +394,7 @@ export const WhyCloudarissPage: React.FC = () => {
 
             <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-500">
-                12 Weeks · 8 Modules · Capstones
+                12 Weeks · 8 Modules · Capstone
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -397,7 +402,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   onClick={() => openCurriculum('crpc')}
                   className="px-3.5 py-2 rounded-lg bg-brand-surface-blue text-brand-navy hover:text-brand-blue text-xs font-bold border border-brand-border"
                 >
-                  View Curriculum
+                  View Curriculum (PDF)
                 </button>
                 <Button
                   to="/courses/crpc"
@@ -416,38 +421,23 @@ export const WhyCloudarissPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="orange"
-            className="flex flex-col justify-between space-y-6 overflow-hidden"
+            className="flex flex-col justify-between space-y-6"
           >
             <div className="space-y-5">
-              {/* Visual Brochure Snippet */}
-              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
-                <img
-                  src="/brand/brochures/daap-brochure.jpg"
-                  alt="DAAP Program Brochure"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-3 left-3">
-                  <Badge variant="orange" size="sm">
-                    {daap.code}
-                  </Badge>
-                </div>
-                <div className="absolute bottom-3 right-3">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-brand-orange" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                </div>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <Badge variant="orange" size="md">
+                  {daap.code}
+                </Badge>
+                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  Data Analytics & AI
+                </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy">
+                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
                   Data Analyst Accelerator Program
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
                   Focused on quantitative reasoning, relational SQL querying, interactive executive dashboards, and cutting-edge agentic AI analytics.
                 </p>
               </div>
@@ -458,7 +448,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   <BarChart3 className="w-3.5 h-3.5" />
                   <span>Direction Focus</span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
                   Best suited for learners targeting roles in Data Analysis, Business Intelligence, Data Operations, Quantitative Reporting, or AI-Assisted Business Analytics.
                 </p>
               </div>
@@ -483,7 +473,7 @@ export const WhyCloudarissPage: React.FC = () => {
 
             <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-500">
-                12 Weeks · 5+ Projects · Capstones
+                12 Weeks · 5+ Projects · Capstone
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -491,7 +481,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   onClick={() => openCurriculum('daap')}
                   className="px-3.5 py-2 rounded-lg bg-brand-orange/10 text-brand-navy hover:text-brand-orange text-xs font-bold border border-brand-orange/30"
                 >
-                  View Curriculum
+                  View Curriculum (PDF)
                 </button>
                 <Button
                   to="/courses/daap"
@@ -508,7 +498,7 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* TECHNOLOGY COVERAGE WITH OFFICIAL LOGOS */}
+      {/* 4. ENTERPRISE TOOLS TAUGHT HANDS-ON */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <SectionHeading
@@ -532,7 +522,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 {cat.tools.map((t) => (
                   <div
                     key={t.name}
-                    className="p-2 rounded-lg bg-white border border-brand-border flex items-center gap-2.5 hover:border-brand-blue transition-colors shadow-sm"
+                    className="p-2 rounded-lg bg-white border border-brand-border flex items-center gap-2.5 hover:border-brand-blue transition-colors shadow-2xs"
                   >
                     <div className="p-1 rounded bg-slate-50 border border-slate-100">
                       {t.logo}
@@ -547,7 +537,7 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* THE 5-STAGE CONTINUUM */}
+      {/* 5. THE 5-STAGE CONTINUUM */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -560,7 +550,7 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* CAREER SUPPORT */}
+      {/* 6. CAREER SUPPORT */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -585,7 +575,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   {pillar.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
                 {pillar.desc}
               </p>
             </Card>
@@ -600,24 +590,23 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* FINAL CTA WITH VISUAL BACKGROUND */}
+      {/* 7. FINAL CTA */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-12 text-white shadow-xl text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden">
+        <div className="rounded-3xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-14 text-white text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
               <span>Choose Your Track</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
               Find the Program That Fits Your Direction.
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
               Explore the detailed syllabi, live lab exercises, and capstone projects designed to take you from foundational concepts to verified technical competence.
             </p>
 
@@ -628,7 +617,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 size="lg"
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                Explore CRPC
+                Explore CRPC Track
               </Button>
               <Button
                 to="/courses/daap"
@@ -636,7 +625,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 size="lg"
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                Explore DAAP
+                Explore DAAP Track
               </Button>
             </div>
           </div>

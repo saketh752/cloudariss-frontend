@@ -12,7 +12,9 @@ import {
   CheckCircle2,
   PhoneCall,
   FileText,
-  Sparkles,
+  Building2,
+  Users,
+  Code2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -22,6 +24,8 @@ import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { TechEcosystemVisual } from '@/components/home/TechEcosystemVisual';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
+import { HeroTechnicalVisual } from '@/components/home/HeroTechnicalVisual';
+import { TechMarqueeRibbon, DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
 import {
   AwsLogo,
   DockerLogo,
@@ -47,9 +51,9 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-20 lg:space-y-32 pb-20">
+    <div className="space-y-20 lg:space-y-28 pb-20">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION WITH AUTHENTIC BROCHURE VISUAL STORYTELLING */}
+      {/* 1. HERO SECTION: EDITORIAL + BALANCED TECHNICAL COMPOSITION */}
       {/* ========================================================================= */}
       <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -57,13 +61,13 @@ export const HomePage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-            {/* Hero Left Content */}
+            {/* Hero Left: Editorial Content */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               {/* Eyebrow */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
                 <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
                 <span className="text-[11px] sm:text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
-                  TECHNOLOGY • DATA • CLOUD • AUTOMATION
+                  PRACTICAL TECHNOLOGY & CAREER ACCELERATORS
                 </span>
               </div>
 
@@ -75,16 +79,16 @@ export const HomePage: React.FC = () => {
 
               {/* Supporting Text */}
               <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Empowering careers with Cloud, Data & Automation Skills.
+                Empowering careers with practical Cloud, Data, Automation & AI skills.
               </p>
 
               {/* Editorial Trust Statement */}
               <p className="text-sm sm:text-base text-slate-500 max-w-lg mx-auto lg:mx-0 leading-normal font-medium">
-                Structured 12-week accelerators delivering live instructor-led technical depth, compounding career readiness, and hands-on capstone engineering.
+                Structured 12-week accelerators delivering live instructor-led technical depth, compounding weekend career preparation, and verified capstone engineering.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
                 <Button
                   to="/courses"
                   variant="primary"
@@ -101,6 +105,22 @@ export const HomePage: React.FC = () => {
                 >
                   Talk to Us
                 </Button>
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('crpc')}
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-blue text-sm font-bold shadow-sm hover:shadow transition-all"
+                >
+                  <FileText className="w-4 h-4 text-brand-blue" />
+                  <span>CRPC Syllabi</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('daap')}
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-orange text-sm font-bold shadow-sm hover:shadow transition-all"
+                >
+                  <FileText className="w-4 h-4 text-brand-orange" />
+                  <span>DAAP Syllabi</span>
+                </button>
               </div>
 
               {/* Trust Highlights */}
@@ -115,61 +135,26 @@ export const HomePage: React.FC = () => {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-brand-cyan" />
-                  End-to-End Capstones
+                  Portfolio-Grade Capstones
                 </span>
               </div>
             </div>
 
-            {/* Hero Right Visual: Authentic Brochure Composition */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-card border-2 border-brand-border/80 bg-brand-navy group">
-                <img
-                  src="/brand/brochures/curious-minds-hero.jpg"
-                  alt="From Curious Minds to Confident Careers - Cloudariss Technologies"
-                  className="w-full h-[460px] sm:h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-
-                {/* Floating white information panels over photo */}
-                <div className="absolute bottom-6 left-6 right-6 space-y-3 z-10">
-                  <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 shadow-card space-y-2 text-brand-navy">
-                    <div className="flex items-center justify-between text-xs font-bold text-brand-blue">
-                      <span className="flex items-center gap-1">
-                        <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
-                        From Curious Minds to Confident Careers
-                      </span>
-                      <span className="text-slate-500">Cloudariss Vizag</span>
-                    </div>
-
-                    <div className="flex items-center gap-2 pt-1 overflow-x-auto">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-surface-blue text-brand-blue border border-brand-blue/20">
-                        CLOUD
-                      </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-surface-light text-slate-700 border border-brand-border">
-                        DATA
-                      </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-surface-orange text-brand-orange border border-brand-orange/20">
-                        AI & DEVOPS
-                      </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
-                        CAREERS
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Top Corner Pill */}
-                <div className="absolute top-4 right-4 z-10 bg-brand-navy/90 backdrop-blur-sm border border-brand-blue/40 px-3 py-1 rounded-full text-[11px] font-extrabold text-brand-cyan uppercase tracking-wider">
-                  LIVE ACCELERATOR
-                </div>
-              </div>
+            {/* Hero Right: Balanced Technical Visual Composition */}
+            <div className="lg:col-span-5">
+              <HeroTechnicalVisual />
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. VINAYAKA CHAVITHI SPECIAL OFFER */}
+      {/* 2. CONTINUOUS TECHNOLOGY SCROLLING MARQUEE */}
+      {/* ========================================================================= */}
+      <TechMarqueeRibbon />
+
+      {/* ========================================================================= */}
+      {/* 3. VINAYAKA CHAVITHI SPECIAL OFFER */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-gradient-to-r from-brand-dark-section via-brand-dark-surface to-brand-dark-section p-6 sm:p-10 border border-brand-orange/40 shadow-xl overflow-hidden">
@@ -180,7 +165,7 @@ export const HomePage: React.FC = () => {
             <div className="space-y-3 text-center lg:text-left">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-brand-orange text-xs font-extrabold tracking-wider uppercase">
                 <Tag className="w-3.5 h-3.5" />
-                <span>LIMITED-TIME OFFER</span>
+                <span>LIMITED-TIME ADMISSIONS CAMPAIGN</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-heading">
@@ -188,7 +173,7 @@ export const HomePage: React.FC = () => {
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base max-w-xl font-medium">
-                Enroll in any 12-Week Career Accelerator with full live instruction, project reviews, and placement assistance at our special festive tuition.
+                Enroll in any 12-Week Career Accelerator with full live instruction, real lab workstations, and placement assistance at our special festive tuition.
               </p>
 
               {/* Pricing Callout */}
@@ -237,7 +222,7 @@ export const HomePage: React.FC = () => {
                 fullWidth
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                View Offer
+                View Offer Details
               </Button>
             </div>
           </div>
@@ -245,13 +230,13 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. WHAT WE OFFER — PICTORIAL ECOSYSTEM */}
+      {/* 4. WHAT WE OFFER — REFINED EDITORIAL PILLARS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
           eyebrow="What We Offer"
           title="Engineered for Practical Excellence"
-          subtitle="Four core pillars structured into every Cloudariss program to ensure you progress from theory to deployment-grade capability."
+          subtitle="Four core foundations structured into every Cloudariss program to ensure you progress from initial concepts to deployment-grade capability."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -259,58 +244,66 @@ export const HomePage: React.FC = () => {
             {
               title: 'Technical Learning',
               subtitle: 'Live Interactive Cohorts',
-              desc: 'Live, instructor-led sessions covering core algorithms, cloud architecture, automation scripts, and analytics modeling.',
-              icon: <Terminal className="w-6 h-6 text-brand-blue" />,
-              img: '/brand/brochures/college-workshops.jpg',
+              desc: 'Rigorous instructor-led classes breaking down cloud architecture, algorithms, relational querying, and systems thinking.',
+              icon: <Terminal className="w-5 h-5 text-brand-blue" />,
+              borderAccent: 'border-l-4 border-l-brand-blue',
+              accentPill: 'Live Online Labs',
             },
             {
               title: 'Hands-on Projects',
               subtitle: 'Production GitHub Repos',
               desc: 'Direct implementation on live cloud infrastructure and real business datasets with teacher-led code reviews.',
-              icon: <Layers className="w-6 h-6 text-brand-orange" />,
-              img: '/brand/brochures/project-focused.jpg',
+              icon: <Layers className="w-5 h-5 text-brand-orange" />,
+              borderAccent: 'border-l-4 border-l-brand-orange',
+              accentPill: '10+ Capstones',
             },
             {
               title: 'Modern Technologies',
               subtitle: 'Cloud, Data, DevOps & AI',
-              desc: 'Curricula aligned with current industry standards: Agentic AI, AWS Cloud, Docker containers, Power BI, and ServiceNow.',
-              icon: <Cpu className="w-6 h-6 text-[#0a6680]" />,
-              img: '/brand/brochures/aws-devops.jpg',
+              desc: 'Curricula aligned with current enterprise stacks: Agentic AI, AWS Cloud, Docker, Kubernetes, Power BI, and ServiceNow.',
+              icon: <Cpu className="w-5 h-5 text-[#0a6680]" />,
+              borderAccent: 'border-l-4 border-l-brand-cyan',
+              accentPill: 'Industry Stacks',
             },
             {
               title: 'Career Preparation',
               subtitle: 'Weekend Mocks & Resumes',
-              desc: 'Dedicated Saturday career strategy sessions and Sunday mock interview circuits integrated alongside technical learning.',
-              icon: <Briefcase className="w-6 h-6 text-brand-blue" />,
-              img: '/brand/brochures/certifications-training.jpg',
+              desc: 'Dedicated Saturday ATS career strategy workshops and Sunday mock interview circuits integrated alongside technical learning.',
+              icon: <Briefcase className="w-5 h-5 text-brand-blue" />,
+              borderAccent: 'border-l-4 border-l-brand-navy',
+              accentPill: 'Sat & Sun Tracks',
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="group rounded-2xl bg-white border border-brand-border/80 shadow-subtle hover:shadow-card transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              className={`rounded-2xl bg-white border border-brand-border/80 p-6 shadow-subtle hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 ${item.borderAccent}`}
             >
-              <div className="relative h-44 overflow-hidden bg-slate-100">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
-                <div className="absolute bottom-3 left-4 w-10 h-10 rounded-xl bg-white shadow-subtle border border-brand-border/80 flex items-center justify-center">
-                  {item.icon}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-brand-surface-blue flex items-center justify-center border border-brand-border/60">
+                    {item.icon}
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                    {item.accentPill}
+                  </span>
                 </div>
-              </div>
 
-              <div className="p-5 pt-1 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue block">
-                  {item.subtitle}
-                </span>
-                <h3 className="text-lg font-bold text-brand-navy font-heading">
-                  {item.title}
-                </h3>
+                <div>
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block">
+                    {item.subtitle}
+                  </span>
+                  <h3 className="text-lg font-bold text-brand-navy font-heading mt-0.5">
+                    {item.title}
+                  </h3>
+                </div>
+
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">
                   {item.desc}
                 </p>
+              </div>
+
+              <div className="pt-3 border-t border-brand-border/60 flex items-center gap-1 text-[11px] font-bold text-brand-blue">
+                <span>Outcome-Driven Design</span>
               </div>
             </div>
           ))}
@@ -318,65 +311,84 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. OUR FLAGSHIP PROGRAMS */}
+      {/* 5. OUR FLAGSHIP PROGRAMS: PATHWAY ARCHITECTURE */}
       {/* ========================================================================= */}
       <section id="programs" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
           eyebrow="Our Programs"
-          title="Flagship Career Accelerators"
+          title="Two Distinct Engineering Directions"
           subtitle="Choose between specialized cloud infrastructure engineering or modern data analytics empowered by Generative and Agentic AI."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* CRPC Card */}
-          <div className="rounded-3xl bg-white border-2 border-brand-border/90 shadow-subtle hover:shadow-card hover:border-brand-blue/60 transition-all duration-300 flex flex-col justify-between overflow-hidden">
-            <div className="relative h-56 overflow-hidden bg-brand-navy">
-              <img
-                src="/brand/brochures/crpc-brochure.jpg"
-                alt="CRPC Cloud & Data Accelerator"
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+          <div className="rounded-3xl bg-white border border-brand-border shadow-card hover:border-brand-blue/60 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+            {/* Pathway Header Bar */}
+            <div className="bg-gradient-to-r from-brand-navy to-brand-dark-surface p-6 text-white space-y-3">
+              <div className="flex items-center justify-between">
                 <Badge variant="blue" size="md">
                   {crpc.code} FLAGSHIP
                 </Badge>
-                <span className="text-xs font-semibold bg-white/90 text-brand-navy px-2.5 py-1 rounded-full">
-                  12 Weeks · Live Classes
+                <span className="text-xs font-mono font-bold text-brand-cyan bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+                  12 Weeks · Live Online
                 </span>
+              </div>
+              <h3 className="text-2xl font-extrabold text-white font-heading">
+                {crpc.name}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Cloud infrastructure architecture, automated CI/CD pipelines, container orchestration, and IT service management.
+              </p>
+
+              {/* Connected Visual Pathway */}
+              <div className="pt-2 border-t border-white/10">
+                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">
+                  Curriculum Pathway
+                </div>
+                <div className="flex items-center gap-1.5 flex-wrap text-[11px] font-mono text-slate-200">
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">01 Python</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">02 Data Science</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-brand-blue text-white font-bold">03 AWS Cloud</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">04 DevOps</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">05 ServiceNow</span>
+                </div>
               </div>
             </div>
 
+            {/* Content Body */}
             <div className="p-6 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
               <div className="space-y-4">
-                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
-                  {crpc.name}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                  Master the core infrastructure disciplines powering modern enterprise platforms: Python scripting, Data Science essentials, AWS Cloud architecture, DevOps automation, and ServiceNow platform workflows.
-                </p>
-
-                {/* Tech Logos Strip */}
-                <div className="flex items-center gap-3 pt-2">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Stack:</span>
+                <div className="space-y-2">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Core Engineering Stacks:
+                  </div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <AwsLogo className="w-4 h-3" /> AWS
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <AwsLogo className="w-4 h-3.5" /> AWS Cloud (EC2, VPC, ALB)
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
                       <DockerLogo className="w-4 h-4" /> Docker
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <KubernetesLogo className="w-4 h-4" /> K8s
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <KubernetesLogo className="w-4 h-4" /> Kubernetes
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <JenkinsLogo className="w-4 h-4" /> Jenkins
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <JenkinsLogo className="w-4 h-4" /> Jenkins CI/CD
                     </span>
                   </div>
                 </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 text-xs text-slate-600 leading-relaxed">
+                  <strong className="text-brand-navy font-bold">Targeted Industry Roles:</strong> Cloud Engineer, DevOps Engineer, AWS Infrastructure Administrator, Systems Specialist, ServiceNow Developer.
+                </div>
               </div>
 
-              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4">
+              {/* Action Footer */}
+              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
                 <div>
                   <span className="text-xs text-slate-400 block line-through">
                     {BRAND_DATA.offer.originalPrice}
@@ -389,10 +401,10 @@ export const HomePage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold bg-brand-surface-blue text-brand-blue hover:bg-brand-blue hover:text-white border border-brand-blue/30 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface-blue text-brand-blue hover:bg-brand-blue hover:text-white border border-brand-blue/30 transition-colors cursor-pointer"
                   >
                     <FileText className="w-4 h-4" />
-                    <span>Curriculum</span>
+                    <span>View Curriculum (PDF)</span>
                   </button>
                   <Button
                     to="/courses/crpc"
@@ -408,54 +420,73 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* DAAP Card */}
-          <div className="rounded-3xl bg-white border-2 border-brand-border/90 shadow-subtle hover:shadow-card hover:border-brand-orange/60 transition-all duration-300 flex flex-col justify-between overflow-hidden">
-            <div className="relative h-56 overflow-hidden bg-brand-navy">
-              <img
-                src="/brand/brochures/daap-brochure.jpg"
-                alt="DAAP Data Analyst Accelerator"
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+          <div className="rounded-3xl bg-white border border-brand-border shadow-card hover:border-brand-orange/60 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+            {/* Pathway Header Bar */}
+            <div className="bg-gradient-to-r from-brand-dark-section via-[#1c234a] to-brand-dark-surface p-6 text-white space-y-3">
+              <div className="flex items-center justify-between">
                 <Badge variant="orange" size="md">
                   {daap.code} FLAGSHIP
                 </Badge>
-                <span className="text-xs font-semibold bg-white/90 text-brand-navy px-2.5 py-1 rounded-full">
-                  12 Weeks · Live Classes
+                <span className="text-xs font-mono font-bold text-brand-orange bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+                  12 Weeks · Live Online
                 </span>
+              </div>
+              <h3 className="text-2xl font-extrabold text-white font-heading">
+                {daap.name}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Relational SQL querying, EDA with Python Pandas, interactive Power BI executive dashboards, and Agentic AI workflows.
+              </p>
+
+              {/* Connected Visual Pathway */}
+              <div className="pt-2 border-t border-white/10">
+                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">
+                  Curriculum Pathway
+                </div>
+                <div className="flex items-center gap-1.5 flex-wrap text-[11px] font-mono text-slate-200">
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">01 Excel</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">02 SQL DB</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">03 Python</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15">04 Power BI</span>
+                  <span>→</span>
+                  <span className="px-2 py-0.5 rounded bg-brand-orange text-white font-bold">05 Agentic AI</span>
+                </div>
               </div>
             </div>
 
+            {/* Content Body */}
             <div className="p-6 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
               <div className="space-y-4">
-                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
-                  {daap.name}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                  Go from spreadsheet modeling to scalable data analytics: Excel formulas, complex SQL querying, Python EDA, Power BI business dashboards, Generative AI (RAG), and autonomous Agentic AI tools.
-                </p>
-
-                {/* Tech Logos Strip */}
-                <div className="flex items-center gap-3 pt-2">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Stack:</span>
+                <div className="space-y-2">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Core Analytics Stacks:
+                  </div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <SqlLogo className="w-4 h-4" /> SQL
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <SqlLogo className="w-4 h-4" /> SQL / PostgreSQL
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <PythonLogo className="w-4 h-4" /> Python
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <PythonLogo className="w-4 h-4" /> Python & Pandas
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <PowerBiLogo className="w-4 h-4" /> Power BI
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-surface-blue px-2.5 py-1 rounded-md border border-brand-border">
+                      <PowerBiLogo className="w-4 h-4" /> Power BI & DAX
                     </span>
-                    <span className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-brand-border/60">
-                      <AgenticAiLogo className="w-4 h-4" /> Agentic AI
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy bg-brand-orange/10 px-2.5 py-1 rounded-md border border-brand-orange/30">
+                      <AgenticAiLogo className="w-4 h-4" /> Agentic AI & RAG
                     </span>
                   </div>
                 </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 text-xs text-slate-600 leading-relaxed">
+                  <strong className="text-brand-navy font-bold">Targeted Industry Roles:</strong> Data Analyst, Business Intelligence Engineer, Quantitative Operations Analyst, SQL Specialist, AI-Assisted Analyst.
+                </div>
               </div>
 
-              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4">
+              {/* Action Footer */}
+              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
                 <div>
                   <span className="text-xs text-slate-400 block line-through">
                     {BRAND_DATA.offer.originalPrice}
@@ -468,10 +499,10 @@ export const HomePage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold bg-brand-surface-orange text-brand-orange hover:bg-brand-orange hover:text-white border border-brand-orange/30 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange/10 text-brand-orange hover:bg-brand-orange hover:text-white border border-brand-orange/30 transition-colors cursor-pointer"
                   >
                     <FileText className="w-4 h-4" />
-                    <span>Curriculum</span>
+                    <span>View Curriculum (PDF)</span>
                   </button>
                   <Button
                     to="/courses/daap"
@@ -489,167 +520,112 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. INTERACTIVE 5-STAGE PROGRESSIVE JOURNEY */}
+      {/* 6. LEARNING METHODOLOGY: FIVE-STAGE PROGRESSION */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
-          eyebrow="The Learning Journey"
-          title="A Structured Progression to Career Competence"
-          subtitle="Our methodology guides you through five sequential phases designed to build genuine, demonstrable engineering strength."
+          eyebrow="Our Methodology"
+          title="The Cloudariss Learning Continuum"
+          subtitle="A systematic five-phase progression taking learners from conceptual foundations to verifiable engineering competence."
         />
 
         <FiveStageVisualJourney />
       </section>
 
+      {/* Rhythm Divider */}
+      <DomainTickerRibbon />
+
       {/* ========================================================================= */}
-      {/* 6. TECHNOLOGY ECOSYSTEM — LOGOS FIRST */}
+      {/* 7. CONNECTED TECHNOLOGY ECOSYSTEM ARCHITECTURE */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
           eyebrow="Technology Ecosystem"
-          title="Industry-Standard Stacks & Tools"
-          subtitle="Direct, hands-on exposure to the infrastructure platforms, build tools, databases, and AI frameworks demanded by modern employers."
+          title="Connected Engineering Pipeline"
+          subtitle="How modern cloud infrastructure, automation pipelines, relational data processing, and generative AI connect in our programs."
         />
 
         <TechEcosystemVisual />
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. REAL-WORLD PROJECTS — VISUAL SHOWCASE */}
+      {/* 8. DOCUMENTED HANDS-ON PROJECTS SHOWCASE */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
-          eyebrow="Real-World Projects"
-          title="Documented Engineering Artifacts"
-          subtitle="You do not merely learn concepts; you deploy functional, documented systems hosted on personal GitHub profiles with interactive dashboards."
+          eyebrow="Real Artifacts"
+          title="Documented Capstones & Deliverables"
+          subtitle="No simulated quiz answers. Every student completes documented projects hosted on personal GitHub repositories."
         />
 
         <ProjectsVisual initialTab="daap" />
       </section>
 
       {/* ========================================================================= */}
-      {/* 8. CAREER SUPPORT SECTION */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Career Support"
-          title="Comprehensive Career Readiness Circuit"
-          subtitle="Structured preparation embedded directly alongside technical learning to help you articulate your project experience with confidence."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: 'Resume & Portfolio Building',
-              desc: 'Draft an ATS-compliant resume and portfolio highlighting live project URLs, architectural schematics, and measured performance gains.',
-              icon: <FileText className="w-5 h-5 text-brand-blue" />,
-            },
-            {
-              title: 'LinkedIn Positioning',
-              desc: 'Optimize your technical profile, document your project sprints, and connect with engineers in the cloud and analytics space.',
-              icon: <Sparkles className="w-5 h-5 text-brand-orange" />,
-            },
-            {
-              title: 'Mock Interview Circuit',
-              desc: 'Undergo simulated technical screens and whiteboard coding drills designed to build fluency under realistic interview conditions.',
-              icon: <Briefcase className="w-5 h-5 text-brand-blue" />,
-            },
-            {
-              title: 'Industry & Company Sessions',
-              desc: 'Attend interactive sessions with working engineers and team leads sharing firsthand insights into live deployment practices.',
-              icon: <Layers className="w-5 h-5 text-[#0a6680]" />,
-            },
-            {
-              title: 'Group Discussions & Soft Skills',
-              desc: 'Practice presenting complex architectural decisions, defending technical trade-offs, and collaborating in team-based design reviews.',
-              icon: <CheckCircle2 className="w-5 h-5 text-brand-orange" />,
-            },
-            {
-              title: 'Placement Assistance',
-              desc: 'Access curated job leads, application tracking guidance, and resume referrals for roles aligned with your technical strengths.',
-              icon: <ShieldCheck className="w-5 h-5 text-brand-blue" />,
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl bg-white border border-brand-border/80 shadow-subtle hover:shadow-card transition-shadow space-y-3"
-            >
-              <div className="w-10 h-10 rounded-xl bg-brand-surface-light border border-brand-border flex items-center justify-center">
-                {item.icon}
-              </div>
-              <h3 className="text-base font-bold text-brand-navy font-heading">{item.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 9. CURRENT OFFER */}
+      {/* 9. VIRTUAL COMPANY SESSIONS & VIZAG TECH INTEGRATION */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark-section border-2 border-brand-orange/40 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6">
-          <div className="inline-flex items-center gap-2 bg-brand-orange/20 text-brand-orange px-4 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase border border-brand-orange/40">
-            <Tag className="w-3.5 h-3.5" />
-            <span>Admissions Campaign</span>
-          </div>
+        <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 sm:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30">
+                <Building2 className="w-4 h-4 text-brand-blue" />
+                <span className="text-xs font-bold text-brand-navy uppercase tracking-wider">
+                  Direct Industry Integration
+                </span>
+              </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">
-            Vinayaka Chavithi Special Offer
-          </h2>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
+                Virtual Company Sessions with Regional IT Corridor Teams
+              </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium">
-            Take the first step toward a high-growth career in cloud engineering or data analytics at our special festive tuition.
-          </p>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+                Connect classroom problem solving with real-world enterprise engineering workflows. Students participate in technical walkthroughs with working engineers from companies in Visakhapatnam, including the Rushikonda IT Park and VSEZ corridors.
+              </p>
 
-          <div className="flex items-center justify-center gap-4 py-2">
-            <span className="text-2xl sm:text-3xl text-slate-400 line-through font-semibold">
-              {BRAND_DATA.offer.originalPrice}
-            </span>
-            <span className="text-xl sm:text-2xl text-brand-orange font-bold">→</span>
-            <span className="text-4xl sm:text-5xl font-extrabold text-white font-heading">
-              {BRAND_DATA.offer.offerPrice}
-            </span>
-          </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 space-y-1.5">
+                  <div className="flex items-center gap-2 text-brand-navy font-bold text-sm">
+                    <Users className="w-4 h-4 text-brand-blue" />
+                    <span>Practitioner Walkthroughs</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Direct technical discussions and architecture deep dives with active tech leads and data specialists.
+                  </p>
+                </div>
 
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-brand-dark-surface p-3 sm:px-6 rounded-xl border border-brand-orange/40 shadow-inner">
-            <span className="text-xs uppercase font-bold text-slate-300 tracking-wider">
-              Coupon Code:
-            </span>
-            <code className="text-lg font-mono font-extrabold text-brand-cyan tracking-wider">
-              {BRAND_DATA.offer.couponCode}
-            </code>
-            <button
-              type="button"
-              onClick={handleCopyCode}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-brand-blue/40 hover:bg-brand-blue/60 text-xs font-semibold text-white transition-colors cursor-pointer"
-              title="Copy coupon code"
-            >
-              {copiedCoupon ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </div>
+                <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 space-y-1.5">
+                  <div className="flex items-center gap-2 text-brand-navy font-bold text-sm">
+                    <Code2 className="w-4 h-4 text-brand-orange" />
+                    <span>Internship Selection Pathway</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating regional technology teams.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          <div className="pt-2">
-            <Button
-              to="/courses"
-              variant="primary"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Explore Programs & Enroll
-            </Button>
+            <div className="lg:col-span-4 bg-brand-surface-blue/50 rounded-2xl p-6 border border-brand-border text-center space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mx-auto text-brand-blue border border-brand-border">
+                <Briefcase className="w-6 h-6" />
+              </div>
+              <h3 className="text-base font-bold text-brand-navy">
+                Weekend Career Strategy Circuits
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Saturday ATS resume audits and LinkedIn positioning, followed by Sunday live mock interviews with technical panels.
+              </p>
+              <Button
+                to="/courses"
+                variant="primary"
+                size="md"
+                fullWidth
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explore Curricula
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -658,74 +634,68 @@ export const HomePage: React.FC = () => {
       {/* 10. CERTIFICATE VERIFICATION PREVIEW */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-brand-border shadow-card flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3 text-center md:text-left max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-surface-blue text-brand-blue text-xs font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Official Verification</span>
+        <div className="rounded-2xl bg-white border border-brand-border/80 shadow-subtle p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-brand-surface-blue flex items-center justify-center text-brand-blue border border-brand-border shrink-0">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-              Verify a Cloudariss Certificate
-            </h3>
-            <p className="text-sm text-slate-600 font-medium leading-relaxed">
-              Employers and institutions can verify the authenticity of an official completion credential issued by Cloudariss Technologies using its certificate ID.
-            </p>
+            <div>
+              <h3 className="text-lg font-bold text-brand-navy">
+                Verify Cloudariss Certificates
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Instant lookup portal for employers and recruiters verifying student completion credentials.
+              </p>
+            </div>
           </div>
-
-          <div className="shrink-0">
-            <Button
-              to="/verify-certificate"
-              variant="secondary"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Verify Certificate
-            </Button>
-          </div>
+          <Button
+            to="/verify-certificate"
+            variant="outline"
+            size="md"
+            rightIcon={<ArrowRight className="w-4 h-4" />}
+          >
+            Go to Verification Portal
+          </Button>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 11. FINAL CTA WITH EDITORIAL BROCHURE VISUAL */}
+      {/* 11. FINAL CTA SECTION */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden shadow-card border-2 border-brand-border bg-brand-navy">
-          <img
-            src="/brand/brochures/brighter-tomorrow.jpg"
-            alt="Let's Build a Brighter Tomorrow Together"
-            className="w-full h-[400px] sm:h-[460px] object-cover object-center opacity-85"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent" />
+        <div className="rounded-3xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-14 text-white text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-6 sm:p-10 space-y-6">
-            <span className="px-4 py-1.5 rounded-full text-xs font-extrabold bg-white/20 text-white backdrop-blur-md border border-white/30 tracking-widest uppercase">
-              LET'S BUILD A BRIGHTER TOMORROW TOGETHER
-            </span>
+          <div className="relative z-10 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
+              <span>Ready for Your Next Step?</span>
+            </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading max-w-2xl">
-              Ready to Build Production-Grade Skills?
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+              Build Practical Capability.{' '}
+              <span className="text-brand-orange">Advance Your Career.</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-200 max-w-xl mx-auto font-medium">
-              Join an upcoming live cohort, build real projects, and prepare for high-growth tech roles.
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
+              Join the upcoming cohort in Visakhapatnam or online. Transform foundational interest into verifiable engineering proficiency.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button
                 to="/courses"
                 variant="primary"
                 size="lg"
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                Explore Programs
+                View Programs
               </Button>
               <Button
                 to="/contact"
                 variant="outline"
                 size="lg"
-                className="text-white border-white/40 hover:bg-white/10"
               >
-                Talk to Advisor
+                Contact Admissions
               </Button>
             </div>
           </div>

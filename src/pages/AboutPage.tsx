@@ -13,7 +13,7 @@ import {
   Sparkles,
   Building2,
   CheckCircle2,
-  FileText,
+  ShieldCheck,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
+import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import {
   AwsLogo,
@@ -40,8 +41,8 @@ export const AboutPage: React.FC = () => {
   // Editorial Who We Are Pillars
   const whoWeArePillars = [
     {
-      title: 'Vizag-Based Identity',
-      tag: 'Regional Engineering Core',
+      title: 'Vizag-Based Engineering Identity',
+      tag: 'Regional Roots',
       desc: 'Headquartered in Visakhapatnam, Andhra Pradesh. We draw inspiration from the city’s expanding IT landscape, maintaining active links to technology corridors including Rushikonda IT Park and VSEZ.',
       icon: <MapPin className="w-5 h-5 text-brand-orange" />,
     },
@@ -119,14 +120,11 @@ export const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-20 lg:space-y-32 pb-20">
+    <div className="space-y-16 lg:space-y-24 pb-20">
       {/* ========================================================================= */}
-      {/* HERO SECTION WITH AUTHENTIC PHOTOGRAPHY */}
+      {/* 1. HERO SECTION: EDITORIAL + REGIONAL ENGINEERING CANVAS */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Narrative Column */}
@@ -138,7 +136,7 @@ export const AboutPage: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
                 Building Careers{' '}
                 <span className="text-gradient-tech">Through Technology.</span>
               </h1>
@@ -164,47 +162,54 @@ export const AboutPage: React.FC = () => {
                   Talk to Us
                 </Button>
               </div>
-
-              {/* Fast Proof Points */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-brand-border/60">
-                <div>
-                  <div className="text-xl font-extrabold text-brand-navy font-mono">Vizag</div>
-                  <div className="text-xs text-slate-500 font-medium">Headquarters</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-brand-blue font-mono">100%</div>
-                  <div className="text-xs text-slate-500 font-medium">Live Labs</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-brand-orange font-mono">10+</div>
-                  <div className="text-xs text-slate-500 font-medium">Capstones</div>
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-emerald-600 font-mono">Top 5</div>
-                  <div className="text-xs text-slate-500 font-medium">Internship Pathway</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Visual Image */}
-            <div className="lg:col-span-5 relative">
-              <div className="rounded-2xl overflow-hidden border-2 border-brand-blue/20 shadow-2xl bg-white group">
-                <img
-                  src="/brand/brochures/brighter-tomorrow.jpg"
-                  alt="Empowering Young Minds for a Brighter Tomorrow"
-                  className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-section/90 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5">
-                  <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
-                    Our Mission
+            {/* Right: Technical Identity Blueprint */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-4">
+                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
+                  <span className="text-xs font-mono font-bold text-brand-navy uppercase tracking-wider">
+                    Organizational Profile
                   </span>
-                  <div className="text-lg font-bold leading-tight">
-                    Empowering Young Minds For a Brighter Tomorrow
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue font-bold">
+                    Vizag, AP
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <MapPin className="w-4 h-4 text-brand-orange" />
+                      <span>Visakhapatnam Technology Hub</span>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Maintaining close links to regional IT corridors including Rushikonda IT Park and VSEZ for student company sessions.
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-300">
-                    Transforming academic potential into verifiable engineering capability.
-                  </p>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <Globe2 className="w-4 h-4 text-brand-blue" />
+                      <span>100% Live Interactive Cohorts</span>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Live classrooms connecting students with working engineers, instructor Q&A, and practical workstation labs.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span>Verifiable Portfolio Deliverables</span>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Graduates produce documented multi-tier deployments and executive BI decks on personal GitHub profiles.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-brand-border/60 text-center text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  Technology-Focused · Career-Oriented
                 </div>
               </div>
             </div>
@@ -212,8 +217,11 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Ribbon Movement */}
+      <TechMarqueeRibbon />
+
       {/* ========================================================================= */}
-      {/* WHO WE ARE (Pictorial Grid) */}
+      {/* 2. WHO WE ARE */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -242,10 +250,10 @@ export const AboutPage: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-brand-navy">
+                <h3 className="text-xl font-bold text-brand-navy font-heading">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
                   {item.desc}
                 </p>
               </div>
@@ -255,7 +263,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* OUR FOCUS AREAS (Logo-Rich Domain Grid) */}
+      {/* 3. TECHNOLOGY DOMAINS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -283,10 +291,10 @@ export const AboutPage: React.FC = () => {
                     {area.logo}
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-brand-navy">
+                <h3 className="text-base font-bold text-brand-navy font-heading">
                   {area.name}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
                   {area.desc}
                 </p>
               </div>
@@ -302,7 +310,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* OUR APPROACH (Interactive Five-Stage Visual Journey) */}
+      {/* 4. LEARNING METHODOLOGY */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -312,22 +320,16 @@ export const AboutPage: React.FC = () => {
         />
 
         <FiveStageVisualJourney />
-
-        <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 text-center max-w-2xl mx-auto">
-          <p className="text-xs text-slate-500 leading-relaxed">
-            * Our approach is engineered to develop demonstrable technical proficiency and interview readiness. We do not promise that completing a program guarantees employment.
-          </p>
-        </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* PROGRAMS (With Official Brochure Visuals & PDF Viewer CTAs) */}
+      {/* 5. BALANCED FLAGSHIP PROGRAMS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
           eyebrow="Our Programs"
-          title="Flagship Career Accelerators"
-          subtitle="Explore the two specialized pathways offered by Cloudariss Technologies."
+          title="Two Specialized Pathways"
+          subtitle="Explore the two flagship accelerators offered by Cloudariss Technologies."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -336,37 +338,23 @@ export const AboutPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="blue"
-            className="flex flex-col justify-between space-y-6 overflow-hidden"
+            className="flex flex-col justify-between space-y-6"
           >
             <div className="space-y-4">
-              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
-                <img
-                  src="/brand/brochures/crpc-brochure.jpg"
-                  alt="CRPC Program Brochure"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-3 left-3">
-                  <Badge variant="blue" size="sm">
-                    {crpc.code}
-                  </Badge>
-                </div>
-                <div className="absolute bottom-3 right-3">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-brand-cyan" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                </div>
+              <div className="flex items-center justify-between gap-2">
+                <Badge variant="blue" size="md">
+                  {crpc.code}
+                </Badge>
+                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  12 Weeks · Live Online
+                </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy">
+                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
                   Cloud & Data Career Accelerator
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
                   Comprehensive 12-week curriculum spanning Python programming, Data Science essentials, AWS Cloud infrastructure, Docker containerization, Kubernetes, Jenkins CI/CD, and ServiceNow administration.
                 </p>
               </div>
@@ -407,37 +395,23 @@ export const AboutPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="orange"
-            className="flex flex-col justify-between space-y-6 overflow-hidden"
+            className="flex flex-col justify-between space-y-6"
           >
             <div className="space-y-4">
-              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
-                <img
-                  src="/brand/brochures/daap-brochure.jpg"
-                  alt="DAAP Program Brochure"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-3 left-3">
-                  <Badge variant="orange" size="sm">
-                    {daap.code}
-                  </Badge>
-                </div>
-                <div className="absolute bottom-3 right-3">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-brand-orange" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                </div>
+              <div className="flex items-center justify-between gap-2">
+                <Badge variant="orange" size="md">
+                  {daap.code}
+                </Badge>
+                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  12 Weeks · Live Online
+                </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy">
+                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
                   Data Analyst Accelerator Program
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
                   Fast-paced 12-week sprint taking learners from advanced Excel formulas and complex SQL querying to Python EDA, executive Power BI dashboards, Generative AI (RAG), and autonomous Agentic AI workflows.
                 </p>
               </div>
@@ -476,10 +450,10 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* BRAND STATEMENT WITH VISUAL STORYTELLING */}
+      {/* 6. GUIDING BRAND STATEMENT */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-brand-dark-section border border-brand-blue/40 p-8 sm:p-14 text-white text-center relative overflow-hidden shadow-xl">
+        <div className="rounded-3xl bg-brand-dark-section border border-brand-blue/40 p-8 sm:p-14 text-white text-center relative overflow-hidden shadow-xl">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -488,12 +462,12 @@ export const AboutPage: React.FC = () => {
               Our Guiding Brand Principle
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-heading">
               Learn. Build.{' '}
               <span className="text-brand-orange">Get Hired.</span>
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto pt-2">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto pt-2 font-medium">
               {BRAND_DATA.positioning}
             </p>
           </div>
@@ -501,7 +475,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* CONTACT CTA */}
+      {/* 7. CONTACT CTA */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card
@@ -513,7 +487,7 @@ export const AboutPage: React.FC = () => {
             <CheckCircle2 className="w-6 h-6" />
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
             Have Questions About Cloudariss?
           </h3>
 

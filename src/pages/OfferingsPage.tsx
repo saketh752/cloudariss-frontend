@@ -15,8 +15,10 @@ import {
   Bot,
   Wrench,
   FileText,
-  Sparkles,
   Download,
+  Terminal,
+  Layers,
+  Cpu,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
@@ -25,6 +27,7 @@ import { BRAND_DATA } from '@/data/brandData';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { TechEcosystemVisual } from '@/components/home/TechEcosystemVisual';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
+import { DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 
 export const OfferingsPage: React.FC = () => {
@@ -110,14 +113,11 @@ export const OfferingsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-20 lg:space-y-32 pb-20">
+    <div className="space-y-16 lg:space-y-24 pb-20">
       {/* ========================================================================= */}
-      {/* HERO SECTION WITH AUTHENTIC BROCHURE PHOTO */}
+      {/* 1. HERO SECTION: EDITORIAL + VALUE ENABLEMENT CANVAS */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Narrative Column */}
@@ -129,17 +129,17 @@ export const OfferingsPage: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
                 Learn With Purpose.{' '}
                 <span className="text-gradient-tech">Build With Practice.</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
-                Cloudariss combines structured technical learning, hands-on projects, modern technologies, and career preparation into a practical, outcome-driven learning ecosystem.
+                Cloudariss combines structured technical learning, hands-on projects, modern technologies, and career preparation into an integrated, outcome-driven learning ecosystem.
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
                 <Button
                   to="/courses"
                   variant="primary"
@@ -172,57 +172,66 @@ export const OfferingsPage: React.FC = () => {
                   <span>View DAAP PDF</span>
                 </button>
               </div>
-
-              {/* Trust Micro-Metrics */}
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-brand-border/60">
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-brand-navy font-mono">12 Wks</div>
-                  <div className="text-xs text-slate-500 font-medium">Cohort Immersion</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-brand-blue font-mono">10+</div>
-                  <div className="text-xs text-slate-500 font-medium">Documented Capstones</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-brand-orange font-mono">100%</div>
-                  <div className="text-xs text-slate-500 font-medium">Live Instructor Labs</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Visual Brochure Showcase */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden border-2 border-brand-blue/20 shadow-2xl bg-white group">
-                <img
-                  src="/brand/brochures/college-workshops.jpg"
-                  alt="Cloudariss Practical Learning Workshops"
-                  className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-section/90 via-brand-dark-section/30 to-transparent" />
-                
-                {/* Visual Badges Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-2">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-extrabold tracking-wider uppercase">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Real Classroom Energy</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow">
-                    Practical Technology Workshops & Direct Lab Execution
-                  </h3>
-                  <p className="text-xs text-slate-200 line-clamp-2">
-                    Bridging foundational computer science concepts with production-ready cloud architectures and data operations.
-                  </p>
+            {/* Right: What Cloudariss Enables Blueprint */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl bg-white border border-brand-border shadow-card p-6 space-y-4">
+                <div className="flex items-center justify-between border-b border-brand-border/70 pb-3">
+                  <span className="text-xs font-mono font-bold text-brand-navy uppercase tracking-wider">
+                    The Cloudariss Enablement Framework
+                  </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue font-bold">
+                    4 Foundations
+                  </span>
                 </div>
-              </div>
 
-              {/* Floating Accent Card */}
-              <div className="hidden sm:flex absolute -bottom-6 -left-6 items-center gap-3 p-3.5 rounded-xl bg-white border border-brand-border shadow-xl">
-                <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue border border-brand-border/60">
-                  <Briefcase className="w-5 h-5" />
+                <div className="space-y-2.5">
+                  <div className="p-3 rounded-xl bg-brand-surface-blue/50 border border-brand-border/80 flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-blue shrink-0 mt-0.5">
+                      <Terminal className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-extrabold text-brand-navy">1. Structured Technical Learning</div>
+                      <div className="text-[11px] text-slate-500">Rigorous instructor-led modules grounding system architecture.</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-brand-surface-orange/40 border border-brand-orange/20 flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-orange shrink-0 mt-0.5">
+                      <Layers className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-extrabold text-brand-navy">2. Hands-on Project Implementation</div>
+                      <div className="text-[11px] text-slate-500">Live cloud infrastructure and production database schemas.</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-slate-50 border border-brand-border/80 flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-emerald-600 shrink-0 mt-0.5">
+                      <Cpu className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-extrabold text-brand-navy">3. Modern Technology Stacks</div>
+                      <div className="text-[11px] text-slate-500">AWS, Docker, K8s, Python, SQL, Power BI & Agentic AI.</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-brand-surface-blue/50 border border-brand-border/80 flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-white border border-brand-border text-brand-blue shrink-0 mt-0.5">
+                      <Briefcase className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-extrabold text-brand-navy">4. Weekend Career Readiness</div>
+                      <div className="text-[11px] text-slate-500">Saturday ATS resume tuning and Sunday live mock interviews.</div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs font-extrabold text-brand-navy">Weekend Career Drills</div>
-                  <div className="text-[11px] text-slate-500">Saturday Prep · Sunday Mocks</div>
+
+                <div className="pt-2 border-t border-brand-border/60 text-center">
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    Zero Passive Video Watching · 100% Active Building
+                  </span>
                 </div>
               </div>
             </div>
@@ -230,20 +239,21 @@ export const OfferingsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Rhythm Ribbon */}
+      <DomainTickerRibbon />
+
       {/* ========================================================================= */}
-      {/* 4 MAJOR OFFERING AREAS */}
+      {/* 2. FOUR FOUNDATIONS OF THE ECOSYSTEM */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <SectionHeading
-          eyebrow="Core Pillars"
-          title="Four Foundations of the Cloudariss Ecosystem"
+          eyebrow="Core Foundations"
+          title="What Cloudariss Actually Enables"
           subtitle="Everything we deliver is designed around practical capability, engineering depth, and structured career readiness."
         />
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 01 — TECHNICAL LEARNING (Pictorial Split + Cards) */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="space-y-8">
+        {/* 01 — TECHNICAL LEARNING */}
+        <div className="space-y-6">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
               01
@@ -252,66 +262,47 @@ export const OfferingsPage: React.FC = () => {
               <div className="text-xs font-bold uppercase tracking-wider text-brand-blue">
                 Structured Knowledge
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Technical Learning
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                Technical Learning Across Enterprise Domains
               </h2>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-brand-border shadow-lg">
-              <img
-                src="/brand/brochures/certifications-training.jpg"
-                alt="Cloudariss Certification Training & Structured Pedagogy"
-                className="w-full h-80 object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent p-6 flex flex-col justify-end text-white">
-                <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
-                  Verified Syllabi Standards
-                </span>
-                <h3 className="text-lg font-bold text-white mt-1">
-                  Structured Pedagogy with Certified Competencies
-                </h3>
-                <p className="text-xs text-slate-300 mt-1">
-                  Replaces superficial overviews with live instructor-led coursework that grounds fundamental concepts before building into enterprise systems.
-                </p>
-              </div>
-            </div>
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
+            Structured instruction across modern technology domains. We replace superficial overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
+          </p>
 
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {technicalDomains.map((domain, idx) => (
-                <Card
-                  key={idx}
-                  variant="white"
-                  padding="md"
-                  hoverEffect
-                  borderAccent="blue"
-                  className="space-y-2.5"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-9 h-9 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
-                      {domain.icon}
-                    </div>
-                    <span className="text-[10px] font-bold text-brand-blue uppercase tracking-wider bg-brand-surface-blue px-2 py-0.5 rounded">
-                      {domain.tag}
-                    </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+            {technicalDomains.map((domain, idx) => (
+              <Card
+                key={idx}
+                variant="white"
+                padding="md"
+                hoverEffect
+                borderAccent="blue"
+                className="space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
+                    {domain.icon}
                   </div>
-                  <h3 className="text-sm font-bold text-brand-navy">
-                    {domain.name}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {domain.desc}
-                  </p>
-                </Card>
-              ))}
-            </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue">
+                    {domain.tag}
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-brand-navy">
+                  {domain.name}
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  {domain.desc}
+                </p>
+              </Card>
+            ))}
           </div>
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 02 — HANDS-ON PROJECTS (Interactive Visual Showcase) */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="space-y-8 pt-6">
+        {/* 02 — HANDS-ON PROJECTS */}
+        <div className="space-y-6 pt-6">
           <div className="flex items-center justify-between border-b border-brand-border/60 pb-3 flex-wrap gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-orange font-mono font-bold text-sm">
@@ -321,8 +312,8 @@ export const OfferingsPage: React.FC = () => {
                 <div className="text-xs font-bold uppercase tracking-wider text-brand-orange">
                   Practical Application
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                  Hands-on Projects & Capstone Deliverables
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                  Hands-on Capstone Projects
                 </h2>
               </div>
             </div>
@@ -331,34 +322,31 @@ export const OfferingsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openCurriculum('crpc')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-surface-blue text-brand-navy text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-surface-blue text-brand-blue text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
               >
-                <FileText className="w-3.5 h-3.5 text-brand-blue" />
-                <span>CRPC Projects PDF</span>
+                <FileText className="w-3.5 h-3.5" />
+                <span>CRPC Projects</span>
               </button>
               <button
                 type="button"
                 onClick={() => openCurriculum('daap')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-orange/10 text-brand-navy text-xs font-bold hover:bg-brand-orange hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-orange/10 text-brand-orange text-xs font-bold hover:bg-brand-orange hover:text-white transition-colors"
               >
-                <FileText className="w-3.5 h-3.5 text-brand-orange" />
-                <span>DAAP Projects PDF</span>
+                <FileText className="w-3.5 h-3.5" />
+                <span>DAAP Projects</span>
               </button>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
             Learning through practical projects and direct implementation. Each project results in demonstrable code, comprehensive documentation, and live systems hosted on students' personal GitHub repositories.
           </p>
 
-          {/* Interactive Projects Visual Showcase */}
           <ProjectsVisual initialTab="daap" />
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 03 — MODERN TECHNOLOGIES (Interactive Logo-Driven Ecosystem) */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="space-y-8 pt-6">
+        {/* 03 — MODERN TECHNOLOGIES */}
+        <div className="space-y-6 pt-6">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-[#0a6680] font-mono font-bold text-sm">
               03
@@ -367,24 +355,21 @@ export const OfferingsPage: React.FC = () => {
               <div className="text-xs font-bold uppercase tracking-wider text-brand-cyan">
                 Industry Alignment
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Modern Technologies & Tools Ecosystem
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                Modern Technologies & Engineering Ecosystem
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-            Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows. Hover over any technology to view its engineering role.
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
+            Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows. Hover over any technology to inspect its role.
           </p>
 
-          {/* Full Interactive Tech Ecosystem Visual */}
           <TechEcosystemVisual />
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 04 — CAREER PREPARATION & FIVE STAGE METHODOLOGY */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="space-y-8 pt-6">
+        {/* 04 — CAREER PREPARATION */}
+        <div className="space-y-6 pt-6">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
               04
@@ -393,13 +378,13 @@ export const OfferingsPage: React.FC = () => {
               <div className="text-xs font-bold uppercase tracking-wider text-brand-blue">
                 Professional Readiness
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
                 Career Preparation & Seven Support Pillars
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
             Career strategy is integrated throughout the learning cycle, not tacked on at the end. We prepare learners to communicate their technical reasoning clearly and navigate job applications methodically.
           </p>
 
@@ -417,7 +402,7 @@ export const OfferingsPage: React.FC = () => {
                     {pillar.title}
                   </h3>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">
                   {pillar.desc}
                 </p>
               </Card>
@@ -425,13 +410,13 @@ export const OfferingsPage: React.FC = () => {
           </div>
 
           <p className="text-xs text-slate-400 italic">
-            * Note: Cloudariss provides structured interview coaching, portfolio reviews, and career assistance. We focus on cultivating genuine technical capability; we do not make guaranteed-placement or guaranteed-job claims.
+            * Note: Cloudariss provides structured interview coaching, portfolio reviews, and career assistance. We focus on cultivating genuine technical capability; we do not make guaranteed-placement claims.
           </p>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* LEARNING EXPERIENCE JOURNEY (Interactive 5 Stages) */}
+      {/* 3. FIVE-STAGE LEARNING EXPERIENCE */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -440,22 +425,21 @@ export const OfferingsPage: React.FC = () => {
           subtitle="A five-stage structured continuum turning foundational knowledge into deployment-grade career readiness."
         />
 
-        {/* Interactive 5-Stage Visual Component */}
         <FiveStageVisualJourney />
       </section>
 
       {/* ========================================================================= */}
-      {/* INDUSTRY / COMPANY SESSIONS (With authentic Vizag IT photography) */}
+      {/* 4. VIRTUAL COMPANY SESSIONS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card
           variant="white"
           padding="lg"
           borderAccent="blue"
-          className="border border-brand-border shadow-card overflow-hidden"
+          className="border border-brand-border shadow-card"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
+            <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30">
                 <Building2 className="w-4 h-4 text-brand-blue" />
                 <span className="text-xs font-bold text-brand-navy uppercase tracking-wider">
@@ -463,11 +447,11 @@ export const OfferingsPage: React.FC = () => {
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Virtual Company Sessions & Regional Tech Corridor Exposure
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                Virtual Company Sessions & Regional IT Corridor Exposure
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
                 As part of the Cloudariss learning experience, students participate in virtual company sessions. These interactive sessions provide direct exposure to how professional engineering and analytics teams function in real enterprise environments.
               </p>
 
@@ -494,38 +478,32 @@ export const OfferingsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative rounded-xl overflow-hidden border border-brand-border shadow-md">
-              <img
-                src="/brand/brochures/forward-deployed.jpg"
-                alt="Cloudariss Forward Deployed Engineering Mentorship"
-                className="w-full h-72 object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/30 to-transparent p-5 flex flex-col justify-end text-white space-y-2">
-                <div className="text-xs font-bold text-brand-cyan uppercase tracking-wider">
-                  Direct Practitioner Mentorship
-                </div>
-                <div className="text-base font-bold text-white leading-tight">
-                  Connect classroom problem solving with real-world enterprise engineering workflows.
-                </div>
-                <div className="pt-2">
-                  <Button
-                    to="/courses"
-                    variant="primary"
-                    size="sm"
-                    fullWidth
-                    rightIcon={<ArrowRight className="w-4 h-4" />}
-                  >
-                    View Program Details
-                  </Button>
-                </div>
+            <div className="lg:col-span-4 bg-brand-surface-blue/50 rounded-2xl p-6 border border-brand-border text-center space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mx-auto text-brand-blue border border-brand-border">
+                <Briefcase className="w-6 h-6" />
               </div>
+              <h3 className="text-base font-bold text-brand-navy font-heading">
+                Practical Exposure from Day One
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Connect classroom problem solving with true software development and data operations workflows.
+              </p>
+              <Button
+                to="/courses"
+                variant="primary"
+                size="md"
+                fullWidth
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                View Program Details
+              </Button>
             </div>
           </div>
         </Card>
       </section>
 
       {/* ========================================================================= */}
-      {/* QUICK SYLLABI VIEWER BANNER */}
+      {/* 5. SYLLABI QUICK TRIGGER BANNER */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-dark-surface p-8 border border-brand-blue/30 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
@@ -534,7 +512,7 @@ export const OfferingsPage: React.FC = () => {
               <FileText className="w-4 h-4" />
               <span>Official Syllabi Downloads</span>
             </div>
-            <h3 className="text-2xl font-extrabold text-white">
+            <h3 className="text-2xl font-extrabold text-white font-heading">
               Want the Full Week-by-Week Breakdown?
             </h3>
             <p className="text-sm text-slate-300 max-w-xl">
@@ -564,74 +542,44 @@ export const OfferingsPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* FESTIVE ADMISSIONS CAMPAIGN */}
+      {/* 6. ADMISSIONS CAMPAIGN CARD */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-brand-dark-section border-2 border-brand-orange/50 p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="rounded-3xl bg-brand-dark-section border border-brand-orange/40 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-xs font-extrabold uppercase tracking-wider">
+            <Tag className="w-3.5 h-3.5" />
+            <span>Admissions Campaign</span>
+          </div>
 
-          <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 bg-brand-orange/20 text-brand-orange px-4 py-1.5 rounded-full text-xs font-extrabold tracking-wider uppercase border border-brand-orange/40">
-              <Tag className="w-3.5 h-3.5" />
-              <span>Admissions Campaign</span>
-            </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
+            {BRAND_DATA.offer.title}
+          </h2>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              {BRAND_DATA.offer.title}
-            </h2>
+          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Enroll in CRPC or DAAP with complete live mentoring, lab workstations, and placement assistance at our special festive tuition.
+          </p>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Join the upcoming 12-week cohort in Cloud & Data (CRPC) or Data Analytics & AI (DAAP) with complete live mentoring, lab reviews, and full career preparation at our special festive tuition.
-            </p>
+          <div className="flex items-center justify-center gap-4">
+            <span className="text-slate-400 text-xl line-through font-semibold">
+              {BRAND_DATA.offer.originalPrice}
+            </span>
+            <span className="text-4xl font-extrabold text-white font-heading">
+              {BRAND_DATA.offer.offerPrice}
+            </span>
+          </div>
 
-            {/* Pricing Callout */}
-            <div className="flex items-center justify-center gap-4 py-2">
-              <span className="text-2xl sm:text-3xl text-slate-400 line-through font-semibold">
-                {BRAND_DATA.offer.originalPrice}
-              </span>
-              <span className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-                {BRAND_DATA.offer.offerPrice}
-              </span>
-              <span className="text-xs text-brand-cyan font-bold bg-brand-cyan/20 px-2.5 py-1 rounded-md border border-brand-cyan/30">
-                All-Inclusive Cohort Fee
-              </span>
-            </div>
-
-            {/* Coupon Box */}
-            <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-brand-dark-surface/90 border border-brand-orange/40 rounded-xl p-3 sm:px-6 sm:py-3 shadow-lg">
-              <span className="text-xs uppercase font-bold text-slate-300 tracking-wider">
-                Coupon Code:
-              </span>
-              <div className="flex items-center gap-2 bg-brand-dark-section px-3.5 py-1.5 rounded-lg border border-brand-orange/30">
-                <code className="text-lg font-mono font-extrabold text-brand-orange tracking-wider">
-                  {BRAND_DATA.offer.couponCode}
-                </code>
-                <button
-                  type="button"
-                  onClick={handleCopyCode}
-                  className="p-1.5 text-slate-300 hover:text-white rounded hover:bg-white/10 transition-colors"
-                  title="Copy coupon code"
-                  aria-label="Copy coupon code"
-                >
-                  {copiedCoupon ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Button
-                to="/courses"
-                variant="primary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore Programs
-              </Button>
-            </div>
+          <div className="inline-flex items-center gap-2 bg-brand-dark-surface px-4 py-2 rounded-xl border border-brand-orange/40">
+            <code className="text-base font-mono font-extrabold text-brand-orange">
+              {BRAND_DATA.offer.couponCode}
+            </code>
+            <button
+              type="button"
+              onClick={handleCopyCode}
+              className="p-1 text-slate-300 hover:text-white rounded transition-colors"
+              title="Copy code"
+            >
+              {copiedCoupon ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+            </button>
           </div>
         </div>
       </section>
