@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #F7F9FC;
+    color: #071B63;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
+    color: #071B63;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid #0878E8;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  /* Subtle atmospheric blue gradient backdrop */
+  .bg-gradient-atmospheric {
+    background: radial-gradient(1200px circle at 50% -10%, rgba(8, 120, 232, 0.08) 0%, rgba(25, 188, 232, 0.04) 40%, transparent 80%);
+  }
+
+  .bg-gradient-dark-hero {
+    background: radial-gradient(800px circle at 50% 0%, rgba(8, 120, 232, 0.18) 0%, rgba(7, 27, 99, 0.95) 60%, #06143D 100%);
+  }
+
+  /* Subtle card gradient */
+  .bg-card-subtle {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFE 100%);
+  }
+
+  /* Text gradient for high-impact tech highlights */
+  .text-gradient-tech {
+    background: linear-gradient(135deg, #071B63 0%, #0878E8 60%, #19BCE8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #0878E8 0%, #19BCE8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #FF7A00 0%, #FF8A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
