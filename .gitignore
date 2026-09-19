@@ -38,3 +38,4 @@ vite.config.d.ts
 .env.development.local
 .env.test.local
 .env.production.local
+
