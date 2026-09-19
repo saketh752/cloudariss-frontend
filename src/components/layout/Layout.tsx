@@ -3,6 +3,8 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { TopBanner } from './TopBanner';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { CurriculumProvider } from '@/components/curriculum/CurriculumContext';
+import { CurriculumModal } from '@/components/curriculum/CurriculumModal';
 
 const PAGE_METADATA: Record<string, { title: string; description: string }> = {
   '/': {
@@ -66,21 +68,26 @@ export const Layout: React.FC = () => {
   }, [location.pathname, location.hash]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg-light text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
-      {/* Top Banner with approved Vinayaka offer and CAT@AKHI coupon */}
-      <TopBanner />
+    <CurriculumProvider>
+      <div className="min-h-screen flex flex-col bg-brand-bg-light text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
+        {/* Top Banner with approved Vinayaka offer and CAT@AKHI coupon */}
+        <TopBanner />
 
-      {/* Sticky, responsive Navbar */}
-      <Navbar />
+        {/* Sticky, responsive Navbar */}
+        <Navbar />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
-        <Outlet />
-      </main>
+        {/* Main Content Area */}
+        <main className="flex-1">
+          <Outlet />
+        </main>
 
-      {/* Foundation Footer */}
-      <Footer />
-    </div>
+        {/* Foundation Footer */}
+        <Footer />
+
+        {/* Global Interactive Curriculum PDF Viewer Modal */}
+        <CurriculumModal />
+      </div>
+    </CurriculumProvider>
   );
 };
 

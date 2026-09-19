@@ -14,15 +14,22 @@ import {
   LineChart,
   Bot,
   Wrench,
+  FileText,
+  Sparkles,
+  Download,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
+import { ProjectsVisual } from '@/components/home/ProjectsVisual';
+import { TechEcosystemVisual } from '@/components/home/TechEcosystemVisual';
+import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
+import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 
 export const OfferingsPage: React.FC = () => {
   const [copiedCoupon, setCopiedCoupon] = useState(false);
+  const { openCurriculum } = useCurriculumModal();
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(BRAND_DATA.offer.couponCode);
@@ -36,101 +43,37 @@ export const OfferingsPage: React.FC = () => {
       name: 'Cloud Computing',
       desc: 'Architecture, distributed computing, virtual networks (VPC), EC2, IAM policies, and high-availability design.',
       icon: <Cloud className="w-5 h-5 text-brand-blue" />,
+      tag: 'AWS · Cloud Infrastructure',
     },
     {
       name: 'Data Engineering',
       desc: 'Relational data modeling, advanced SQL queries, data pipelines, schema design, and ETL workflows.',
       icon: <Database className="w-5 h-5 text-brand-blue" />,
+      tag: 'PostgreSQL · SQL Modeling',
     },
     {
       name: 'DevOps & CI/CD',
       desc: 'Containerization with Docker, Kubernetes cluster orchestration, Jenkins automated build pipelines, and Linux administration.',
       icon: <Wrench className="w-5 h-5 text-brand-blue" />,
+      tag: 'Docker · Jenkins · K8s',
     },
     {
       name: 'Business Analytics',
       desc: 'Interactive dashboards in Power BI, data analysis expressions (DAX), multi-table modeling, and KPI tracking.',
       icon: <LineChart className="w-5 h-5 text-brand-blue" />,
+      tag: 'Power BI · DAX · Excel',
     },
     {
       name: 'Artificial Intelligence',
       desc: 'Generative AI applications, Retrieval-Augmented Generation (RAG), and autonomous multi-agent analytics workflows.',
       icon: <Bot className="w-5 h-5 text-brand-blue" />,
+      tag: 'RAG · Agentic AI · LLMs',
     },
     {
       name: 'Enterprise Technology',
       desc: 'ServiceNow ITSM workflows, incident and change management, system administration, and enterprise service automation.',
       icon: <Building2 className="w-5 h-5 text-brand-blue" />,
-    },
-  ];
-
-  // 02: Documented Hands-on Projects
-  const documentedProjects = [
-    {
-      title: 'AWS Three-Tier Application Deployment',
-      domain: 'Cloud Infrastructure',
-      tools: ['AWS EC2', 'RDS MySQL', 'ALB', 'VPC'],
-      desc: 'Production deployment with public web tier, private application layer, and secure managed database behind an Application Load Balancer.',
-    },
-    {
-      title: 'Automated CI/CD DevOps Pipeline',
-      domain: 'DevOps Automation',
-      tools: ['Docker', 'Jenkins', 'GitHub Webhooks', 'Linux'],
-      desc: 'End-to-end continuous integration and deployment pipeline that builds, tests, and auto-deploys containerized code on EC2 hosts.',
-    },
-    {
-      title: 'Relational Schema & SQL Business Analysis',
-      domain: 'Data Analytics',
-      tools: ['PostgreSQL', 'CTEs', 'Window Functions'],
-      desc: 'Comprehensive multi-table database querying, cohort retention modeling, revenue aggregations, and query optimization.',
-    },
-    {
-      title: 'Enterprise Power BI Executive Dashboard',
-      domain: 'Business Intelligence',
-      tools: ['Power BI', 'DAX', 'Power Query'],
-      desc: 'Production-ready operational reporting dashboard tracking cross-functional KPIs, row-level security, and trend forecasts.',
-    },
-    {
-      title: 'Agentic AI Autonomous Analytics System',
-      domain: 'Generative & Agentic AI',
-      tools: ['LangChain/CrewAI', 'Vector Embeddings', 'RAG'],
-      desc: 'Autonomous multi-agent analytical pipeline that plans queries, retrieves data, validates hypotheses, and synthesizes executive insights.',
-    },
-  ];
-
-  // 03: Modern Technology Ecosystem
-  const modernTechCategories = [
-    {
-      category: 'Cloud & Infrastructure',
-      items: [
-        { name: 'AWS Cloud', detail: 'Infrastructure & Managed Services' },
-        { name: 'Docker', detail: 'Containerization & Image Build' },
-        { name: 'Kubernetes', detail: 'Orchestration & Cluster Scaling' },
-      ],
-    },
-    {
-      category: 'Programming & Databases',
-      items: [
-        { name: 'Python', detail: 'Data Analysis, Scripting & Automation' },
-        { name: 'SQL', detail: 'Relational Querying & Schema Design' },
-        { name: 'PostgreSQL / MySQL', detail: 'Database Administration' },
-      ],
-    },
-    {
-      category: 'Enterprise & Analytics',
-      items: [
-        { name: 'Power BI', detail: 'DAX Modeling & Executive Reports' },
-        { name: 'ServiceNow', detail: 'ITSM Workflows & Administration' },
-        { name: 'Linux / Bash', detail: 'Shell Automation & Server Management' },
-      ],
-    },
-    {
-      category: 'Generative & Agentic AI',
-      items: [
-        { name: 'Generative AI & RAG', detail: 'Context-Augmented Intelligence' },
-        { name: 'Agentic AI', detail: 'Autonomous Multi-Tool Workflows' },
-        { name: 'LangChain / CrewAI', detail: 'Orchestration Frameworks' },
-      ],
+      tag: 'ServiceNow · ITSM Automation',
     },
   ];
 
@@ -166,88 +109,122 @@ export const OfferingsPage: React.FC = () => {
     },
   ];
 
-  // Learning Experience Stages
-  const learningStages = [
-    {
-      num: '01',
-      stage: 'LEARN',
-      headline: 'Structured Knowledge',
-      desc: 'Live instructor-led foundational classes breaking down complex cloud, data, and system architectures into clear conceptual models.',
-      color: 'blue',
-    },
-    {
-      num: '02',
-      stage: 'PRACTICE',
-      headline: 'Hands-on Labs',
-      desc: 'Daily practical sandbox environments where learners write code, debug errors, configure servers, and execute SQL queries.',
-      color: 'blue',
-    },
-    {
-      num: '03',
-      stage: 'BUILD',
-      headline: 'Production Artifacts',
-      desc: 'Developing documented, portfolio-grade capstones and multi-tier architectures hosted on personal GitHub repositories.',
-      color: 'cyan',
-    },
-    {
-      num: '04',
-      stage: 'PREPARE',
-      headline: 'Career Readiness',
-      desc: 'Structured Saturday career workshops and Sunday mock interview circuits focused on communication and technical problem solving.',
-      color: 'orange',
-    },
-    {
-      num: '05',
-      stage: 'GET HIRED',
-      headline: 'Career Opportunities',
-      desc: 'Equipped with verifiable projects, optimized profiles, and interview confidence to pursue competitive technology opportunities.',
-      color: 'orange',
-    },
-  ];
-
   return (
     <div className="space-y-20 lg:space-y-32 pb-20">
       {/* ========================================================================= */}
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH AUTHENTIC BROCHURE PHOTO */}
       {/* ========================================================================= */}
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
-                WHAT WE OFFER
-              </span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+                  WHAT WE OFFER
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+                Learn With Purpose.{' '}
+                <span className="text-gradient-tech">Build With Practice.</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+                Cloudariss combines structured technical learning, hands-on projects, modern technologies, and career preparation into a practical, outcome-driven learning ecosystem.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <Button
+                  to="/courses"
+                  variant="primary"
+                  size="lg"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                >
+                  Explore Programs
+                </Button>
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="lg"
+                >
+                  Talk to Us
+                </Button>
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('crpc')}
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-blue text-sm font-bold shadow-sm hover:shadow transition-all"
+                >
+                  <FileText className="w-4 h-4 text-brand-blue" />
+                  <span>View CRPC PDF</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('daap')}
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-orange text-sm font-bold shadow-sm hover:shadow transition-all"
+                >
+                  <FileText className="w-4 h-4 text-brand-orange" />
+                  <span>View DAAP PDF</span>
+                </button>
+              </div>
+
+              {/* Trust Micro-Metrics */}
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-brand-border/60">
+                <div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-brand-navy font-mono">12 Wks</div>
+                  <div className="text-xs text-slate-500 font-medium">Cohort Immersion</div>
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-brand-blue font-mono">10+</div>
+                  <div className="text-xs text-slate-500 font-medium">Documented Capstones</div>
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-brand-orange font-mono">100%</div>
+                  <div className="text-xs text-slate-500 font-medium">Live Instructor Labs</div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
-              Learn With Purpose.{' '}
-              <span className="text-gradient-tech">Build With Practice.</span>
-            </h1>
+            {/* Right Visual Brochure Showcase */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-brand-blue/20 shadow-2xl bg-white group">
+                <img
+                  src="/brand/brochures/college-workshops.jpg"
+                  alt="Cloudariss Practical Learning Workshops"
+                  className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-section/90 via-brand-dark-section/30 to-transparent" />
+                
+                {/* Visual Badges Overlay */}
+                <div className="absolute bottom-4 left-4 right-4 text-white space-y-2">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-extrabold tracking-wider uppercase">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Real Classroom Energy</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow">
+                    Practical Technology Workshops & Direct Lab Execution
+                  </h3>
+                  <p className="text-xs text-slate-200 line-clamp-2">
+                    Bridging foundational computer science concepts with production-ready cloud architectures and data operations.
+                  </p>
+                </div>
+              </div>
 
-            <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-              Cloudariss combines structured technical learning, hands-on projects, modern technologies, and career preparation into a practical learning experience.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Button
-                to="/courses"
-                variant="primary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore Programs
-              </Button>
-              <Button
-                to="/contact"
-                variant="outline"
-                size="lg"
-              >
-                Talk to Us
-              </Button>
+              {/* Floating Accent Card */}
+              <div className="hidden sm:flex absolute -bottom-6 -left-6 items-center gap-3 p-3.5 rounded-xl bg-white border border-brand-border shadow-xl">
+                <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue border border-brand-border/60">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-extrabold text-brand-navy">Weekend Career Drills</div>
+                  <div className="text-[11px] text-slate-500">Saturday Prep · Sunday Mocks</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -256,15 +233,17 @@ export const OfferingsPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4 MAJOR OFFERING AREAS */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         <SectionHeading
           eyebrow="Core Pillars"
           title="Four Foundations of the Cloudariss Ecosystem"
           subtitle="Everything we deliver is designed around practical capability, engineering depth, and structured career readiness."
         />
 
-        {/* 01 — TECHNICAL LEARNING */}
-        <div className="space-y-6">
+        {/* ------------------------------------------------------------------- */}
+        {/* 01 — TECHNICAL LEARNING (Pictorial Split + Cards) */}
+        {/* ------------------------------------------------------------------- */}
+        <div className="space-y-8">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
               01
@@ -279,105 +258,107 @@ export const OfferingsPage: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-            Structured instruction across modern technology domains. We replace shallow overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-            {technicalDomains.map((domain, idx) => (
-              <Card
-                key={idx}
-                variant="white"
-                padding="md"
-                hoverEffect
-                borderAccent="blue"
-                className="space-y-3"
-              >
-                <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
-                  {domain.icon}
-                </div>
-                <h3 className="text-base font-bold text-brand-navy">
-                  {domain.name}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-brand-border shadow-lg">
+              <img
+                src="/brand/brochures/certifications-training.jpg"
+                alt="Cloudariss Certification Training & Structured Pedagogy"
+                className="w-full h-80 object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent p-6 flex flex-col justify-end text-white">
+                <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
+                  Verified Syllabi Standards
+                </span>
+                <h3 className="text-lg font-bold text-white mt-1">
+                  Structured Pedagogy with Certified Competencies
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {domain.desc}
+                <p className="text-xs text-slate-300 mt-1">
+                  Replaces superficial overviews with live instructor-led coursework that grounds fundamental concepts before building into enterprise systems.
                 </p>
-              </Card>
-            ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {technicalDomains.map((domain, idx) => (
+                <Card
+                  key={idx}
+                  variant="white"
+                  padding="md"
+                  hoverEffect
+                  borderAccent="blue"
+                  className="space-y-2.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="w-9 h-9 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
+                      {domain.icon}
+                    </div>
+                    <span className="text-[10px] font-bold text-brand-blue uppercase tracking-wider bg-brand-surface-blue px-2 py-0.5 rounded">
+                      {domain.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    {domain.name}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {domain.desc}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* 02 — HANDS-ON PROJECTS */}
-        <div className="space-y-6 pt-6">
-          <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
-            <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-orange font-mono font-bold text-sm">
-              02
-            </div>
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-orange">
-                Practical Application
+        {/* ------------------------------------------------------------------- */}
+        {/* 02 — HANDS-ON PROJECTS (Interactive Visual Showcase) */}
+        {/* ------------------------------------------------------------------- */}
+        <div className="space-y-8 pt-6">
+          <div className="flex items-center justify-between border-b border-brand-border/60 pb-3 flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-orange font-mono font-bold text-sm">
+                02
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Hands-on Projects
-              </h2>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-brand-orange">
+                  Practical Application
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
+                  Hands-on Projects & Capstone Deliverables
+                </h2>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => openCurriculum('crpc')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-surface-blue text-brand-navy text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
+              >
+                <FileText className="w-3.5 h-3.5 text-brand-blue" />
+                <span>CRPC Projects PDF</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openCurriculum('daap')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-orange/10 text-brand-navy text-xs font-bold hover:bg-brand-orange hover:text-white transition-colors"
+              >
+                <FileText className="w-3.5 h-3.5 text-brand-orange" />
+                <span>DAAP Projects PDF</span>
+              </button>
             </div>
           </div>
 
           <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-            Learning through practical projects and direct implementation. Projects allow learners to apply concepts to realistic business constraints rather than relying only on theoretical lectures. Each project results in demonstrable code, documentation, and live systems.
+            Learning through practical projects and direct implementation. Each project results in demonstrable code, comprehensive documentation, and live systems hosted on students' personal GitHub repositories.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-            {documentedProjects.map((proj, idx) => (
-              <Card
-                key={idx}
-                variant="white"
-                padding="md"
-                hoverEffect
-                borderAccent="orange"
-                className="flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-mono font-bold text-brand-orange">
-                      PROJECT 0{idx + 1}
-                    </span>
-                    <Badge variant="subtle" size="sm">
-                      {proj.domain}
-                    </Badge>
-                  </div>
-
-                  <h3 className="text-base font-bold text-brand-navy">
-                    {proj.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {proj.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-brand-border/60">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Implemented With
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {proj.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-700"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+          {/* Interactive Projects Visual Showcase */}
+          <ProjectsVisual initialTab="daap" />
         </div>
 
-        {/* 03 — MODERN TECHNOLOGIES */}
-        <div className="space-y-6 pt-6">
+        {/* ------------------------------------------------------------------- */}
+        {/* 03 — MODERN TECHNOLOGIES (Interactive Logo-Driven Ecosystem) */}
+        {/* ------------------------------------------------------------------- */}
+        <div className="space-y-8 pt-6">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-[#0a6680] font-mono font-bold text-sm">
               03
@@ -387,54 +368,23 @@ export const OfferingsPage: React.FC = () => {
                 Industry Alignment
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Modern Technologies
+                Modern Technologies & Tools Ecosystem
               </h2>
             </div>
           </div>
 
           <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-            Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows.
+            Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows. Hover over any technology to view its engineering role.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            {modernTechCategories.map((group, idx) => (
-              <Card
-                key={idx}
-                variant="white"
-                padding="lg"
-                className="border border-brand-border shadow-card space-y-4"
-              >
-                <div className="flex items-center justify-between border-b border-brand-border/60 pb-2.5">
-                  <h3 className="text-base font-bold text-brand-navy">
-                    {group.category}
-                  </h3>
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                    {group.items.length} Tech Stack Areas
-                  </span>
-                </div>
-
-                <div className="space-y-2.5">
-                  {group.items.map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="p-3 rounded-lg bg-brand-surface-blue/50 border border-brand-border/80 flex items-center justify-between gap-3"
-                    >
-                      <span className="text-sm font-extrabold text-brand-navy">
-                        {tech.name}
-                      </span>
-                      <span className="text-xs text-slate-500 text-right">
-                        {tech.detail}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
+          {/* Full Interactive Tech Ecosystem Visual */}
+          <TechEcosystemVisual />
         </div>
 
-        {/* 04 — CAREER PREPARATION */}
-        <div className="space-y-6 pt-6">
+        {/* ------------------------------------------------------------------- */}
+        {/* 04 — CAREER PREPARATION & FIVE STAGE METHODOLOGY */}
+        {/* ------------------------------------------------------------------- */}
+        <div className="space-y-8 pt-6">
           <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
             <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
               04
@@ -444,7 +394,7 @@ export const OfferingsPage: React.FC = () => {
                 Professional Readiness
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Career Preparation
+                Career Preparation & Seven Support Pillars
               </h2>
             </div>
           </div>
@@ -459,7 +409,7 @@ export const OfferingsPage: React.FC = () => {
                 key={idx}
                 variant="surface"
                 padding="md"
-                className="border border-brand-border/80 space-y-2.5"
+                className="border border-brand-border/80 space-y-2.5 hover:border-brand-blue transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
@@ -481,7 +431,7 @@ export const OfferingsPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* LEARNING EXPERIENCE JOURNEY */}
+      {/* LEARNING EXPERIENCE JOURNEY (Interactive 5 Stages) */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -490,66 +440,22 @@ export const OfferingsPage: React.FC = () => {
           subtitle="A five-stage structured continuum turning foundational knowledge into deployment-grade career readiness."
         />
 
-        <div className="relative">
-          {/* Connecting line on large screens */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-orange -translate-y-6 z-0 opacity-40" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-            {learningStages.map((st) => (
-              <div
-                key={st.num}
-                className="p-5 rounded-xl bg-white border border-brand-border shadow-card hover:border-brand-blue transition-all space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <span
-                    className={`text-2xl font-extrabold font-mono ${
-                      st.color === 'orange'
-                        ? 'text-brand-orange'
-                        : st.color === 'cyan'
-                        ? 'text-[#0a6680]'
-                        : 'text-brand-blue'
-                    }`}
-                  >
-                    {st.num}
-                  </span>
-                  <span
-                    className={`w-3 h-3 rounded-full ${
-                      st.color === 'orange'
-                        ? 'bg-brand-orange'
-                        : st.color === 'cyan'
-                        ? 'bg-brand-cyan'
-                        : 'bg-brand-blue'
-                    }`}
-                  />
-                </div>
-
-                <h3 className="text-base font-bold text-brand-navy uppercase tracking-wider">
-                  {st.stage}
-                </h3>
-                <p className="text-sm font-semibold text-slate-700">
-                  {st.headline}
-                </p>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {st.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Interactive 5-Stage Visual Component */}
+        <FiveStageVisualJourney />
       </section>
 
       {/* ========================================================================= */}
-      {/* INDUSTRY / COMPANY SESSIONS */}
+      {/* INDUSTRY / COMPANY SESSIONS (With authentic Vizag IT photography) */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card
           variant="white"
           padding="lg"
           borderAccent="blue"
-          className="border border-brand-border shadow-card"
+          className="border border-brand-border shadow-card overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
+            <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30">
                 <Building2 className="w-4 h-4 text-brand-blue" />
                 <span className="text-xs font-bold text-brand-navy uppercase tracking-wider">
@@ -558,7 +464,7 @@ export const OfferingsPage: React.FC = () => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-                Virtual Company Sessions
+                Virtual Company Sessions & Regional Tech Corridor Exposure
               </h2>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -588,32 +494,77 @@ export const OfferingsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-brand-surface-blue/70 rounded-xl p-6 border border-brand-border space-y-4 text-center">
-              <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto text-brand-blue border border-brand-border">
-                <Briefcase className="w-6 h-6" />
+            <div className="lg:col-span-5 relative rounded-xl overflow-hidden border border-brand-border shadow-md">
+              <img
+                src="/brand/brochures/forward-deployed.jpg"
+                alt="Cloudariss Forward Deployed Engineering Mentorship"
+                className="w-full h-72 object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/30 to-transparent p-5 flex flex-col justify-end text-white space-y-2">
+                <div className="text-xs font-bold text-brand-cyan uppercase tracking-wider">
+                  Direct Practitioner Mentorship
+                </div>
+                <div className="text-base font-bold text-white leading-tight">
+                  Connect classroom problem solving with real-world enterprise engineering workflows.
+                </div>
+                <div className="pt-2">
+                  <Button
+                    to="/courses"
+                    variant="primary"
+                    size="sm"
+                    fullWidth
+                    rightIcon={<ArrowRight className="w-4 h-4" />}
+                  >
+                    View Program Details
+                  </Button>
+                </div>
               </div>
-              <h3 className="text-base font-bold text-brand-navy">
-                Practical Exposure from Day One
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Connect classroom problem solving with true software development and data operations workflows.
-              </p>
-              <Button
-                to="/courses"
-                variant="primary"
-                size="md"
-                fullWidth
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                View Program Details
-              </Button>
             </div>
           </div>
         </Card>
       </section>
 
       {/* ========================================================================= */}
-      {/* OFFER CTA */}
+      {/* QUICK SYLLABI VIEWER BANNER */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-dark-surface p-8 border border-brand-blue/30 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
+              <FileText className="w-4 h-4" />
+              <span>Official Syllabi Downloads</span>
+            </div>
+            <h3 className="text-2xl font-extrabold text-white">
+              Want the Full Week-by-Week Breakdown?
+            </h3>
+            <p className="text-sm text-slate-300 max-w-xl">
+              Inspect the exact schedule, module milestones, lab configurations, and project timelines for both programs inside our interactive curriculum viewer.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <button
+              type="button"
+              onClick={() => openCurriculum('crpc')}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-sm shadow-md transition-all"
+            >
+              <FileText className="w-4 h-4" />
+              <span>CRPC 3-Month Schedule (PDF)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => openCurriculum('daap')}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-sm shadow-md transition-all"
+            >
+              <Download className="w-4 h-4" />
+              <span>DAAP GenAI Structure (PDF)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* FESTIVE ADMISSIONS CAMPAIGN */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-brand-dark-section border-2 border-brand-orange/50 p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">

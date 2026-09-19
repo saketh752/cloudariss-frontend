@@ -165,7 +165,11 @@ flowchart TD
 
 ## ⚡ Key Architectural Highlights
 
-- **⚡ Blazing Fast Build**: Compiles 1,600+ modules in ~3.9s using Vite 6 with esbuild.
+- **⚡ Blazing Fast Build**: Compiles 1,600+ modules in ~24s using Vite 6 with esbuild.
+- **📄 Interactive Curriculum PDF Viewer**: Direct in-app PDF preview modal and download actions for both official program syllabi (`CRPC_CloudData_3Month_Schedule_ONLINE_Updated.pdf` and `DAAP_GenAI_Agentic_Original_Structure_With_Cloudariss_Logo.pdf`).
+- **🎨 Authentic Visual Assets**: 13 authentic brochure assets integrated across Hero, Programs, Offerings, and About pages.
+- **✨ Official SVG Tech Ecosystem**: Pixel-perfect vector brand icons for AWS, Docker, Kubernetes, Jenkins, GitHub, Grafana, ServiceNow, Python, SQL, Power BI, ChatGPT, Claude, Gemini, LangChain, RAG, and Agentic AI.
+- **🗺️ Interactive 5-Stage Journey**: Visual step-by-step learning progression (`LEARN → PRACTICE → BUILD → PREPARE → GET HIRED`) with interactive node selection.
 - **📱 Fully Responsive**: Custom layout breakpoints validated from 320px mobile screens up to 4K ultra-wide monitors.
 - **♿ Accessible (a11y)**: Built-in `prefers-reduced-motion` fallbacks, high-contrast text ratios, and custom `:focus-visible` outlines.
 - **🔍 Route-Aware Dynamic SEO**: Instant dynamic `document.title` and `meta[description]` updates on page transitions.
@@ -224,3 +228,4 @@ Connect directly with the Cloudariss team:
 <div align="center">
   <sub>Built with ❤️ for <b>Cloudariss Technologies</b> • Empowering careers with Cloud, Data & Automation skills.</sub>
 </div>
+

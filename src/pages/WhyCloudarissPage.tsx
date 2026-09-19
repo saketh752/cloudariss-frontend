@@ -10,16 +10,37 @@ import {
   CheckCircle2,
   Cloud,
   BarChart3,
+  FileText,
+  Sparkles,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
+import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
+import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
+import {
+  AwsLogo,
+  DockerLogo,
+  KubernetesLogo,
+  JenkinsLogo,
+  GitHubLogo,
+  GrafanaLogo,
+  ServiceNowLogo,
+  PythonLogo,
+  SqlLogo,
+  PowerBiLogo,
+  LangChainLogo,
+  RagLogo,
+  AgenticAiLogo,
+  ChatGptLogo,
+} from '@/components/icons/TechLogos';
 
 export const WhyCloudarissPage: React.FC = () => {
   const crpc = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
   const daap = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
+  const { openCurriculum } = useCurriculumModal();
 
   // 6 Core Differentiators
   const differentiators = [
@@ -73,23 +94,41 @@ export const WhyCloudarissPage: React.FC = () => {
     },
   ];
 
-  // Structured Technology Ecosystem categories (clean, categorized)
+  // Structured Technology Ecosystem categories with SVG logos
   const techCategories = [
     {
       title: 'Cloud & Infrastructure',
-      tools: ['AWS Cloud', 'EC2 & VPC', 'Docker Containers', 'Kubernetes', 'Linux / Bash'],
+      tools: [
+        { name: 'AWS Cloud', logo: <AwsLogo className="w-4 h-4" /> },
+        { name: 'Docker Containers', logo: <DockerLogo className="w-4 h-4" /> },
+        { name: 'Kubernetes', logo: <KubernetesLogo className="w-4 h-4" /> },
+      ],
     },
     {
       title: 'DevOps & Enterprise Automation',
-      tools: ['Jenkins CI/CD', 'GitHub Webhooks', 'Grafana Monitoring', 'ServiceNow ITSM'],
+      tools: [
+        { name: 'Jenkins CI/CD', logo: <JenkinsLogo className="w-4 h-4" /> },
+        { name: 'GitHub Actions', logo: <GitHubLogo className="w-4 h-4" /> },
+        { name: 'Grafana Monitoring', logo: <GrafanaLogo className="w-4 h-4" /> },
+        { name: 'ServiceNow ITSM', logo: <ServiceNowLogo className="w-4 h-4" /> },
+      ],
     },
     {
       title: 'Data & Business Intelligence',
-      tools: ['Python & Pandas', 'PostgreSQL / SQL', 'Microsoft Excel', 'Power BI & DAX'],
+      tools: [
+        { name: 'Python & Pandas', logo: <PythonLogo className="w-4 h-4" /> },
+        { name: 'PostgreSQL / SQL', logo: <SqlLogo className="w-4 h-4" /> },
+        { name: 'Power BI & DAX', logo: <PowerBiLogo className="w-4 h-4" /> },
+      ],
     },
     {
       title: 'Generative & Agentic AI',
-      tools: ['Generative AI (LLMs)', 'RAG Architectures', 'LangChain & CrewAI', 'Agentic Workflows'],
+      tools: [
+        { name: 'Generative AI & LLMs', logo: <ChatGptLogo className="w-4 h-4" /> },
+        { name: 'RAG Architectures', logo: <RagLogo className="w-4 h-4" /> },
+        { name: 'LangChain Orchestration', logo: <LangChainLogo className="w-4 h-4" /> },
+        { name: 'Agentic Workflows', logo: <AgenticAiLogo className="w-4 h-4" /> },
+      ],
     },
   ];
 
@@ -128,29 +167,93 @@ export const WhyCloudarissPage: React.FC = () => {
   return (
     <div className="space-y-20 lg:space-y-32 pb-20">
       {/* ========================================================================= */}
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH AUTHENTIC BROCHURE PHOTO */}
       {/* ========================================================================= */}
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
-                WHY CLOUDARISS
-              </span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+                  WHY CLOUDARISS
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+                Technology Skills That{' '}
+                <span className="text-gradient-tech">Move Beyond Theory.</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+                Build practical knowledge through structured learning, hands-on projects, modern technologies, and career-focused preparation designed for real software engineering and analytics workflows.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <Button
+                  to="/courses"
+                  variant="primary"
+                  size="lg"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                >
+                  Explore Programs
+                </Button>
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="lg"
+                >
+                  Talk to Us
+                </Button>
+              </div>
+
+              {/* Fast Proof Points */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-brand-border/60">
+                <div>
+                  <div className="text-xl font-extrabold text-brand-navy font-mono">100%</div>
+                  <div className="text-xs text-slate-500">Live Instructors</div>
+                </div>
+                <div>
+                  <div className="text-xl font-extrabold text-brand-blue font-mono">10+</div>
+                  <div className="text-xs text-slate-500">Capstones</div>
+                </div>
+                <div>
+                  <div className="text-xl font-extrabold text-brand-orange font-mono">2</div>
+                  <div className="text-xs text-slate-500">Weekend Tracks</div>
+                </div>
+                <div>
+                  <div className="text-xl font-extrabold text-emerald-600 font-mono">Vizag</div>
+                  <div className="text-xs text-slate-500">IT Exposure</div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
-              Technology Skills That{' '}
-              <span className="text-gradient-tech">Move Beyond Theory.</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-              Build practical knowledge through structured learning, hands-on projects, modern technologies, and career-focused preparation.
-            </p>
+            {/* Right Visual Image */}
+            <div className="lg:col-span-5 relative">
+              <div className="rounded-2xl overflow-hidden border-2 border-brand-blue/20 shadow-2xl bg-white group">
+                <img
+                  src="/brand/brochures/forward-deployed.jpg"
+                  alt="Cloudariss Forward Deployed Practical Engineering"
+                  className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-section/90 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5">
+                  <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
+                    Engineered for Capability
+                  </span>
+                  <div className="text-lg font-bold leading-tight">
+                    Forward-Deployed Engineering Mentorship & Practical Application
+                  </div>
+                  <p className="text-xs text-slate-300">
+                    Direct technical instruction with active practitioners from regional IT corridors.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -204,7 +307,7 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* CRPC + DAAP DIFFERENTIATION */}
+      {/* CRPC + DAAP DIFFERENTIATION WITH BROCHURE COVERS & PDF TRIGGERS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -219,16 +322,31 @@ export const WhyCloudarissPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="blue"
-            className="flex flex-col justify-between space-y-6"
+            className="flex flex-col justify-between space-y-6 overflow-hidden"
           >
             <div className="space-y-5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <Badge variant="blue" size="md">
-                  {crpc.code}
-                </Badge>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
-                  Cloud, Data & Infrastructure
-                </span>
+              {/* Visual Brochure Snippet */}
+              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
+                <img
+                  src="/brand/brochures/crpc-brochure.jpg"
+                  alt="CRPC Program Brochure"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-3 left-3">
+                  <Badge variant="blue" size="sm">
+                    {crpc.code}
+                  </Badge>
+                </div>
+                <div className="absolute bottom-3 right-3">
+                  <button
+                    type="button"
+                    onClick={() => openCurriculum('crpc')}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-brand-cyan" />
+                    <span>View Curriculum (PDF)</span>
+                  </button>
+                </div>
               </div>
 
               <div>
@@ -269,18 +387,27 @@ export const WhyCloudarissPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4">
+            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-500">
-                12 Weeks · 8 Modules · Capstone
+                12 Weeks · 8 Modules · Capstones
               </div>
-              <Button
-                to="/courses/crpc"
-                variant="secondary"
-                size="md"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore CRPC
-              </Button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('crpc')}
+                  className="px-3.5 py-2 rounded-lg bg-brand-surface-blue text-brand-navy hover:text-brand-blue text-xs font-bold border border-brand-border"
+                >
+                  View Curriculum
+                </button>
+                <Button
+                  to="/courses/crpc"
+                  variant="secondary"
+                  size="sm"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                >
+                  Explore CRPC
+                </Button>
+              </div>
             </div>
           </Card>
 
@@ -289,16 +416,31 @@ export const WhyCloudarissPage: React.FC = () => {
             variant="white"
             padding="lg"
             borderAccent="orange"
-            className="flex flex-col justify-between space-y-6"
+            className="flex flex-col justify-between space-y-6 overflow-hidden"
           >
             <div className="space-y-5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <Badge variant="orange" size="md">
-                  {daap.code}
-                </Badge>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
-                  Data Analytics & AI
-                </span>
+              {/* Visual Brochure Snippet */}
+              <div className="relative rounded-xl overflow-hidden border border-brand-border h-48 bg-slate-100">
+                <img
+                  src="/brand/brochures/daap-brochure.jpg"
+                  alt="DAAP Program Brochure"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-3 left-3">
+                  <Badge variant="orange" size="sm">
+                    {daap.code}
+                  </Badge>
+                </div>
+                <div className="absolute bottom-3 right-3">
+                  <button
+                    type="button"
+                    onClick={() => openCurriculum('daap')}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-navy/90 hover:bg-brand-navy text-white text-xs font-bold shadow-md backdrop-blur-sm transition-colors"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-brand-orange" />
+                    <span>View Curriculum (PDF)</span>
+                  </button>
+                </div>
               </div>
 
               <div>
@@ -339,25 +481,34 @@ export const WhyCloudarissPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4">
+            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-500">
-                12 Weeks · 5+ Projects · Capstone
+                12 Weeks · 5+ Projects · Capstones
               </div>
-              <Button
-                to="/courses/daap"
-                variant="primary"
-                size="md"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore DAAP
-              </Button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('daap')}
+                  className="px-3.5 py-2 rounded-lg bg-brand-orange/10 text-brand-navy hover:text-brand-orange text-xs font-bold border border-brand-orange/30"
+                >
+                  View Curriculum
+                </button>
+                <Button
+                  to="/courses/daap"
+                  variant="primary"
+                  size="sm"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                >
+                  Explore DAAP
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* TECHNOLOGY ECOSYSTEM */}
+      {/* TECHNOLOGY COVERAGE WITH OFFICIAL LOGOS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <SectionHeading
@@ -377,20 +528,35 @@ export const WhyCloudarissPage: React.FC = () => {
               <h3 className="text-sm font-extrabold text-brand-navy border-b border-brand-border/60 pb-2">
                 {cat.title}
               </h3>
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 {cat.tools.map((t) => (
                   <div
-                    key={t}
-                    className="text-xs font-medium text-slate-700 flex items-center gap-2"
+                    key={t.name}
+                    className="p-2 rounded-lg bg-white border border-brand-border flex items-center gap-2.5 hover:border-brand-blue transition-colors shadow-sm"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
-                    <span>{t}</span>
+                    <div className="p-1 rounded bg-slate-50 border border-slate-100">
+                      {t.logo}
+                    </div>
+                    <span className="text-xs font-bold text-slate-700">{t.name}</span>
                   </div>
                 ))}
               </div>
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* THE 5-STAGE CONTINUUM */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <SectionHeading
+          eyebrow="Structured Continuum"
+          title="The Five-Stage Progression"
+          subtitle="How we guide every student from initial conceptual grounding through to production-level portfolio artifacts."
+        />
+
+        <FiveStageVisualJourney />
       </section>
 
       {/* ========================================================================= */}
@@ -434,39 +600,45 @@ export const WhyCloudarissPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* FINAL CTA */}
+      {/* FINAL CTA WITH VISUAL BACKGROUND */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-12 text-white shadow-xl text-center space-y-6 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
-            Choose Your Track
-          </div>
+        <div className="rounded-2xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-12 text-white shadow-xl text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Find the Program That Fits Your Direction.
-          </h2>
+          <div className="relative z-10 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Choose Your Track</span>
+            </div>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Explore the detailed syllabi, live lab exercises, and capstone projects designed to take you from foundational concepts to verified technical competence.
-          </p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Find the Program That Fits Your Direction.
+            </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Button
-              to="/courses/crpc"
-              variant="secondary"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Explore CRPC
-            </Button>
-            <Button
-              to="/courses/daap"
-              variant="primary"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Explore DAAP
-            </Button>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+              Explore the detailed syllabi, live lab exercises, and capstone projects designed to take you from foundational concepts to verified technical competence.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Button
+                to="/courses/crpc"
+                variant="secondary"
+                size="lg"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explore CRPC
+              </Button>
+              <Button
+                to="/courses/daap"
+                variant="primary"
+                size="lg"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explore DAAP
+              </Button>
+            </div>
           </div>
         </div>
       </section>

@@ -11,21 +11,35 @@ import {
   BarChart3,
   Bot,
   Cpu,
-  Layers,
   Sparkles,
   Tag,
   Check,
   Copy,
   PhoneCall,
+  FileText,
+  Download,
+  BookOpen,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { BRAND_DATA } from '@/data/brandData';
+import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
+import { DaapCurriculumJourney } from '@/components/curriculum/DaapCurriculumJourney';
+import { ProjectsVisual } from '@/components/home/ProjectsVisual';
+import {
+  SqlLogo,
+  PythonLogo,
+  PowerBiLogo,
+  ChatGptLogo,
+  ClaudeLogo,
+  LangChainLogo,
+  AgenticAiLogo,
+} from '@/components/icons/TechLogos';
 
 export const DaapPage: React.FC = () => {
   const [copiedCoupon, setCopiedCoupon] = useState(false);
+  const { openCurriculum } = useCurriculumModal();
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(BRAND_DATA.offer.couponCode);
@@ -45,399 +59,327 @@ export const DaapPage: React.FC = () => {
   const coreTechAreas = [
     {
       tech: 'Excel',
-      icon: <Table className="w-5 h-5 text-brand-orange" />,
+      icon: <Table className="w-6 h-6 text-emerald-600" />,
       title: 'Spreadsheet Modeling & Formulas',
-      desc: 'Formulas (SUM, AVERAGE, MAX/MIN), pivot tables, pivot charts, conditional formatting, and What-If analysis.',
+      desc: 'Formulas (SUM, AVERAGE, MAX/MIN), pivot tables, dynamic array formulas (XLOOKUP), conditional formatting, and What-If commercial modeling.',
     },
     {
       tech: 'SQL',
-      icon: <Database className="w-5 h-5 text-brand-orange" />,
+      icon: <Database className="w-6 h-6 text-brand-blue" />,
       title: 'Relational Database Querying',
-      desc: 'Relational schema design, complex joins, CTEs, subqueries, and analytical window functions on real datasets.',
+      desc: 'Relational schema design, complex multi-table joins, subqueries, Common Table Expressions (CTEs), and analytical window functions on real datasets.',
     },
     {
       tech: 'Python',
-      icon: <Terminal className="w-5 h-5 text-brand-orange" />,
-      title: 'Data Wrangling & Visualization',
-      desc: 'Core Python data structures, array computing with NumPy, data transformation with Pandas, and EDA plotting with Matplotlib/Seaborn.',
+      icon: <Terminal className="w-6 h-6 text-[#0a6680]" />,
+      title: 'Data Wrangling & EDA Plotting',
+      desc: 'Core Python data structures, array computing with NumPy, data cleaning with Pandas, and exploratory data analysis plotting with Matplotlib and Seaborn.',
     },
     {
       tech: 'Power BI',
-      icon: <BarChart3 className="w-5 h-5 text-brand-orange" />,
+      icon: <BarChart3 className="w-6 h-6 text-amber-500" />,
       title: 'Business Intelligence & DAX',
-      desc: 'Data modeling, star schemas, Power Query ETL, DAX calculated measures, and interactive KPI dashboards.',
+      desc: 'Star schema data modeling, Power Query ETL shaping, custom DAX calculated measures, and interactive KPI executive dashboards.',
     },
     {
       tech: 'Generative AI',
-      icon: <Cpu className="w-5 h-5 text-brand-orange" />,
+      icon: <Cpu className="w-6 h-6 text-brand-blue" />,
       title: 'Prompting, Embeddings & RAG',
-      desc: 'LLM APIs, prompt engineering, structured JSON outputs, vector search, and Retrieval-Augmented Generation workflows.',
+      desc: 'LLM APIs, prompt engineering, structured JSON outputs, vector search embeddings, and Retrieval-Augmented Generation (RAG) over private documentation.',
     },
     {
       tech: 'Agentic AI',
-      icon: <Bot className="w-5 h-5 text-brand-orange" />,
-      title: 'Tool-Calling & Analytics Agents',
-      desc: 'Autonomous multi-tool agent patterns, guardrails, memory, human verification loops, and framework orchestration (LangChain/CrewAI).',
-    },
-  ];
-
-  // Learning Progression
-  const learningProgression = [
-    {
-      step: '01',
-      title: 'Excel',
-      desc: 'Foundational data hygiene, formulas, pivot tables, dashboard visualization, and initial spreadsheet analysis.',
-    },
-    {
-      step: '02',
-      title: 'SQL',
-      desc: 'Relational querying from basic SELECT filters to advanced multi-table joins, subqueries, and window functions.',
-    },
-    {
-      step: '03',
-      title: 'Python',
-      desc: 'Automated data manipulation with Pandas, numeric operations with NumPy, and exploratory data analysis storytelling.',
-    },
-    {
-      step: '04',
-      title: 'Power BI',
-      desc: 'End-to-end business intelligence dashboards, custom DAX measures, and governed semantic data modeling.',
-    },
-    {
-      step: '05',
-      title: 'Generative AI',
-      desc: 'Prompt design, API integration, vector embeddings, chunking strategies, and grounded document retrieval.',
-    },
-    {
-      step: '06',
-      title: 'Agentic AI',
-      desc: 'Designing safe, tool-calling data agents capable of querying SQL databases and generating validated insights.',
-    },
-  ];
-
-  // Documented DAAP Projects
-  const daapProjects = [
-    {
-      title: 'AI-Assisted Sales Dashboard',
-      technologies: ['Excel', 'Pivot Tables', 'Formulas', 'Generative AI'],
-      desc: 'Interactive spreadsheet dashboard using pivot tables and slicers to visualize sales performance while validating AI-generated narrative insights against raw numbers.',
-    },
-    {
-      title: 'SQL Database Analysis',
-      technologies: ['SQL', 'PostgreSQL', 'CTEs', 'Window Functions'],
-      desc: 'In-depth relational database exploration utilizing window functions (ROW_NUMBER, RANK) and common table expressions to solve realistic business inquiries.',
-    },
-    {
-      title: 'Data Analyst Knowledge Assistant',
-      technologies: ['Embeddings', 'RAG', 'Vector Search'],
-      desc: 'Retrieval-Augmented Generation system that indexes documentation and structured records, providing grounded factual answers with verifiable sources.',
-    },
-    {
-      title: 'Python EDA + AI Hypothesis Lab',
-      technologies: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
-      desc: 'Exploratory data analysis on retail datasets where multimodal AI suggests analytical hypotheses and students validate every claim through reproducible Python code.',
-    },
-    {
-      title: 'Power BI Dashboard + AI Narrative',
-      technologies: ['Power BI', 'DAX', 'Power Query'],
-      desc: 'Interactive HR or Sales dashboard featuring custom DAX calculations, structured data models, and governed automated business narratives.',
-    },
-    {
-      title: 'End-to-End Agentic Data Analytics Project',
-      technologies: ['Agent Frameworks', 'LangChain / CrewAI'],
-      desc: 'Complete portfolio-grade agent architecture integrating SQL/Python tools: plan -> retrieve -> execute -> validate -> executive report presentation.',
+      icon: <Bot className="w-6 h-6 text-brand-orange" />,
+      title: 'Autonomous Analytics Agents',
+      desc: 'Autonomous multi-tool agent patterns, SQL query-calling agents, memory loops, human validation checks, and framework orchestration with LangChain.',
     },
   ];
 
   return (
     <div className="space-y-16 lg:space-y-24 pb-20">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION WITH RICH BROCHURE VISUALS */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
+      <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-20 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Breadcrumb Back Link */}
           <Link
             to="/courses"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:text-brand-navy mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-500 hover:text-brand-orange transition-colors mb-6 group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Programs</span>
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span>All Programs</span>
           </Link>
 
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
-                DATA ANALYST ACCELERATOR PROGRAM
-              </span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-orange border border-brand-orange/30 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-brand-orange uppercase font-heading">
+                  FLAGSHIP ANALYTICS & AI TRACK
+                </span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
+                Data Analyst Accelerator Program{' '}
+                <span className="text-brand-orange block mt-1">(DAAP)</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-2xl">
+                Turn data into real-world business impact. Master relational databases, SQL queries, Python data science, Power BI dashboards, Generative AI (RAG), and autonomous Agentic AI workflows.
+              </p>
+
+              {/* Badges strip */}
+              <div className="flex flex-wrap gap-4 text-xs font-bold text-brand-navy">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+                  <Clock className="w-4 h-4 text-brand-orange" />
+                  <span>12 Weeks (3 Months)</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+                  <BookOpen className="w-4 h-4 text-brand-orange" />
+                  <span>8 Connected Steps</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+                  <Laptop className="w-4 h-4 text-brand-orange" />
+                  <span>100% Online · Live Interactive</span>
+                </div>
+              </div>
+
+              {/* Technology logos strip */}
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-brand-border/80 shadow-subtle overflow-x-auto">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0">
+                  Stack:
+                </span>
+                <div className="flex items-center gap-4 shrink-0">
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <SqlLogo className="w-5 h-5" /> SQL
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <PythonLogo className="w-5 h-5" /> Python
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <PowerBiLogo className="w-5 h-5" /> Power BI
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <ChatGptLogo className="w-5 h-5" /> ChatGPT
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <ClaudeLogo className="w-5 h-5" /> Claude
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <LangChainLogo className="w-5 h-5" /> LangChain
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
+                    <AgenticAiLogo className="w-5 h-5" /> Agentic AI
+                  </span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => openCurriculum('daap')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-extrabold bg-brand-orange text-white hover:bg-brand-orange/90 shadow-subtle transition-all duration-200 cursor-pointer"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>View Curriculum (PDF)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleScrollToCurriculum}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:text-brand-navy hover:bg-slate-50 border border-brand-border transition-colors cursor-pointer"
+                >
+                  <span>Interactive Path</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="md"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                  className="w-full sm:w-auto"
+                >
+                  Enroll Now
+                </Button>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.12]">
-              From Data Foundations to{' '}
-              <span className="text-gradient-orange">AI-Powered Analytics.</span>
-            </h1>
+            {/* Right Visual Panel with Authentic Brochure Graphic */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-card border-2 border-brand-border/80 bg-brand-navy group">
+                <img
+                  src="/brand/brochures/daap-brochure.jpg"
+                  alt="DAAP Course Reference Banner"
+                  className="w-full h-[440px] sm:h-[480px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/20 to-transparent" />
 
-            <p className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed">
-              DAAP develops practical data analytics skills across Excel, SQL, Python, Power BI, Generative AI, and Agentic AI.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-              <Button
-                to="/contact"
-                variant="primary"
-                size="lg"
-                leftIcon={<PhoneCall className="w-4 h-4" />}
-              >
-                Talk to Us
-              </Button>
-              <Button
-                href="#curriculum"
-                onClick={handleScrollToCurriculum}
-                variant="outline"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                View Curriculum
-              </Button>
+                {/* Floating highlight pills */}
+                <div className="absolute bottom-6 left-6 right-6 space-y-3 z-10">
+                  <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/40 shadow-card space-y-2">
+                    <div className="flex items-center justify-between text-xs font-bold text-brand-orange">
+                      <span className="flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
+                        Next-Gen Agentic Intelligence
+                      </span>
+                      <span className="text-slate-500">Autonomous Analytics</span>
+                    </div>
+                    <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                      Go beyond static dashboards. Build AI agents that automatically write SQL, verify calculations, and draft executive reports.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. PROGRAM SNAPSHOT */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-orange/15 text-brand-orange flex items-center justify-center">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">Duration</div>
-            <div className="text-xl font-extrabold text-brand-navy">12 Weeks</div>
-            <div className="text-xs text-slate-500">3-Month structured cohort</div>
-          </Card>
-
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-orange/15 text-brand-orange flex items-center justify-center">
-              <Layers className="w-5 h-5" />
-            </div>
-            <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">Practical Sprints</div>
-            <div className="text-xl font-extrabold text-brand-navy">5+ Projects</div>
-            <div className="text-xs text-slate-500">Documented mini projects</div>
-          </Card>
-
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-orange/15 text-brand-orange flex items-center justify-center">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">Synthesis</div>
-            <div className="text-xl font-extrabold text-brand-navy">1 Capstone</div>
-            <div className="text-xs text-slate-500">End-to-end agentic solution</div>
-          </Card>
-
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-orange/15 text-brand-orange flex items-center justify-center">
-              <Laptop className="w-5 h-5" />
-            </div>
-            <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">Readiness</div>
-            <div className="text-xl font-extrabold text-brand-navy">Career Support</div>
-            <div className="text-xs text-slate-500">Integrated weekend preparation</div>
-          </Card>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 3. CORE TECHNOLOGY AREAS */}
+      {/* 2. CORE BUILDING BLOCKS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
-          eyebrow="Core Technology Stack"
-          title="Building Blocks of Modern Data Analytics"
-          subtitle="Each technology builds systematically on the previous layer, taking you from raw spreadsheets to autonomous analytics agents."
+          eyebrow="Building Blocks"
+          title="Six Interconnected Analytical Layers"
+          subtitle="From foundational spreadsheets to autonomous AI agents, each block builds directly upon the last."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreTechAreas.map((area, idx) => (
-            <Card key={idx} variant="white" padding="lg" hoverEffect borderAccent="orange" className="space-y-4">
+          {coreTechAreas.map((area, i) => (
+            <div
+              key={i}
+              className="p-6 rounded-2xl bg-white border border-brand-border shadow-subtle hover:shadow-card transition-all duration-200 space-y-4"
+            >
               <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center border border-brand-orange/30">
+                <div className="w-12 h-12 rounded-xl bg-brand-surface-orange text-brand-orange flex items-center justify-center border border-brand-orange/20">
                   {area.icon}
                 </div>
-                <span className="text-xs font-mono font-bold text-brand-orange bg-brand-orange/10 px-2.5 py-0.5 rounded">
+                <span className="text-xs font-bold text-slate-500 bg-slate-50 px-2.5 py-1 rounded-md border border-brand-border/60">
                   {area.tech}
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-brand-navy">
-                {area.title}
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-orange">
+                  Module 0{i + 1}
+                </span>
+                <h3 className="text-lg font-bold text-brand-navy font-heading mt-0.5">
+                  {area.title}
+                </h3>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                 {area.desc}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. LEARNING PROGRESSION */}
+      {/* 3. INTERACTIVE VISUAL CURRICULUM JOURNEY */}
       {/* ========================================================================= */}
-      <section id="curriculum" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 scroll-mt-24">
-        <SectionHeading
-          eyebrow="Curriculum Progression"
-          title="From Raw Numbers to Autonomous Agent Workflows"
-          subtitle="A structured 6-phase sequence designed to ensure technical depth and conceptual clarity at every step."
-        />
+      <section id="curriculum" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 scroll-mt-24">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="Interactive Roadmap"
+            title="DAAP Visual Technology Roadmap"
+            subtitle="Explore the 8 connected learning phases of DAAP. Click any stage to inspect specific tools and learning outcomes."
+          />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {learningProgression.map((item) => (
-            <Card key={item.step} variant="white" padding="md" className="border border-brand-border space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-2xl font-mono font-extrabold text-brand-orange">{item.step}</span>
-                <span className="text-[10px] uppercase font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
-                  Phase
-                </span>
-              </div>
-              <h4 className="text-base font-bold text-brand-navy">
-                {item.title}
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {item.desc}
-              </p>
-            </Card>
-          ))}
+          <button
+            type="button"
+            onClick={() => openCurriculum('daap')}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-brand-surface-orange text-brand-orange hover:bg-brand-orange hover:text-white border border-brand-orange/30 shadow-subtle transition-all duration-200 shrink-0 cursor-pointer"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download Official PDF</span>
+          </button>
         </div>
+
+        <DaapCurriculumJourney />
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. PROJECTS */}
+      {/* 4. VISUAL PROJECT SHOWCASE */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
-          eyebrow="Hands-On Projects"
-          title="Documented Practical Project Builds"
-          subtitle="Explore the 6 practical projects developed throughout the DAAP curriculum, combining data hygiene with modern AI augmentation."
+          eyebrow="Portfolio Artifacts"
+          title="Documented Production Projects"
+          subtitle="Build 6 domain-specific projects plus 1 Enterprise Capstone with complete GitHub repositories and interactive dashboards."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {daapProjects.map((project, idx) => (
-            <Card
-              key={idx}
-              variant="white"
-              padding="lg"
-              hoverEffect
-              borderAccent="orange"
-              className="flex flex-col justify-between space-y-4"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold text-brand-orange">
-                    PROJECT-0{idx + 1}
-                  </span>
-                  <span className="text-slate-300">·</span>
-                  <span className="text-xs font-semibold text-slate-500 uppercase">
-                    DAAP Track
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-brand-navy">
-                  {project.title}
-                </h3>
-
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {project.desc}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-brand-border/60">
-                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Technologies Utilized
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs font-semibold px-2 py-0.5 rounded bg-brand-surface-blue text-brand-navy border border-brand-border"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
+        <ProjectsVisual initialTab="daap" />
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. CAPSTONE */}
+      {/* 5. CAREER READINESS STRATEGY */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card variant="surface" padding="lg" className="border border-brand-border">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orange/15 text-brand-orange text-xs font-bold border border-brand-orange/30">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Program Culmination</span>
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-brand-border shadow-card relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-orange text-brand-orange text-xs font-extrabold uppercase tracking-wider">
+                <Sparkles className="w-4 h-4" />
+                <span>Career Development</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy font-heading">
+                Weekend Career Acceleration Circuit
+              </h2>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+                Technical skill is only half the battle. Every weekend, DAAP learners undergo structured career preparation: Saturday resume and LinkedIn audits, followed by Sunday live coding mocks, SQL whiteboard drills, and presentation defense.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {[
+                  'Saturday ATS Resume Optimization',
+                  'Sunday SQL & Python Technical Mocks',
+                  'Portfolio Dashboard Walkthroughs',
+                  'Executive Communication Coaching',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-navy">
+                    <CheckCircle2 className="w-4 h-4 text-brand-orange shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy">
-              1 Capstone: End-to-End Enterprise Data & AI Solution
-            </h3>
-
-            <p className="text-sm text-slate-700 leading-relaxed">
-              The program culminates in an end-to-end capstone project integrating the complete data and AI curriculum. Students execute raw-data cleaning, SQL relational querying, Python EDA, Power BI visualization dashboards, and build tool-connected analytics agents that execute queries and generate grounded insights under human validation.
-            </p>
+            <div className="lg:col-span-5 relative">
+              <img
+                src="/brand/brochures/python-dsa.jpg"
+                alt="Student solving data problems"
+                className="w-full h-80 rounded-2xl object-cover object-top shadow-subtle border border-brand-border"
+              />
+            </div>
           </div>
-        </Card>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 7. CAREER SUPPORT */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Career Support"
-          title="Integrated Career Development Framework"
-          subtitle="Systematic weekend sessions running alongside technical weeks to ensure learners present their analytical competence with conviction."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: 'Resume Optimization', desc: 'Data analyst resume templates, quantifying metrics impact, and recruiter screening reviews.' },
-            { title: 'LinkedIn Profile Building', desc: 'Technical positioning, analytics project showcasing, and industry recruiter outreach.' },
-            { title: 'Job Search Strategy', desc: 'Boolean search strings across portals, application tracking, and referral playbooks.' },
-            { title: 'Mock Interviews', desc: 'Live SQL query challenges, dashboard walkthrough drills, and behavioral HR simulations.' },
-            { title: 'Career Guidance', desc: 'Salary negotiation basics, offer letter evaluation, and 30-60-90 day job search roadmaps.' },
-            { title: 'Industry & Company Sessions', desc: 'Virtual sessions with analytics engineers to observe working industry workflows.' },
-            { title: 'Placement Assistance', desc: 'Referral networks, portfolio circulation, and ongoing interview preparation guidance.' },
-          ].map((item, i) => (
-            <Card key={i} variant="white" padding="md" className="border border-brand-border space-y-2">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-brand-orange shrink-0" />
-                <h4 className="text-base font-bold text-brand-navy">{item.title}</h4>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
-            </Card>
-          ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 8. DAAP OFFER CTA */}
+      {/* 6. OFFER CALLOUT SECTION */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-brand-dark-section border-2 border-brand-orange/50 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6">
+        <div className="rounded-3xl bg-brand-dark-section border-2 border-brand-orange/40 p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center space-y-6">
           <div className="inline-flex items-center gap-2 bg-brand-orange/20 text-brand-orange px-4 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase border border-brand-orange/40">
             <Tag className="w-3.5 h-3.5" />
-            <span>Admissions Campaign</span>
+            <span>DAAP Festive Intake</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
             Vinayaka Chavithi Special Offer
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
-            Enroll in the DAAP Data Analyst Accelerator Program during our festive intake and receive full access to all 5+ mini projects, capstone, and career support.
+          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium">
+            Enroll in the upcoming DAAP live cohort with all-inclusive access to live instruction, datasets, AI tools, and career circuit.
           </p>
 
           <div className="flex items-center justify-center gap-4 py-2">
@@ -460,7 +402,7 @@ export const DaapPage: React.FC = () => {
             <button
               type="button"
               onClick={handleCopyCode}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-brand-blue/40 hover:bg-brand-blue/60 text-xs font-semibold text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-brand-blue/40 hover:bg-brand-blue/60 text-xs font-semibold text-white transition-colors cursor-pointer"
               title="Copy coupon code"
             >
               {copiedCoupon ? (
@@ -477,14 +419,23 @@ export const DaapPage: React.FC = () => {
             </button>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               to="/contact"
               variant="primary"
               size="lg"
-              leftIcon={<PhoneCall className="w-4 h-4" />}
+              rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Talk to Us
+              Enroll in DAAP
+            </Button>
+            <Button
+              href={BRAND_DATA.phone1Tel}
+              variant="outline"
+              size="lg"
+              leftIcon={<PhoneCall className="w-4 h-4" />}
+              className="text-white border-white/40 hover:bg-white/10"
+            >
+              Talk to Advisor
             </Button>
           </div>
         </div>
