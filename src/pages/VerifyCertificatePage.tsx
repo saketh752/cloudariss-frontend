@@ -51,19 +51,19 @@ export const VerifyCertificatePage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-              <ShieldCheck className="w-4 h-4 text-brand-blue" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
+              <ShieldCheck className="w-4 h-4 text-[#19BCE8]" />
+              <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                 CERTIFICATE VERIFICATION
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
               Verify Your{' '}
               <span className="text-gradient-tech">Cloudariss Certificate.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-[#E5EAF3] font-normal max-w-2xl mx-auto leading-relaxed">
               Enter the certificate ID provided on your certificate to verify its details.
             </p>
           </div>
@@ -217,16 +217,16 @@ export const VerifyCertificatePage: React.FC = () => {
       {/* ========================================================================= */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-2 max-w-2xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-extrabold text-brand-navy">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-white">
             About Cloudariss Certificate Verification
           </h2>
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm text-[#DCE5F2] leading-relaxed">
             Certificate verification helps confirm the authenticity of a Cloudariss certificate using its certificate ID.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2.5">
+          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
             <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
               <ShieldCheck className="w-4 h-4" />
             </div>
@@ -238,7 +238,7 @@ export const VerifyCertificatePage: React.FC = () => {
             </p>
           </Card>
 
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2.5">
+          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
             <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
               <FileText className="w-4 h-4" />
             </div>
@@ -250,7 +250,7 @@ export const VerifyCertificatePage: React.FC = () => {
             </p>
           </Card>
 
-          <Card variant="surface" padding="md" className="border border-brand-border space-y-2.5">
+          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
             <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
               <CheckCircle2 className="w-4 h-4" />
             </div>

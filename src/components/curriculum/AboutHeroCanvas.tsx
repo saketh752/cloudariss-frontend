@@ -253,4 +253,3 @@ export const AboutHeroCanvas: React.FC<AboutHeroCanvasProps> = ({
     </div>
   );
 };
-

@@ -96,33 +96,33 @@ export const DaapPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-orange border border-brand-orange/30 shadow-subtle">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/40 shadow-subtle">
                 <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
                 <span className="text-xs font-extrabold tracking-widest text-brand-orange uppercase font-heading">
                   FLAGSHIP ANALYTICS & AI TRACK
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-heading">
                 Data Analyst Accelerator Program{' '}
                 <span className="text-gradient-orange block mt-1">(DAAP)</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-[#E5EAF3] font-normal leading-relaxed max-w-2xl">
                 A rapid 12-week sprint taking you from spreadsheet modeling and relational SQL querying to Python EDA, Power BI executive dashboards, Generative AI (RAG), and autonomous Agentic AI tools.
               </p>
 
               {/* Badges strip */}
-              <div className="flex flex-wrap gap-3 text-xs font-bold text-brand-navy">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+              <div className="flex flex-wrap gap-3 text-xs font-bold text-white">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-brand-orange/30 shadow-subtle">
                   <Clock className="w-4 h-4 text-brand-orange" />
                   <span>12 Weeks (3 Months)</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-brand-orange/30 shadow-subtle">
                   <BookOpen className="w-4 h-4 text-brand-orange" />
                   <span>8 Connected Sprints</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-brand-orange/30 shadow-subtle">
                   <Laptop className="w-4 h-4 text-brand-orange" />
                   <span>100% Online · Live Interactive</span>
                 </div>
@@ -142,16 +142,17 @@ export const DaapPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleScrollToCurriculum}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:text-brand-navy hover:bg-slate-50 border border-brand-border transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#071B63] text-white hover:bg-[#0A2578] border border-[#19BCE8]/40 transition-colors cursor-pointer"
                 >
                   <span>Interactive Pathway</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-brand-orange" />
                 </button>
 
                 <Button
                   to="/contact"
                   variant="outline"
                   size="md"
+                  className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
                 >
                   Enroll Now
                 </Button>
@@ -226,7 +227,7 @@ export const DaapPage: React.FC = () => {
           <button
             type="button"
             onClick={() => openCurriculum('daap')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-surface-orange text-brand-orange text-xs font-bold hover:bg-brand-orange hover:text-white border border-brand-orange/30 transition-colors shrink-0 cursor-pointer self-start md:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#071B63]/90 text-brand-orange text-xs font-bold hover:bg-brand-orange hover:text-white border border-brand-orange/40 transition-colors shrink-0 cursor-pointer self-start md:self-auto"
           >
             <Download className="w-4 h-4" />
             <span>Download DAAP PDF Structure</span>

@@ -285,4 +285,3 @@ export const OfferingsHeroCanvas: React.FC<OfferingsHeroCanvasProps> = ({
     </div>
   );
 };
-

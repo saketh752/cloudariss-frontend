@@ -68,25 +68,25 @@ const PILLARS: OfferPillar[] = [
     desc: 'Curricula engineered around current enterprise ecosystems: AWS Cloud, Docker containers, Kubernetes orchestration, Power BI, and Agentic AI workflows.',
     icon: <Cpu className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
     accentColor: 'cyan',
-    badge: 'Industry Ecosystems',
-    techTags: ['AWS Cloud', 'Docker & K8s', 'Agentic AI'],
+    badge: 'Enterprise Tooling',
+    techTags: ['AWS & Docker', 'Kubernetes', 'Power BI & GenAI'],
     motif: {
-      label: 'Enterprise Tooling',
-      detail: 'Current Production Stacks',
+      label: 'Modern Tooling',
+      detail: 'Production Environments',
     },
   },
   {
     step: '04',
     stepName: 'PREPARE FOR CAREER',
-    title: 'Career Preparation',
-    subtitle: 'Strategic Placement Readiness',
-    desc: 'Dedicated weekend mock interview circuits, ATS resume optimization, project defense practice, and 1-on-1 strategic mentorship to build genuine interview confidence.',
+    title: 'Career Enablement',
+    subtitle: 'Systematic Placement Readiness',
+    desc: 'Structured Saturday resume and LinkedIn positioning workshops, direct technical interview preparation drills, and internship selection pathways for top performers.',
     icon: <Target className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />,
     accentColor: 'navy',
-    badge: 'Weekend Circuits',
-    techTags: ['ATS Optimization', 'Mock Interviews', 'Portfolio Defense'],
+    badge: 'Placement Readiness',
+    techTags: ['ATS Optimization', 'Tech Mock Rounds', 'Direct Referrals'],
     motif: {
-      label: 'Outcome Focus',
+      label: 'Career Transition',
       detail: 'Strategy + Mock Review',
     },
   },
@@ -100,43 +100,43 @@ export const WhatWeOfferSection: React.FC = () => {
       {/* ===================================================================== */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/20 text-brand-blue shadow-subtle">
-          <Sparkles className="w-3.5 h-3.5 text-brand-blue" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#071B63]/80 border border-[#19BCE8]/40 text-[#19BCE8] shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#19BCE8]" />
           <span className="text-xs font-extrabold uppercase tracking-widest">
             WHAT WE OFFER
           </span>
         </div>
 
         {/* Main Heading */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight font-heading leading-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading leading-tight">
           Build Skills That Move Your Career Forward.
         </h2>
 
         {/* Short Supporting Paragraph */}
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
+        <p className="text-sm sm:text-base text-[#DCE5F2] leading-relaxed max-w-2xl mx-auto font-normal">
           Cloudariss combines structured learning, practical projects, modern technology,
           and dedicated career preparation into one cohesive pathway.
         </p>
 
         {/* Subtle Progression Bar (Visual Connection: LEARN -> BUILD -> USE MODERN TECH -> PREPARE FOR CAREER) */}
-        <div className="pt-3 hidden sm:flex items-center justify-center gap-2 sm:gap-3 text-[11px] font-mono font-bold text-slate-500 select-none">
-          <span className="flex items-center gap-1 text-brand-blue">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
+        <div className="pt-3 hidden sm:flex items-center justify-center gap-2 sm:gap-3 text-[11px] font-mono font-bold text-[#B4C3DB] select-none">
+          <span className="flex items-center gap-1 text-[#19BCE8]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#19BCE8]" />
             <span>01 LEARN</span>
           </span>
-          <ArrowRight className="w-3 h-3 text-slate-300" />
+          <ArrowRight className="w-3 h-3 text-slate-500" />
           <span className="flex items-center gap-1 text-brand-orange">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
             <span>02 BUILD</span>
           </span>
-          <ArrowRight className="w-3 h-3 text-slate-300" />
-          <span className="flex items-center gap-1 text-[#0878e8]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#19BCE8]" />
+          <ArrowRight className="w-3 h-3 text-slate-500" />
+          <span className="flex items-center gap-1 text-cyan-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
             <span>03 USE MODERN TECH</span>
           </span>
-          <ArrowRight className="w-3 h-3 text-slate-300" />
-          <span className="flex items-center gap-1 text-brand-navy">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-navy" />
+          <ArrowRight className="w-3 h-3 text-slate-500" />
+          <span className="flex items-center gap-1 text-emerald-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>04 PREPARE FOR CAREER</span>
           </span>
         </div>
@@ -147,55 +147,51 @@ export const WhatWeOfferSection: React.FC = () => {
       {/* ===================================================================== */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {PILLARS.map((pillar) => {
-          // Dynamic accent styles for border, icon, and badges
           const borderHoverStyles = {
-            blue: 'hover:border-brand-blue/60 group-hover:border-t-brand-blue',
-            orange: 'hover:border-brand-orange/60 group-hover:border-t-brand-orange',
-            cyan: 'hover:border-brand-cyan/60 group-hover:border-t-brand-cyan',
-            navy: 'hover:border-brand-navy/60 group-hover:border-t-brand-navy',
+            blue: 'hover:border-[#0878E8]/70 group-hover:border-t-[#0878E8]',
+            orange: 'hover:border-brand-orange/70 group-hover:border-t-brand-orange',
+            cyan: 'hover:border-[#19BCE8]/70 group-hover:border-t-[#19BCE8]',
+            navy: 'hover:border-cyan-400/70 group-hover:border-t-cyan-400',
           }[pillar.accentColor];
 
           const lineAccent = {
-            blue: 'bg-brand-blue',
+            blue: 'bg-[#0878E8]',
             orange: 'bg-brand-orange',
-            cyan: 'bg-brand-cyan',
-            navy: 'bg-brand-navy',
+            cyan: 'bg-[#19BCE8]',
+            navy: 'bg-cyan-400',
           }[pillar.accentColor];
 
           const iconContainerStyles = {
-            blue: 'bg-brand-surface-blue border-brand-blue/20 text-brand-blue group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue group-hover:shadow-md group-hover:shadow-blue-500/20',
-            orange: 'bg-orange-50 border-brand-orange/25 text-brand-orange group-hover:bg-brand-orange group-hover:text-white group-hover:border-brand-orange group-hover:shadow-md group-hover:shadow-orange-500/20',
-            cyan: 'bg-cyan-50 border-brand-cyan/30 text-[#0878E8] group-hover:bg-[#0878E8] group-hover:text-white group-hover:border-[#0878E8] group-hover:shadow-md group-hover:shadow-blue-500/20',
-            navy: 'bg-slate-100 border-brand-navy/20 text-brand-navy group-hover:bg-brand-navy group-hover:text-white group-hover:border-brand-navy group-hover:shadow-md group-hover:shadow-navy-500/20',
+            blue: 'bg-[#05143A] border-[#0878E8]/40 text-[#19BCE8]',
+            orange: 'bg-[#05143A] border-brand-orange/40 text-brand-orange',
+            cyan: 'bg-[#05143A] border-[#19BCE8]/40 text-cyan-300',
+            navy: 'bg-[#05143A] border-cyan-400/40 text-cyan-300',
           }[pillar.accentColor];
 
           return (
             <div
               key={pillar.step}
-              className={`group relative rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-subtle hover:shadow-xl hover:shadow-brand-blue/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-6 overflow-hidden border-t-2 ${borderHoverStyles}`}
+              className={`group relative rounded-2xl sm:rounded-3xl bg-[#071B63]/75 backdrop-blur-xl border border-[#19BCE8]/25 p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-6 overflow-hidden border-t-2 shadow-xl ${borderHoverStyles}`}
             >
-              {/* Subtle top corner gradient ambiance on hover */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-surface-blue/50 via-transparent to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
               {/* Top Row: Numbered Identifier + Icon + Badge */}
               <div className="flex items-start justify-between gap-4 relative z-10">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-sm ${iconContainerStyles}`}
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-xs ${iconContainerStyles}`}
                   >
                     {pillar.icon}
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono font-bold tracking-widest text-slate-400 block uppercase">
+                    <span className="text-[11px] font-mono font-bold tracking-widest text-[#B4C3DB] block uppercase">
                       PILLAR {pillar.step}
                     </span>
-                    <span className="text-[11px] font-mono font-extrabold text-brand-blue">
+                    <span className="text-[11px] font-mono font-extrabold text-[#19BCE8]">
                       {pillar.stepName}
                     </span>
                   </div>
                 </div>
 
-                <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80 shrink-0">
+                <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#05143A] text-[#19BCE8] border border-[#19BCE8]/30 shrink-0">
                   {pillar.badge}
                 </span>
               </div>
@@ -203,27 +199,27 @@ export const WhatWeOfferSection: React.FC = () => {
               {/* Main Content Area: Headings and Supporting Text */}
               <div className="space-y-2.5 relative z-10">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#AFC0D8] block">
                     {pillar.subtitle}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-brand-navy font-heading tracking-tight mt-0.5 group-hover:text-brand-blue transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-black text-white font-heading tracking-tight mt-0.5 group-hover:text-[#19BCE8] transition-colors">
                     {pillar.title}
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-[#DCE5F2] leading-relaxed font-normal">
                   {pillar.desc}
                 </p>
               </div>
 
               {/* Subtle Technical Motif / Detail Bar */}
-              <div className="pt-4 border-t border-slate-100 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="pt-4 border-t border-[#19BCE8]/20 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 {/* Tech Chips */}
                 <div className="flex flex-wrap items-center gap-1.5">
                   {pillar.techTags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded-md bg-brand-surface text-slate-600 text-[10px] font-mono font-semibold border border-slate-200/60"
+                      className="px-2 py-0.5 rounded-md bg-[#05143A]/90 text-slate-200 text-[10px] font-mono font-bold border border-[#19BCE8]/20"
                     >
                       {tag}
                     </span>
@@ -231,7 +227,7 @@ export const WhatWeOfferSection: React.FC = () => {
                 </div>
 
                 {/* Subtle Progression Direction Indicator */}
-                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-slate-400 group-hover:text-brand-blue transition-colors shrink-0">
+                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-[#19BCE8] group-hover:text-white transition-colors shrink-0">
                   <span>{pillar.motif.label}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>

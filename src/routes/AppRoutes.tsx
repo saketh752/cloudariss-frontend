@@ -20,6 +20,9 @@ export const AppRoutes: React.FC = () => {
         <Route path="courses" element={<CoursesPage />} />
         <Route path="courses/crpc" element={<CrpcPage />} />
         <Route path="courses/daap" element={<DaapPage />} />
+        <Route path="programs" element={<CoursesPage />} />
+        <Route path="programs/crpc" element={<CrpcPage />} />
+        <Route path="programs/daap" element={<DaapPage />} />
         <Route path="offerings" element={<OfferingsPage />} />
         <Route path="why-cloudariss" element={<WhyCloudarissPage />} />
         <Route path="about" element={<AboutPage />} />
@@ -31,4 +34,3 @@ export const AppRoutes: React.FC = () => {
     </Routes>
   );
 };
-

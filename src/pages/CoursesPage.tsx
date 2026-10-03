@@ -209,19 +209,19 @@ export const CoursesPage: React.FC = () => {
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
+              <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
+              <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                 CAREER ACCELERATOR PROGRAMS
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
               Build Skills. Build Projects.{' '}
               <span className="text-gradient-tech">Build Your Career.</span>
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-[#E5EAF3] font-normal max-w-2xl mx-auto leading-relaxed">
               Explore Cloudariss flagship programs designed around practical technology skills, hands-on lab projects, and systematic career preparation.
             </p>
 

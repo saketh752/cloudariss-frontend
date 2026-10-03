@@ -28,4 +28,3 @@ export const TechChip: React.FC<TechChipProps> = ({
     </div>
   );
 };
-

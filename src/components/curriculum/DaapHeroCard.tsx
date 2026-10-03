@@ -314,4 +314,3 @@ export const DaapHeroCard: React.FC<DaapHeroCardProps> = ({
     </div>
   );
 };
-

@@ -121,19 +121,19 @@ export const OfferingsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-                <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-                <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#071B63]/80 border border-[#19BCE8]/40 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                   WHAT WE OFFER
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
                 Learn With Purpose.{' '}
                 <span className="text-gradient-tech">Build With Practice.</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl text-[#DCE5F2] font-normal max-w-2xl leading-relaxed">
                 Cloudariss combines structured technical learning, hands-on projects, modern technologies, and career preparation into an integrated, outcome-driven learning ecosystem.
               </p>
 
@@ -157,15 +157,15 @@ export const OfferingsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openCurriculum('crpc')}
-                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-blue text-sm font-bold shadow-sm hover:shadow transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-[#071B63]/90 border border-[#19BCE8]/40 text-[#19BCE8] hover:text-white text-sm font-bold shadow-sm hover:shadow transition-all"
                 >
-                  <FileText className="w-4 h-4 text-brand-blue" />
+                  <FileText className="w-4 h-4 text-[#19BCE8]" />
                   <span>View CRPC PDF</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => openCurriculum('daap')}
-                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy hover:text-brand-orange text-sm font-bold shadow-sm hover:shadow transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-[#071B63]/90 border border-brand-orange/40 text-brand-orange hover:text-white text-sm font-bold shadow-sm hover:shadow transition-all"
                 >
                   <FileText className="w-4 h-4 text-brand-orange" />
                   <span>View DAAP PDF</span>
@@ -196,25 +196,22 @@ export const OfferingsPage: React.FC = () => {
 
         {/* 01 — TECHNICAL LEARNING */}
         <div className="space-y-6">
-          <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
-            <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
+          <div className="flex items-center gap-3 border-b border-white/10 pb-3">
+            <div className="w-10 h-10 rounded-lg bg-[#071B63]/80 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8] font-mono font-bold text-sm">
               01
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-blue">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8]">
                 Structured Knowledge
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
                 Technical Learning Across Enterprise Domains
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
-            Structured instruction across modern technology domains. We replace superficial overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-            <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed font-medium">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+            <p className="text-sm sm:text-base text-[#DCE5F2] max-w-2xl leading-relaxed font-normal">
               Structured instruction across modern technology domains. We replace superficial overviews with rigorous, live instructor-led coursework that grounds fundamental concepts before building into enterprise architectures.
             </p>
 
@@ -225,8 +222,8 @@ export const OfferingsPage: React.FC = () => {
                 onClick={() => setActiveDomainFilter('all')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   activeDomainFilter === 'all'
-                    ? 'bg-brand-navy text-white shadow-sm'
-                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                    ? 'bg-[#0878E8] text-white shadow-sm'
+                    : 'bg-[#071B63]/80 text-[#DCE5F2] hover:text-white border border-white/20'
                 }`}
               >
                 All (6)
@@ -236,8 +233,8 @@ export const OfferingsPage: React.FC = () => {
                 onClick={() => setActiveDomainFilter('cloud')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   activeDomainFilter === 'cloud'
-                    ? 'bg-brand-blue text-white shadow-sm'
-                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                    ? 'bg-[#0878E8] text-white shadow-sm'
+                    : 'bg-[#071B63]/80 text-[#DCE5F2] hover:text-white border border-white/20'
                 }`}
               >
                 Cloud &amp; DevOps
@@ -248,7 +245,7 @@ export const OfferingsPage: React.FC = () => {
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   activeDomainFilter === 'data'
                     ? 'bg-brand-orange text-white shadow-sm'
-                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                    : 'bg-[#071B63]/80 text-[#DCE5F2] hover:text-white border border-white/20'
                 }`}
               >
                 Data &amp; BI
@@ -259,7 +256,7 @@ export const OfferingsPage: React.FC = () => {
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   activeDomainFilter === 'ai'
                     ? 'bg-purple-600 text-white shadow-sm'
-                    : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                    : 'bg-[#071B63]/80 text-[#DCE5F2] hover:text-white border border-white/20'
                 }`}
               >
                 AI
@@ -275,7 +272,7 @@ export const OfferingsPage: React.FC = () => {
                 padding="md"
                 hoverEffect
                 borderAccent="blue"
-                className="space-y-3"
+                className="space-y-3 shadow-md"
               >
                 <div className="flex items-center justify-between">
                   <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
@@ -288,7 +285,7 @@ export const OfferingsPage: React.FC = () => {
                 <h3 className="text-base font-bold text-brand-navy">
                   {domain.name}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-[#243B5A] leading-relaxed font-normal">
                   {domain.desc}
                 </p>
               </Card>
@@ -298,16 +295,16 @@ export const OfferingsPage: React.FC = () => {
 
         {/* 02 — HANDS-ON PROJECTS */}
         <div className="space-y-6 pt-6">
-          <div className="flex items-center justify-between border-b border-brand-border/60 pb-3 flex-wrap gap-4">
+          <div className="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-orange font-mono font-bold text-sm">
+              <div className="w-10 h-10 rounded-lg bg-brand-orange/15 border border-brand-orange/40 flex items-center justify-center text-brand-orange font-mono font-bold text-sm">
                 02
               </div>
               <div>
                 <div className="text-xs font-bold uppercase tracking-wider text-brand-orange">
                   Practical Application
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
                   Hands-on Capstone Projects
                 </h2>
               </div>
@@ -317,7 +314,7 @@ export const OfferingsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openCurriculum('crpc')}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-surface-blue text-brand-blue text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#071B63]/90 border border-[#19BCE8]/40 text-[#19BCE8] text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
               >
                 <FileText className="w-3.5 h-3.5" />
                 <span>CRPC Projects</span>
@@ -325,7 +322,7 @@ export const OfferingsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openCurriculum('daap')}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-orange/10 text-brand-orange text-xs font-bold hover:bg-brand-orange hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#071B63]/90 border border-brand-orange/40 text-brand-orange text-xs font-bold hover:bg-brand-orange hover:text-white transition-colors"
               >
                 <FileText className="w-3.5 h-3.5" />
                 <span>DAAP Projects</span>
@@ -333,7 +330,7 @@ export const OfferingsPage: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
+          <p className="text-sm sm:text-base text-[#DCE5F2] max-w-3xl leading-relaxed font-normal">
             Learning through practical projects and direct implementation. Each project results in demonstrable code, comprehensive documentation, and live systems hosted on students' personal GitHub repositories.
           </p>
 
@@ -342,21 +339,21 @@ export const OfferingsPage: React.FC = () => {
 
         {/* 03 — MODERN TECHNOLOGIES */}
         <div className="space-y-6 pt-6">
-          <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
-            <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-[#0a6680] font-mono font-bold text-sm">
+          <div className="flex items-center gap-3 border-b border-white/10 pb-3">
+            <div className="w-10 h-10 rounded-lg bg-[#071B63]/80 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8] font-mono font-bold text-sm">
               03
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-cyan">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8]">
                 Industry Alignment
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                Modern Technologies & Engineering Ecosystem
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                Modern Technologies &amp; Engineering Ecosystem
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
+          <p className="text-sm sm:text-base text-[#DCE5F2] max-w-3xl leading-relaxed font-normal">
             Our curricula focus directly on the technology ecosystem currently powering enterprise infrastructure, modern analytics teams, and automated cloud workflows. Hover over any technology to inspect its role.
           </p>
 
@@ -365,21 +362,21 @@ export const OfferingsPage: React.FC = () => {
 
         {/* 04 — CAREER PREPARATION */}
         <div className="space-y-6 pt-6">
-          <div className="flex items-center gap-3 border-b border-brand-border/60 pb-3">
-            <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue font-mono font-bold text-sm">
+          <div className="flex items-center gap-3 border-b border-white/10 pb-3">
+            <div className="w-10 h-10 rounded-lg bg-[#071B63]/80 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8] font-mono font-bold text-sm">
               04
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-blue">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8]">
                 Professional Readiness
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                Career Preparation & Seven Support Pillars
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                Career Preparation &amp; Seven Support Pillars
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-medium">
+          <p className="text-sm sm:text-base text-[#DCE5F2] max-w-3xl leading-relaxed font-normal">
             Career strategy is integrated throughout the learning cycle, not tacked on at the end. We prepare learners to communicate their technical reasoning clearly and navigate job applications methodically.
           </p>
 
@@ -387,9 +384,9 @@ export const OfferingsPage: React.FC = () => {
             {careerSupportPillars.map((pillar, idx) => (
               <Card
                 key={idx}
-                variant="surface"
+                variant="white"
                 padding="md"
-                className="border border-brand-border/80 space-y-2.5 hover:border-brand-blue transition-colors"
+                className="border border-brand-border/80 space-y-2.5 hover:border-brand-blue transition-colors shadow-sm"
               >
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
@@ -397,14 +394,14 @@ export const OfferingsPage: React.FC = () => {
                     {pillar.title}
                   </h3>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-[#243B5A] leading-relaxed font-normal">
                   {pillar.desc}
                 </p>
               </Card>
             ))}
           </div>
 
-          <p className="text-xs text-slate-400 italic">
+          <p className="text-xs text-[#AFC0D8] italic">
             * Note: Cloudariss provides structured interview coaching, portfolio reviews, and career assistance. We focus on cultivating genuine technical capability; we do not make guaranteed-placement claims.
           </p>
         </div>
@@ -443,10 +440,10 @@ export const OfferingsPage: React.FC = () => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                Virtual Company Sessions & Regional IT Corridor Exposure
+                Virtual Company Sessions &amp; Regional IT Corridor Exposure
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-[#243B5A] leading-relaxed font-normal">
                 As part of the Cloudariss learning experience, students participate in virtual company sessions. These interactive sessions provide direct exposure to how professional engineering and analytics teams function in real enterprise environments.
               </p>
 
@@ -456,7 +453,7 @@ export const OfferingsPage: React.FC = () => {
                     <Users className="w-4 h-4 text-brand-blue" />
                     <span>Practitioner Walkthroughs</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-[#243B5A] leading-relaxed">
                     Interactive technical discussions with practitioners from technology firms operating out of Visakhapatnam, including the Rushikonda IT Park and VSEZ corridors.
                   </p>
                 </div>
@@ -466,7 +463,7 @@ export const OfferingsPage: React.FC = () => {
                     <Code2 className="w-4 h-4 text-brand-orange" />
                     <span>Internship Selection Pathway</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-[#243B5A] leading-relaxed">
                     The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating regional technology teams.
                   </p>
                 </div>
@@ -480,7 +477,7 @@ export const OfferingsPage: React.FC = () => {
               <h3 className="text-base font-bold text-brand-navy font-heading">
                 Practical Exposure from Day One
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-[#243B5A] leading-relaxed">
                 Connect classroom problem solving with true software development and data operations workflows.
               </p>
               <Button
@@ -503,14 +500,14 @@ export const OfferingsPage: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-dark-surface p-8 border border-brand-blue/30 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#19BCE8] uppercase tracking-wider">
               <FileText className="w-4 h-4" />
               <span>Official Syllabi Downloads</span>
             </div>
             <h3 className="text-2xl font-extrabold text-white font-heading">
               Want the Full Week-by-Week Breakdown?
             </h3>
-            <p className="text-sm text-slate-300 max-w-xl">
+            <p className="text-sm text-[#DCE5F2] max-w-xl">
               Inspect the exact schedule, module milestones, lab configurations, and project timelines for both programs inside our interactive curriculum viewer.
             </p>
           </div>

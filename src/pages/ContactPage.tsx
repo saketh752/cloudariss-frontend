@@ -61,19 +61,19 @@ export const ContactPage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
+              <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
+              <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                 GET IN TOUCH
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
               Let's Talk About{' '}
               <span className="text-gradient-tech">Your Next Step.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-[#E5EAF3] font-normal max-w-2xl mx-auto leading-relaxed">
               Have questions about our programs, learning experience, or admissions? Get in touch with the Cloudariss team.
             </p>
 
@@ -90,6 +90,7 @@ export const ContactPage: React.FC = () => {
                 href={BRAND_DATA.phone1Tel}
                 variant="outline"
                 size="lg"
+                className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
                 leftIcon={<Phone className="w-4 h-4" />}
               >
                 Call Us
@@ -231,7 +232,7 @@ export const ContactPage: React.FC = () => {
             </Card>
 
             {/* Operations & Location */}
-            <Card variant="surface" padding="md" className="border border-brand-border/80 space-y-2.5">
+            <Card variant="white" padding="md" className="border border-brand-border/80 space-y-2.5">
               <div className="flex items-center gap-2 text-brand-navy font-bold text-sm">
                 <MapPin className="w-4 h-4 text-brand-orange" />
                 <span>Operations & Presence</span>
@@ -316,7 +317,7 @@ export const ContactPage: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="inquiry-name" className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                      <label htmlFor="inquiry-name" className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
                         Full Name *
                       </label>
                       <input
@@ -326,12 +327,12 @@ export const ContactPage: React.FC = () => {
                         placeholder="Your full name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white text-slate-800 placeholder:text-slate-400 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="inquiry-phone" className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                      <label htmlFor="inquiry-phone" className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
                         Phone Number *
                       </label>
                       <input
@@ -341,14 +342,14 @@ export const ContactPage: React.FC = () => {
                         placeholder="e.g. 9059334622"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white text-slate-800 placeholder:text-slate-400 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="inquiry-email" className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                      <label htmlFor="inquiry-email" className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
                         Email Address *
                       </label>
                       <input
@@ -358,19 +359,19 @@ export const ContactPage: React.FC = () => {
                         placeholder="name@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white text-slate-800 placeholder:text-slate-400 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="inquiry-program" className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                      <label htmlFor="inquiry-program" className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
                         Program Interested In *
                       </label>
                       <select
                         id="inquiry-program"
                         value={formData.program}
                         onChange={(e) => setFormData({ ...formData, program: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white text-slate-800 transition-colors"
                       >
                         <option value="CRPC">CRPC — Cloud & Data Career Accelerator</option>
                         <option value="DAAP">DAAP — Data Analyst Accelerator Program</option>
@@ -380,7 +381,7 @@ export const ContactPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="inquiry-message" className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                    <label htmlFor="inquiry-message" className="block text-xs font-bold uppercase text-slate-700 mb-1.5">
                       Message (Optional)
                     </label>
                     <textarea
@@ -389,7 +390,7 @@ export const ContactPage: React.FC = () => {
                       placeholder="Tell us about your educational background, learning goals, or questions about the curriculum..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white transition-colors resize-y"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none bg-white text-slate-800 placeholder:text-slate-400 transition-colors resize-y"
                     />
                   </div>
 

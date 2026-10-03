@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { TopBanner } from './TopBanner';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { CloudarissBackground } from './CloudarissBackground';
+import { FloatingTechStickers } from './FloatingTechStickers';
 import { CurriculumProvider } from '@/components/curriculum/CurriculumContext';
 import { CurriculumModal } from '@/components/curriculum/CurriculumModal';
 
@@ -69,15 +70,18 @@ export const Layout: React.FC = () => {
 
   return (
     <CurriculumProvider>
-      <div className="min-h-screen flex flex-col bg-brand-bg-light text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
-        {/* Top Banner with approved Vinayaka offer and CAT@AKHI coupon */}
-        <TopBanner />
+      <div className="min-h-screen flex flex-col bg-[#020817] text-slate-100 antialiased selection:bg-[#0878E8] selection:text-white relative">
+        {/* Global Futuristic Cloud City Horizon Background System */}
+        <CloudarissBackground />
 
-        {/* Sticky, responsive Navbar */}
+        {/* Minimal Tech Stickers & Holographic Cubes in Margins */}
+        <FloatingTechStickers />
+
+        {/* Sticky, responsive Navbar - First element at top */}
         <Navbar />
 
         {/* Main Content Area */}
-        <main className="flex-1">
+        <main className="flex-1 relative z-10">
           <Outlet />
         </main>
 
@@ -90,4 +94,3 @@ export const Layout: React.FC = () => {
     </CurriculumProvider>
   );
 };
-

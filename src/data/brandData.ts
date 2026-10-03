@@ -101,4 +101,3 @@ export const BRAND_DATA = {
     },
   ] as ProgramInfo[],
 };
-

@@ -163,4 +163,3 @@ export const VinayakaOfferCard: React.FC = () => {
     </section>
   );
 };
-

@@ -318,4 +318,3 @@ export const CrpcCurriculumJourney: React.FC = () => {
     </div>
   );
 };
-

@@ -9,14 +9,14 @@
   }
 
   body {
-    background-color: #F7F9FC;
-    color: #071B63;
+    background-color: #030718;
+    color: #F7F9FC;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', sans-serif;
-    color: #071B63;
+    color: #FFFFFF;
     letter-spacing: -0.02em;
   }
 
@@ -45,6 +45,59 @@
     background: radial-gradient(800px circle at 50% 0%, rgba(8, 120, 232, 0.18) 0%, rgba(7, 27, 99, 0.95) 60%, #06143D 100%);
   }
 
+  /* Cloudariss Deep Navy Atmosphere */
+  .bg-atmosphere-deep {
+    background-color: #051338;
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(8, 120, 232, 0.18) 0px, transparent 55%),
+      radial-gradient(at 85% 85%, rgba(25, 188, 232, 0.12) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(7, 27, 99, 0.95) 0px, transparent 100%);
+  }
+
+  /* Cloudariss Dark Technology Matrix */
+  .bg-atmosphere-tech {
+    background-color: #06143D;
+    background-image: 
+      radial-gradient(rgba(25, 188, 232, 0.14) 1px, transparent 1px),
+      radial-gradient(at 80% 20%, rgba(8, 120, 232, 0.20) 0px, transparent 55%),
+      radial-gradient(at 20% 80%, rgba(255, 122, 0, 0.08) 0px, transparent 50%);
+    background-size: 28px 28px, 100% 100%, 100% 100%;
+  }
+
+  /* Cloudariss Ice-Blue Atmospheric Surface (NOT plain white!) */
+  .bg-atmosphere-ice {
+    background-color: #EDF3FA;
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(8, 120, 232, 0.10) 0px, transparent 50%),
+      radial-gradient(at 90% 80%, rgba(25, 188, 232, 0.10) 0px, transparent 50%),
+      linear-gradient(180deg, #F0F6FD 0%, #E5EFFB 100%);
+  }
+
+  /* Cloudariss Soft Atmospheric Blue Surface */
+  .bg-atmosphere-soft-blue {
+    background-color: #E8F1FC;
+    background-image: 
+      radial-gradient(at 50% 0%, rgba(8, 120, 232, 0.12) 0px, transparent 60%),
+      radial-gradient(at 100% 100%, rgba(25, 188, 232, 0.10) 0px, transparent 50%),
+      linear-gradient(180deg, #EDF5FF 0%, #E2EEFA 100%);
+  }
+
+  /* Elevated Glass/Card for Dark Backgrounds */
+  .card-dark-elevated {
+    background: rgba(8, 26, 75, 0.82);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(25, 188, 232, 0.25);
+    box-shadow: 0 12px 36px -10px rgba(2, 8, 24, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* Elevated Glass/Card for Ice-Blue Backgrounds */
+  .card-ice-elevated {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(8, 120, 232, 0.18);
+    box-shadow: 0 8px 24px -6px rgba(7, 27, 99, 0.08), 0 2px 6px -2px rgba(7, 27, 99, 0.04);
+  }
+
   /* Subtle card gradient */
   .bg-card-subtle {
     background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFE 100%);
@@ -52,7 +105,7 @@
 
   /* Text gradient for high-impact tech highlights */
   .text-gradient-tech {
-    background: linear-gradient(135deg, #071B63 0%, #0878E8 60%, #19BCE8 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #0878E8 50%, #19BCE8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -104,3 +157,40 @@
   animation-play-state: paused;
 }
 
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}

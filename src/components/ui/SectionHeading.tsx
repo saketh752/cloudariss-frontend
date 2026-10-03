@@ -14,7 +14,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   title,
   subtitle,
   align = 'center',
-  theme = 'light',
+  theme = 'dark',
   className = '',
 }) => {
   const alignStyles = {
@@ -29,9 +29,9 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     <div className={`flex flex-col max-w-3xl ${alignStyles[align]} ${className}`}>
       {eyebrow && (
         <span
-          className={`inline-block text-xs uppercase tracking-widest font-extrabold px-3 py-1 rounded-full mb-3 ${
+          className={`inline-block text-xs uppercase tracking-widest font-extrabold px-3.5 py-1.5 rounded-full mb-3 shadow-xs ${
             isDark
-              ? 'bg-brand-blue/20 text-brand-cyan border border-brand-cyan/30'
+              ? 'bg-[#071B63]/80 text-[#19BCE8] border border-[#19BCE8]/40'
               : 'bg-brand-surface-blue text-brand-blue border border-brand-blue/20'
           }`}
         >
@@ -40,7 +40,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       )}
 
       <h2
-        className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-4 ${
+        className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-4 font-heading ${
           isDark ? 'text-white' : 'text-brand-navy'
         }`}
       >
@@ -50,7 +50,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {subtitle && (
         <p
           className={`text-base sm:text-lg leading-relaxed ${
-            isDark ? 'text-slate-300' : 'text-slate-600'
+            isDark ? 'text-[#DCE5F2]' : 'text-slate-600'
           }`}
         >
           {subtitle}
@@ -59,4 +59,3 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     </div>
   );
 };
-

@@ -95,34 +95,34 @@ export const CrpcPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-                <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-                <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                   FLAGSHIP ENGINEERING TRACK
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-heading">
                 Cloud Ready Professional Curriculum{' '}
                 <span className="text-gradient-tech block mt-1">(CRPC)</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-[#E5EAF3] font-normal leading-relaxed max-w-2xl">
                 A structured 12-week career transformation journey spanning Python scripting, Data Science essentials, AWS Cloud architecture, Docker & Kubernetes containerization, and ServiceNow enterprise workflows.
               </p>
 
               {/* Badges strip */}
-              <div className="flex flex-wrap gap-3 text-xs font-bold text-brand-navy">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
-                  <Clock className="w-4 h-4 text-brand-blue" />
+              <div className="flex flex-wrap gap-3 text-xs font-bold text-white">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-[#19BCE8]/30 shadow-subtle">
+                  <Clock className="w-4 h-4 text-[#19BCE8]" />
                   <span>12 Weeks (3 Months)</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
-                  <BookOpen className="w-4 h-4 text-brand-blue" />
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-[#19BCE8]/30 shadow-subtle">
+                  <BookOpen className="w-4 h-4 text-[#19BCE8]" />
                   <span>6 Comprehensive Stages</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-brand-border shadow-subtle">
-                  <Laptop className="w-4 h-4 text-brand-blue" />
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#05143A]/90 border border-[#19BCE8]/30 shadow-subtle">
+                  <Laptop className="w-4 h-4 text-[#19BCE8]" />
                   <span>100% Online · Live Interactive</span>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export const CrpcPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openCurriculum('crpc')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-extrabold bg-brand-blue text-white hover:bg-brand-blue-hover shadow-subtle transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-extrabold bg-[#0878E8] text-white hover:bg-[#0768ca] shadow-subtle transition-all duration-200 cursor-pointer"
                 >
                   <FileText className="w-4 h-4" />
                   <span>View Curriculum (PDF)</span>
@@ -141,16 +141,17 @@ export const CrpcPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleScrollToCurriculum}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:text-brand-navy hover:bg-slate-50 border border-brand-border transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#071B63] text-white hover:bg-[#0A2578] border border-[#19BCE8]/40 transition-colors cursor-pointer"
                 >
                   <span>Interactive Pathway</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#19BCE8]" />
                 </button>
 
                 <Button
                   to="/contact"
                   variant="outline"
                   size="md"
+                  className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
                 >
                   Enroll Now
                 </Button>
@@ -225,7 +226,7 @@ export const CrpcPage: React.FC = () => {
           <button
             type="button"
             onClick={() => openCurriculum('crpc')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-surface-blue text-brand-blue text-xs font-bold hover:bg-brand-blue hover:text-white border border-brand-blue/30 transition-colors shrink-0 cursor-pointer self-start md:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#071B63]/90 text-[#19BCE8] text-xs font-bold hover:bg-[#19BCE8] hover:text-brand-navy border border-[#19BCE8]/40 transition-colors shrink-0 cursor-pointer self-start md:self-auto"
           >
             <Download className="w-4 h-4" />
             <span>Download 3-Month PDF Schedule</span>

@@ -23,7 +23,7 @@ interface TechMarqueeRibbonProps {
 }
 
 export const TechMarqueeRibbon: React.FC<TechMarqueeRibbonProps> = ({
-  variant = 'subtle',
+  variant = 'dark',
   speed = 40,
 }) => {
   const techItems = [
@@ -47,9 +47,9 @@ export const TechMarqueeRibbon: React.FC<TechMarqueeRibbonProps> = ({
 
   return (
     <div
-      className={`py-3.5 border-y transition-colors ${
+      className={`py-3.5 border-y transition-colors relative z-10 ${
         isDark
-          ? 'bg-brand-dark-section border-white/10 text-white'
+          ? 'bg-[#040E2D] border-[#19BCE8]/20 text-white shadow-lg'
           : 'bg-white/80 backdrop-blur-sm border-brand-border/70 text-brand-navy'
       }`}
     >
@@ -57,9 +57,9 @@ export const TechMarqueeRibbon: React.FC<TechMarqueeRibbonProps> = ({
         {techItems.map((item, idx) => (
           <div
             key={idx}
-            className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-transform hover:scale-105 ${
+            className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all hover:scale-105 ${
               isDark
-                ? 'bg-white/5 border border-white/10 text-slate-200 hover:text-white'
+                ? 'bg-[#071B63]/70 border border-[#19BCE8]/25 text-slate-100 hover:text-white hover:border-[#19BCE8]/60 shadow-xs'
                 : 'bg-brand-surface-blue/50 border border-brand-border/60 text-brand-navy hover:text-brand-blue'
             }`}
           >
@@ -87,18 +87,17 @@ export const DomainTickerRibbon: React.FC<{ speed?: number }> = ({ speed = 45 })
   ];
 
   return (
-    <div className="py-2.5 bg-brand-surface-blue/60 border-y border-brand-border/60 overflow-hidden">
-      <Marquee speed={speed} direction="right" fadeEdges>
+    <div className="py-3 bg-[#051338] border-y border-[#19BCE8]/20 overflow-hidden relative z-10">
+      <Marquee speed={speed} direction="right" fadeEdges={false}>
         {domains.map((item, idx) => (
           <div key={idx} className="flex items-center gap-6 sm:gap-10 shrink-0">
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-500 font-heading">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#19BCE8] font-heading">
               {item}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue/50 shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] shrink-0 shadow-[0_0_8px_rgba(255,122,0,0.8)]" />
           </div>
         ))}
       </Marquee>
     </div>
   );
 };
-

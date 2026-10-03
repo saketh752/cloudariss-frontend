@@ -325,4 +325,3 @@ export const CrpcHeroCard: React.FC<CrpcHeroCardProps> = ({
     </div>
   );
 };
-

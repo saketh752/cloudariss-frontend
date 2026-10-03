@@ -185,19 +185,19 @@ export const WhyCloudarissPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30 shadow-subtle">
-                <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-                <span className="text-xs font-extrabold tracking-widest text-brand-navy uppercase font-heading">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
+                <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
                   WHY CLOUDARISS
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy tracking-tight leading-[1.15] font-heading">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
                 Technology Skills That{' '}
                 <span className="text-gradient-tech">Move Beyond Theory.</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl text-[#E5EAF3] font-normal max-w-2xl leading-relaxed">
                 Build practical knowledge through structured learning, hands-on projects, modern technologies, and career-focused preparation designed for real software engineering and analytics workflows.
               </p>
 
@@ -214,6 +214,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   to="/contact"
                   variant="outline"
                   size="lg"
+                  className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
                 >
                   Talk to Us
                 </Button>
@@ -453,7 +454,7 @@ export const WhyCloudarissPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. ENTERPRISE TOOLS TAUGHT HANDS-ON */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <SectionHeading
           eyebrow="Technology Coverage"
           title="Enterprise Tools Taught Hands-On"
@@ -505,9 +506,6 @@ export const WhyCloudarissPage: React.FC = () => {
               padding="md"
               className="border border-brand-border/80 space-y-3"
             >
-              <h3 className="text-sm font-extrabold text-brand-navy border-b border-brand-border/60 pb-2">
-                {cat.title}
-              </h3>
               <div className="flex items-center justify-between border-b border-brand-border/60 pb-2">
                 <h3 className="text-sm font-extrabold text-brand-navy">
                   {cat.title}

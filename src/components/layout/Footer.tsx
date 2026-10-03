@@ -10,11 +10,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="inline-block bg-white/95 p-2 rounded-lg">
+            <Link to="/" className="inline-block focus:outline-none">
               <img
                 src="/brand/cloudariss-logo.png"
                 alt="Cloudariss Technologies"
-                className="h-9 w-auto object-contain"
+                className="h-10 w-auto object-contain brightness-0 invert"
               />
             </Link>
 

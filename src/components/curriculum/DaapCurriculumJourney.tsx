@@ -381,4 +381,3 @@ export const DaapCurriculumJourney: React.FC = () => {
     </div>
   );
 };
-

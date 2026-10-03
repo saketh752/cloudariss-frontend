@@ -13,10 +13,10 @@ export const NotFoundPage: React.FC = () => {
         <span className="text-xs font-mono font-extrabold uppercase tracking-widest text-brand-orange">
           404 Error
         </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-brand-navy tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight font-heading">
           Page Not Found
         </h1>
-        <p className="text-base text-slate-600 max-w-md mx-auto leading-relaxed pt-1">
+        <p className="text-base text-[#E5EAF3] max-w-md mx-auto leading-relaxed pt-1">
           The page you are looking for doesn't exist, has been moved, or the link may be outdated.
         </p>
       </div>
@@ -34,4 +34,3 @@ export const NotFoundPage: React.FC = () => {
     </div>
   );
 };
-

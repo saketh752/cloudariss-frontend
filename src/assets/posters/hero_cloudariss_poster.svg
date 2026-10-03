@@ -1,0 +1,47 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <!-- Background navy gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06143D" />
+      <stop offset="100%" stop-color="#06143D" />
+    </linearGradient>
+    <!-- Soft electric blue glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bgGrad)" />
+
+  <!-- Abstract circuitry overlay (simplified) -->
+  <g opacity="0.15" fill="none" stroke="#19BCE8" stroke-width="1">
+    <line x1="200" y1="100" x2="1720" y2="100" />
+    <line x1="200" y1="200" x2="1720" y2="200" />
+    <line x1="200" y1="300" x2="1720" y2="300" />
+    <line x1="200" y1="400" x2="1720" y2="400" />
+    <line x1="200" y1="500" x2="1720" y2="500" />
+    <line x1="200" y1="600" x2="1720" y2="600" />
+    <line x1="200" y1="700" x2="1720" y2="700" />
+    <line x1="200" y1="800" x2="1720" y2="800" />
+    <line x1="200" y1="900" x2="1720" y2="900" />
+  </g>
+
+  <!-- Left side gradient scrim for legibility -->
+  <rect x="0" y="0" width="960" height="1080" fill="rgba(6,20,61,0.6)" />
+
+  <!-- Cloudariss logo (center top) -->
+  <image href="/brand/cloudariss-logo.png" x="720" y="40" width="480" height="120" preserveAspectRatio="xMidYMid meet" />
+
+  <!-- Headline text -->
+  <text x="100" y="360" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="900" fill="#FFFFFF" filter="url(#glow)">Learn. Build.</text>
+  <text x="100" y="480" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="900" fill="#19BCE8" filter="url(#glow)">Get Hired.</text>
+
+  <!-- Caption -->
+  <text x="100" y="560" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="#FFFFFF" letter-spacing="2">CAREER ACCELERATORS</text>
+
+  <!-- Optional faint city skyline (simplified silhouette) -->
+  <path d="M0,1080 L0,800 L200,700 L400,720 L600,680 L800,730 L1000,690 L1200,750 L1400,710 L1600,770 L1800,720 L1920,760 L1920,1080 Z" fill="#0A1A3E" opacity="0.7" />
+</svg>

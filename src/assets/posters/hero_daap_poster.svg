@@ -1,0 +1,17 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <image href="/brand/hero/hero-daap-data.jpg" x="0" y="0" width="1920" height="1080" preserveAspectRatio="xMidYMid slice" />
+  <rect x="0" y="0" width="960" height="1080" fill="rgba(6,20,61,0.6)" />
+  <image href="/brand/cloudariss-logo.png" x="720" y="40" width="480" height="120" preserveAspectRatio="xMidYMid meet" />
+  <text x="100" y="360" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="900" fill="#FFFFFF" filter="url(#glow)">DAAP</text>
+  <text x="100" y="480" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="900" fill="#F59E0B" filter="url(#glow)">DATA ANALYTICS & AI</text>
+  <text x="100" y="560" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="#FFFFFF" letter-spacing="2">ACCELERATOR PROGRAM</text>
+</svg>

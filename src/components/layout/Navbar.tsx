@@ -46,8 +46,8 @@ export const Navbar: React.FC = () => {
     <header
       className={`sticky top-0 z-40 transition-all duration-200 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5'
-          : 'bg-white/95 backdrop-blur-sm border-b border-slate-100 py-3'
+          ? 'bg-[#06143D]/95 backdrop-blur-md shadow-lg border-b border-[#19BCE8]/20 py-2.5'
+          : 'bg-[#06143D]/90 backdrop-blur-sm border-b border-[#19BCE8]/15 py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
             <img
               src="/brand/cloudariss-logo.png"
               alt="Cloudariss Technologies"
-              className="h-9 sm:h-9.5 w-auto object-contain transition-transform group-hover:scale-102"
+              className="h-9 sm:h-9.5 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-102"
             />
           </Link>
 
@@ -75,8 +75,8 @@ export const Navbar: React.FC = () => {
                   to={link.path}
                   className={`relative py-1.5 text-sm font-semibold transition-colors duration-150 ${
                     isCurrent
-                      ? 'text-brand-blue font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-brand-blue after:rounded-full'
-                      : 'text-slate-700 hover:text-brand-navy'
+                      ? 'text-[#19BCE8] font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#19BCE8] after:rounded-full'
+                      : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   {link.name}
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={handleOfferClick}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-orange-50 text-brand-orange border border-orange-200 hover:bg-orange-100/90 hover:border-brand-orange/40 text-xs xl:text-sm font-bold shadow-2xs transition-all cursor-pointer group"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-orange/15 text-brand-orange border border-brand-orange/40 hover:bg-brand-orange/25 text-xs xl:text-sm font-bold shadow-2xs transition-all cursor-pointer group"
               title="Special Festive Admissions Campaign"
             >
               <Sparkles className="w-4 h-4 text-brand-orange animate-pulse" />
@@ -102,7 +102,7 @@ export const Navbar: React.FC = () => {
             {/* Get Started Clean Blue CTA */}
             <Link
               to="/courses"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-blue hover:bg-blue-600 text-white text-xs xl:text-sm font-bold shadow-sm hover:shadow transition-all group"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0878E8] hover:bg-[#0768ca] text-white text-xs xl:text-sm font-bold shadow-sm hover:shadow transition-all group"
             >
               <span>Get Started</span>
               <ArrowRight className="w-3.5 h-3.5 text-white transition-transform group-hover:translate-x-0.5" />
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={handleOfferClick}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-orange-50 border border-orange-200 text-brand-orange text-xs font-bold"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-brand-orange/15 border border-brand-orange/40 text-brand-orange text-xs font-bold"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Offer</span>
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-brand-navy hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#071B63] focus:outline-none focus:ring-2 focus:ring-[#19BCE8]"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer / Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-white border-b border-brand-border shadow-xl px-4 py-5 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden fixed inset-x-0 top-full bg-[#06143D] border-b border-[#19BCE8]/20 shadow-2xl px-4 py-5 animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1.5">
             {navLinks.map((link) => {
               const isCurrent =
@@ -148,8 +148,8 @@ export const Navbar: React.FC = () => {
                   to={link.path}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base font-semibold ${
                     isCurrent
-                      ? 'text-brand-blue bg-brand-surface-blue font-bold'
-                      : 'text-slate-700 hover:bg-slate-50'
+                      ? 'text-[#19BCE8] bg-[#071B63] font-bold'
+                      : 'text-slate-300 hover:bg-[#071B63]/60 hover:text-white'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -162,15 +162,15 @@ export const Navbar: React.FC = () => {
             <NavLink
               to="/verify-certificate"
               className={({ isActive }) =>
-                `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base font-semibold border-t border-brand-border/60 mt-1 pt-3 ${
+                `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base font-semibold border-t border-[#19BCE8]/20 mt-1 pt-3 ${
                   isActive
-                    ? 'text-brand-blue bg-brand-surface-blue font-bold'
-                    : 'text-slate-700 hover:bg-slate-50'
+                    ? 'text-[#19BCE8] bg-[#071B63] font-bold'
+                    : 'text-slate-300 hover:bg-[#071B63]/60 hover:text-white'
                 }`
               }
             >
               <span className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-brand-blue" />
+                <ShieldCheck className="w-5 h-5 text-[#19BCE8]" />
                 <span>Verify Certificate</span>
               </span>
               <ChevronRight className="w-4 h-4 text-slate-400" />
@@ -184,7 +184,7 @@ export const Navbar: React.FC = () => {
                   setMobileMenuOpen(false);
                   handleOfferClick();
                 }}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-orange-50 border border-brand-orange/40 text-brand-orange font-bold text-sm hover:bg-orange-100"
+                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-brand-orange/15 border border-brand-orange/40 text-brand-orange font-bold text-sm hover:bg-brand-orange/25"
               >
                 <Sparkles className="w-4 h-4 text-brand-orange" />
                 <span>Vinayaka Chavithi Special Offer (₹17,000)</span>
@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/courses"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-brand-blue text-white font-bold text-sm shadow-md hover:bg-blue-600"
+                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-[#0878E8] text-white font-bold text-sm shadow-md hover:bg-blue-600"
               >
                 <span>Get Started — Explore Programs</span>
                 <ArrowRight className="w-4 h-4" />
@@ -201,14 +201,14 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Quick Contact & Socials in Mobile Menu */}
-            <div className="pt-4 mt-2 border-t border-brand-border/60 space-y-2.5">
+            <div className="pt-4 mt-2 border-t border-[#19BCE8]/20 space-y-2.5">
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Official Channels
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <a
                   href={BRAND_DATA.phone1Tel}
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-slate-50 border border-brand-border text-brand-navy font-semibold hover:text-brand-blue"
+                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-[#071B63] border border-[#19BCE8]/20 text-slate-200 font-semibold hover:text-[#19BCE8]"
                   aria-label={`Call ${BRAND_DATA.phone1}`}
                 >
                   <Phone className="w-3.5 h-3.5 text-brand-blue" />
