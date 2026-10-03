@@ -22,24 +22,21 @@ import { TechMarqueeRibbon, DomainTickerRibbon } from '@/components/ui/TechMarqu
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="space-y-20 lg:space-y-28 pb-20">
+    <div className="pb-6">
       {/* ========================================================================= */}
-      {/* 1. FULL-BLEED 5-SLIDE VISUAL STORYTELLING HERO CAROUSEL                   */}
-      {/*    The carousel IS the entire hero section — full width, bold typography  */}
+      {/* 1. SEAMLESS HERO CAROUSEL + TECHNOLOGY MARQUEE (NO SPLIT GAP)             */}
       {/* ========================================================================= */}
-      <section className="w-full">
+      <section className="w-full relative">
         <HeroStoryCarousel />
+        <TechMarqueeRibbon />
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. CONTINUOUS TECHNOLOGY SCROLLING MARQUEE                                */}
-      {/* ========================================================================= */}
-      <TechMarqueeRibbon />
-
-      {/* ========================================================================= */}
-      {/* 3. VINAYAKA CHAVITHI SPECIAL OFFER CARD                                   */}
-      {/* ========================================================================= */}
-      <VinayakaOfferCard />
+      {/* Main Content Flow with Balanced Vertical Cadence */}
+      <div className="space-y-14 lg:space-y-20 mt-6 sm:mt-8 lg:mt-10">
+        {/* ========================================================================= */}
+        {/* 2. VINAYAKA CHAVITHI SPECIAL OFFER CARD                                   */}
+        {/* ========================================================================= */}
+        <VinayakaOfferCard />
 
       {/* ========================================================================= */}
       {/* 4. THE INTERACTIVE TECHNOLOGY UNIVERSE (TOOLKIT-INSPIRED)                 */}
@@ -191,6 +188,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
+      {/* 12. CONNECT & ADMISSIONS DASHBOARD                                        */}
+      {/* ========================================================================= */}
+            {/* ========================================================================= */}
       {/* 12. FINAL CTA SECTION                                                     */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -233,6 +233,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };

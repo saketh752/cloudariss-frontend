@@ -118,9 +118,9 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
               href={BRAND_DATA.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold shadow transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366]/25 hover:bg-[#25D366]/35 border border-[#25D366]/60 text-white text-xs sm:text-sm font-semibold backdrop-blur-md shadow-sm transition-all group cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />
               <span>WhatsApp Admissions</span>
             </a>
             <Link

@@ -45,3 +45,11 @@ vite.config.d.ts
 
 # Reference uploads
 public/brand/reference/
+
+# Root test artifacts and scratch files
+/*.png
+/*.jpg
+/*.mjs
+/*.txt
+/scripts/
+scratch_*

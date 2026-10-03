@@ -55,10 +55,12 @@ export const TechBadge: React.FC<{ name: string; className?: string }> = ({
 
   return (
     <div
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-medium text-white shadow-sm backdrop-blur-sm ${className}`}
+      className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-xl bg-white/15 hover:bg-white/20 border border-white/25 text-xs font-extrabold text-white shadow-md backdrop-blur-md transition-all ${className}`}
     >
-      <TechBrandLogo techId={techId} className="w-3.5 h-3.5" />
-      <span>{name}</span>
+      <div className="w-5 h-5 rounded-md bg-white/95 border border-white/80 p-0.5 flex items-center justify-center shrink-0 shadow-xs">
+        <TechBrandLogo techId={techId} className={techId === 'jenkins' ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
+      </div>
+      <span className="tracking-wide text-white drop-shadow-xs">{name}</span>
     </div>
   );
 };

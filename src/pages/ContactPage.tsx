@@ -80,9 +80,9 @@ export const ContactPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Button
                 href={BRAND_DATA.whatsappUrl}
-                variant="primary"
+                variant="whatsapp"
                 size="lg"
-                leftIcon={<MessageCircle className="w-5 h-5" />}
+                leftIcon={<MessageCircle className="w-5 h-5 text-[#25D366] transition-transform group-hover:scale-110" />}
               >
                 WhatsApp Us
               </Button>
@@ -274,9 +274,9 @@ export const ContactPage: React.FC = () => {
                     <div className="pt-2 flex flex-col sm:flex-row gap-2">
                       <Button
                         href={BRAND_DATA.whatsappUrl}
-                        variant="primary"
+                        variant="whatsapp"
                         size="sm"
-                        leftIcon={<MessageCircle className="w-4 h-4" />}
+                        leftIcon={<MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />}
                       >
                         Chat on WhatsApp
                       </Button>

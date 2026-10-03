@@ -52,13 +52,15 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
-          {/* LEFT: Logo */}
+          {/* LEFT: Logo with high-contrast readable glass plate */}
           <Link to="/" className="flex items-center gap-3 shrink-0 focus:outline-none group">
-            <img
-              src="/brand/cloudariss-logo.png"
-              alt="Cloudariss Technologies"
-              className="h-9 sm:h-9.5 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-102"
-            />
+            <div className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/80 shadow-md group-hover:bg-white group-hover:scale-102 transition-all flex items-center">
+              <img
+                src="/brand/cloudariss-logo.png"
+                alt="Cloudariss Technologies"
+                className="h-7 sm:h-7.5 w-auto object-contain"
+              />
+            </div>
           </Link>
 
           {/* CENTER: Desktop Navigation Links */}
@@ -218,10 +220,10 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-emerald-50/60 border border-emerald-200 text-emerald-700 font-semibold hover:bg-emerald-100"
+                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-white font-semibold text-xs transition-all group"
                   aria-label={`WhatsApp ${BRAND_DATA.whatsappPhone}`}
                 >
-                  <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366] transition-transform group-hover:scale-110" />
                   <span>WhatsApp</span>
                 </a>
               </div>

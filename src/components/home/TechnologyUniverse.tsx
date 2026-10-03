@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   Sparkles,
   Check,
-  BookOpen,
+  BookOpen, MessageCircle,
   ArrowRight,
 } from 'lucide-react';
 import {
@@ -32,7 +32,6 @@ import {
   BackendLogo,
   DbmsLogo,
   OopsLogo,
-  WhatsAppLogo,
 } from '@/components/icons/TechLogos';
 import { TechVisualArtwork } from '@/components/home/TechVisualArtwork';
 import { openWhatsApp, getCourseEnquiryMessage } from '@/utils/whatsapp';
@@ -47,11 +46,11 @@ const renderTechLogo = (id: string, className = 'w-7 h-7') => {
     case 'kubernetes':
       return <KubernetesLogo className={className} />;
     case 'jenkins':
-      return <JenkinsLogo className={className} />;
+      return <JenkinsLogo className={`${className} scale-125 object-contain`} />;
     case 'terraform':
       return <TerraformLogo className={className} />;
     case 'linux':
-      return <LinuxLogo className={className} />;
+      return <LinuxLogo className={`${className} scale-110 object-contain`} />;
     case 'python':
       return <PythonLogo className={className} />;
     case 'java':
@@ -212,17 +211,17 @@ export const TechnologyUniverse: React.FC = () => {
                     <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#00F5A0] shadow-[0_0_8px_#00F5A0]" />
                   )}
 
-                  {/* Original Logo Container */}
+                  {/* High-Contrast White Logo Tile for Every Technology */}
                   <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center mb-1.5 transition-colors ${
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-2 transition-all p-2 ${
                       isSelected
-                        ? 'bg-white/15 text-white'
+                        ? 'bg-white shadow-[0_0_15px_rgba(255,255,255,0.95)] scale-105'
                         : isConnected
-                        ? 'bg-white text-[#0878E8] shadow-sm'
-                        : 'bg-[#040E2A]/80 text-[#DCE5F2]'
+                        ? 'bg-white/95 shadow-md border border-white/90'
+                        : 'bg-white/95 shadow-sm border border-white/80'
                     }`}
                   >
-                    {renderTechLogo(tech.id, 'w-6 h-6')}
+                    {renderTechLogo(tech.id, tech.id === 'jenkins' ? 'w-8 h-8' : 'w-7 h-7')}
                   </div>
 
                   {/* Technology Name */}
@@ -349,7 +348,7 @@ export const TechnologyUniverse: React.FC = () => {
                         onClick={() => setSelectedTechId(connId)}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#05143A] hover:bg-[#0A2578] border border-[#19BCE8]/30 text-white transition-all cursor-pointer shadow-xs hover:border-[#19BCE8]"
                       >
-                        {renderTechLogo(connId, 'w-3.5 h-3.5')}
+                        <span className="w-5 h-5 rounded bg-white p-0.5 flex items-center justify-center shrink-0 shadow-xs">{renderTechLogo(connId, connId === 'jenkins' ? 'w-4 h-4' : 'w-3.5 h-3.5')}</span>
                         <span>{connItem.gridName}</span>
                       </button>
                     );
@@ -373,9 +372,9 @@ export const TechnologyUniverse: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openWhatsApp(getCourseEnquiryMessage(selectedTech.name))}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#0B3B2B] hover:bg-[#128C7E] text-white font-extrabold text-sm border border-[#25D366]/50 shadow-lg shadow-emerald-900/30 transition-all cursor-pointer shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366]/25 hover:bg-[#25D366]/35 border border-[#25D366]/60 text-white font-semibold text-sm backdrop-blur-md shadow-sm transition-all group cursor-pointer shrink-0"
                 >
-                  <WhatsAppLogo className="w-5 h-5 text-[#25D366]" />
+                  <MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />
                   <span>Ask on WhatsApp</span>
                 </button>
               </div>

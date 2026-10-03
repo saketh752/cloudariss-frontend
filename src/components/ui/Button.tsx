@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'dark' | 'cyan';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'dark' | 'cyan' | 'whatsapp';
   size?: 'sm' | 'md' | 'lg';
   to?: string;
   href?: string;
@@ -44,6 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
     outline: 'bg-white hover:bg-brand-surface-blue text-brand-navy border border-brand-border hover:border-brand-blue focus:ring-brand-blue',
     ghost: 'bg-transparent hover:bg-brand-surface-blue text-brand-navy hover:text-brand-blue focus:ring-brand-blue',
     dark: 'bg-brand-dark-surface hover:bg-brand-dark-section text-white border border-brand-blue/30 hover:border-brand-cyan/60 focus:ring-brand-cyan',
+    whatsapp: 'bg-[#25D366]/25 hover:bg-[#25D366]/35 text-white font-semibold border border-[#25D366]/60 backdrop-blur-md shadow-sm hover:shadow-[0_0_20px_rgba(37,211,102,0.35)] focus:ring-[#25D366] group transition-all duration-300',
   };
 
   const widthStyle = fullWidth ? 'w-full' : '';

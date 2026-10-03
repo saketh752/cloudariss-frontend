@@ -24,7 +24,7 @@ export const CrpcBanner16x9: React.FC = () => {
             <img
               src="/brand/cloudariss-logo.png"
               alt="Cloudariss"
-              className="h-4.5 sm:h-5 w-auto object-contain brightness-0 invert"
+              className="h-4.5 sm:h-5 w-auto object-contain drop-shadow-sm"
             />
             <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#19BCE8] font-bold uppercase">
               CLOUD &amp; DATA
@@ -115,7 +115,7 @@ export const DaapBanner16x9: React.FC = () => {
             <img
               src="/brand/cloudariss-logo.png"
               alt="Cloudariss"
-              className="h-4.5 sm:h-5 w-auto object-contain brightness-0 invert"
+              className="h-4.5 sm:h-5 w-auto object-contain drop-shadow-sm"
             />
             <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-cyan-300 font-bold uppercase">
               AI &amp; ANALYTICS
@@ -224,7 +224,7 @@ export const OfferBanner16x9: React.FC = () => {
             <img
               src="/brand/cloudariss-logo.png"
               alt="Cloudariss"
-              className="h-4.5 sm:h-5 w-auto object-contain brightness-0 invert"
+              className="h-4.5 sm:h-5 w-auto object-contain drop-shadow-sm"
             />
             <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-brand-orange font-bold uppercase">
               FESTIVE SPECIAL

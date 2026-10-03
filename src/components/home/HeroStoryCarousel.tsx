@@ -205,9 +205,6 @@ export const HeroStoryCarousel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Wheel scroll throttling to allow smooth scroll navigation
-  const isWheelThrottled = useRef(false);
-
   // Mouse & Touch Drag tracking
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState<number | null>(null);
@@ -257,24 +254,6 @@ export const HeroStoryCarousel: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  // Mouse Wheel Scroll Navigation
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (isWheelThrottled.current) return;
-
-    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    if (Math.abs(delta) > 25) {
-      if (delta > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-      isWheelThrottled.current = true;
-      setTimeout(() => {
-        isWheelThrottled.current = false;
-      }, 550);
-    }
-  };
-
   // Mouse drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -316,14 +295,13 @@ export const HeroStoryCarousel: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      onWheel={handleWheel}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full min-h-[720px] lg:h-[92vh] lg:max-h-[980px] bg-[#020b18] overflow-hidden select-none cursor-grab active:cursor-grabbing flex flex-col justify-between"
+      className="relative w-full min-h-[720px] lg:h-[92vh] lg:max-h-[980px] bg-[#020817] overflow-hidden select-none cursor-grab active:cursor-grabbing flex flex-col justify-between"
       role="region"
       aria-roledescription="carousel"
       aria-label="Cloudariss Technology Career Highlights"
@@ -342,8 +320,8 @@ export const HeroStoryCarousel: React.FC = () => {
           className="absolute inset-0 bg-cover bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-right-center"
         >
           {/* Natural cinematic lighting scrim: Smooth continuous gradient across the full width without any sharp cutoffs or dividing lines */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020b18] via-[#020b18]/70 via-40% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020b18] via-[#020b18]/75 via-50% to-transparent sm:hidden pointer-events-none" />
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/75 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/80 via-50% to-transparent sm:hidden pointer-events-none" />
 
           {/* Dynamic ambient color glow matching slide theme */}
           <div

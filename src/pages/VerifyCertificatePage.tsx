@@ -179,9 +179,9 @@ export const VerifyCertificatePage: React.FC = () => {
                       href={`https://wa.me/916302680457?text=${encodeURIComponent(
                         `Hello Cloudariss Team, I would like to verify Certificate ID: ${searchedId}`
                       )}`}
-                      variant="primary"
+                      variant="whatsapp"
                       size="sm"
-                      leftIcon={<MessageCircle className="w-4 h-4" />}
+                      leftIcon={<MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />}
                     >
                       Verify via WhatsApp
                     </Button>
