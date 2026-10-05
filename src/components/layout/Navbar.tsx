@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShieldCheck, ChevronRight, Phone, MessageCircle, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { BRAND_DATA } from '@/data/brandData';
+import { WhatsAppContactModal } from '@/components/contact/WhatsAppContactModal';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const location = useLocation();
 
   // Close mobile menu on route change
@@ -72,17 +74,16 @@ export const Navbar: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#19BCE8]" />
               <span>Verify Certificate</span>
             </Link>
-            <a
-              href={BRAND_DATA.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 xl:px-5 py-2 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0668CB] hover:from-[#0984FC] hover:to-[#0878E8] text-white text-xs xl:text-sm font-bold shadow-[0_2px_12px_rgba(8,120,232,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_4px_18px_rgba(25,188,232,0.5)] border border-[#19BCE8]/40 transition-all duration-200 group active:scale-[0.98]"
-              title="Chat with Admissions on WhatsApp"
+            <button
+              type="button"
+              onClick={() => setContactModalOpen(true)}
+              className="inline-flex items-center gap-2 px-4 xl:px-5 py-2 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0668CB] hover:from-[#0984FC] hover:to-[#0878E8] text-white text-xs xl:text-sm font-bold shadow-[0_2px_12px_rgba(8,120,232,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_4px_18px_rgba(25,188,232,0.5)] border border-[#19BCE8]/40 transition-all duration-200 group active:scale-[0.98] cursor-pointer"
+              title="Message Admissions on WhatsApp"
             >
               <MessageCircle className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#25D366] transition-transform duration-200 group-hover:scale-110" />
               <span>Contact</span>
               <ArrowRight className="w-3.5 h-3.5 text-white/80 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -146,17 +147,18 @@ export const Navbar: React.FC = () => {
 
             {/* Action buttons in Mobile Drawer */}
             <div className="pt-4 mt-2 space-y-2.5">
-              <a
-                href={BRAND_DATA.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110"
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setContactModalOpen(true);
+                }}
+                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>Contact Admissions on WhatsApp</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
 
             {/* Quick Contact & Socials in Mobile Menu */}
@@ -211,6 +213,12 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Interactive WhatsApp Contact & Message Modal */}
+      <WhatsAppContactModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
+      />
     </header>
   );
 };
