@@ -53,7 +53,7 @@ Grounded in **Visakhapatnam (Vizag)** with an enterprise-ready curriculum, Cloud
 
 ## 🗺️ Site Architecture & Routes
 
-Explore the 9 fully interactive pages and custom 404 fallback:
+Explore the 8 fully interactive pages and custom 404 fallback:
 
 | Route | Page | Purpose & Interactive Features |
 | :--- | :--- | :--- |
@@ -61,7 +61,6 @@ Explore the 9 fully interactive pages and custom 404 fallback:
 | [`/courses`](https://cloudariss-frontend.vercel.app/courses) | **Programs Overview** | Side-by-side comparative analysis of CRPC vs. DAAP, shared 5-stage progression |
 | [`/courses/crpc`](https://cloudariss-frontend.vercel.app/courses/crpc) | **CRPC Deep Dive** | 5 core tech pillars, 6-stage engineering roadmap, 4 enterprise projects, `#curriculum` scroll |
 | [`/courses/daap`](https://cloudariss-frontend.vercel.app/courses/daap) | **DAAP Deep Dive** | 6 data/AI building blocks, 6-stage sprint roadmap, 6 projects + Enterprise Capstone |
-| [`/offerings`](https://cloudariss-frontend.vercel.app/offerings) | **Offerings** | Ecosystem breakdown: Technical Learning, Hands-on Projects, Modern Stack, Career Prep |
 | [`/why-cloudariss`](https://cloudariss-frontend.vercel.app/why-cloudariss) | **Why Cloudariss** | 6 Core Differentiators, CRPC vs DAAP specialization matrix, Tech Stack breakdown |
 | [`/about`](https://cloudariss-frontend.vercel.app/about) | **About Us** | Vizag-grounded identity, 4 core organizational pillars, 7 specialized focus areas |
 | [`/contact`](https://cloudariss-frontend.vercel.app/contact) | **Contact & Inquiries** | Interactive inquiry form, verified phone numbers, direct WhatsApp, and social channels |

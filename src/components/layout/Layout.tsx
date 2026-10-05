@@ -24,10 +24,6 @@ const PAGE_METADATA: Record<string, { title: string; description: string }> = {
     title: 'DAAP — Data Analyst Accelerator Program | Cloudariss Technologies',
     description: '12-week data analytics program covering Excel, SQL, Python EDA, Power BI dashboards, Generative AI (RAG), and Agentic AI analytics.',
   },
-  '/offerings': {
-    title: 'What We Offer | Cloudariss Technologies',
-    description: 'Structured technical learning, hands-on projects, modern technology stack, and career preparation ecosystem.',
-  },
   '/why-cloudariss': {
     title: 'Why Cloudariss | Technology Skills That Move Beyond Theory',
     description: 'Practical learning philosophy, verifiable project artifacts, industry exposure, and compounding career preparation.',

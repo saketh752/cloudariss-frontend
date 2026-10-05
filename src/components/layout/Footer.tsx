@@ -62,11 +62,6 @@ export const Footer: React.FC = () => {
                 <div className="font-bold text-white uppercase tracking-wider font-mono text-[11px]">Explore</div>
                 <ul className="space-y-1.5">
                   <li>
-                    <Link to="/offerings" className="text-slate-300 hover:text-[#00D2FF] transition-colors">
-                      Offerings
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="/why-cloudariss" className="text-slate-300 hover:text-[#00D2FF] transition-colors">
                       Why Cloudariss
                     </Link>
@@ -74,6 +69,11 @@ export const Footer: React.FC = () => {
                   <li>
                     <Link to="/about" className="text-slate-300 hover:text-[#00D2FF] transition-colors">
                       About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="text-slate-300 hover:text-[#00D2FF] transition-colors">
+                      Contact Us
                     </Link>
                   </li>
                 </ul>

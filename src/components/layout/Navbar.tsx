@@ -15,7 +15,6 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
-    { name: 'Offerings', path: '/offerings' },
     { name: 'Why Us', path: '/why-cloudariss' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
