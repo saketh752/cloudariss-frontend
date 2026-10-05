@@ -3,7 +3,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShieldCheck, ChevronRight, Phone, MessageCircle, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { BRAND_DATA } from '@/data/brandData';
 
-export const Navbar: React.FC = () => {
+export const AppHeader: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
                   to={link.path}
                   className={`relative py-1.5 text-sm font-semibold transition-colors duration-150 ${
                     isCurrent
-                      ? 'text-[#19BCE8] font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#19BCE8] after:rounded-full after:shadow-[0_0_8px_rgba(255,255,255,0.4)]'
+                      ? 'text-[#19BCE8] font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#19BCE8] after:rounded-full after:shadow-[0_0_8px_rgba(25,188,232,0.8)]'
                       : 'text-slate-300 hover:text-white'
                   }`}
                 >
