@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Compass,
   Globe2,
+  Sparkles,
 } from 'lucide-react';
 import {
   openWhatsApp,
@@ -266,7 +267,7 @@ export const HeroStoryCarousel: React.FC = () => {
           className="absolute inset-0 bg-cover bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-right-center"
         >
           {/* Natural cinematic lighting scrim: Smooth continuous gradient across the full width */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/80 via-45% to-transparent pointer-events-none" />
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/85 via-50% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/85 via-55% to-transparent sm:hidden pointer-events-none" />
 
           {/* Dynamic ambient color glow matching slide theme */}
@@ -278,10 +279,10 @@ export const HeroStoryCarousel: React.FC = () => {
       </AnimatePresence>
 
       {/* Content Canvas (Real HTML/CSS Typography, Buttons, and Logos) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 flex flex-col justify-center py-8 sm:py-10 lg:py-12 pointer-events-none flex-1">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 flex flex-col justify-center py-6 sm:py-8 lg:py-10 pointer-events-none flex-1">
         
-        {/* Hero Subject & Story Canvas */}
-        <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl pointer-events-auto py-2 sm:py-4">
+        {/* Hero Subject & Story Canvas - Expanded line length & balanced editorial framing */}
+        <div className="max-w-2xl lg:max-w-3xl pointer-events-auto py-2 sm:py-3">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.id}
@@ -289,8 +290,14 @@ export const HeroStoryCarousel: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="space-y-3.5 sm:space-y-4"
+              className="space-y-4 sm:space-y-4.5"
             >
+              {/* Eyebrow Pill Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#071B63]/80 border border-[#00D2FF]/40 text-[#00D2FF] text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />
+                <span>{currentSlide.badge}</span>
+              </div>
+
               {/* Slide 1: Cloudariss Official Brand Presentation */}
               {currentSlide.id === 'brand' ? (
                 <div className="space-y-2">
@@ -306,7 +313,7 @@ export const HeroStoryCarousel: React.FC = () => {
                 </div>
               ) : (
                 /* Slides 2-6: Technology Program Worlds */
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <div className="text-5xl sm:text-7xl lg:text-8xl font-black font-heading tracking-tight leading-[0.9] text-white drop-shadow-md">
                     {currentSlide.headline}
                   </div>
@@ -322,8 +329,8 @@ export const HeroStoryCarousel: React.FC = () => {
                 </div>
               )}
 
-              {/* Description */}
-              <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed font-normal max-w-lg">
+              {/* Description with readable, expanded horizontal line length */}
+              <p className="text-sm sm:text-base lg:text-lg text-slate-200/95 leading-relaxed font-normal max-w-2xl">
                 {currentSlide.description}
               </p>
 
@@ -335,7 +342,7 @@ export const HeroStoryCarousel: React.FC = () => {
                     return (
                       <div
                         key={feat.text}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md text-white shadow-sm"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md text-white shadow-sm"
                       >
                         <Icon className="w-4 h-4 text-[#19BCE8]" />
                         <span className="text-xs sm:text-sm font-semibold tracking-wide">
@@ -349,7 +356,7 @@ export const HeroStoryCarousel: React.FC = () => {
 
               {/* Technology Badges / SVG Logos */}
               {currentSlide.techTags.length > 0 && (
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-0.5">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
                   {currentSlide.techTags.map((tech) => (
                     <TechBadge key={tech} name={tech} />
                   ))}
