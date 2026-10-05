@@ -14,7 +14,6 @@ import { HeroStoryCarousel } from '@/components/home/HeroStoryCarousel';
 import { TechnologyUniverse } from '@/components/home/TechnologyUniverse';
 import { FlagshipProgramsShowcase } from '@/components/home/FlagshipProgramsShowcase';
 import { MoreTechnologiesToExplore } from '@/components/home/MoreTechnologiesToExplore';
-import { AnimatedLearningJourney } from '@/components/home/AnimatedLearningJourney';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { WhatWeOfferSection } from '@/components/home/WhatWeOfferSection';
 import { TechMarqueeRibbon, DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
@@ -59,15 +58,7 @@ export const HomePage: React.FC = () => {
       <DomainTickerRibbon />
 
       {/* ========================================================================= */}
-      {/* 7. METHODOLOGY: ANIMATED 5-PHASE LEARNING JOURNEY                         */}
-      {/*    LEARN → PRACTICE → BUILD → PREPARE → CAREER (Strictly Truthful)        */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedLearningJourney />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 8. WHAT WE OFFER — REFINED EDITORIAL PILLARS                              */}
+      {/* 7. WHAT WE OFFER — REFINED EDITORIAL PILLARS                              */}
       {/* ========================================================================= */}
       <WhatWeOfferSection />
 
