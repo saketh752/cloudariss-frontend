@@ -4,22 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   MessageCircle,
-  Sparkles,
-  Zap,
   Code2,
   CheckCircle2,
   Compass,
   Globe2,
-  GraduationCap,
-  FileCheck2,
-  Users2,
-  Briefcase,
-  Layers,
-  Server,
-  Database,
-  Terminal,
-  Activity,
-  Award,
 } from 'lucide-react';
 import {
   openWhatsApp,
@@ -28,11 +16,6 @@ import {
   getCourseEnquiryMessage,
 } from '@/utils/whatsapp';
 import { TechBadge } from './TechLogos';
-
-interface BottomPillar {
-  icon: React.FC<{ className?: string }>;
-  label: string;
-}
 
 interface HeroSlide {
   id: string;
@@ -50,7 +33,6 @@ interface HeroSlide {
   techTags: string[];
   accentColor: string;
   brandFeatures?: { icon: React.FC<{ className?: string }>; text: string }[];
-  bottomPillars: BottomPillar[];
 }
 
 const HERO_SLIDES: HeroSlide[] = [
@@ -76,12 +58,6 @@ const HERO_SLIDES: HeroSlide[] = [
       { icon: Compass, text: 'Expert Mentorship' },
       { icon: Globe2, text: 'Career Support' },
     ],
-    bottomPillars: [
-      { icon: GraduationCap, label: '500+ Students Trained' },
-      { icon: Activity, label: '80% Completion Rate' },
-      { icon: Users2, label: '15+ Industry Mentors' },
-      { icon: Briefcase, label: '100+ Placement Opportunities' },
-    ],
   },
   {
     id: 'crpc',
@@ -99,12 +75,6 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_crpc_v3.jpg?v=5',
     techTags: ['AWS', 'Docker', 'Kubernetes', 'Python', 'ServiceNow'],
     accentColor: '#19BCE8',
-    bottomPillars: [
-      { icon: Layers, label: 'Project-Based Learning' },
-      { icon: Users2, label: 'Industry Mentorship' },
-      { icon: Server, label: 'Hands-on Cloud Labs' },
-      { icon: Award, label: 'Placement Support' },
-    ],
   },
   {
     id: 'daap',
@@ -122,12 +92,6 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_daap_v3.jpg?v=5',
     techTags: ['Python', 'SQL', 'Power BI', 'Generative AI', 'Agentic AI'],
     accentColor: '#38BDF8',
-    bottomPillars: [
-      { icon: Layers, label: 'Project-Based Learning' },
-      { icon: Database, label: 'Real-world Datasets' },
-      { icon: Users2, label: 'Expert Mentorship' },
-      { icon: Award, label: 'Placement Support' },
-    ],
   },
   {
     id: 'python',
@@ -144,12 +108,6 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_python_v3.jpg?v=5',
     techTags: ['Core Python', 'Automation', 'Data Analysis', 'Web Development', 'AI & ML'],
     accentColor: '#F59E0B',
-    bottomPillars: [
-      { icon: Terminal, label: '100+ Hands-on Exercises' },
-      { icon: FileCheck2, label: 'Real-world Projects' },
-      { icon: Layers, label: 'Industry Use Cases' },
-      { icon: Users2, label: 'Expert Mentorship' },
-    ],
   },
   {
     id: 'java',
@@ -166,12 +124,6 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_java_v3.jpg?v=5',
     techTags: ['Core Java', 'OOP', 'Spring Boot', 'REST APIs', 'Databases'],
     accentColor: '#FF7A00',
-    bottomPillars: [
-      { icon: Layers, label: 'Project-Based Learning' },
-      { icon: Users2, label: 'Industry Mentorship' },
-      { icon: Briefcase, label: 'Resume Guidance' },
-      { icon: Award, label: 'Placement Support' },
-    ],
   },
   {
     id: 'devops',
@@ -188,12 +140,6 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_devops_v3.jpg?v=5',
     techTags: ['Docker', 'Kubernetes', 'Jenkins', 'AWS', 'Linux', 'Terraform'],
     accentColor: '#00C49F',
-    bottomPillars: [
-      { icon: Layers, label: 'Project-Based Learning' },
-      { icon: FileCheck2, label: 'Real-world Use Cases' },
-      { icon: Server, label: 'Industry Tools' },
-      { icon: Users2, label: 'Expert Mentorship' },
-    ],
   },
 ];
 
@@ -236,7 +182,7 @@ export const HeroStoryCarousel: React.FC = () => {
     goToSlide(currentIndex - 1, -1);
   }, [currentIndex, goToSlide]);
 
-  // Continuous uninterrupted autoplay (NO pause-on-hover)
+  // Continuous uninterrupted autoplay
   useEffect(() => {
     resetAutoplayTimer();
     return () => {
@@ -301,7 +247,7 @@ export const HeroStoryCarousel: React.FC = () => {
       onMouseLeave={handleMouseUp}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full min-h-[720px] lg:h-[92vh] lg:max-h-[980px] bg-[#020817] overflow-hidden select-none cursor-grab active:cursor-grabbing flex flex-col justify-between"
+      className="relative w-full flex-1 min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] bg-[#020817] overflow-hidden select-none cursor-grab active:cursor-grabbing flex flex-col justify-center"
       role="region"
       aria-roledescription="carousel"
       aria-label="Cloudariss Technology Career Highlights"
@@ -319,9 +265,9 @@ export const HeroStoryCarousel: React.FC = () => {
           }}
           className="absolute inset-0 bg-cover bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-right-center"
         >
-          {/* Natural cinematic lighting scrim: Smooth continuous gradient across the full width without any sharp cutoffs or dividing lines */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/75 via-40% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/80 via-50% to-transparent sm:hidden pointer-events-none" />
+          {/* Natural cinematic lighting scrim: Smooth continuous gradient across the full width */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/80 via-45% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/85 via-55% to-transparent sm:hidden pointer-events-none" />
 
           {/* Dynamic ambient color glow matching slide theme */}
           <div
@@ -331,50 +277,11 @@ export const HeroStoryCarousel: React.FC = () => {
         </motion.div>
       </AnimatePresence>
 
-
-
       {/* Content Canvas (Real HTML/CSS Typography, Buttons, and Logos) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full h-full px-4 sm:px-8 lg:px-12 flex flex-col justify-between py-6 sm:py-8 pointer-events-none flex-1">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 flex flex-col justify-center py-8 sm:py-10 lg:py-12 pointer-events-none flex-1">
         
-        {/* Top Header: Official Logo + Category Badges */}
-        <div className="pointer-events-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link to="/" className="inline-flex items-center gap-2 group">
-              <div className="flex items-center p-2 sm:p-2.5 rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-white/40 group-hover:scale-105 transition-transform">
-                <img
-                  src="/brand/cloudariss-logo.png"
-                  alt="Cloudariss Technologies"
-                  className="h-6 sm:h-8 w-auto object-contain"
-                />
-              </div>
-            </Link>
-
-            {/* Tagline / Subtitle Pill */}
-            {currentSlide.tagline && (
-              <span className="hidden md:inline-block text-[11px] font-mono font-bold tracking-widest text-slate-300 uppercase px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-                {currentSlide.tagline}
-              </span>
-            )}
-          </div>
-
-          {/* Category / Tier Badge */}
-          <div className="flex items-center gap-2">
-            {currentSlide.isFlagship ? (
-              <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/30 to-amber-600/30 backdrop-blur-md border border-amber-400/60 text-amber-300 shadow-md text-[11px] sm:text-xs font-bold font-mono tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-                <span>FLAGSHIP ACCELERATOR • ₹17,000</span>
-              </div>
-            ) : (
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm text-[11px] sm:text-xs font-bold font-mono tracking-wider">
-                <Zap className="w-3 h-3 text-[#19BCE8]" />
-                <span>{currentSlide.badge}</span>
-              </div>
-            )}
-          </div>
-        </div>
-
         {/* Hero Subject & Story Canvas */}
-        <div className="my-auto max-w-xl sm:max-w-2xl lg:max-w-2xl pointer-events-auto py-6 sm:py-8">
+        <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl pointer-events-auto py-2 sm:py-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.id}
@@ -473,28 +380,6 @@ export const HeroStoryCarousel: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Bottom Section: PROMINENT LARGE HIGHLIGHT CARDS (Buttons Removed As Requested) */}
-        <div className="pt-4 pb-2 pointer-events-auto w-full">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl w-full">
-            {currentSlide.bottomPillars.map((pillar) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.label}
-                  className="flex items-center gap-3 sm:gap-3.5 px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#06143D]/80 hover:bg-[#06143D]/95 border border-white/20 hover:border-[#19BCE8]/60 backdrop-blur-xl text-white shadow-xl transition-all transform hover:-translate-y-0.5 group"
-                >
-                  <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-white/10 group-hover:bg-[#19BCE8]/20 border border-white/10 group-hover:border-[#19BCE8]/40 transition-colors shrink-0">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#19BCE8] drop-shadow-[0_0_8px_rgba(25,188,232,0.4)]" />
-                  </div>
-                  <span className="text-xs sm:text-sm md:text-base font-bold text-white tracking-wide leading-tight">
-                    {pillar.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
       </div>
