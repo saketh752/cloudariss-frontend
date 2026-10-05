@@ -281,3 +281,43 @@ export const NetworksLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => 
     <path d="M12 7v5m0 0H6v4m6-4h6v4" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" />
   </svg>
 );
+
+// Cybersecurity Logo
+export const CybersecurityLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L4 5v6.5c0 5.25 3.4 10.15 8 11.5 4.6-1.35 8-6.25 8-11.5V5l-8-3z" fill="#F43F5E" fillOpacity="0.2" stroke="#F43F5E" strokeWidth="2" strokeLinejoin="round"/>
+    <path d="M9 11.5l2 2 4-4" stroke="#F43F5E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Prompt Engineering Logo
+export const PromptEngLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="3" width="20" height="15" rx="3" stroke="#D946EF" strokeWidth="2" fill="#D946EF" fillOpacity="0.15"/>
+    <path d="M6 8l4 3.5L6 15" stroke="#D946EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 15h6" stroke="#D946EF" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M7 18l-3 3v-3" fill="#D946EF"/>
+  </svg>
+);
+
+// Deep Learning Neural Logo
+export const DeepLearningLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="5" cy="6" r="2.5" fill="#818CF8" />
+    <circle cx="5" cy="18" r="2.5" fill="#818CF8" />
+    <circle cx="12" cy="12" r="3" fill="#6366F1" stroke="#C7D2FE" strokeWidth="1.5"/>
+    <circle cx="19" cy="6" r="2.5" fill="#A855F7" />
+    <circle cx="19" cy="18" r="2.5" fill="#A855F7" />
+    <path d="M7 7.5l3 3M7 16.5l3-3M14 10.5l3-3M14 13.5l3 3" stroke="#6366F1" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+// Full Stack Combined Logo
+export const FullStackLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => (
+  <div className={`relative flex items-center justify-center ${className}`}>
+    <img src="/logos/tech/frontend.svg" alt="React" className="w-5 h-5 -mr-1 object-contain drop-shadow" />
+    <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-[7px] font-black text-white shadow-xs">
+      FS
+    </div>
+  </div>
+);

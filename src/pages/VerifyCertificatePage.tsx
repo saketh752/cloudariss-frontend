@@ -9,7 +9,6 @@ import {
   Phone,
   RefreshCw,
 } from 'lucide-react';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { BRAND_DATA } from '@/data/brandData';
 
@@ -74,13 +73,13 @@ export const VerifyCertificatePage: React.FC = () => {
       {/* VERIFICATION FORM */}
       {/* ========================================================================= */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card variant="white" padding="lg" className="border border-brand-border shadow-card space-y-6">
-          <div className="border-b border-brand-border/60 pb-4">
-            <h2 className="text-xl font-bold text-brand-navy flex items-center gap-2">
-              <FileText className="w-5 h-5 text-brand-blue" />
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-10 space-y-6 text-white">
+          <div className="border-b border-white/10 pb-4">
+            <h2 className="text-xl font-bold text-white font-heading flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#19BCE8]" />
               <span>Certificate Credential Check</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-[#CBD5E1] mt-1">
               Enter the certificate ID exactly as shown on your certificate.
             </p>
           </div>
@@ -89,7 +88,7 @@ export const VerifyCertificatePage: React.FC = () => {
             <div>
               <label
                 htmlFor="certificate-id-input"
-                className="block text-xs font-bold uppercase text-slate-700 mb-1.5"
+                className="block text-xs font-bold uppercase text-slate-300 mb-1.5"
               >
                 Certificate ID *
               </label>
@@ -109,7 +108,7 @@ export const VerifyCertificatePage: React.FC = () => {
                     }}
                     placeholder="e.g. CLD-2024-XXXX"
                     aria-describedby="cert-helper"
-                    className="w-full pl-11 pr-4 py-3 rounded-lg border border-brand-border focus:ring-2 focus:ring-brand-blue focus:border-brand-blue text-sm outline-none font-mono uppercase placeholder:normal-case placeholder:font-sans bg-white transition-colors"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl border border-white/15 focus:ring-2 focus:ring-[#19BCE8] focus:border-[#19BCE8] text-sm outline-none font-mono uppercase placeholder:normal-case placeholder:font-sans bg-[#05143A]/90 text-white transition-colors"
                   />
                 </div>
 
@@ -138,39 +137,39 @@ export const VerifyCertificatePage: React.FC = () => {
 
           {/* V1 Neutral State (Integrity Maintained) */}
           {verificationState === 'searched' && (
-            <div className="pt-6 border-t border-brand-border space-y-4 animate-in fade-in duration-200">
-              <div className="p-5 rounded-xl bg-brand-surface-blue/80 border border-brand-blue/30 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-border/60 pb-3">
+            <div className="pt-6 border-t border-white/10 space-y-4 animate-in fade-in duration-200 text-white">
+              <div className="p-5 rounded-2xl bg-[#040C24]/90 border border-[#19BCE8]/30 space-y-4 shadow-xl">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-blue animate-pulse" />
-                    <span className="font-bold text-sm text-brand-navy">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#19BCE8] animate-pulse shadow-[0_0_8px_rgba(25,188,232,0.8)]" />
+                    <span className="font-bold text-sm text-white">
                       Verification Request Logged
                     </span>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-white text-slate-600 border border-brand-border">
-                    Frontend V1 Release
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-[#0878E8]/20 text-[#19BCE8] border border-[#19BCE8]/30">
+                    Official Registry Status
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-slate-300">
                     Query ID:{' '}
-                    <code className="font-mono font-extrabold text-brand-navy bg-white px-2.5 py-1 rounded border border-brand-border">
+                    <code className="font-mono font-extrabold text-[#19BCE8] bg-[#05143A] px-2.5 py-1 rounded-lg border border-[#19BCE8]/30">
                       {searchedId}
                     </code>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                     Automated certificate verification is currently being integrated. For immediate assistance verifying this certificate, contact the Cloudariss team with your certificate ID.
                   </p>
                 </div>
 
                 {/* Direct Verification Channels */}
-                <div className="p-4 bg-white rounded-lg border border-brand-border space-y-3">
-                  <div className="text-xs font-bold uppercase tracking-wider text-brand-navy">
+                <div className="p-4 bg-[#030E2B]/90 rounded-xl border border-white/10 space-y-3">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8]">
                     Immediate Manual Verification
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
                     Please provide this Certificate ID ({searchedId}) to our support desk via WhatsApp or phone call:
                   </p>
 
@@ -200,7 +199,7 @@ export const VerifyCertificatePage: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-brand-navy font-semibold transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white font-semibold transition-colors cursor-pointer"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
                     <span>Clear and verify another ID</span>
@@ -209,7 +208,7 @@ export const VerifyCertificatePage: React.FC = () => {
               </div>
             </div>
           )}
-        </Card>
+        </div>
       </section>
 
       {/* ========================================================================= */}
@@ -226,41 +225,41 @@ export const VerifyCertificatePage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
+          <div className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl space-y-2.5 text-white">
+            <div className="w-9 h-9 rounded-lg bg-[#0878E8]/20 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8]">
               <ShieldCheck className="w-4 h-4" />
             </div>
-            <h3 className="text-sm font-bold text-brand-navy">
+            <h3 className="text-sm font-bold text-white font-heading">
               Authenticity Confirmation
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
               Designed to help students, employers, and recruiters authenticate official certificates issued by Cloudariss Technologies.
             </p>
-          </Card>
+          </div>
 
-          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
+          <div className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl space-y-2.5 text-white">
+            <div className="w-9 h-9 rounded-lg bg-[#0878E8]/20 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8]">
               <FileText className="w-4 h-4" />
             </div>
-            <h3 className="text-sm font-bold text-brand-navy">
+            <h3 className="text-sm font-bold text-white font-heading">
               Unique Identification
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
               Each certificate is tagged with a distinct identification code printed on the document for traceability.
             </p>
-          </Card>
+          </div>
 
-          <Card variant="white" padding="md" className="border border-brand-border space-y-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-surface-blue flex items-center justify-center text-brand-blue">
+          <div className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl space-y-2.5 text-white">
+            <div className="w-9 h-9 rounded-lg bg-[#0878E8]/20 border border-[#19BCE8]/40 flex items-center justify-center text-[#19BCE8]">
               <CheckCircle2 className="w-4 h-4" />
             </div>
-            <h3 className="text-sm font-bold text-brand-navy">
+            <h3 className="text-sm font-bold text-white font-heading">
               Direct Verification Desk
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
               Organizations seeking formal background verification can connect directly with our admissions and records desk.
             </p>
-          </Card>
+          </div>
         </div>
       </section>
     </div>

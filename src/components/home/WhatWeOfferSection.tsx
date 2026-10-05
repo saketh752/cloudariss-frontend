@@ -171,13 +171,13 @@ export const WhatWeOfferSection: React.FC = () => {
           return (
             <div
               key={pillar.step}
-              className={`group relative rounded-2xl sm:rounded-3xl bg-[#071B63]/75 backdrop-blur-xl border border-[#19BCE8]/25 p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-6 overflow-hidden border-t-2 shadow-xl ${borderHoverStyles}`}
+              className={`group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#091E58]/88 via-[#061540]/88 to-[#030E2B]/88 backdrop-blur-xl border border-[#19BCE8]/30 p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-6 overflow-hidden border-t-2 shadow-xl ${borderHoverStyles}`}
             >
               {/* Top Row: Numbered Identifier + Icon + Badge */}
               <div className="flex items-start justify-between gap-4 relative z-10">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-xs ${iconContainerStyles}`}
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-300 shadow-xs ${iconContainerStyles}`}
                   >
                     {pillar.icon}
                   </div>

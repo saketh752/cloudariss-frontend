@@ -12,7 +12,6 @@ import {
   Bot,
   Sparkles,
   Building2,
-  CheckCircle2,
   Terminal,
   Layers,
   Check,
@@ -205,28 +204,37 @@ export const AboutPage: React.FC = () => {
           subtitle="A focused technology and education organization established to bridge the gap between academic theory and practical software engineering capability."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {whoWeArePillars.map((item, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-6 sm:p-7 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-4 group"
+              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-7 sm:p-8 hover:border-[#19BCE8]/50 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
             >
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
-                  {item.icon}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#0878E8]/5 rounded-bl-full pointer-events-none group-hover:bg-[#0878E8]/10 transition-colors" />
+
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/15 border border-[#19BCE8]/30 flex items-center justify-center text-[#19BCE8]">
+                    {item.icon}
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-[#19BCE8] bg-[#0878E8]/10 px-3 py-1 rounded-full border border-[#19BCE8]/25 tracking-wider uppercase">
+                    {item.tag}
+                  </span>
                 </div>
-                <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
-                  {item.tag}
-                </span>
+
+                <div>
+                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-[#CBD5E1] mt-2.5 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
-                  {item.desc}
-                </p>
+              <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>PILLAR 0{idx + 1}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#19BCE8]/40 group-hover:bg-[#19BCE8] transition-colors" />
               </div>
             </div>
           ))}
@@ -279,18 +287,18 @@ export const AboutPage: React.FC = () => {
             .map((area, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-3 flex flex-col justify-between group"
+                className="rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 hover:border-[#19BCE8]/50 transition-all duration-300 flex flex-col justify-between space-y-4 group"
               >
-                <div className="space-y-3">
+                <div className="space-y-3.5">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
+                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/15 flex items-center justify-center border border-[#19BCE8]/30 text-[#19BCE8]">
                       {area.icon}
                     </div>
                     <div className="p-1.5 rounded-lg bg-white/95 border border-white/80 shadow-xs">
                       {area.logo}
                     </div>
                   </div>
-                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
                     {area.name}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
@@ -299,7 +307,7 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-white/10">
-                  <span className="text-[11px] font-mono text-[#19BCE8] font-semibold">
+                  <span className="text-[11px] font-mono text-[#19BCE8] font-semibold block">
                     {area.tools}
                   </span>
                 </div>
@@ -584,28 +592,39 @@ export const AboutPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. CONTACT CTA */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-4 text-white">
-          <div className="w-14 h-14 rounded-2xl bg-[#0878E8] shadow-[0_0_20px_rgba(8,120,232,0.35)] flex items-center justify-center mx-auto text-white border border-[#19BCE8]/50">
-            <CheckCircle2 className="w-7 h-7" />
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl bg-gradient-to-b from-[#081F54]/80 via-[#061540]/85 to-[#030E2B]/90 backdrop-blur-xl border border-[#19BCE8]/30 p-8 sm:p-12 text-center overflow-hidden shadow-2xl space-y-5 text-white">
+          <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#0878E8]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#19BCE8]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/15 border border-[#19BCE8]/30 text-xs font-mono font-bold text-[#19BCE8] uppercase tracking-wider">
+            <span>Direct Admissions & Guidance</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-            Have Questions About Cloudariss?
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-heading tracking-tight">
+            Have Questions About Cloudariss Programs?
           </h3>
 
-          <p className="text-sm text-[#CBD5E1] max-w-xl mx-auto leading-relaxed font-normal">
-            Reach out to our team for course details, upcoming batch schedules, admissions guidance, or curriculum questions.
+          <p className="text-sm sm:text-base text-[#CBD5E1] max-w-xl mx-auto leading-relaxed font-normal">
+            Reach out to our engineering and admissions desk for detailed course structures, upcoming batch schedules, or curriculum guidance.
           </p>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Button
               to="/contact"
               variant="primary"
               size="lg"
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Talk to Us
+              Talk to Admissions
+            </Button>
+            <Button
+              to="/courses"
+              variant="dark"
+              size="lg"
+              className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
+            >
+              Explore All Programs
             </Button>
           </div>
         </div>

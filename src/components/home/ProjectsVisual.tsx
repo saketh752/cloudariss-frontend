@@ -158,7 +158,7 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
     <div className="space-y-8">
       {/* Program Selector Tabs */}
       <div className="flex justify-center">
-        <div className="inline-flex p-1.5 rounded-2xl bg-[#071B63]/80 border border-[#19BCE8]/30 shadow-xl">
+        <div className="inline-flex p-1.5 rounded-2xl bg-[#06143A]/90 backdrop-blur-md border border-[#19BCE8]/30 shadow-xl">
           <button
             onClick={() => setActiveTab('daap')}
             className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-heading transition-all duration-200 cursor-pointer ${
@@ -187,12 +187,12 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
         {projects.map((proj, idx) => (
           <div
             key={idx}
-            className={`group relative p-6 rounded-2xl bg-[#071B63]/85 backdrop-blur-xl border border-[#19BCE8]/25 hover:border-[#19BCE8]/60 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden text-white bg-gradient-to-b ${proj.gradient}`}
+            className={`group relative p-6 rounded-2xl bg-[#081F54]/88 backdrop-blur-xl border border-[#19BCE8]/30 hover:border-[#19BCE8]/60 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden text-white bg-gradient-to-b ${proj.gradient}`}
           >
             <div>
               {/* Tile Top: Badge & Icon */}
               <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-white/10 shadow-subtle border border-[#19BCE8]/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                <div className="w-11 h-11 rounded-xl bg-white/10 shadow-xs border border-[#19BCE8]/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                   {proj.icon}
                 </div>
                 <div className="flex items-center gap-1.5">

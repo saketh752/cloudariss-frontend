@@ -8,7 +8,6 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useCurriculumModal, CURRICULUM_DATA } from './CurriculumContext';
-import { Button } from '@/components/ui/Button';
 
 export const CurriculumModal: React.FC = () => {
   const { isOpen, activeProgram, closeCurriculum } = useCurriculumModal();
@@ -48,30 +47,30 @@ export const CurriculumModal: React.FC = () => {
       {/* Backdrop */}
       <div
         onClick={closeCurriculum}
-        className="fixed inset-0 bg-brand-navy/85 backdrop-blur-md transition-opacity animate-fadeIn"
+        className="fixed inset-0 bg-[#030A1F]/90 backdrop-blur-md transition-opacity animate-fadeIn"
       />
 
       {/* Modal Window */}
-      <div className="relative w-full max-w-6xl max-h-[96vh] bg-white rounded-2xl shadow-premium-lg border border-brand-border/80 flex flex-col z-10 overflow-hidden animate-scaleUp">
+      <div className="relative w-full max-w-6xl max-h-[96vh] bg-gradient-to-b from-[#081F54] via-[#061540] to-[#030E2B] rounded-2xl shadow-2xl border border-[#19BCE8]/40 flex flex-col z-10 overflow-hidden animate-scaleUp text-white">
         {/* Header Bar */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-brand-border/80 bg-gradient-to-r from-brand-surface-light via-white to-brand-surface-blue/20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-white/10 bg-[#040C24]/95">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue shrink-0 border border-brand-blue/20">
+            <div className="w-10 h-10 rounded-xl bg-[#0878E8]/20 flex items-center justify-center text-[#19BCE8] shrink-0 border border-[#19BCE8]/40">
               <FileText className="w-5 h-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-blue text-white uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-blue text-white uppercase tracking-wider shadow-xs">
                   {program.code}
                 </span>
-                <span className="text-xs font-semibold text-slate-500 flex items-center gap-1">
-                  <Shield className="w-3.5 h-3.5 text-brand-blue" />
+                <span className="text-xs font-semibold text-slate-300 flex items-center gap-1">
+                  <Shield className="w-3.5 h-3.5 text-[#19BCE8]" />
                   Official Curriculum Schedule
                 </span>
               </div>
               <h2
                 id="curriculum-modal-title"
-                className="text-base sm:text-lg font-bold text-brand-navy truncate mt-0.5 font-heading"
+                className="text-base sm:text-lg font-bold text-white truncate mt-0.5 font-heading"
               >
                 {program.name}
               </h2>
@@ -83,7 +82,7 @@ export const CurriculumModal: React.FC = () => {
             <a
               href={program.pdfUrl}
               download={program.fileName}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-brand-blue text-white hover:bg-brand-blue-hover shadow-subtle transition-all duration-200"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-blue text-white hover:bg-brand-blue-hover shadow-md transition-all duration-200"
             >
               <Download className="w-4 h-4" />
               <span>Download PDF</span>
@@ -93,7 +92,7 @@ export const CurriculumModal: React.FC = () => {
               href={program.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-200 bg-white/10 hover:bg-white/20 border border-white/10 transition-colors"
               title="Open PDF in a new tab"
             >
               <ExternalLink className="w-4 h-4" />
@@ -103,7 +102,7 @@ export const CurriculumModal: React.FC = () => {
             <button
               onClick={closeCurriculum}
               aria-label="Close curriculum viewer"
-              className="p-2 rounded-lg text-slate-500 hover:text-brand-navy hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#19BCE8] cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -111,7 +110,7 @@ export const CurriculumModal: React.FC = () => {
         </div>
 
         {/* PDF Viewer Body */}
-        <div className="relative flex-1 min-h-[420px] sm:min-h-[550px] lg:min-h-[640px] bg-slate-100/80 overflow-hidden">
+        <div className="relative flex-1 min-h-[420px] sm:min-h-[550px] lg:min-h-[640px] bg-[#030B22] overflow-hidden">
           <iframe
             src={`${program.pdfUrl}#toolbar=1&navpanes=0&scrollbar=1`}
             title={`${program.name} Curriculum Document`}
@@ -119,14 +118,14 @@ export const CurriculumModal: React.FC = () => {
           />
 
           {/* Fallback & Helper Notice on Mobile or Slow Render */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-brand-border/80 px-4 py-2 rounded-full shadow-subtle flex items-center gap-2 text-xs text-slate-600 pointer-events-auto">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#040C24]/95 backdrop-blur-md border border-[#19BCE8]/30 px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 text-xs text-slate-200 pointer-events-auto">
             <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
             <span>Having trouble viewing on mobile?</span>
             <a
               href={program.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-brand-blue hover:underline"
+              className="font-bold text-[#19BCE8] hover:underline"
             >
               Tap to Open Directly
             </a>
@@ -134,22 +133,20 @@ export const CurriculumModal: React.FC = () => {
         </div>
 
         {/* Footer info bar */}
-        <div className="px-4 sm:px-6 py-2.5 bg-brand-surface-light border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+        <div className="px-4 sm:px-6 py-2.5 bg-[#040C24]/95 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-300">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-brand-navy">{program.badge}</span>
+            <span className="font-semibold text-white">{program.badge}</span>
             <span>•</span>
             <span>{program.duration}</span>
           </div>
           <div className="flex items-center gap-3">
             <span>Live Instructor-Led • Project-Driven</span>
-            <Button
+            <button
               onClick={closeCurriculum}
-              variant="outline"
-              size="sm"
-              className="py-1 px-3 text-xs"
+              className="py-1 px-3 text-xs rounded-lg bg-white/10 text-slate-200 hover:text-white hover:bg-white/20 border border-white/10 transition-colors cursor-pointer"
             >
               Close
-            </Button>
+            </button>
           </div>
         </div>
       </div>

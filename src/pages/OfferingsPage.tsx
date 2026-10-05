@@ -266,18 +266,18 @@ export const OfferingsPage: React.FC = () => {
             {filteredDomains.map((domain, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-3 flex flex-col justify-between group"
+                className="rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 hover:border-[#19BCE8]/50 transition-all duration-300 space-y-3 flex flex-col justify-between group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
+                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/15 flex items-center justify-center border border-[#19BCE8]/30 text-[#19BCE8]">
                       {domain.icon}
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-[#0878E8]/15 border border-[#19BCE8]/30 text-cyan-300">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-[#0878E8]/10 border border-[#19BCE8]/25 text-cyan-300 uppercase tracking-wider">
                       {domain.tag}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
                     {domain.name}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
@@ -380,17 +380,22 @@ export const OfferingsPage: React.FC = () => {
             {careerSupportPillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-2.5 group"
+                className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 hover:border-[#19BCE8]/50 transition-all duration-300 space-y-3 group overflow-hidden"
               >
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#19BCE8] shrink-0" />
-                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold text-[#19BCE8] bg-[#0878E8]/10 px-2.5 py-0.5 rounded-full border border-[#19BCE8]/25">
+                    PILLAR 0{idx + 1}
+                  </span>
+                  <CheckCircle2 className="w-4 h-4 text-[#19BCE8]/70 group-hover:text-[#19BCE8] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
                     {pillar.title}
                   </h3>
+                  <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal mt-1.5">
+                    {pillar.desc}
+                  </p>
                 </div>
-                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
-                  {pillar.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -405,17 +410,17 @@ export const OfferingsPage: React.FC = () => {
       {/* 3. VIRTUAL COMPANY SESSIONS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-10 text-white">
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/80 via-[#061540]/85 to-[#030E2B]/90 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-7 sm:p-10 text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#19BCE8]/10 border border-[#19BCE8]/30">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#19BCE8]/10 border border-[#19BCE8]/30">
                 <Building2 className="w-4 h-4 text-[#19BCE8]" />
-                <span className="text-xs font-bold text-[#19BCE8] uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold text-[#19BCE8] uppercase tracking-wider">
                   Direct Industry Integration
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight">
                 Virtual Company Sessions &amp; Regional IT Corridor Exposure
               </h2>
 
@@ -424,7 +429,7 @@ export const OfferingsPage: React.FC = () => {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-[#040C24]/80 border border-[#19BCE8]/20 space-y-2">
+                <div className="p-5 rounded-2xl bg-[#040C24]/80 border border-[#19BCE8]/20 space-y-2 hover:border-[#19BCE8]/40 transition-colors">
                   <div className="flex items-center gap-2 text-white font-bold text-sm">
                     <Users className="w-4 h-4 text-[#19BCE8]" />
                     <span>Practitioner Walkthroughs</span>
@@ -434,7 +439,7 @@ export const OfferingsPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#040C24]/80 border border-[#FF6B35]/25 space-y-2">
+                <div className="p-5 rounded-2xl bg-[#040C24]/80 border border-[#FF6B35]/25 space-y-2 hover:border-[#FF6B35]/50 transition-colors">
                   <div className="flex items-center gap-2 text-white font-bold text-sm">
                     <Code2 className="w-4 h-4 text-[#FF6B35]" />
                     <span>Internship Selection Pathway</span>
@@ -446,7 +451,7 @@ export const OfferingsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-[#040C24]/90 rounded-2xl p-6 border border-[#19BCE8]/30 text-center space-y-4 shadow-xl">
+            <div className="lg:col-span-4 bg-[#040C24]/90 rounded-2xl p-7 border border-[#19BCE8]/30 text-center space-y-4 shadow-xl">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0878E8]/20 to-[#19BCE8]/30 shadow-inner flex items-center justify-center mx-auto text-[#19BCE8] border border-[#19BCE8]/40">
                 <Briefcase className="w-6 h-6" />
               </div>

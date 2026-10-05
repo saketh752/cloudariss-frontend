@@ -243,23 +243,23 @@ export const WhyCloudarissPage: React.FC = () => {
           {differentiators.map((item) => (
             <div
               key={item.num}
-              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 flex flex-col justify-between space-y-4 group"
+              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 sm:p-7 hover:border-[#19BCE8]/50 transition-all duration-300 flex flex-col justify-between space-y-4 group overflow-hidden"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
+                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/15 flex items-center justify-center border border-[#19BCE8]/30 text-[#19BCE8]">
                     {item.icon}
                   </div>
-                  <span className="text-xs font-mono font-extrabold text-[#19BCE8] bg-[#0878E8]/15 px-2.5 py-1 rounded-md border border-[#19BCE8]/30">
+                  <span className="text-xs font-mono font-extrabold text-[#19BCE8] bg-[#0878E8]/10 px-2.5 py-1 rounded-md border border-[#19BCE8]/25">
                     {item.num}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
                     {item.title}
                   </h3>
-                  <div className="text-xs font-semibold text-[#19BCE8] mt-0.5 font-mono">
+                  <div className="text-xs font-semibold text-[#19BCE8] mt-1 font-mono">
                     {item.subtitle}
                   </div>
                 </div>
@@ -533,17 +533,22 @@ export const WhyCloudarissPage: React.FC = () => {
           {careerSupportList.map((pillar, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-2.5 group"
+              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 hover:border-[#19BCE8]/50 transition-all duration-300 space-y-3 group overflow-hidden"
             >
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#19BCE8] shrink-0" />
-                <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono font-bold text-[#19BCE8] bg-[#0878E8]/10 px-2.5 py-0.5 rounded-full border border-[#19BCE8]/25">
+                  PILLAR 0{idx + 1}
+                </span>
+                <CheckCircle2 className="w-4 h-4 text-[#19BCE8]/70 group-hover:text-[#19BCE8] transition-colors" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
                   {pillar.title}
                 </h3>
+                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal mt-1.5">
+                  {pillar.desc}
+                </p>
               </div>
-              <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
-                {pillar.desc}
-              </p>
             </div>
           ))}
         </div>
