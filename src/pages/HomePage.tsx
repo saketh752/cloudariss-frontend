@@ -79,18 +79,26 @@ export const HomePage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 10. INDUSTRY SESSIONS & CAREER PREPARATION (OPEN EDITORIAL LAYOUT)        */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-6 sm:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start relative z-10">
           {/* LEFT COLUMN: Dominant Editorial Industry Narrative (60–65%) */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-6">
+          <div className="lg:col-span-7 xl:col-span-8 space-y-6 relative">
+            {/* Non-rectangular feathered atmospheric dark contrast zone for left narrative */}
+            <div
+              className="absolute -top-16 -left-16 w-[125%] h-[130%] pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(ellipse 65% 60% at 35% 45%, rgba(2, 9, 26, 0.88) 0%, rgba(2, 9, 26, 0.65) 45%, rgba(2, 9, 26, 0.25) 70%, transparent 100%)',
+              }}
+            />
+
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
-              <Building2 className="w-3.5 h-3.5 text-[#00D2FF]" />
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase [text-shadow:_0_1px_6px_rgba(0,0,0,0.8)]">
+              <Building2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
               <span>Direct Industry Exposure</span>
             </div>
 
             {/* Large Dominant Editorial Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12] [text-shadow:_0_2px_12px_rgba(0,0,0,0.85)]">
               Virtual Company Sessions &amp;{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#19BCE8] to-white">
                 Practitioner Walkthroughs
@@ -98,7 +106,7 @@ export const HomePage: React.FC = () => {
             </h2>
 
             {/* Supporting Paragraph */}
-            <p className="text-sm sm:text-base text-[#DCE5F2] leading-relaxed font-normal max-w-2xl">
+            <p className="text-sm sm:text-base text-[#F1F5F9] leading-relaxed font-normal max-w-2xl [text-shadow:_0_1px_8px_rgba(0,0,0,0.75)]">
               Connect classroom learning with real-world engineering workflows. Students participate in technical walkthroughs and architecture discussions with working engineers and technology specialists from Visakhapatnam and online networks.
             </p>
 
@@ -108,23 +116,23 @@ export const HomePage: React.FC = () => {
             {/* Two Clean Editorial Information Items (Completely Open - No Boxes) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-1">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide">
+                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.8)]">
                   <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] shrink-0" />
                   <Users className="w-4 h-4 text-[#00D2FF] shrink-0" />
                   <span>Practitioner Walkthroughs</span>
                 </div>
-                <p className="text-xs sm:text-[13.5px] text-[#CBD5E1] leading-relaxed pl-4 border-l border-[#00D2FF]/30 font-normal">
+                <p className="text-xs sm:text-[13.5px] text-[#E2E8F0] leading-relaxed pl-4 border-l-2 border-[#00D2FF]/40 font-normal [text-shadow:_0_1px_6px_rgba(0,0,0,0.7)]">
                   Direct technical discussions and architecture deep dives with active tech leads and data specialists.
                 </p>
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide">
+                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.8)]">
                   <span className="w-2 h-2 rounded-full bg-[#FF7A00] shadow-[0_0_8px_#FF7A00] shrink-0" />
                   <Code2 className="w-4 h-4 text-[#FF7A00] shrink-0" />
                   <span>Internship Selection Pathway</span>
                 </div>
-                <p className="text-xs sm:text-[13.5px] text-[#CBD5E1] leading-relaxed pl-4 border-l border-[#FF7A00]/30 font-normal">
+                <p className="text-xs sm:text-[13.5px] text-[#E2E8F0] leading-relaxed pl-4 border-l-2 border-[#FF7A00]/40 font-normal [text-shadow:_0_1px_6px_rgba(0,0,0,0.7)]">
                   The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating technology teams.
                 </p>
               </div>
@@ -132,26 +140,34 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* RIGHT COLUMN: Dedicated Career Preparation (Completely Open - No Box / No Card) */}
-          <div className="lg:col-span-5 xl:col-span-4 space-y-6 lg:pl-8 lg:border-l lg:border-white/10">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF9E40] uppercase">
-                <Briefcase className="w-3.5 h-3.5 text-[#FF7A00]" />
+          <div className="lg:col-span-5 xl:col-span-4 space-y-6 lg:pl-8 lg:border-l lg:border-white/10 relative">
+            {/* Non-rectangular feathered atmospheric dark contrast zone for right career content */}
+            <div
+              className="absolute -top-12 -right-12 w-[130%] h-[130%] pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2, 9, 26, 0.82) 0%, rgba(2, 9, 26, 0.5) 50%, transparent 100%)',
+              }}
+            />
+
+            <div className="space-y-3 relative z-10">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF9E40] uppercase [text-shadow:_0_1px_6px_rgba(0,0,0,0.8)]">
+                <Briefcase className="w-3.5 h-3.5 text-[#FF7A00] shrink-0" />
                 <span>Career Preparation</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight leading-tight [text-shadow:_0_2px_12px_rgba(0,0,0,0.85)]">
                 Dedicated Career Preparation
               </h3>
 
-              <p className="text-sm text-[#CBD5E1] leading-relaxed font-normal">
+              <p className="text-sm text-[#E2E8F0] leading-relaxed font-normal [text-shadow:_0_1px_8px_rgba(0,0,0,0.75)]">
                 Saturday ATS resume audits and LinkedIn positioning, followed by technical interview preparation and mock rounds.
               </p>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 relative z-10">
               <Link
                 to="/courses"
-                className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-xl bg-gradient-to-r from-[#FF7A00] via-[#FF9020] to-[#E05F00] hover:from-[#FF8C20] hover:to-[#EB6800] text-white font-black text-sm tracking-wide shadow-[0_0_24px_rgba(255,122,0,0.4),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_0_36px_rgba(255,122,0,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0 group"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-xl bg-gradient-to-r from-[#FF7A00] via-[#FF9020] to-[#E05F00] hover:from-[#FF8C20] hover:to-[#EB6800] text-white font-black text-sm tracking-wide shadow-[0_0_24px_rgba(255,122,0,0.45),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_0_36px_rgba(255,122,0,0.65)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0 group"
               >
                 <span className="whitespace-nowrap font-bold">Explore Curricula</span>
                 <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1.5 transition-transform duration-300" />
