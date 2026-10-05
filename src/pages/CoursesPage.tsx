@@ -15,7 +15,7 @@ import { BRAND_DATA } from '@/data/brandData';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
-import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
+import { AllTechnologyCourses } from '@/components/courses/AllTechnologyCourses';
 import {
   AwsLogo,
   DockerLogo,
@@ -263,7 +263,7 @@ export const CoursesPage: React.FC = () => {
         {/* ----------------------------------------------------------------------- */}
         {/* CRPC SHOWCASE BLOCK (INTERACTIVE) */}
         {/* ----------------------------------------------------------------------- */}
-        <div className="rounded-3xl bg-white border border-brand-border shadow-card overflow-hidden hover:border-brand-blue/60 transition-all duration-300">
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl overflow-hidden hover:border-[#19BCE8]/60 transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             {/* Left Pathway Column */}
             <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
@@ -272,19 +272,19 @@ export const CoursesPage: React.FC = () => {
                   <Badge variant="blue" size="md">
                     {crpc.code} FLAGSHIP
                   </Badge>
-                  <span className="text-xs font-mono font-bold text-brand-navy bg-brand-surface-blue px-3 py-1 rounded-full border border-brand-border">
+                  <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
                     Cloud · Data · DevOps · ServiceNow
                   </span>
-                  <span className="text-xs font-semibold text-slate-500">
+                  <span className="text-xs font-semibold text-slate-300">
                     12 Weeks · Live Online
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
                     {crpc.name}
                   </h3>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
                     Designed for students targeting cloud infrastructure, automation pipelines, container orchestration, and enterprise IT service management.
                   </p>
                 </div>
@@ -309,17 +309,17 @@ export const CoursesPage: React.FC = () => {
                           onClick={() => setSelectedCrpcStep(idx)}
                           className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
                             isSelected
-                              ? 'bg-[#EEF5FF] border-2 border-brand-blue shadow-sm scale-[1.02]'
-                              : 'bg-slate-50 border-brand-border/70 hover:border-brand-blue/50 hover:bg-slate-100/80'
+                              ? 'bg-[#0878E8]/25 border-2 border-[#19BCE8] shadow-[0_0_15px_rgba(25,188,232,0.25)] scale-[1.02]'
+                              : 'bg-[#05143A]/85 border-white/10 hover:border-[#19BCE8]/40 hover:bg-[#071A4D]'
                           }`}
                         >
-                          <div className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
-                            <span className={`font-mono ${isSelected ? 'text-brand-blue font-extrabold' : 'text-slate-500'}`}>
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
+                            <span className={`font-mono ${isSelected ? 'text-[#19BCE8] font-extrabold' : 'text-slate-400'}`}>
                               {st.step}
                             </span>
                             <span className="truncate">{st.title}</span>
                           </div>
-                          <p className="text-[10px] text-slate-500 leading-tight mt-0.5">
+                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
                             {st.detail}
                           </p>
                         </button>
@@ -330,13 +330,13 @@ export const CoursesPage: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
                 <div>
-                  <span className="text-xs text-slate-400 block line-through">
-                    {BRAND_DATA.offer.originalPrice}
+                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                    PROGRAM TUITION
                   </span>
-                  <span className="text-2xl font-extrabold text-brand-navy">
-                    {BRAND_DATA.offer.offerPrice}
+                  <span className="text-2xl font-extrabold text-white">
+                    ₹17,000
                   </span>
                 </div>
 
@@ -344,7 +344,7 @@ export const CoursesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-brand-surface-blue text-brand-blue hover:bg-brand-blue hover:text-white border border-brand-blue/30 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-[#0878E8]/20 text-[#19BCE8] hover:bg-[#0878E8]/30 hover:text-white border border-[#19BCE8]/40 transition-colors cursor-pointer"
                   >
                     <FileText className="w-4 h-4" />
                     <span>View Curriculum (PDF)</span>
@@ -432,7 +432,7 @@ export const CoursesPage: React.FC = () => {
         {/* ----------------------------------------------------------------------- */}
         {/* DAAP SHOWCASE BLOCK (INTERACTIVE) */}
         {/* ----------------------------------------------------------------------- */}
-        <div className="rounded-3xl bg-white border border-brand-border shadow-card overflow-hidden hover:border-brand-orange/60 transition-all duration-300">
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-brand-orange/40 shadow-2xl overflow-hidden hover:border-brand-orange/70 transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             {/* Left Pathway Column */}
             <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
@@ -441,19 +441,19 @@ export const CoursesPage: React.FC = () => {
                   <Badge variant="orange" size="md">
                     {daap.code} FLAGSHIP
                   </Badge>
-                  <span className="text-xs font-mono font-bold text-brand-navy bg-brand-orange/10 px-3 py-1 rounded-full border border-brand-orange/30">
+                  <span className="text-xs font-mono font-bold text-brand-orange bg-brand-orange/15 px-3 py-1 rounded-full border border-brand-orange/30">
                     SQL · Python · Power BI · Agentic AI
                   </span>
-                  <span className="text-xs font-semibold text-slate-500">
+                  <span className="text-xs font-semibold text-slate-300">
                     12 Weeks · Live Online
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
                     {daap.name}
                   </h3>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
                     Designed for students targeting quantitative analysis, relational databases, business intelligence reporting, and modern Agentic AI workflows.
                   </p>
                 </div>
@@ -478,17 +478,17 @@ export const CoursesPage: React.FC = () => {
                           onClick={() => setSelectedDaapStep(idx)}
                           className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
                             isSelected
-                              ? 'bg-[#FFF7ED] border-2 border-brand-orange shadow-sm scale-[1.02]'
-                              : 'bg-slate-50 border-brand-border/70 hover:border-brand-orange/50 hover:bg-slate-100/80'
+                              ? 'bg-brand-orange/20 border-2 border-brand-orange shadow-[0_0_15px_rgba(255,122,0,0.25)] scale-[1.02]'
+                              : 'bg-[#05143A]/85 border-white/10 hover:border-brand-orange/40 hover:bg-[#071A4D]'
                           }`}
                         >
-                          <div className="flex items-center gap-1.5 text-xs font-bold text-brand-navy">
-                            <span className={`font-mono ${isSelected ? 'text-brand-orange font-extrabold' : 'text-slate-500'}`}>
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
+                            <span className={`font-mono ${isSelected ? 'text-brand-orange font-extrabold' : 'text-slate-400'}`}>
                               {st.step}
                             </span>
                             <span className="truncate">{st.title}</span>
                           </div>
-                          <p className="text-[10px] text-slate-500 leading-tight mt-0.5">
+                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
                             {st.detail}
                           </p>
                         </button>
@@ -499,13 +499,13 @@ export const CoursesPage: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
                 <div>
-                  <span className="text-xs text-slate-400 block line-through">
-                    {BRAND_DATA.offer.originalPrice}
+                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                    PROGRAM TUITION
                   </span>
-                  <span className="text-2xl font-extrabold text-brand-navy">
-                    {BRAND_DATA.offer.offerPrice}
+                  <span className="text-2xl font-extrabold text-white">
+                    ₹17,000
                   </span>
                 </div>
 
@@ -513,7 +513,7 @@ export const CoursesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange/10 text-brand-orange hover:bg-brand-orange hover:text-white border border-brand-orange/30 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange/20 text-brand-orange hover:bg-brand-orange/30 hover:text-white border border-brand-orange/40 transition-colors cursor-pointer"
                   >
                     <FileText className="w-4 h-4" />
                     <span>View Curriculum (PDF)</span>
@@ -600,7 +600,14 @@ export const CoursesPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. LEARNING JOURNEY CONTINUUM */}
+      {/* 3. SPECIALIZED TECHNOLOGY COURSES (13 COURSES CATALOG)                     */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AllTechnologyCourses />
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. LEARNING JOURNEY CONTINUUM */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -611,11 +618,6 @@ export const CoursesPage: React.FC = () => {
 
         <FiveStageVisualJourney />
       </section>
-
-      {/* ========================================================================= */}
-      {/* 4. VINAYAKA CHAVITHI ADMISSIONS SPECIAL OFFER */}
-      {/* ========================================================================= */}
-      <VinayakaOfferCard />
     </div>
   );
 };
