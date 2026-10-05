@@ -22,12 +22,10 @@ import {
 
 interface CrpcHeroCardProps {
   onOpenCurriculum: () => void;
-  onScrollToPathway?: (e: React.MouseEvent) => void;
 }
 
 export const CrpcHeroCard: React.FC<CrpcHeroCardProps> = ({
   onOpenCurriculum,
-  onScrollToPathway,
 }) => {
   const [activeTab, setActiveTab] = useState<'cloud' | 'devops' | 'capstone'>('cloud');
 
@@ -303,15 +301,6 @@ export const CrpcHeroCard: React.FC<CrpcHeroCardProps> = ({
         </div>
 
         <div className="flex items-center gap-3">
-          {onScrollToPathway && (
-            <button
-              type="button"
-              onClick={onScrollToPathway}
-              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Pathway ↓
-            </button>
-          )}
           <button
             type="button"
             onClick={onOpenCurriculum}

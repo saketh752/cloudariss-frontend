@@ -22,12 +22,10 @@ import {
 
 interface DaapHeroCardProps {
   onOpenCurriculum: () => void;
-  onScrollToPathway?: (e: React.MouseEvent) => void;
 }
 
 export const DaapHeroCard: React.FC<DaapHeroCardProps> = ({
   onOpenCurriculum,
-  onScrollToPathway,
 }) => {
   const [activeTab, setActiveTab] = useState<'analytics' | 'agentic' | 'capstone'>('analytics');
 
@@ -292,15 +290,6 @@ export const DaapHeroCard: React.FC<DaapHeroCardProps> = ({
         </div>
 
         <div className="flex items-center gap-3">
-          {onScrollToPathway && (
-            <button
-              type="button"
-              onClick={onScrollToPathway}
-              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Pathway ↓
-            </button>
-          )}
           <button
             type="button"
             onClick={onOpenCurriculum}

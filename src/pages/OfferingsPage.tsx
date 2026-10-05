@@ -146,8 +146,9 @@ export const OfferingsPage: React.FC = () => {
                 </Button>
                 <Button
                   to="/contact"
-                  variant="outline"
+                  variant="dark"
                   size="lg"
+                  className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
                 >
                   Talk to Us
                 </Button>
