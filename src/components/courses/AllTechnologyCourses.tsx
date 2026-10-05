@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Compass,
+  ArrowRight,
   MessageCircle,
   Sparkles,
   Layers,
@@ -222,42 +223,27 @@ const TechnologyCourseCard: React.FC<{ course: (typeof SECONDARY_COURSES)[0] }> 
           </div>
         </div>
 
-        {/* Card Content Body */}
-        <div className="p-4 sm:p-5 space-y-3">
-          <div className="space-y-1">
-            <h3 className="text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors font-heading leading-snug">
-              {course.name}
-            </h3>
-            <div className={`text-xs font-mono font-bold tracking-wide ${visual.accentText}`}>
-              {course.tagline}
-            </div>
-          </div>
-
-          <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
-            {course.parentExplanation}
-          </p>
-
-          {/* Core Topics Chips */}
-          <div className="space-y-1 pt-1">
-            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-              Core Topics:
-            </span>
-            <div className="flex flex-wrap gap-1.5">
-              {course.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="px-2 py-0.5 rounded-md bg-white/10 text-slate-200 text-[11px] font-medium border border-white/10"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
+        {/* Card Content Body - Clean & Minimal */}
+        <div className="p-4 sm:p-5 space-y-1">
+          <h3 className="text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors font-heading leading-snug">
+            {course.name}
+          </h3>
+          <div className={`text-xs font-mono font-bold tracking-wide ${visual.accentText}`}>
+            {course.tagline}
           </div>
         </div>
       </div>
 
-      {/* Action Buttons: WhatsApp & Enquiry */}
-      <div className="p-4 sm:p-5 pt-2 space-y-2 border-t border-white/10">
+      {/* Action Buttons: View Curriculum & WhatsApp Enquiry */}
+      <div className="p-4 sm:p-5 pt-1 space-y-2 border-t border-white/10">
+        <button
+          onClick={() => openWhatsApp(course.whatsappUrl)}
+          className="w-full inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 text-xs font-bold transition-all cursor-pointer border border-white/10 hover:border-[#00D2FF]/40 group"
+        >
+          <span>View Curriculum</span>
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#00D2FF]" />
+        </button>
+
         <button
           onClick={() => openWhatsApp(course.whatsappUrl)}
           className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-white font-semibold text-xs backdrop-blur-md shadow-xs transition-all group cursor-pointer"
