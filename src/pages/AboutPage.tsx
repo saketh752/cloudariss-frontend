@@ -18,15 +18,12 @@ import {
   Check,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
-import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { AboutHeroCanvas } from '@/components/curriculum/AboutHeroCanvas';
-import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 import {
   AwsLogo,
   DockerLogo,
@@ -171,9 +168,9 @@ export const AboutPage: React.FC = () => {
                 </Button>
                 <Button
                   to="/contact"
-                  variant="outline"
+                  variant="dark"
                   size="lg"
-                  className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
+                  className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
                 >
                   Talk to Us
                 </Button>
@@ -210,32 +207,28 @@ export const AboutPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {whoWeArePillars.map((item, idx) => (
-            <Card
+            <div
               key={idx}
-              variant="white"
-              padding="lg"
-              hoverEffect
-              borderAccent={idx === 0 ? 'orange' : 'blue'}
-              className="space-y-4"
+              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-6 sm:p-7 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-4 group"
             >
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-xl bg-brand-surface-blue flex items-center justify-center border border-brand-border">
+                <div className="w-12 h-12 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
                   {item.icon}
                 </div>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
                   {item.tag}
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-brand-navy font-heading">
+                <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
+                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
                   {item.desc}
                 </p>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
@@ -264,8 +257,8 @@ export const AboutPage: React.FC = () => {
               onClick={() => setSelectedTechDomain(tab.id as 'all' | 'cloud' | 'data' | 'ai')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 selectedTechDomain === tab.id
-                  ? 'bg-brand-navy text-white shadow-md shadow-brand-navy/20'
-                  : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border hover:border-brand-blue/40'
+                  ? 'bg-[#0878E8] text-white shadow-md shadow-blue-900/30'
+                  : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-[#19BCE8]/40'
               }`}
             >
               <span>{tab.label}</span>
@@ -284,56 +277,39 @@ export const AboutPage: React.FC = () => {
           {techFocusAreas
             .filter((area) => selectedTechDomain === 'all' || area.category === selectedTechDomain)
             .map((area, idx) => (
-              <Card
+              <div
                 key={idx}
-                variant="white"
-                padding="md"
-                hoverEffect
-                borderAccent={area.category === 'data' ? 'orange' : 'blue'}
-                className="space-y-3 flex flex-col justify-between"
+                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-3 flex flex-col justify-between group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
+                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
                       {area.icon}
                     </div>
-                    <div className="p-1.5 rounded-md bg-slate-50 border border-slate-200">
+                    <div className="p-1.5 rounded-lg bg-white/95 border border-white/80 shadow-xs">
                       {area.logo}
                     </div>
                   </div>
-                  <h3 className="text-base font-bold text-brand-navy font-heading">
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
                     {area.name}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
                     {area.desc}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-brand-border/60">
-                  <span className="text-[11px] font-mono text-brand-blue font-semibold">
+                <div className="pt-3 border-t border-white/10">
+                  <span className="text-[11px] font-mono text-[#19BCE8] font-semibold">
                     {area.tools}
                   </span>
                 </div>
-              </Card>
+              </div>
             ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. LEARNING METHODOLOGY */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Methodology"
-          title="Our Approach"
-          subtitle="A five-stage learning progression that balances rigorous foundational concepts with practical implementation and career readiness."
-        />
-
-        <FiveStageVisualJourney />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. BALANCED FLAGSHIP PROGRAMS */}
+      {/* 4. BALANCED FLAGSHIP PROGRAMS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -344,7 +320,7 @@ export const AboutPage: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* CRPC Showcase Card */}
-          <div className="rounded-3xl bg-white border border-blue-200/80 shadow-card hover:shadow-xl hover:border-brand-blue/50 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+          <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl hover:border-[#19BCE8]/60 transition-all duration-300 flex flex-col justify-between overflow-hidden group text-white">
             <div className="space-y-5">
               {/* 3D Visual Header with Badges */}
               <div className="relative h-52 sm:h-60 overflow-hidden bg-gradient-to-br from-[#06143D] to-[#0A255C]">
@@ -380,35 +356,35 @@ export const AboutPage: React.FC = () => {
               {/* Card Body */}
               <div className="px-6 sm:px-7 space-y-4">
                 <div>
-                  <h3 className="text-2xl font-extrabold text-brand-navy font-heading group-hover:text-brand-blue transition-colors">
+                  <h3 className="text-2xl font-extrabold text-white font-heading group-hover:text-cyan-300 transition-colors">
                     Cloud & Data Career Accelerator
                   </h3>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
+                  <p className="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                     Comprehensive 12-week curriculum spanning Python programming, AWS Cloud infrastructure, Docker containerization, Kubernetes orchestration, Jenkins CI/CD automation, and ServiceNow ITSM.
                   </p>
                 </div>
 
                 {/* Enterprise Deliverables Checklist */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-2">
-                  <div className="text-[11px] font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
+                <div className="p-3.5 rounded-xl bg-[#05143A]/90 border border-white/10 space-y-2">
+                  <div className="text-[11px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                     <Terminal className="w-3.5 h-3.5 text-brand-blue" />
                     <span>Key Engineering Deliverables</span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 font-medium">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#CBD5E1] font-normal">
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Multi-tier AWS VPC & EC2 Deployment</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Docker & Kubernetes Orchestration</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Automated Jenkins CI/CD Pipeline</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Verified GitHub Portfolio Capstone</span>
                     </div>
                   </div>
@@ -430,7 +406,7 @@ export const AboutPage: React.FC = () => {
                     ].map((tech) => (
                       <span
                         key={tech.name}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-surface-blue text-brand-navy border border-brand-border text-xs font-semibold hover:border-brand-blue/40 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0878E8]/15 text-[#19BCE8] border border-[#19BCE8]/30 text-xs font-semibold hover:border-[#19BCE8]/60 transition-colors"
                       >
                         {tech.logo}
                         <span>{tech.name}</span>
@@ -442,11 +418,11 @@ export const AboutPage: React.FC = () => {
             </div>
 
             {/* Action Bar */}
-            <div className="px-6 sm:px-7 py-5 mt-6 border-t border-brand-border flex items-center justify-between gap-3 flex-wrap bg-slate-50/70">
+            <div className="px-6 sm:px-7 py-5 mt-6 border-t border-white/10 flex items-center justify-between gap-3 flex-wrap bg-[#030E2B]/90">
               <button
                 type="button"
                 onClick={() => openCurriculum('crpc')}
-                className="px-4 py-2 rounded-xl bg-white text-brand-navy hover:text-brand-blue text-xs font-bold border border-brand-border hover:border-brand-blue/40 shadow-xs transition-all cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#0878E8]/20 text-[#19BCE8] hover:bg-[#0878E8]/30 hover:text-white text-xs font-bold border border-[#19BCE8]/40 shadow-xs transition-all cursor-pointer"
               >
                 View PDF Syllabus
               </button>
@@ -462,7 +438,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* DAAP Showcase Card */}
-          <div className="rounded-3xl bg-white border border-amber-200/80 shadow-card hover:shadow-xl hover:border-brand-orange/50 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+          <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-brand-orange/40 shadow-2xl overflow-hidden hover:border-brand-orange/70 transition-all duration-300 flex flex-col justify-between group text-white">
             <div className="space-y-5">
               {/* 3D Visual Header with Badges */}
               <div className="relative h-52 sm:h-60 overflow-hidden bg-gradient-to-br from-[#1F1103] to-[#3B1E05]">
@@ -498,35 +474,35 @@ export const AboutPage: React.FC = () => {
               {/* Card Body */}
               <div className="px-6 sm:px-7 space-y-4">
                 <div>
-                  <h3 className="text-2xl font-extrabold text-brand-navy font-heading group-hover:text-brand-orange transition-colors">
+                  <h3 className="text-2xl font-extrabold text-white font-heading group-hover:text-brand-orange transition-colors">
                     Data Analyst Accelerator Program
                   </h3>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
+                  <p className="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                     Fast-paced 12-week sprint taking learners from advanced Excel formulas and complex SQL querying to Python EDA, executive Power BI dashboards, Generative AI (RAG), and autonomous Agentic AI workflows.
                   </p>
                 </div>
 
                 {/* Enterprise Deliverables Checklist */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-brand-border space-y-2">
-                  <div className="text-[11px] font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
+                <div className="p-3.5 rounded-xl bg-[#05143A]/90 border border-white/10 space-y-2">
+                  <div className="text-[11px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
                     <span>Key Analytical Deliverables</span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 font-medium">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#CBD5E1] font-normal">
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Complex SQL Window Functions & Aggregations</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Executive Power BI Dashboards with DAX</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Contextual Enterprise RAG Retrieval Pipeline</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>Autonomous Multi-Agent Analytical Workflow</span>
                     </div>
                   </div>
@@ -547,7 +523,7 @@ export const AboutPage: React.FC = () => {
                     ].map((tech) => (
                       <span
                         key={tech.name}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-orange/10 text-brand-navy border border-brand-orange/30 text-xs font-semibold hover:border-brand-orange/60 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-orange/15 text-brand-orange border border-brand-orange/30 text-xs font-semibold hover:border-brand-orange/60 transition-colors"
                       >
                         {tech.logo}
                         <span>{tech.name}</span>
@@ -559,11 +535,11 @@ export const AboutPage: React.FC = () => {
             </div>
 
             {/* Action Bar */}
-            <div className="px-6 sm:px-7 py-5 mt-6 border-t border-brand-border flex items-center justify-between gap-3 flex-wrap bg-slate-50/70">
+            <div className="px-6 sm:px-7 py-5 mt-6 border-t border-white/10 flex items-center justify-between gap-3 flex-wrap bg-[#030E2B]/90">
               <button
                 type="button"
                 onClick={() => openCurriculum('daap')}
-                className="px-4 py-2 rounded-xl bg-white text-brand-navy hover:text-brand-orange text-xs font-bold border border-brand-border hover:border-brand-orange/40 shadow-xs transition-all cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-brand-orange/20 text-brand-orange hover:bg-brand-orange/30 hover:text-white text-xs font-bold border border-brand-orange/40 shadow-xs transition-all cursor-pointer"
               >
                 View PDF Syllabus
               </button>
@@ -579,11 +555,6 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ========================================================================= */}
-      {/* FESTIVE ADMISSIONS CAMPAIGN CARD */}
-      {/* ========================================================================= */}
-      <VinayakaOfferCard />
 
       {/* ========================================================================= */}
       {/* 6. GUIDING BRAND STATEMENT */}
@@ -614,20 +585,16 @@ export const AboutPage: React.FC = () => {
       {/* 7. CONTACT CTA */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card
-          variant="white"
-          padding="lg"
-          className="border border-brand-border text-center max-w-3xl mx-auto space-y-4"
-        >
-          <div className="w-12 h-12 rounded-xl bg-brand-surface-blue flex items-center justify-center mx-auto border border-brand-border text-brand-blue">
-            <CheckCircle2 className="w-6 h-6" />
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-4 text-white">
+          <div className="w-14 h-14 rounded-2xl bg-[#0878E8] shadow-[0_0_20px_rgba(8,120,232,0.35)] flex items-center justify-center mx-auto text-white border border-[#19BCE8]/50">
+            <CheckCircle2 className="w-7 h-7" />
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
             Have Questions About Cloudariss?
           </h3>
 
-          <p className="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm text-[#CBD5E1] max-w-xl mx-auto leading-relaxed font-normal">
             Reach out to our team for course details, upcoming batch schedules, admissions guidance, or curriculum questions.
           </p>
 
@@ -641,7 +608,7 @@ export const AboutPage: React.FC = () => {
               Talk to Us
             </Button>
           </div>
-        </Card>
+        </div>
       </section>
     </div>
   );

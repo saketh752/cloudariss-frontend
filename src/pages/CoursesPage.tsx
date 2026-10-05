@@ -14,7 +14,6 @@ import { Button } from '@/components/ui/Button';
 import { BRAND_DATA } from '@/data/brandData';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
-import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { AllTechnologyCourses } from '@/components/courses/AllTechnologyCourses';
 import {
   AwsLogo,
@@ -604,19 +603,6 @@ export const CoursesPage: React.FC = () => {
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AllTechnologyCourses />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. LEARNING JOURNEY CONTINUUM */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Pedagogical Standard"
-          title="The Five-Stage Progression"
-          subtitle="Both programs adhere to the same rigorous five-stage continuum, ensuring conceptual depth translates to demonstrable competence."
-        />
-
-        <FiveStageVisualJourney />
       </section>
     </div>
   );

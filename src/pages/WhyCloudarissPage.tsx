@@ -12,15 +12,12 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
-import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { WhyUsHeroFlywheel } from '@/components/curriculum/WhyUsHeroFlywheel';
-import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 import {
   AwsLogo,
   DockerLogo,
@@ -87,9 +84,9 @@ export const WhyCloudarissPage: React.FC = () => {
     },
     {
       num: '06',
-      title: 'Structured Learning Journey',
-      subtitle: 'Learn → Practice → Build → Prepare → Get Hired',
-      desc: 'A coherent five-phase methodology that systematically transforms raw interest into confident technical competence and structured career readiness without skipped foundations.',
+      title: 'Rigorous Engineering Standards',
+      subtitle: 'Deep Foundations & Defensible Code',
+      desc: 'A coherent, systematic curriculum that transforms raw interest into confident technical competence and structured capability without skipped foundations.',
       icon: <Compass className="w-5 h-5 text-[#0a6680]" />,
       accent: 'cyan' as const,
     },
@@ -212,9 +209,9 @@ export const WhyCloudarissPage: React.FC = () => {
                 </Button>
                 <Button
                   to="/contact"
-                  variant="outline"
+                  variant="dark"
                   size="lg"
-                  className="text-white border-[#19BCE8]/40 hover:bg-[#19BCE8]/20"
+                  className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
                 >
                   Talk to Us
                 </Button>
@@ -244,38 +241,34 @@ export const WhyCloudarissPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {differentiators.map((item) => (
-            <Card
+            <div
               key={item.num}
-              variant="white"
-              padding="lg"
-              hoverEffect
-              borderAccent={item.accent}
-              className="flex flex-col justify-between space-y-4"
+              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 flex flex-col justify-between space-y-4 group"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
+                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
                     {item.icon}
                   </div>
-                  <span className="text-xs font-mono font-extrabold text-slate-400">
+                  <span className="text-xs font-mono font-extrabold text-[#19BCE8] bg-[#0878E8]/15 px-2.5 py-1 rounded-md border border-[#19BCE8]/30">
                     {item.num}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-brand-navy font-heading">
+                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
                     {item.title}
                   </h3>
-                  <div className="text-xs font-semibold text-brand-blue mt-0.5">
+                  <div className="text-xs font-semibold text-[#19BCE8] mt-0.5 font-mono">
                     {item.subtitle}
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed font-normal">
                   {item.desc}
                 </p>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
@@ -292,38 +285,35 @@ export const WhyCloudarissPage: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* CRPC Box */}
-          <Card
-            variant="white"
-            padding="lg"
-            borderAccent="blue"
-            className="flex flex-col justify-between space-y-6"
+          <div
+            className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 text-white"
           >
             <div className="space-y-5">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <Badge variant="blue" size="md">
                   {crpc.code}
                 </Badge>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
-                  Cloud, Data & Infrastructure
+                <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
+                  Cloud, Data &amp; Infrastructure
                 </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
-                  Cloud & Data Career Accelerator
+                <h3 className="text-2xl font-extrabold text-white font-heading">
+                  Cloud &amp; Data Career Accelerator
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
+                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
                   Focused on infrastructure architecture, automated cloud deployments, enterprise CI/CD, and IT service management.
                 </p>
               </div>
 
               {/* Who it is for */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/60 space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+              <div className="p-4 rounded-xl bg-gradient-to-r from-[#05143A]/90 to-[#030E28]/90 border border-[#19BCE8]/25 space-y-2">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8] flex items-center gap-1.5">
                   <Cloud className="w-3.5 h-3.5" />
                   <span>Direction Focus</span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
                   Best suited for learners targeting roles in Cloud Engineering, DevOps Engineering, System Administration, Infrastructure Support, or ServiceNow Enterprise Management.
                 </p>
               </div>
@@ -337,7 +327,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   {['Python Basics', 'Data Science', 'AWS Cloud (EC2, VPC, ALB)', 'Docker & Kubernetes', 'Jenkins CI/CD', 'ServiceNow ITSM'].map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md bg-brand-surface-blue text-brand-navy border border-brand-border text-xs font-medium"
+                      className="px-2.5 py-1 rounded-md bg-[#0878E8]/20 text-[#19BCE8] border border-[#19BCE8]/30 text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -346,15 +336,15 @@ export const WhyCloudarissPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
-              <div className="text-xs font-semibold text-slate-500">
+            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
+              <div className="text-xs font-semibold text-slate-400">
                 12 Weeks · 8 Modules · Capstone
               </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => openCurriculum('crpc')}
-                  className="px-3.5 py-2 rounded-lg bg-brand-surface-blue text-brand-navy hover:text-brand-blue text-xs font-bold border border-brand-border"
+                  className="px-3.5 py-2 rounded-lg bg-[#0878E8]/20 text-[#19BCE8] hover:bg-[#0878E8]/30 hover:text-white text-xs font-bold border border-[#19BCE8]/40 transition-colors"
                 >
                   View Curriculum (PDF)
                 </button>
@@ -368,41 +358,38 @@ export const WhyCloudarissPage: React.FC = () => {
                 </Button>
               </div>
             </div>
-          </Card>
+          </div>
 
           {/* DAAP Box */}
-          <Card
-            variant="white"
-            padding="lg"
-            borderAccent="orange"
-            className="flex flex-col justify-between space-y-6"
+          <div
+            className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-brand-orange/35 shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 text-white"
           >
             <div className="space-y-5">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <Badge variant="orange" size="md">
                   {daap.code}
                 </Badge>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
-                  Data Analytics & AI
+                <span className="text-xs font-mono font-bold text-brand-orange bg-brand-orange/15 px-3 py-1 rounded-full border border-brand-orange/30">
+                  Data Analytics &amp; AI
                 </span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-brand-navy font-heading">
+                <h3 className="text-2xl font-extrabold text-white font-heading">
                   Data Analyst Accelerator Program
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-medium">
+                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
                   Focused on quantitative reasoning, relational SQL querying, interactive executive dashboards, and cutting-edge agentic AI analytics.
                 </p>
               </div>
 
               {/* Who it is for */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/60 space-y-2">
+              <div className="p-4 rounded-xl bg-gradient-to-r from-[#05143A]/90 to-[#030E28]/90 border border-brand-orange/25 space-y-2">
                 <div className="text-xs font-bold uppercase tracking-wider text-brand-orange flex items-center gap-1.5">
                   <BarChart3 className="w-3.5 h-3.5" />
                   <span>Direction Focus</span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
                   Best suited for learners targeting roles in Data Analysis, Business Intelligence, Data Operations, Quantitative Reporting, or AI-Assisted Business Analytics.
                 </p>
               </div>
@@ -416,7 +403,7 @@ export const WhyCloudarissPage: React.FC = () => {
                   {['Advanced Excel', 'PostgreSQL & SQL', 'Python EDA (Pandas)', 'Power BI & DAX', 'Generative AI (RAG)', 'Agentic AI Workflows'].map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md bg-brand-orange/10 text-brand-navy border border-brand-orange/30 text-xs font-medium"
+                      className="px-2.5 py-1 rounded-md bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -425,15 +412,15 @@ export const WhyCloudarissPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
-              <div className="text-xs font-semibold text-slate-500">
+            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
+              <div className="text-xs font-semibold text-slate-400">
                 12 Weeks · 5+ Projects · Capstone
               </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => openCurriculum('daap')}
-                  className="px-3.5 py-2 rounded-lg bg-brand-orange/10 text-brand-navy hover:text-brand-orange text-xs font-bold border border-brand-orange/30"
+                  className="px-3.5 py-2 rounded-lg bg-brand-orange/20 text-brand-orange hover:bg-brand-orange/30 hover:text-white text-xs font-bold border border-brand-orange/40 transition-colors"
                 >
                   View Curriculum (PDF)
                 </button>
@@ -447,7 +434,7 @@ export const WhyCloudarissPage: React.FC = () => {
                 </Button>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
@@ -468,8 +455,8 @@ export const WhyCloudarissPage: React.FC = () => {
             onClick={() => setActiveTechFilter('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTechFilter === 'all'
-                ? 'bg-brand-navy text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                ? 'bg-[#0878E8] text-white shadow-md shadow-blue-500/30'
+                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-[#19BCE8]/40'
             }`}
           >
             All Stacks (4)
@@ -479,8 +466,8 @@ export const WhyCloudarissPage: React.FC = () => {
             onClick={() => setActiveTechFilter('crpc')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTechFilter === 'crpc'
-                ? 'bg-brand-blue text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                ? 'bg-[#0878E8] text-white shadow-md shadow-blue-500/30'
+                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-[#19BCE8]/40'
             }`}
           >
             CRPC Track (Cloud &amp; DevOps)
@@ -490,8 +477,8 @@ export const WhyCloudarissPage: React.FC = () => {
             onClick={() => setActiveTechFilter('daap')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTechFilter === 'daap'
-                ? 'bg-brand-orange text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:text-brand-navy border border-brand-border'
+                ? 'bg-brand-orange text-white shadow-md shadow-orange-500/30'
+                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-brand-orange/40'
             }`}
           >
             DAAP Track (Data &amp; AI)
@@ -500,18 +487,16 @@ export const WhyCloudarissPage: React.FC = () => {
 
         <div className={`grid grid-cols-1 sm:grid-cols-2 ${filteredTechCategories.length === 2 ? 'lg:grid-cols-2 max-w-4xl mx-auto' : 'lg:grid-cols-4'} gap-6`}>
           {filteredTechCategories.map((cat, idx) => (
-            <Card
+            <div
               key={idx}
-              variant="surface"
-              padding="md"
-              className="border border-brand-border/80 space-y-3"
+              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 shadow-xl space-y-3 text-white"
             >
-              <div className="flex items-center justify-between border-b border-brand-border/60 pb-2">
-                <h3 className="text-sm font-extrabold text-brand-navy">
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <h3 className="text-sm font-extrabold text-white font-heading">
                   {cat.title}
                 </h3>
-                <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                  cat.track === 'crpc' ? 'bg-brand-surface-blue text-brand-blue' : 'bg-brand-orange/10 text-brand-orange'
+                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                  cat.track === 'crpc' ? 'bg-[#0878E8]/20 text-[#19BCE8] border border-[#19BCE8]/30' : 'bg-brand-orange/20 text-brand-orange border border-brand-orange/30'
                 }`}>
                   {cat.track === 'crpc' ? 'CRPC' : 'DAAP'}
                 </span>
@@ -520,35 +505,22 @@ export const WhyCloudarissPage: React.FC = () => {
                 {cat.tools.map((t) => (
                   <div
                     key={t.name}
-                    className="p-2 rounded-lg bg-white border border-brand-border flex items-center gap-2.5 hover:border-brand-blue transition-colors shadow-2xs"
+                    className="p-2.5 rounded-xl bg-[#05143A]/85 border border-white/10 flex items-center gap-2.5 hover:border-[#19BCE8]/40 transition-colors shadow-xs"
                   >
-                    <div className="p-1 rounded bg-slate-50 border border-slate-100">
+                    <div className="p-1.5 rounded-lg bg-white/95 border border-white/80 shrink-0">
                       {t.logo}
                     </div>
-                    <span className="text-xs font-bold text-slate-700">{t.name}</span>
+                    <span className="text-xs font-bold text-[#E5EAF3]">{t.name}</span>
                   </div>
                 ))}
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. THE 5-STAGE CONTINUUM */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Structured Continuum"
-          title="The Five-Stage Progression"
-          subtitle="How we guide every student from initial conceptual grounding through to production-level portfolio artifacts."
-        />
-
-        <FiveStageVisualJourney />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 6. CAREER SUPPORT */}
+      {/* 5. CAREER SUPPORT */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -559,36 +531,29 @@ export const WhyCloudarissPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {careerSupportList.map((pillar, idx) => (
-            <Card
+            <div
               key={idx}
-              variant="white"
-              padding="md"
-              hoverEffect
-              borderAccent="blue"
-              className="space-y-2.5"
+              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-2.5 group"
             >
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                <h3 className="text-base font-bold text-brand-navy">
+                <CheckCircle2 className="w-4 h-4 text-[#19BCE8] shrink-0" />
+                <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
                   {pillar.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+              <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
                 {pillar.desc}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-50 border border-brand-border/70 text-center max-w-2xl mx-auto">
-          <p className="text-xs text-slate-500 leading-relaxed">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-[#081F54]/70 to-[#041136]/70 border border-[#19BCE8]/25 text-center max-w-2xl mx-auto">
+          <p className="text-xs text-[#CBD5E1] leading-relaxed">
             * Cloudariss focuses on cultivating demonstrable engineering capability, portfolio excellence, and interview confidence. We do not make misleading claims of guaranteed job placement.
           </p>
         </div>
       </section>
-
-      {/* Admissions Offer Campaign */}
-      <VinayakaOfferCard />
 
       {/* ========================================================================= */}
       {/* 7. FINAL CTA */}

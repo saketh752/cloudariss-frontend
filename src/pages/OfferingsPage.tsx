@@ -15,15 +15,12 @@ import {
   Download,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { TechEcosystemVisual } from '@/components/home/TechEcosystemVisual';
-import { FiveStageVisualJourney } from '@/components/home/FiveStageVisualJourney';
 import { DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { OfferingsHeroCanvas } from '@/components/curriculum/OfferingsHeroCanvas';
-import { VinayakaOfferCard } from '@/components/home/VinayakaOfferCard';
 
 export const OfferingsPage: React.FC = () => {
   const { openCurriculum } = useCurriculumModal();
@@ -266,29 +263,27 @@ export const OfferingsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
             {filteredDomains.map((domain, idx) => (
-              <Card
+              <div
                 key={idx}
-                variant="white"
-                padding="md"
-                hoverEffect
-                borderAccent="blue"
-                className="space-y-3 shadow-md"
+                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-3 flex flex-col justify-between group"
               >
-                <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-lg bg-brand-surface-blue flex items-center justify-center border border-brand-border">
-                    {domain.icon}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-xl bg-[#0878E8]/20 flex items-center justify-center border border-[#19BCE8]/40 text-[#19BCE8]">
+                      {domain.icon}
+                    </div>
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-[#0878E8]/15 border border-[#19BCE8]/30 text-cyan-300">
+                      {domain.tag}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-brand-surface-blue text-brand-blue">
-                    {domain.tag}
-                  </span>
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
+                    {domain.name}
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
+                    {domain.desc}
+                  </p>
                 </div>
-                <h3 className="text-base font-bold text-brand-navy">
-                  {domain.name}
-                </h3>
-                <p className="text-xs text-[#243B5A] leading-relaxed font-normal">
-                  {domain.desc}
-                </p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -382,22 +377,20 @@ export const OfferingsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
             {careerSupportPillars.map((pillar, idx) => (
-              <Card
+              <div
                 key={idx}
-                variant="white"
-                padding="md"
-                className="border border-brand-border/80 space-y-2.5 hover:border-brand-blue transition-colors shadow-sm"
+                className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 sm:p-6 shadow-xl hover:shadow-[0_16px_36px_rgba(8,120,232,0.25)] hover:border-[#19BCE8]/60 transition-all duration-300 space-y-2.5 group"
               >
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                  <h3 className="text-base font-bold text-brand-navy">
+                  <CheckCircle2 className="w-4 h-4 text-[#19BCE8] shrink-0" />
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-300 transition-colors">
                     {pillar.title}
                   </h3>
                 </div>
-                <p className="text-xs text-[#243B5A] leading-relaxed font-normal">
+                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal">
                   {pillar.desc}
                 </p>
-              </Card>
+              </div>
             ))}
           </div>
 
@@ -408,76 +401,58 @@ export const OfferingsPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. FIVE-STAGE LEARNING EXPERIENCE */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Our Methodology"
-          title="The Cloudariss Learning Experience"
-          subtitle="A five-stage structured continuum turning foundational knowledge into deployment-grade career readiness."
-        />
-
-        <FiveStageVisualJourney />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. VIRTUAL COMPANY SESSIONS */}
+      {/* 3. VIRTUAL COMPANY SESSIONS */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card
-          variant="white"
-          padding="lg"
-          borderAccent="blue"
-          className="border border-brand-border shadow-card"
-        >
+        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-10 text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface-blue border border-brand-blue/30">
-                <Building2 className="w-4 h-4 text-brand-blue" />
-                <span className="text-xs font-bold text-brand-navy uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#19BCE8]/10 border border-[#19BCE8]/30">
+                <Building2 className="w-4 h-4 text-[#19BCE8]" />
+                <span className="text-xs font-bold text-[#19BCE8] uppercase tracking-wider">
                   Direct Industry Integration
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
                 Virtual Company Sessions &amp; Regional IT Corridor Exposure
               </h2>
 
-              <p className="text-sm sm:text-base text-[#243B5A] leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 As part of the Cloudariss learning experience, students participate in virtual company sessions. These interactive sessions provide direct exposure to how professional engineering and analytics teams function in real enterprise environments.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-3.5 rounded-lg bg-slate-50 border border-brand-border/70 space-y-1.5">
-                  <div className="flex items-center gap-2 text-brand-navy font-bold text-sm">
-                    <Users className="w-4 h-4 text-brand-blue" />
+                <div className="p-4 rounded-xl bg-[#040C24]/80 border border-[#19BCE8]/20 space-y-2">
+                  <div className="flex items-center gap-2 text-white font-bold text-sm">
+                    <Users className="w-4 h-4 text-[#19BCE8]" />
                     <span>Practitioner Walkthroughs</span>
                   </div>
-                  <p className="text-xs text-[#243B5A] leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     Interactive technical discussions with practitioners from technology firms operating out of Visakhapatnam, including the Rushikonda IT Park and VSEZ corridors.
                   </p>
                 </div>
 
-                <div className="p-3.5 rounded-lg bg-slate-50 border border-brand-border/70 space-y-1.5">
-                  <div className="flex items-center gap-2 text-brand-navy font-bold text-sm">
-                    <Code2 className="w-4 h-4 text-brand-orange" />
+                <div className="p-4 rounded-xl bg-[#040C24]/80 border border-[#FF6B35]/25 space-y-2">
+                  <div className="flex items-center gap-2 text-white font-bold text-sm">
+                    <Code2 className="w-4 h-4 text-[#FF6B35]" />
                     <span>Internship Selection Pathway</span>
                   </div>
-                  <p className="text-xs text-[#243B5A] leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating regional technology teams.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-brand-surface-blue/50 rounded-2xl p-6 border border-brand-border text-center space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mx-auto text-brand-blue border border-brand-border">
+            <div className="lg:col-span-4 bg-[#040C24]/90 rounded-2xl p-6 border border-[#19BCE8]/30 text-center space-y-4 shadow-xl">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0878E8]/20 to-[#19BCE8]/30 shadow-inner flex items-center justify-center mx-auto text-[#19BCE8] border border-[#19BCE8]/40">
                 <Briefcase className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-brand-navy font-heading">
+              <h3 className="text-base font-bold text-white font-heading">
                 Practical Exposure from Day One
               </h3>
-              <p className="text-xs text-[#243B5A] leading-relaxed">
+              <p className="text-xs text-slate-300 leading-relaxed">
                 Connect classroom problem solving with true software development and data operations workflows.
               </p>
               <Button
@@ -491,7 +466,7 @@ export const OfferingsPage: React.FC = () => {
               </Button>
             </div>
           </div>
-        </Card>
+        </div>
       </section>
 
       {/* ========================================================================= */}
@@ -532,11 +507,6 @@ export const OfferingsPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ========================================================================= */}
-      {/* 6. FESTIVE ADMISSIONS CAMPAIGN CARD */}
-      {/* ========================================================================= */}
-      <VinayakaOfferCard />
     </div>
   );
 };
