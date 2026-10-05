@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   ShieldCheck,
@@ -76,75 +77,95 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 10. INDUSTRY SESSIONS & CAREER PREPARATION                                */}
+      {/* 10. INDUSTRY SESSIONS & CAREER PREPARATION (EDITORIAL COMPOSITION)        */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-b from-[#091E58]/90 via-[#061540]/90 to-[#030E2B]/90 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-10 text-white relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#05143A]/90 border border-[#19BCE8]/35 text-[#19BCE8] shadow-xs">
-                <Building2 className="w-4 h-4 text-[#19BCE8]" />
-                <span className="text-xs font-bold text-white uppercase tracking-wider">
-                  Direct Industry Exposure
-                </span>
-              </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-2 sm:py-4">
+        {/* Subtle atmospheric ambient glow behind the section */}
+        <div className="absolute top-1/2 -left-20 w-96 h-96 bg-[#00D2FF]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#FF7A00]/5 rounded-full blur-3xl pointer-events-none" />
 
-              <h2 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight">
-                Virtual Company Sessions &amp; Practitioner Walkthroughs
-              </h2>
-
-              <p className="text-sm sm:text-base text-[#DCE5F2] leading-relaxed font-normal">
-                Connect classroom learning with real-world engineering workflows. Students participate in technical walkthroughs and architecture discussions with working engineers and technology specialists from Visakhapatnam and online networks.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-gradient-to-b from-[#081F54]/88 to-[#041136]/88 border border-[#19BCE8]/25 space-y-2 shadow-md">
-                  <div className="flex items-center gap-2.5 text-white font-bold text-sm">
-                    <div className="w-8 h-8 rounded-lg bg-[#05143A] border border-[#19BCE8]/35 flex items-center justify-center text-[#19BCE8] shadow-xs shrink-0">
-                      <Users className="w-4 h-4 text-[#19BCE8]" />
-                    </div>
-                    <span>Practitioner Walkthroughs</span>
-                  </div>
-                  <p className="text-xs text-[#CBD5E1] leading-relaxed">
-                    Direct technical discussions and architecture deep dives with active tech leads and data specialists.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-gradient-to-b from-[#081F54]/88 to-[#041136]/88 border border-[#19BCE8]/25 space-y-2 shadow-md">
-                  <div className="flex items-center gap-2.5 text-white font-bold text-sm">
-                    <div className="w-8 h-8 rounded-lg bg-[#05143A] border border-brand-orange/40 flex items-center justify-center text-brand-orange shadow-xs shrink-0">
-                      <Code2 className="w-4 h-4 text-brand-orange" />
-                    </div>
-                    <span>Internship Selection Pathway</span>
-                  </div>
-                  <p className="text-xs text-[#CBD5E1] leading-relaxed">
-                    The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating technology teams.
-                  </p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center relative z-10">
+          {/* LEFT COLUMN: Dominant Editorial Industry Visual (60–65%) */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-6 sm:space-y-7">
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
+              <Building2 className="w-4 h-4 text-[#00D2FF]" />
+              <span>Direct Industry Exposure</span>
             </div>
 
-            <div className="lg:col-span-4 bg-gradient-to-b from-[#0A2364]/92 via-[#061746]/92 to-[#040E2D]/92 rounded-2xl p-6 sm:p-7 border border-[#19BCE8]/35 text-center space-y-4 shadow-xl">
-              <div className="w-14 h-14 rounded-2xl bg-[#0878E8] shadow-md flex items-center justify-center mx-auto text-white border border-[#19BCE8]/50 shadow-[0_0_20px_rgba(8,120,232,0.35)]">
-                <Briefcase className="w-7 h-7" />
+            {/* Large Dominant Editorial Heading */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12]">
+              Virtual Company Sessions &amp;{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#19BCE8] to-white">
+                Practitioner Walkthroughs
+              </span>
+            </h2>
+
+            {/* Supporting Paragraph */}
+            <p className="text-sm sm:text-base text-[#CBD5E1] leading-relaxed font-normal max-w-2xl">
+              Connect classroom learning with real-world engineering workflows. Students participate in technical walkthroughs and architecture discussions with working engineers and technology specialists from Visakhapatnam and online networks.
+            </p>
+
+            {/* Subtle Editorial Hairline Divider */}
+            <div className="h-px w-full bg-gradient-to-r from-[#00D2FF]/30 via-white/10 to-transparent" />
+
+            {/* Two Lightweight Editorial Information Blocks (No heavy cards) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-1">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
+                  <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] shrink-0" />
+                  <Users className="w-4 h-4 text-[#00D2FF] shrink-0" />
+                  <span>Practitioner Walkthroughs</span>
+                </div>
+                <p className="text-xs sm:text-[13px] text-[#94A3B8] leading-relaxed pl-4 border-l border-[#00D2FF]/25">
+                  Direct technical discussions and architecture deep dives with active tech leads and data specialists.
+                </p>
               </div>
-              <div className="space-y-1">
-                <h3 className="text-base font-bold text-white font-heading">
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
+                  <span className="w-2 h-2 rounded-full bg-[#FF7A00] shadow-[0_0_8px_#FF7A00] shrink-0" />
+                  <Code2 className="w-4 h-4 text-[#FF7A00] shrink-0" />
+                  <span>Internship Selection Pathway</span>
+                </div>
+                <p className="text-xs sm:text-[13px] text-[#94A3B8] leading-relaxed pl-4 border-l border-[#FF7A00]/25">
+                  The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating technology teams.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Floating Dedicated Career Preparation Feature Area (30–35%) */}
+          <div className="lg:col-span-5 xl:col-span-4 relative">
+            <div className="relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#07173B]/80 via-[#04102A]/85 to-[#02091A]/90 backdrop-blur-xl border border-white/10 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)]">
+              {/* Soft ambient orange lighting accent */}
+              <div className="absolute top-0 right-0 w-36 h-36 bg-[#FF7A00]/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="space-y-3 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF7A00]/10 border border-[#FF7A00]/30 text-[#FF9E40] text-[11px] font-mono font-bold uppercase tracking-wider">
+                  <Briefcase className="w-3.5 h-3.5 text-[#FF7A00]" />
+                  <span>Career Preparation</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-black text-white font-heading tracking-tight leading-snug">
                   Dedicated Career Preparation
                 </h3>
-                <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
+
+                <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed font-normal">
                   Saturday ATS resume audits and LinkedIn positioning, followed by technical interview preparation and mock rounds.
                 </p>
               </div>
-              <Button
-                to="/courses"
-                variant="primary"
-                size="md"
-                fullWidth
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore Curricula
-              </Button>
+
+              <div className="pt-2 relative z-10">
+                <Link
+                  to="/courses"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2.5 w-full h-12 px-6 rounded-xl bg-gradient-to-r from-[#FF7A00] via-[#FF9020] to-[#E05F00] hover:from-[#FF8C20] hover:to-[#EB6800] text-white font-black text-sm tracking-wide shadow-[0_0_24px_rgba(255,122,0,0.45),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_0_36px_rgba(255,122,0,0.65)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                >
+                  <span className="relative z-10">Explore Curricula</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
