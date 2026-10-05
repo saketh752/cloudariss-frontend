@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Compass,
   MessageCircle,
@@ -7,6 +8,7 @@ import {
   Code2,
   Cpu,
   Brain,
+  Info,
 } from 'lucide-react';
 import { SECONDARY_COURSES } from '@/data/coursesData';
 import {
@@ -306,6 +308,15 @@ export const AllTechnologyCourses: React.FC = () => {
         <p className="text-[#DCE5F2] text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-normal">
           Master focused technical disciplines with dedicated tracks in core programming languages, systems engineering, problem solving, modern web application development, and AI engineering.
         </p>
+
+        {/* Business Positioning Notice */}
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-[#08183B]/80 border border-white/15 text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed shadow-sm text-left flex items-start gap-3">
+          <Info className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />
+          <div>
+            <span className="font-bold text-white">Program Positioning: </span>
+            Individual courses are focused on technology fundamentals, guided practice, and project building. Comprehensive career preparation, dedicated mentorship, and structured accelerator benefits are exclusive to our flagship <Link to="/courses/crpc" className="text-[#00D2FF] font-semibold hover:underline">CRPC</Link> and <Link to="/courses/daap" className="text-[#FF7A00] font-semibold hover:underline">DAAP</Link> programs.
+          </div>
+        </div>
 
         {/* Category Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-2 sm:pt-3">
