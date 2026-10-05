@@ -57,33 +57,41 @@ export const FlagshipProgramsShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* Program Selector Tabs (For Quick Highlight / Navigation) */}
-        <div className="flex items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => setActiveTab('crpc')}
-            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-300 cursor-pointer flex items-center gap-2.5 shadow-sm ${
-              activeTab === 'crpc'
-                ? 'bg-gradient-to-r from-[#0878E8] to-[#00A8FF] text-white shadow-lg shadow-blue-500/25 ring-2 ring-[#00D2FF] scale-[1.02]'
-                : 'bg-[#06143D]/90 hover:bg-[#0A2578] text-slate-300 hover:text-white border border-[#00D2FF]/30'
-            }`}
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] animate-pulse" />
-            <span>CRPC (Cloud &amp; Data)</span>
-          </button>
+        {/* Program Selector Tabs (Top Segmented Pill Controller) */}
+        <div className="flex items-center justify-center">
+          <div className="p-1.5 rounded-2xl bg-[#040E26]/90 backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveTab('crpc')}
+              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-300 cursor-pointer flex items-center gap-2.5 ${
+                activeTab === 'crpc'
+                  ? 'bg-gradient-to-r from-[#00D2FF] via-[#0878E8] to-[#0055D4] text-white shadow-[0_0_24px_rgba(0,210,255,0.5),inset_0_1px_2px_rgba(255,255,255,0.4)] ring-1 ring-white/40 scale-[1.03]'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${activeTab === 'crpc' ? 'bg-[#00D2FF] opacity-75' : 'hidden'}`} />
+                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${activeTab === 'crpc' ? 'bg-white shadow-[0_0_8px_#00D2FF]' : 'bg-[#00D2FF]/60'}`} />
+              </span>
+              <span className="tracking-wide">CRPC (Cloud &amp; Data)</span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('daap')}
-            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-300 cursor-pointer flex items-center gap-2.5 shadow-sm ${
-              activeTab === 'daap'
-                ? 'bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white shadow-lg shadow-purple-500/25 ring-2 ring-[#A855F7] scale-[1.02]'
-                : 'bg-[#06143D]/90 hover:bg-[#0A2578] text-slate-300 hover:text-white border border-[#A855F7]/30'
-            }`}
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#A855F7] shadow-[0_0_8px_#A855F7] animate-pulse" />
-            <span>DAAP (Data &amp; AI)</span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('daap')}
+              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-300 cursor-pointer flex items-center gap-2.5 ${
+                activeTab === 'daap'
+                  ? 'bg-gradient-to-r from-[#D946EF] via-[#A855F7] to-[#7C3AED] text-white shadow-[0_0_24px_rgba(168,85,247,0.5),inset_0_1px_2px_rgba(255,255,255,0.4)] ring-1 ring-white/40 scale-[1.03]'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${activeTab === 'daap' ? 'bg-[#D946EF] opacity-75' : 'hidden'}`} />
+                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${activeTab === 'daap' ? 'bg-white shadow-[0_0_8px_#D946EF]' : 'bg-[#A855F7]/60'}`} />
+              </span>
+              <span className="tracking-wide">DAAP (Data &amp; AI)</span>
+            </button>
+          </div>
         </div>
 
         {/* Both Cards Grid */}
@@ -212,22 +220,23 @@ export const FlagshipProgramsShowcase: React.FC = () => {
             </div>
 
             {/* Action Footer */}
-            <div className="p-4 sm:p-5 bg-[#02091A]/95 border-t border-[#00D2FF]/15 space-y-2.5">
+            <div className="p-4 sm:p-5 bg-[#02091A]/95 border-t border-[#00D2FF]/20 space-y-2.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <Link
                   to="/courses/crpc"
-                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-r from-[#0878E8] via-[#00A8FF] to-[#0878E8] hover:from-[#00A8FF] hover:to-[#0878E8] text-white font-extrabold text-xs sm:text-sm shadow-[0_0_16px_rgba(8,120,232,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_0_24px_rgba(0,168,255,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#0878E8] to-[#0052CC] hover:from-[#00E5FF] hover:via-[#0A84FF] hover:to-[#0060E6] text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_0_24px_rgba(0,180,255,0.45),inset_0_1px_2px_rgba(255,255,255,0.45)] hover:shadow-[0_0_36px_rgba(0,210,255,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
                 >
-                  <span>Explore CRPC Track</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10">Explore CRPC Track</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => openCurriculum('crpc')}
-                  className="relative inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-[#071A42]/90 hover:bg-[#0B2A6B] border border-[#00D2FF]/40 hover:border-[#00D2FF] text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-b from-[#071F4A]/90 to-[#03112E]/95 hover:from-[#0B2C68] hover:to-[#061A45] border border-[#00D2FF]/50 hover:border-[#00D2FF] text-white font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(0,210,255,0.25)] hover:shadow-[0_0_24px_rgba(0,210,255,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
                 >
-                  <Download className="w-4 h-4 text-[#00D2FF]" />
+                  <Download className="w-4 h-4 text-[#00D2FF] group-hover:scale-110 group-hover:-translate-y-0.5 transition-transform duration-300" />
                   <span>Download Syllabus</span>
                 </button>
               </div>
@@ -235,9 +244,9 @@ export const FlagshipProgramsShowcase: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openWhatsApp(getCRPCEnquiryMessage())}
-                className="w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/50 hover:border-[#25D366] text-[#E5FFE9] hover:text-white font-semibold text-xs sm:text-sm backdrop-blur-md shadow-sm transition-all duration-200 group cursor-pointer"
+                className="relative overflow-hidden w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 py-2 rounded-xl bg-gradient-to-r from-[#25D366]/20 via-[#25D366]/30 to-[#128C7E]/25 hover:from-[#25D366]/35 hover:via-[#25D366]/45 hover:to-[#128C7E]/40 border border-[#25D366]/65 hover:border-[#25D366] text-[#E8FFF0] hover:text-white font-bold text-xs sm:text-sm backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4)] hover:shadow-[0_0_24px_rgba(37,211,102,0.45)] transition-all duration-300 group cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />
+                <MessageCircle className="w-4 h-4 text-[#25D366] group-hover:scale-115 transition-transform duration-300" />
                 <span>Enquire via WhatsApp</span>
               </button>
             </div>
@@ -367,22 +376,23 @@ export const FlagshipProgramsShowcase: React.FC = () => {
             </div>
 
             {/* Action Footer */}
-            <div className="p-4 sm:p-5 bg-[#090317]/95 border-t border-[#A855F7]/15 space-y-2.5">
+            <div className="p-4 sm:p-5 bg-[#090317]/95 border-t border-[#A855F7]/20 space-y-2.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <Link
                   to="/courses/daap"
-                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#7C3AED] hover:from-[#9333EA] hover:to-[#6D28D9] text-white font-extrabold text-xs sm:text-sm shadow-[0_0_16px_rgba(139,92,246,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_0_24px_rgba(168,85,247,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-r from-[#D946EF] via-[#A855F7] to-[#7C3AED] hover:from-[#E879F9] hover:via-[#C084FC] hover:to-[#9333EA] text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_0_24px_rgba(168,85,247,0.45),inset_0_1px_2px_rgba(255,255,255,0.45)] hover:shadow-[0_0_36px_rgba(217,70,239,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
                 >
-                  <span>Explore DAAP Track</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10">Explore DAAP Track</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => openCurriculum('daap')}
-                  className="relative inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-[#200F42]/90 hover:bg-[#301663] border border-[#A855F7]/40 hover:border-[#A855F7] text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 sm:h-12 px-4 sm:px-5 rounded-xl bg-gradient-to-b from-[#2B0E4E]/90 to-[#15042B]/95 hover:from-[#3D146F] hover:to-[#220745] border border-[#A855F7]/50 hover:border-[#C084FC] text-white font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(168,85,247,0.25)] hover:shadow-[0_0_24px_rgba(168,85,247,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
                 >
-                  <Download className="w-4 h-4 text-[#C084FC]" />
+                  <Download className="w-4 h-4 text-[#C084FC] group-hover:scale-110 group-hover:-translate-y-0.5 transition-transform duration-300" />
                   <span>Download Syllabus</span>
                 </button>
               </div>
@@ -390,9 +400,9 @@ export const FlagshipProgramsShowcase: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openWhatsApp(getDAAPEnquiryMessage())}
-                className="w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/50 hover:border-[#25D366] text-[#E5FFE9] hover:text-white font-semibold text-xs sm:text-sm backdrop-blur-md shadow-sm transition-all duration-200 group cursor-pointer"
+                className="relative overflow-hidden w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 py-2 rounded-xl bg-gradient-to-r from-[#25D366]/20 via-[#25D366]/30 to-[#128C7E]/25 hover:from-[#25D366]/35 hover:via-[#25D366]/45 hover:to-[#128C7E]/40 border border-[#25D366]/65 hover:border-[#25D366] text-[#E8FFF0] hover:text-white font-bold text-xs sm:text-sm backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4)] hover:shadow-[0_0_24px_rgba(37,211,102,0.45)] transition-all duration-300 group cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />
+                <MessageCircle className="w-4 h-4 text-[#25D366] group-hover:scale-115 transition-transform duration-300" />
                 <span>Enquire via WhatsApp</span>
               </button>
             </div>
