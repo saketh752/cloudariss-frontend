@@ -21,7 +21,7 @@ export const BRAND_DATA = {
   phone1: '+91 90593 34622',
   phone1Tel: 'tel:+919059334622',
   whatsappPhone: '+91 63026 80457',
-  whatsappUrl: 'https://wa.me/916302680457',
+  whatsappUrl: 'https://wa.me/916302680457?text=Hi%20Cloudariss%20team%2C%20I%20am%20interested%20in%20learning%20more%20about%20your%20technology%20programs.%20Please%20share%20the%20upcoming%20batch%20schedule%20and%20details.',
   instagram: {
     handle: '@cloudariss.tech',
     url: 'https://www.instagram.com/cloudariss.tech/?hl=en',
