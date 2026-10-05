@@ -79,22 +79,25 @@ export const HomePage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 10. INDUSTRY SESSIONS & CAREER PREPARATION (EDITORIAL COMPOSITION)        */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-2 sm:py-4">
-        {/* Subtle atmospheric ambient glow behind the section */}
-        <div className="absolute top-1/2 -left-20 w-96 h-96 bg-[#00D2FF]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#FF7A00]/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-4 sm:py-6">
+        {/* Subtle localized dark atmospheric backdrop for effortless text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#02091A]/90 via-[#030E26]/75 to-transparent rounded-3xl -z-10 blur-xl pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center relative z-10">
+        {/* Subtle atmospheric ambient glow behind the section */}
+        <div className="absolute top-1/2 -left-16 w-96 h-96 bg-[#00D2FF]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 right-4 w-80 h-80 bg-[#FF7A00]/8 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center relative z-10">
           {/* LEFT COLUMN: Dominant Editorial Industry Visual (60–65%) */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-6 sm:space-y-7">
+          <div className="lg:col-span-7 xl:col-span-8 space-y-5 sm:space-y-6">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
-              <Building2 className="w-4 h-4 text-[#00D2FF]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#071A42]/80 border border-[#00D2FF]/30 text-[#00D2FF] text-xs font-mono font-bold tracking-widest uppercase shadow-xs">
+              <Building2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
               <span>Direct Industry Exposure</span>
             </div>
 
             {/* Large Dominant Editorial Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.15] drop-shadow-md">
               Virtual Company Sessions &amp;{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#19BCE8] to-white">
                 Practitioner Walkthroughs
@@ -102,33 +105,33 @@ export const HomePage: React.FC = () => {
             </h2>
 
             {/* Supporting Paragraph */}
-            <p className="text-sm sm:text-base text-[#CBD5E1] leading-relaxed font-normal max-w-2xl">
+            <p className="text-sm sm:text-base text-[#E2E8F0] leading-relaxed font-normal max-w-2xl drop-shadow-xs">
               Connect classroom learning with real-world engineering workflows. Students participate in technical walkthroughs and architecture discussions with working engineers and technology specialists from Visakhapatnam and online networks.
             </p>
 
             {/* Subtle Editorial Hairline Divider */}
-            <div className="h-px w-full bg-gradient-to-r from-[#00D2FF]/30 via-white/10 to-transparent" />
+            <div className="h-px w-full bg-gradient-to-r from-[#00D2FF]/40 via-white/15 to-transparent" />
 
             {/* Two Lightweight Editorial Information Blocks (No heavy cards) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-1">
-              <div className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-1">
+              <div className="space-y-2 p-3 sm:p-3.5 rounded-xl bg-[#030E26]/60 border border-white/5 backdrop-blur-xs">
                 <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
                   <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] shrink-0" />
                   <Users className="w-4 h-4 text-[#00D2FF] shrink-0" />
                   <span>Practitioner Walkthroughs</span>
                 </div>
-                <p className="text-xs sm:text-[13px] text-[#94A3B8] leading-relaxed pl-4 border-l border-[#00D2FF]/25">
+                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed pl-4 border-l border-[#00D2FF]/30 font-normal">
                   Direct technical discussions and architecture deep dives with active tech leads and data specialists.
                 </p>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 p-3 sm:p-3.5 rounded-xl bg-[#030E26]/60 border border-white/5 backdrop-blur-xs">
                 <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
                   <span className="w-2 h-2 rounded-full bg-[#FF7A00] shadow-[0_0_8px_#FF7A00] shrink-0" />
                   <Code2 className="w-4 h-4 text-[#FF7A00] shrink-0" />
                   <span>Internship Selection Pathway</span>
                 </div>
-                <p className="text-xs sm:text-[13px] text-[#94A3B8] leading-relaxed pl-4 border-l border-[#FF7A00]/25">
+                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed pl-4 border-l border-[#FF7A00]/30 font-normal">
                   The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating technology teams.
                 </p>
               </div>
@@ -137,13 +140,13 @@ export const HomePage: React.FC = () => {
 
           {/* RIGHT COLUMN: Floating Dedicated Career Preparation Feature Area (30–35%) */}
           <div className="lg:col-span-5 xl:col-span-4 relative">
-            <div className="relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#07173B]/80 via-[#04102A]/85 to-[#02091A]/90 backdrop-blur-xl border border-white/10 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)]">
+            <div className="relative rounded-2xl sm:rounded-3xl p-6 sm:p-7 xl:p-8 bg-gradient-to-b from-[#061435]/92 via-[#040F2B]/95 to-[#02081A]/98 backdrop-blur-xl border border-white/12 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.1)]">
               {/* Soft ambient orange lighting accent */}
-              <div className="absolute top-0 right-0 w-36 h-36 bg-[#FF7A00]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-36 h-36 bg-[#FF7A00]/12 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-3 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF7A00]/10 border border-[#FF7A00]/30 text-[#FF9E40] text-[11px] font-mono font-bold uppercase tracking-wider">
-                  <Briefcase className="w-3.5 h-3.5 text-[#FF7A00]" />
+              <div className="space-y-2.5 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF7A00]/15 border border-[#FF7A00]/40 text-[#FFA043] text-[11px] font-mono font-bold uppercase tracking-wider">
+                  <Briefcase className="w-3.5 h-3.5 text-[#FF7A00] shrink-0" />
                   <span>Career Preparation</span>
                 </div>
 
@@ -156,14 +159,14 @@ export const HomePage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-2 relative z-10">
+              <div className="pt-1.5 relative z-10">
                 <Link
                   to="/courses"
-                  className="relative overflow-hidden inline-flex items-center justify-center gap-2.5 w-full h-12 px-6 rounded-xl bg-gradient-to-r from-[#FF7A00] via-[#FF9020] to-[#E05F00] hover:from-[#FF8C20] hover:to-[#EB6800] text-white font-black text-sm tracking-wide shadow-[0_0_24px_rgba(255,122,0,0.45),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_0_36px_rgba(255,122,0,0.65)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group"
+                  className="relative overflow-hidden inline-flex items-center justify-center gap-2 w-full h-12 px-5 sm:px-6 rounded-xl bg-gradient-to-r from-[#FF7A00] via-[#FF9020] to-[#E05F00] hover:from-[#FF8C20] hover:to-[#EB6800] text-white font-black text-sm tracking-wide shadow-[0_0_24px_rgba(255,122,0,0.45),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_0_36px_rgba(255,122,0,0.65)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group whitespace-nowrap shrink-0"
                 >
-                  <span className="relative z-10">Explore Curricula</span>
-                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  <span className="relative z-10 whitespace-nowrap font-bold tracking-normal">Explore Curricula</span>
+                  <ArrowRight className="w-4 h-4 shrink-0 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
                 </Link>
               </div>
             </div>
