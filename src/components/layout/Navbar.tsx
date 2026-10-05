@@ -72,13 +72,17 @@ export const Navbar: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#19BCE8]" />
               <span>Verify Certificate</span>
             </Link>
-            <Link
-              to="/courses"
+            <a
+              href={BRAND_DATA.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 xl:px-5 py-2 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0668CB] hover:from-[#0984FC] hover:to-[#0878E8] text-white text-xs xl:text-sm font-bold shadow-[0_2px_12px_rgba(8,120,232,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_4px_18px_rgba(25,188,232,0.5)] border border-[#19BCE8]/40 transition-all duration-200 group active:scale-[0.98]"
+              title="Chat with Admissions on WhatsApp"
             >
-              <span>Get Started</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-0.5" />
-            </Link>
+              <MessageCircle className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#25D366] transition-transform duration-200 group-hover:scale-110" />
+              <span>Contact</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white/80 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -142,14 +146,17 @@ export const Navbar: React.FC = () => {
 
             {/* Action buttons in Mobile Drawer */}
             <div className="pt-4 mt-2 space-y-2.5">
-              <Link
-                to="/courses"
+              <a
+                href={BRAND_DATA.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110"
               >
-                <span>Get Started — Explore Courses</span>
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <span>Contact Admissions on WhatsApp</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
 
             {/* Quick Contact & Socials in Mobile Menu */}
