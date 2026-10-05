@@ -22,10 +22,12 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-gradient-to-r from-[#02091D] via-[#07194D] to-[#02091D] border-b border-[#19BCE8]/20 shadow-[0_4px_24px_rgba(2,8,23,0.6)] py-3 sm:py-3.5">
-      {/* Subtle top edge lighting & radial ambient glow */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#19BCE8]/30 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_100%_at_50%_-20%,rgba(25,188,232,0.08),transparent_70%)] pointer-events-none" />
+    <header className="relative w-full z-40 bg-gradient-to-r from-[#02091D] via-[#06184A] to-[#02091D] border-b border-[#19BCE8]/25 shadow-[0_8px_32px_rgba(2,8,23,0.7),0_1px_0_rgba(25,188,232,0.2)] py-2.5 sm:py-3 transition-colors duration-200">
+      {/* Top laser accent line with cyan shimmer */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#19BCE8]/60 to-transparent pointer-events-none" />
+      
+      {/* Subtle radial ambient illumination */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_100%_at_50%_-20%,rgba(25,188,232,0.12),transparent_75%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between gap-4">
@@ -38,8 +40,8 @@ export const Navbar: React.FC = () => {
             />
           </Link>
 
-          {/* CENTER: Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* CENTER: Desktop Navigation Links inside frosted glass dock */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-3.5 py-1 rounded-full bg-[#040E2A]/70 border border-[#19BCE8]/20 shadow-[inset_0_1px_2px_rgba(255,255,255,0.08),0_2px_12px_rgba(2,8,23,0.4)] backdrop-blur-md">
             {navLinks.map((link) => {
               const isCurrent =
                 link.path === '/'
@@ -50,13 +52,16 @@ export const Navbar: React.FC = () => {
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  className={`relative py-1.5 text-sm font-semibold transition-colors duration-150 ${
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-semibold tracking-wide transition-all duration-200 ${
                     isCurrent
-                      ? 'text-[#19BCE8] font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#19BCE8] after:rounded-full after:shadow-[0_0_8px_rgba(255,255,255,0.4)]'
-                      : 'text-slate-300 hover:text-white'
+                      ? 'text-[#19BCE8] bg-[#071F5E] shadow-[0_0_12px_rgba(25,188,232,0.3),inset_0_1px_1px_rgba(255,255,255,0.15)] font-bold'
+                      : 'text-slate-300 hover:text-white hover:bg-[#071F5E]/40'
                   }`}
                 >
                   {link.name}
+                  {isCurrent && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#19BCE8] rounded-full shadow-[0_0_6px_rgba(25,188,232,0.9)]" />
+                  )}
                 </NavLink>
               );
             })}
@@ -64,13 +69,13 @@ export const Navbar: React.FC = () => {
 
           {/* RIGHT: CTAs (Desktop) */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
-            {/* Get Started Clean Blue CTA */}
+            {/* Get Started Clean Blue CTA with Metallic Glass Finish */}
             <Link
               to="/courses"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0878E8] hover:bg-[#0768ca] text-white text-xs xl:text-sm font-bold shadow-[0_2px_10px_rgba(8,120,232,0.35)] hover:shadow-[0_4px_16px_rgba(8,120,232,0.5)] transition-all group active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4.5 py-2 rounded-xl bg-gradient-to-r from-[#0878E8] via-[#0984FC] to-[#0878E8] bg-[length:200%_auto] hover:bg-right text-white text-xs xl:text-sm font-bold shadow-[0_4px_16px_rgba(8,120,232,0.45),inset_0_1px_1px_rgba(255,255,255,0.35)] hover:shadow-[0_6px_22px_rgba(25,188,232,0.6)] border border-[#19BCE8]/50 transition-all duration-300 group active:scale-[0.98]"
             >
               <span>Get Started</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           </div>
 
@@ -79,7 +84,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#071B63] focus:outline-none focus:ring-2 focus:ring-[#19BCE8]"
+              className="p-2 rounded-xl text-slate-300 hover:text-white bg-[#071B63]/60 border border-[#19BCE8]/20 hover:bg-[#071B63] focus:outline-none focus:ring-2 focus:ring-[#19BCE8] transition-colors"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -91,7 +96,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer / Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute inset-x-0 top-full bg-[#06143D] border-b border-[#19BCE8]/20 shadow-2xl px-4 py-5 z-50 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden absolute inset-x-0 top-full bg-[#040E2A]/98 backdrop-blur-xl border-b border-[#19BCE8]/25 shadow-2xl px-4 py-5 z-50 animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1.5">
             {navLinks.map((link) => {
               const isCurrent =
@@ -103,10 +108,10 @@ export const Navbar: React.FC = () => {
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base font-semibold ${
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold transition-colors ${
                     isCurrent
-                      ? 'text-[#19BCE8] bg-[#071B63] font-bold'
-                      : 'text-slate-300 hover:bg-[#071B63]/60 hover:text-white'
+                      ? 'text-[#19BCE8] bg-[#071F5E] font-bold shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
+                      : 'text-slate-300 hover:bg-[#071F5E]/50 hover:text-white'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -119,10 +124,10 @@ export const Navbar: React.FC = () => {
             <NavLink
               to="/verify-certificate"
               className={({ isActive }) =>
-                `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-base font-semibold border-t border-[#19BCE8]/20 mt-1 pt-3 ${
+                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold border-t border-[#19BCE8]/20 mt-1 pt-3 ${
                   isActive
-                    ? 'text-[#19BCE8] bg-[#071B63] font-bold'
-                    : 'text-slate-300 hover:bg-[#071B63]/60 hover:text-white'
+                    ? 'text-[#19BCE8] bg-[#071F5E] font-bold'
+                    : 'text-slate-300 hover:bg-[#071F5E]/50 hover:text-white'
                 }`
               }
             >
@@ -138,7 +143,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/courses"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-[#0878E8] text-white font-bold text-sm shadow-md hover:bg-blue-600"
+                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110"
               >
                 <span>Get Started — Explore Programs</span>
                 <ArrowRight className="w-4 h-4" />
@@ -153,10 +158,10 @@ export const Navbar: React.FC = () => {
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <a
                   href={BRAND_DATA.phone1Tel}
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-[#071B63] border border-[#19BCE8]/20 text-slate-200 font-semibold hover:text-[#19BCE8]"
+                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-200 font-semibold hover:text-[#19BCE8]"
                   aria-label={`Call ${BRAND_DATA.phone1}`}
                 >
-                  <Phone className="w-3.5 h-3.5 text-brand-blue" />
+                  <Phone className="w-3.5 h-3.5 text-[#19BCE8]" />
                   <span>Call Us</span>
                 </a>
                 <a
@@ -176,7 +181,7 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-slate-100 text-slate-600 hover:text-pink-600 transition-colors"
+                  className="p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-300 hover:text-pink-400 transition-colors"
                   aria-label="Cloudariss Instagram @cloudariss.tech"
                   title="Instagram: @cloudariss.tech"
                 >
@@ -186,7 +191,7 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-slate-100 text-slate-600 hover:text-brand-blue transition-colors"
+                  className="p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-300 hover:text-[#19BCE8] transition-colors"
                   aria-label="Cloudariss Technologies LinkedIn"
                   title="LinkedIn: Cloudariss Technologies"
                 >
