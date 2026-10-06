@@ -22,14 +22,14 @@ export const Marquee: React.FC<MarqueeProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden w-full py-3 sm:py-5 ${
+      className={`relative overflow-hidden w-full py-1.5 sm:py-2.5 ${
         fadeEdges
           ? '[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]'
           : ''
       } ${className}`}
     >
       <div
-        className={`${animClass} ${pauseClass} flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-2`}
+        className={`${animClass} ${pauseClass} flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-1`}
         style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}
       >
         <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-1">{children}</div>
