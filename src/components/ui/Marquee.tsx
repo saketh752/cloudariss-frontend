@@ -22,18 +22,18 @@ export const Marquee: React.FC<MarqueeProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden w-full ${
+      className={`relative overflow-hidden w-full py-3 sm:py-5 ${
         fadeEdges
-          ? '[mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)]'
+          ? '[mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]'
           : ''
       } ${className}`}
     >
       <div
-        className={`${animClass} ${pauseClass} flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0`}
+        className={`${animClass} ${pauseClass} flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-2`}
         style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}
       >
-        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0">{children}</div>
-        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0" aria-hidden="true">
+        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-1">{children}</div>
+        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0 py-1" aria-hidden="true">
           {children}
         </div>
       </div>

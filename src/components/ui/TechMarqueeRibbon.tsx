@@ -46,21 +46,21 @@ export const TechMarqueeRibbon: React.FC<TechMarqueeRibbonProps> = ({
     { name: 'LangChain', logo: <LangChainLogo className="w-8 h-8 sm:w-9 sm:h-9" /> },
     { name: 'RAG Systems', logo: <RagLogo className="w-8 h-8 sm:w-9 sm:h-9" /> },
     { name: 'Agentic AI', logo: <AgenticAiLogo className="w-8 h-8 sm:w-9 sm:h-9" /> },
-    { name: 'ServiceNow', logo: <ServiceNowLogo className="w-9 h-5 sm:w-10 sm:h-6" /> },
+    { name: 'ServiceNow', logo: <ServiceNowLogo className="h-6 sm:h-7 w-auto" /> },
     { name: 'Linux', logo: <LinuxLogo className="w-8 h-8 sm:w-9 sm:h-9 object-contain" /> },
     { name: 'Terraform', logo: <TerraformLogo className="w-8 h-8 sm:w-9 sm:h-9" /> },
   ];
 
   return (
-    <div className={`py-4 sm:py-6 my-1 relative z-10 w-full bg-transparent overflow-hidden ${className}`}>
+    <div className={`py-1 relative z-10 w-full bg-transparent ${className}`}>
       <Marquee speed={speed} fadeEdges={true}>
         {techItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-3 sm:gap-3.5 group select-none shrink-0 py-1 transition-all duration-300"
+            className="flex items-center gap-3 sm:gap-3.5 group select-none shrink-0 py-2 transition-all duration-300"
           >
-            {/* Standalone Floating Logo with Subtle Depth & Natural Proportions */}
-            <div className="shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            {/* Standalone Floating Logo with Natural Proportions & Zero Vertical Clipping */}
+            <div className="shrink-0 flex items-center justify-center min-w-[32px] sm:min-w-[36px] transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
               {item.logo}
             </div>
             {/* Minimal High-Contrast Label Floating with the Logo */}
