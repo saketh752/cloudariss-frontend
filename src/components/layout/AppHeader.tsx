@@ -21,14 +21,14 @@ export const AppHeader: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-[#020817]/95 border-b border-white/[0.08] shadow-[0_4px_24px_rgba(2,8,23,0.7)] py-3 sm:py-3.5">
+    <header className="relative w-full z-40 bg-gradient-to-b from-[#020817] via-[#020817]/98 to-[#020817]/90 py-3 sm:py-3.5">
       {/* Subtle atmospheric ambient environmental tone matching Cloudariss background */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#020817] via-[#030d22] to-[#020817] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_120%_at_15%_0%,rgba(25,188,232,0.06),transparent_65%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_120%_at_85%_0%,rgba(255,122,0,0.035),transparent_65%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_120%_at_15%_0%,rgba(25,188,232,0.05),transparent_65%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_120%_at_85%_0%,rgba(255,122,0,0.03),transparent_65%)] pointer-events-none" />
       
-      {/* Soft hairline top accent */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+      {/* Seamless bottom atmospheric fade into page / hero background */}
+      <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-[#020817]/40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between gap-4">
