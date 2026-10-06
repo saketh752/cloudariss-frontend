@@ -3,6 +3,65 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShieldCheck, ChevronRight, Phone, MessageCircle, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { BRAND_DATA } from '@/data/brandData';
 
+interface NavbarTheme {
+  gradientClass: string;
+  leftRadial: string;
+  rightRadial: string;
+}
+
+const NAVBAR_THEMES: Record<string, NavbarTheme> = {
+  '/': {
+    gradientClass: 'from-[#020817] via-[#030d22] to-[#020817]',
+    leftRadial: 'rgba(25,188,232,0.06)',
+    rightRadial: 'rgba(255,122,0,0.035)',
+  },
+  '/courses': {
+    gradientClass: 'from-[#020817] via-[#04102c] to-[#020817]',
+    leftRadial: 'rgba(8,120,232,0.07)',
+    rightRadial: 'rgba(25,188,232,0.04)',
+  },
+  '/courses/crpc': {
+    gradientClass: 'from-[#020817] via-[#03132e] to-[#020817]',
+    leftRadial: 'rgba(0,210,255,0.075)',
+    rightRadial: 'rgba(8,120,232,0.045)',
+  },
+  '/courses/daap': {
+    gradientClass: 'from-[#020817] via-[#070e2a] to-[#020817]',
+    leftRadial: 'rgba(56,189,248,0.07)',
+    rightRadial: 'rgba(139,92,246,0.045)',
+  },
+  '/why-cloudariss': {
+    gradientClass: 'from-[#020817] via-[#04112a] to-[#020817]',
+    leftRadial: 'rgba(25,188,232,0.06)',
+    rightRadial: 'rgba(8,120,232,0.04)',
+  },
+  '/about': {
+    gradientClass: 'from-[#020817] via-[#040e24] to-[#020817]',
+    leftRadial: 'rgba(8,120,232,0.055)',
+    rightRadial: 'rgba(25,188,232,0.035)',
+  },
+  '/contact': {
+    gradientClass: 'from-[#020817] via-[#041228] to-[#020817]',
+    leftRadial: 'rgba(25,188,232,0.06)',
+    rightRadial: 'rgba(37,211,102,0.03)',
+  },
+  '/verify-certificate': {
+    gradientClass: 'from-[#020817] via-[#031126] to-[#020817]',
+    leftRadial: 'rgba(25,188,232,0.07)',
+    rightRadial: 'rgba(8,120,232,0.04)',
+  },
+};
+
+const getNavbarTheme = (pathname: string): NavbarTheme => {
+  return (
+    NAVBAR_THEMES[pathname] || {
+      gradientClass: 'from-[#020817] via-[#030d22] to-[#020817]',
+      leftRadial: 'rgba(25,188,232,0.05)',
+      rightRadial: 'rgba(255,122,0,0.03)',
+    }
+  );
+};
+
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -11,6 +70,8 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  const currentTheme = getNavbarTheme(location.pathname);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -21,11 +82,21 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-gradient-to-b from-[#020817] via-[#020817]/98 to-[#020817]/90 py-3 sm:py-3.5">
-      {/* Subtle atmospheric ambient environmental tone matching Cloudariss background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020817] via-[#030d22] to-[#020817] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_120%_at_15%_0%,rgba(25,188,232,0.05),transparent_65%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_120%_at_85%_0%,rgba(255,122,0,0.03),transparent_65%)] pointer-events-none" />
+    <header className="relative w-full z-40 bg-gradient-to-b from-[#020817] via-[#020817]/98 to-[#020817]/90 py-3 sm:py-3.5 transition-colors duration-500">
+      {/* Atmospheric route-adaptive ambient environmental tone */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${currentTheme.gradientClass} transition-all duration-700 pointer-events-none`} />
+      <div
+        className="absolute inset-0 transition-all duration-700 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(ellipse 60% 120% at 15% 0%, ${currentTheme.leftRadial}, transparent 65%)`,
+        }}
+      />
+      <div
+        className="absolute inset-0 transition-all duration-700 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(ellipse 50% 120% at 85% 0%, ${currentTheme.rightRadial}, transparent 65%)`,
+        }}
+      />
       
       {/* Seamless bottom atmospheric fade into page / hero background */}
       <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-[#020817]/40 pointer-events-none" />
