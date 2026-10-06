@@ -4,75 +4,87 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeroSlide {
   id: string;
+  label: string;
   headline: string;
   accentHeadline: string;
-  subtitle?: string;
   description: string;
   targetLink: string;
   backgroundImage: string;
+  bgPosition: string;
   accentColor: string;
 }
 
 const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'brand',
+    label: 'CLOUDARISS TECHNOLOGIES',
     headline: 'Learn. Build.',
     accentHeadline: 'Get Hired.',
-    subtitle: 'Career Accelerators',
     description:
       'Industry-relevant programs in Cloud, Data, AI & DevOps engineered to launch your global tech career with real project experience.',
     targetLink: '/',
     backgroundImage: '/brand/hero/banner_brand_v3.jpg?v=5',
+    bgPosition: 'bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-right-center',
     accentColor: '#19BCE8',
   },
   {
     id: 'crpc',
+    label: 'FLAGSHIP ACCELERATOR',
     headline: 'CRPC',
     accentHeadline: 'Cloud & Data Career Accelerator',
     description:
       'Master cloud infrastructure, enterprise data engineering, containerization, and modern CI/CD pipelines through hands-on production labs.',
     targetLink: '/courses/crpc',
     backgroundImage: '/brand/hero/banner_crpc_v3.jpg?v=5',
+    bgPosition: 'bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-[position:80%_center]',
     accentColor: '#19BCE8',
   },
   {
     id: 'daap',
+    label: 'FLAGSHIP ACCELERATOR',
     headline: 'DAAP',
     accentHeadline: 'Data Analytics & AI Program',
     description:
       'Build real-world mastery in advanced SQL, Python exploratory analysis, Power BI executive dashboards, and modern Agentic AI workflows.',
     targetLink: '/courses/daap',
     backgroundImage: '/brand/hero/banner_daap_v3.jpg?v=5',
+    bgPosition: 'bg-[position:75%_center] md:bg-[position:70%_center] lg:bg-[position:85%_center]',
     accentColor: '#38BDF8',
   },
   {
     id: 'python',
+    label: 'PROGRAMMING FOUNDATION',
     headline: 'PYTHON',
     accentHeadline: 'Creative Programming & Automation',
     description:
       'High-impact programming track covering object-oriented architecture, operational automation scripts, API integrations, and practical application engineering.',
     targetLink: '/courses',
     backgroundImage: '/brand/hero/banner_python_v3.jpg?v=5',
+    bgPosition: 'bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-[position:75%_center]',
     accentColor: '#F59E0B',
   },
   {
     id: 'java',
+    label: 'ENTERPRISE FOUNDATION',
     headline: 'JAVA',
     accentHeadline: 'Build Scalable Enterprise Applications',
     description:
       'A time-tested foundation for mission-critical software, Spring Boot microservices, robust JVM architecture, and scalable enterprise application engineering.',
     targetLink: '/courses',
     backgroundImage: '/brand/hero/banner_java_v3.jpg?v=5',
+    bgPosition: 'bg-[position:75%_center] md:bg-[position:70%_center] lg:bg-[position:80%_center]',
     accentColor: '#FF7A00',
   },
   {
     id: 'devops',
+    label: 'INFRASTRUCTURE & AUTOMATION',
     headline: 'DEVOPS',
     accentHeadline: 'Build. Deploy. Scale.',
     description:
       'Master containerization with Docker, Kubernetes orchestration, automated production CI/CD pipelines, and resilient cloud deployments on AWS.',
     targetLink: '/courses',
     backgroundImage: '/brand/hero/banner_devops_v3.jpg?v=5',
+    bgPosition: 'bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-[position:80%_center]',
     accentColor: '#00C49F',
   },
 ];
@@ -248,7 +260,7 @@ export const HeroStoryCarousel: React.FC = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="group/hero relative w-full flex-1 min-h-[480px] sm:min-h-[520px] lg:min-h-[580px] bg-[#020817] overflow-hidden select-none cursor-pointer flex flex-col justify-center"
+      className="group/hero relative w-full flex-1 min-h-[500px] sm:min-h-[540px] lg:min-h-[620px] bg-[#020817] overflow-hidden select-none cursor-pointer flex flex-col justify-center"
       role="region"
       aria-roledescription="carousel"
       aria-label="Cloudariss Technology Highlights"
@@ -264,23 +276,23 @@ export const HeroStoryCarousel: React.FC = () => {
           style={{
             backgroundImage: `url(${currentSlide.backgroundImage})`,
           }}
-          className="absolute inset-0 bg-cover bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-right-center transition-all duration-700 ease-out group-hover/hero:scale-[1.015] group-hover/hero:brightness-105"
+          className={`absolute inset-0 bg-cover ${currentSlide.bgPosition} transition-all duration-700 ease-out group-hover/hero:scale-[1.015] group-hover/hero:brightness-105`}
         >
           {/* Natural cinematic lighting scrim */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/85 via-50% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/85 via-55% to-transparent sm:hidden pointer-events-none" />
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/85 via-45% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/90 via-50% to-transparent sm:hidden pointer-events-none" />
 
           {/* Dynamic ambient color glow matching slide theme */}
           <div
-            className="absolute top-1/4 left-1/4 w-[420px] h-[420px] rounded-full blur-[140px] pointer-events-none opacity-20"
+            className="absolute top-1/4 left-1/4 w-[460px] h-[460px] rounded-full blur-[140px] pointer-events-none opacity-20"
             style={{ backgroundColor: currentSlide.accentColor }}
           />
         </motion.div>
       </AnimatePresence>
 
       {/* Content Canvas */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 flex flex-col justify-center py-10 sm:py-14 lg:py-18 pointer-events-none flex-1">
-        <div className="max-w-2xl lg:max-w-3xl pointer-events-auto py-2 sm:py-4">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 flex flex-col justify-center py-12 sm:py-16 lg:py-20 pointer-events-none flex-1">
+        <div className="max-w-2xl lg:max-w-3xl pointer-events-auto py-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.id}
@@ -288,37 +300,39 @@ export const HeroStoryCarousel: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="space-y-4 sm:space-y-6"
+              className="space-y-3 sm:space-y-4"
             >
+              {/* Refined Tracked Eyebrow Name */}
+              <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-slate-400/90 font-mono">
+                {currentSlide.label}
+              </div>
+
               {/* Slide 1: Cloudariss Official Brand Presentation */}
               {currentSlide.id === 'brand' ? (
-                <div className="space-y-3 sm:space-y-4">
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-heading tracking-tight leading-[0.95] text-white">
+                <div className="space-y-2 sm:space-y-3">
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-heading tracking-tight leading-[0.95] text-white drop-shadow-sm">
                     Learn. Build.{' '}
                     <span className="text-[#19BCE8] drop-shadow-[0_0_24px_rgba(25,188,232,0.5)]">
                       Get Hired.
                     </span>
                   </h1>
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-slate-300 tracking-wider uppercase">
-                    Career Accelerators
-                  </div>
-                  <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed font-normal max-w-2xl pt-2">
+                  <p className="text-sm sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
                     {currentSlide.description}
                   </p>
                 </div>
               ) : (
                 /* Slides 2-6: Technology Program Worlds */
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="text-5xl sm:text-7xl lg:text-8xl font-black font-heading tracking-tight leading-[0.9] text-white drop-shadow-md">
                     {currentSlide.headline}
                   </div>
                   <div
-                    className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight leading-tight"
+                    className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight leading-tight"
                     style={{ color: currentSlide.accentColor }}
                   >
                     {currentSlide.accentHeadline}
                   </div>
-                  <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed font-normal max-w-2xl pt-2">
+                  <p className="text-sm sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
                     {currentSlide.description}
                   </p>
                 </div>
