@@ -11,53 +11,53 @@ interface NavbarTheme {
 
 const NAVBAR_THEMES: Record<string, NavbarTheme> = {
   '/': {
-    gradientClass: 'from-[#020817] via-[#030d22] to-[#020817]',
-    leftRadial: 'rgba(25,188,232,0.06)',
-    rightRadial: 'rgba(255,122,0,0.035)',
+    gradientClass: 'from-[#051438] via-[#082c68] to-[#051a44]',
+    leftRadial: 'rgba(25,188,232,0.18)',
+    rightRadial: 'rgba(8,120,232,0.14)',
   },
   '/courses': {
-    gradientClass: 'from-[#020817] via-[#04102c] to-[#020817]',
-    leftRadial: 'rgba(8,120,232,0.07)',
-    rightRadial: 'rgba(25,188,232,0.04)',
+    gradientClass: 'from-[#041236] via-[#093278] to-[#051842]',
+    leftRadial: 'rgba(8,120,232,0.20)',
+    rightRadial: 'rgba(25,188,232,0.14)',
   },
   '/courses/crpc': {
-    gradientClass: 'from-[#020817] via-[#03132e] to-[#020817]',
-    leftRadial: 'rgba(0,210,255,0.075)',
-    rightRadial: 'rgba(8,120,232,0.045)',
+    gradientClass: 'from-[#03153c] via-[#063884] to-[#041c48]',
+    leftRadial: 'rgba(0,210,255,0.22)',
+    rightRadial: 'rgba(8,120,232,0.15)',
   },
   '/courses/daap': {
-    gradientClass: 'from-[#020817] via-[#070e2a] to-[#020817]',
-    leftRadial: 'rgba(56,189,248,0.07)',
-    rightRadial: 'rgba(139,92,246,0.045)',
+    gradientClass: 'from-[#05123a] via-[#0b286c] to-[#071640]',
+    leftRadial: 'rgba(56,189,248,0.20)',
+    rightRadial: 'rgba(139,92,246,0.14)',
   },
   '/why-cloudariss': {
-    gradientClass: 'from-[#020817] via-[#04112a] to-[#020817]',
-    leftRadial: 'rgba(25,188,232,0.06)',
-    rightRadial: 'rgba(8,120,232,0.04)',
+    gradientClass: 'from-[#041438] via-[#072e70] to-[#051844]',
+    leftRadial: 'rgba(25,188,232,0.18)',
+    rightRadial: 'rgba(8,120,232,0.14)',
   },
   '/about': {
-    gradientClass: 'from-[#020817] via-[#040e24] to-[#020817]',
-    leftRadial: 'rgba(8,120,232,0.055)',
-    rightRadial: 'rgba(25,188,232,0.035)',
+    gradientClass: 'from-[#041236] via-[#082a66] to-[#051640]',
+    leftRadial: 'rgba(8,120,232,0.18)',
+    rightRadial: 'rgba(25,188,232,0.12)',
   },
   '/contact': {
-    gradientClass: 'from-[#020817] via-[#041228] to-[#020817]',
-    leftRadial: 'rgba(25,188,232,0.06)',
-    rightRadial: 'rgba(37,211,102,0.03)',
+    gradientClass: 'from-[#041438] via-[#072e6c] to-[#051840]',
+    leftRadial: 'rgba(25,188,232,0.18)',
+    rightRadial: 'rgba(37,211,102,0.10)',
   },
   '/verify-certificate': {
-    gradientClass: 'from-[#020817] via-[#031126] to-[#020817]',
-    leftRadial: 'rgba(25,188,232,0.07)',
-    rightRadial: 'rgba(8,120,232,0.04)',
+    gradientClass: 'from-[#031438] via-[#072c72] to-[#041842]',
+    leftRadial: 'rgba(25,188,232,0.20)',
+    rightRadial: 'rgba(8,120,232,0.14)',
   },
 };
 
 const getNavbarTheme = (pathname: string): NavbarTheme => {
   return (
     NAVBAR_THEMES[pathname] || {
-      gradientClass: 'from-[#020817] via-[#030d22] to-[#020817]',
-      leftRadial: 'rgba(25,188,232,0.05)',
-      rightRadial: 'rgba(255,122,0,0.03)',
+      gradientClass: 'from-[#051438] via-[#082c68] to-[#051a44]',
+      leftRadial: 'rgba(25,188,232,0.18)',
+      rightRadial: 'rgba(8,120,232,0.14)',
     }
   );
 };
@@ -82,24 +82,24 @@ export const AppHeader: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-[#020817]/60 backdrop-blur-md py-3 sm:py-3.5 transition-colors duration-500">
-      {/* Route-adaptive atmospheric ambient tone - fully blended with global background */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${currentTheme.gradientClass} opacity-40 transition-opacity duration-700 pointer-events-none`} />
+    <header className="relative w-full z-40 bg-gradient-to-b from-[#04102c]/90 via-[#07204e]/75 to-[#08285e]/40 backdrop-blur-md py-3 sm:py-3.5 transition-colors duration-500">
+      {/* Route-adaptive atmospheric ambient tone - rich Cloudariss blue language */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${currentTheme.gradientClass} opacity-60 transition-opacity duration-700 pointer-events-none`} />
       <div
         className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(ellipse 60% 120% at 15% 0%, ${currentTheme.leftRadial}, transparent 65%)`,
+          backgroundImage: `radial-gradient(ellipse 70% 140% at 15% 0%, ${currentTheme.leftRadial}, transparent 70%)`,
         }}
       />
       <div
         className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(ellipse 50% 120% at 85% 0%, ${currentTheme.rightRadial}, transparent 65%)`,
+          backgroundImage: `radial-gradient(ellipse 60% 140% at 85% 0%, ${currentTheme.rightRadial}, transparent 70%)`,
         }}
       />
       
-      {/* Soft atmospheric gradient wash ensuring logo & text contrast while preserving continuous background depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020817]/70 via-[#020817]/40 to-transparent pointer-events-none" />
+      {/* Smooth atmospheric blue transition naturally meeting the page background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b3574]/20 to-[#19BCE8]/10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between gap-4">
