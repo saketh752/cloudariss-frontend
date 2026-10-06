@@ -82,24 +82,24 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-gradient-to-b from-[#020817] via-[#020817]/98 to-[#020817]/90 py-3 sm:py-3.5 transition-colors duration-500">
-      {/* Atmospheric route-adaptive ambient environmental tone */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${currentTheme.gradientClass} transition-all duration-700 pointer-events-none`} />
+    <header className="relative w-full z-40 bg-[#020817]/60 backdrop-blur-md py-3 sm:py-3.5 transition-colors duration-500">
+      {/* Route-adaptive atmospheric ambient tone - fully blended with global background */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${currentTheme.gradientClass} opacity-40 transition-opacity duration-700 pointer-events-none`} />
       <div
-        className="absolute inset-0 transition-all duration-700 pointer-events-none"
+        className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(ellipse 60% 120% at 15% 0%, ${currentTheme.leftRadial}, transparent 65%)`,
         }}
       />
       <div
-        className="absolute inset-0 transition-all duration-700 pointer-events-none"
+        className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(ellipse 50% 120% at 85% 0%, ${currentTheme.rightRadial}, transparent 65%)`,
         }}
       />
       
-      {/* Seamless bottom atmospheric fade into page / hero background */}
-      <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-[#020817]/40 pointer-events-none" />
+      {/* Soft atmospheric gradient wash ensuring logo & text contrast while preserving continuous background depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020817]/70 via-[#020817]/40 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between gap-4">
