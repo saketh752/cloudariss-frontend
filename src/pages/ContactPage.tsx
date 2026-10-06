@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/Button';
 import { BRAND_DATA } from '@/data/brandData';
 import { ContactEditorialBlock } from '@/components/contact/ContactEditorialBlock';
+import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -94,6 +95,9 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Standalone Tech Ecosystem Marquee */}
+      <TechMarqueeRibbon />
 
       {/* ========================================================================= */}
       {/* CONTACT CHANNELS & FORM (EDITORIAL COMPOSITION)                           */}

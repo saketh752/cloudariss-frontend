@@ -21,20 +21,19 @@ export const Marquee: React.FC<MarqueeProps> = ({
   const pauseClass = pauseOnHover ? 'pause-hover' : '';
 
   return (
-    <div className={`relative overflow-hidden w-full ${className}`}>
-      {fadeEdges && (
-        <>
-          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none bg-gradient-to-r from-[#F7F9FC] via-[#F7F9FC]/80 to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none bg-gradient-to-l from-[#F7F9FC] via-[#F7F9FC]/80 to-transparent" />
-        </>
-      )}
-
+    <div
+      className={`relative overflow-hidden w-full ${
+        fadeEdges
+          ? '[mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)]'
+          : ''
+      } ${className}`}
+    >
       <div
-        className={`${animClass} ${pauseClass} flex items-center gap-6 sm:gap-10`}
+        className={`${animClass} ${pauseClass} flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0`}
         style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}
       >
-        <div className="flex items-center gap-6 sm:gap-10 shrink-0">{children}</div>
-        <div className="flex items-center gap-6 sm:gap-10 shrink-0" aria-hidden="true">
+        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0">{children}</div>
+        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 shrink-0" aria-hidden="true">
           {children}
         </div>
       </div>

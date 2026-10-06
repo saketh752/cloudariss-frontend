@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { BRAND_DATA } from '@/data/brandData';
+import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 
 export const VerifyCertificatePage: React.FC = () => {
   const [certId, setCertId] = useState('');
@@ -68,6 +69,9 @@ export const VerifyCertificatePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Standalone Tech Ecosystem Marquee */}
+      <TechMarqueeRibbon />
 
       {/* ========================================================================= */}
       {/* VERIFICATION FORM */}
