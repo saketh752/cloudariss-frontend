@@ -21,12 +21,14 @@ export const AppHeader: React.FC = () => {
   ];
 
   return (
-    <header className="relative w-full z-40 bg-gradient-to-r from-[#02091D] via-[#06184A] to-[#02091D] border-b border-[#19BCE8]/20 shadow-[0_4px_24px_rgba(2,8,23,0.6)] py-3 sm:py-3.5">
-      {/* Top laser accent line with cyan shimmer */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#19BCE8]/50 to-transparent pointer-events-none" />
+    <header className="relative w-full z-40 bg-[#020817]/95 border-b border-white/[0.08] shadow-[0_4px_24px_rgba(2,8,23,0.7)] py-3 sm:py-3.5">
+      {/* Subtle atmospheric ambient environmental tone matching Cloudariss background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#020817] via-[#030d22] to-[#020817] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_120%_at_15%_0%,rgba(25,188,232,0.06),transparent_65%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_120%_at_85%_0%,rgba(255,122,0,0.035),transparent_65%)] pointer-events-none" />
       
-      {/* Subtle radial ambient illumination */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_100%_at_50%_-20%,rgba(25,188,232,0.08),transparent_75%)] pointer-events-none" />
+      {/* Soft hairline top accent */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between gap-4">
@@ -90,7 +92,7 @@ export const AppHeader: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white bg-[#071B63]/60 border border-[#19BCE8]/20 hover:bg-[#071B63] focus:outline-none focus:ring-2 focus:ring-[#19BCE8] transition-colors"
+              className="p-2 rounded-xl text-slate-300 hover:text-white bg-[#06122c] border border-white/[0.1] hover:bg-[#081a3d] focus:outline-none focus:ring-2 focus:ring-[#19BCE8] transition-colors"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -102,7 +104,7 @@ export const AppHeader: React.FC = () => {
 
       {/* Mobile Drawer / Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute inset-x-0 top-full bg-[#040E2A]/98 backdrop-blur-xl border-b border-[#19BCE8]/25 shadow-2xl px-4 py-5 z-50 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden absolute inset-x-0 top-full bg-[#020817]/98 backdrop-blur-xl border-b border-white/[0.1] shadow-2xl px-4 py-5 z-50 animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1.5">
             {navLinks.map((link) => {
               const isCurrent =
@@ -116,8 +118,8 @@ export const AppHeader: React.FC = () => {
                   to={link.path}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold transition-colors ${
                     isCurrent
-                      ? 'text-[#19BCE8] bg-[#071F5E] font-bold shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
-                      : 'text-slate-300 hover:bg-[#071F5E]/50 hover:text-white'
+                      ? 'text-[#19BCE8] bg-white/[0.06] font-bold shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
+                      : 'text-slate-300 hover:bg-white/[0.04] hover:text-white'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -130,10 +132,10 @@ export const AppHeader: React.FC = () => {
             <NavLink
               to="/verify-certificate"
               className={({ isActive }) =>
-                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold border-t border-[#19BCE8]/20 mt-1 pt-3 ${
+                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold border-t border-white/[0.08] mt-1 pt-3 ${
                   isActive
-                    ? 'text-[#19BCE8] bg-[#071F5E] font-bold'
-                    : 'text-slate-300 hover:bg-[#071F5E]/50 hover:text-white'
+                    ? 'text-[#19BCE8] bg-white/[0.06] font-bold'
+                    : 'text-slate-300 hover:bg-white/[0.04] hover:text-white'
                 }`
               }
             >
@@ -151,7 +153,7 @@ export const AppHeader: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110"
+                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>Contact Admissions on WhatsApp</span>
@@ -160,14 +162,14 @@ export const AppHeader: React.FC = () => {
             </div>
 
             {/* Quick Contact & Socials in Mobile Menu */}
-            <div className="pt-4 mt-2 border-t border-[#19BCE8]/20 space-y-2.5">
+            <div className="pt-4 mt-2 border-t border-white/[0.08] space-y-2.5">
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Official Channels
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <a
                   href={BRAND_DATA.phone1Tel}
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-200 font-semibold hover:text-[#19BCE8]"
+                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-200 font-semibold hover:text-[#19BCE8]"
                   aria-label={`Call ${BRAND_DATA.phone1}`}
                 >
                   <Phone className="w-3.5 h-3.5 text-[#19BCE8]" />
@@ -190,7 +192,7 @@ export const AppHeader: React.FC = () => {
                   href={BRAND_DATA.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-300 hover:text-pink-400 transition-colors"
+                  className="p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-pink-400 transition-colors"
                   aria-label="Cloudariss Instagram @cloudariss.tech"
                   title="Instagram: @cloudariss.tech"
                 >
@@ -200,7 +202,7 @@ export const AppHeader: React.FC = () => {
                   href={BRAND_DATA.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-[#071B63] border border-[#19BCE8]/20 text-slate-300 hover:text-[#19BCE8] transition-colors"
+                  className="p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-[#19BCE8] transition-colors"
                   aria-label="Cloudariss Technologies LinkedIn"
                   title="LinkedIn: Cloudariss Technologies"
                 >
