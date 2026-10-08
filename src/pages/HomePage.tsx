@@ -34,18 +34,17 @@ export const HomePage: React.FC = () => {
       <div className="space-y-14 lg:space-y-20 mt-6 sm:mt-8 lg:mt-10">
 
       {/* ========================================================================= */}
-      {/* 4. THE INTERACTIVE TECHNOLOGY UNIVERSE (TOOLKIT-INSPIRED)                 */}
-      {/*    Selecting a tech activates focus, animates relations, dims others      */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <TechnologyUniverse />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. TIER-1 FLAGSHIP PROGRAMS (CRPC & DAAP) — LEVEL-2 VISUAL HIERARCHY       */}
+      {/* 2. TIER-1 FLAGSHIP PROGRAMS (CRPC & DAAP) — PRIMARY CAREER PATHWAYS       */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FlagshipProgramsShowcase />
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. THE CONNECTED TECHNOLOGY UNIVERSE (INTERACTIVE STACK MATRIX)           */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TechnologyUniverse />
       </section>
 
       {/* ========================================================================= */}

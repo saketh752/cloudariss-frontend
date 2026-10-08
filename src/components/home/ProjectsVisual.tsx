@@ -187,16 +187,16 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
         {projects.map((proj, idx) => (
           <div
             key={idx}
-            className={`group relative p-6 rounded-2xl bg-[#081F54]/88 backdrop-blur-xl border border-[#19BCE8]/30 hover:border-[#19BCE8]/60 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden text-white bg-gradient-to-b ${proj.gradient}`}
+            className="group relative p-6 rounded-2xl bg-[#040F2B]/75 backdrop-blur-md border border-white/10 hover:border-[#00D2FF]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden text-white"
           >
             <div>
               {/* Tile Top: Badge & Icon */}
               <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="w-11 h-11 rounded-xl bg-white/10 shadow-xs border border-[#19BCE8]/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                <div className="w-10 h-10 rounded-xl bg-[#071942] border border-white/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                   {proj.icon}
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-extrabold tracking-wider text-[#19BCE8] uppercase bg-[#05143A] px-2 py-0.5 rounded-md border border-[#19BCE8]/30">
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#00D2FF] uppercase bg-[#071942] px-2.5 py-0.5 rounded-full border border-[#00D2FF]/30">
                     {proj.tag}
                   </span>
                 </div>
@@ -204,38 +204,38 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
 
               {/* Title & Category */}
               <div className="mb-2">
-                <span className="text-[11px] font-semibold text-[#19BCE8] uppercase tracking-wider block mb-0.5">
+                <span className="text-[11px] font-mono font-semibold text-[#00D2FF] uppercase tracking-wider block mb-0.5">
                   {proj.category}
                 </span>
-                <h4 className="text-base sm:text-lg font-bold text-white font-heading group-hover:text-cyan-200 transition-colors leading-snug">
+                <h4 className="text-base sm:text-lg font-bold text-white font-heading group-hover:text-[#00D2FF] transition-colors leading-snug">
                   {proj.title}
                 </h4>
               </div>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-4">
+              <p className="text-xs sm:text-[13.5px] text-[#CBD5E1] leading-relaxed font-normal mb-4">
                 {proj.description}
               </p>
             </div>
 
             {/* Deliverables Checklist & Logos Footer */}
-            <div className="pt-4 border-t border-white/10 space-y-3">
+            <div className="pt-3.5 border-t border-white/10 space-y-3">
               <div className="space-y-1.5">
                 {proj.deliverables.map((item, dIdx) => (
                   <div key={dIdx} className="flex items-center gap-1.5 text-[11px] text-slate-200 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#19BCE8] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
                     <span className="truncate">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-dashed border-white/10">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                  <FolderGit2 className="w-3 h-3 text-[#19BCE8]" /> Tech Stack
+              <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                  <FolderGit2 className="w-3 h-3 text-[#00D2FF]" /> Tech Stack
                 </span>
                 <div className="flex items-center gap-1.5">
                   {proj.logos.map((logo, lIdx) => (
-                    <span key={lIdx} className="scale-90 inline-block bg-white/10 p-1 rounded-md">
+                    <span key={lIdx} className="scale-90 inline-block bg-white/5 p-1 rounded-md">
                       {logo}
                     </span>
                   ))}

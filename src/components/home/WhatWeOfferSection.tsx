@@ -143,55 +143,41 @@ export const WhatWeOfferSection: React.FC = () => {
       </div>
 
       {/* ===================================================================== */}
-      {/* 2 × 2 EDITORIAL CARDS COMPOSITION                                     */}
+      {/* 2 × 2 EDITORIAL PILLARS COMPOSITION                                   */}
       {/* ===================================================================== */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {PILLARS.map((pillar) => {
-          const borderHoverStyles = {
-            blue: 'hover:border-[#0878E8]/70 group-hover:border-t-[#0878E8]',
-            orange: 'hover:border-brand-orange/70 group-hover:border-t-brand-orange',
-            cyan: 'hover:border-[#19BCE8]/70 group-hover:border-t-[#19BCE8]',
-            navy: 'hover:border-cyan-400/70 group-hover:border-t-cyan-400',
-          }[pillar.accentColor];
-
-          const lineAccent = {
-            blue: 'bg-[#0878E8]',
-            orange: 'bg-brand-orange',
-            cyan: 'bg-[#19BCE8]',
-            navy: 'bg-cyan-400',
-          }[pillar.accentColor];
-
-          const iconContainerStyles = {
-            blue: 'bg-[#05143A] border-[#0878E8]/40 text-[#19BCE8]',
-            orange: 'bg-[#05143A] border-brand-orange/40 text-brand-orange',
-            cyan: 'bg-[#05143A] border-[#19BCE8]/40 text-cyan-300',
-            navy: 'bg-[#05143A] border-cyan-400/40 text-cyan-300',
+          const iconColor = {
+            blue: 'text-[#00D2FF]',
+            orange: 'text-[#FF7A00]',
+            cyan: 'text-[#38BDF8]',
+            navy: 'text-[#A855F7]',
           }[pillar.accentColor];
 
           return (
             <div
               key={pillar.step}
-              className={`group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#091E58]/88 via-[#061540]/88 to-[#030E2B]/88 backdrop-blur-xl border border-[#19BCE8]/30 p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-6 overflow-hidden border-t-2 shadow-xl ${borderHoverStyles}`}
+              className="group relative rounded-2xl bg-[#040F2B]/75 border border-white/10 hover:border-[#00D2FF]/40 p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between space-y-5 overflow-hidden backdrop-blur-md"
             >
               {/* Top Row: Numbered Identifier + Icon + Badge */}
               <div className="flex items-start justify-between gap-4 relative z-10">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-300 shadow-xs ${iconContainerStyles}`}
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center bg-[#071942]/90 border border-white/10 group-hover:border-[#00D2FF]/40 transition-all duration-300 ${iconColor}`}
                   >
                     {pillar.icon}
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono font-bold tracking-widest text-[#B4C3DB] block uppercase">
+                    <span className="text-[11px] font-mono font-bold tracking-widest text-slate-400 block uppercase">
                       PILLAR {pillar.step}
                     </span>
-                    <span className="text-[11px] font-mono font-extrabold text-[#19BCE8]">
+                    <span className="text-[11px] font-mono font-extrabold text-[#00D2FF]">
                       {pillar.stepName}
                     </span>
                   </div>
                 </div>
 
-                <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#05143A] text-[#19BCE8] border border-[#19BCE8]/30 shrink-0">
+                <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#071942] text-[#00D2FF] border border-[#00D2FF]/30 shrink-0">
                   {pillar.badge}
                 </span>
               </div>
@@ -213,30 +199,25 @@ export const WhatWeOfferSection: React.FC = () => {
               </div>
 
               {/* Subtle Technical Motif / Detail Bar */}
-              <div className="pt-4 border-t border-[#19BCE8]/20 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="pt-3.5 border-t border-white/10 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 {/* Tech Chips */}
                 <div className="flex flex-wrap items-center gap-1.5">
                   {pillar.techTags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded-md bg-[#05143A]/90 text-slate-200 text-[10px] font-mono font-bold border border-[#19BCE8]/20"
+                      className="px-2 py-0.5 rounded-md bg-[#071942]/90 text-slate-300 text-[10px] font-mono font-bold border border-white/10"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Subtle Progression Direction Indicator */}
-                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-[#19BCE8] group-hover:text-white transition-colors shrink-0">
+                {/* Progression Motifs */}
+                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-[#00D2FF] group-hover:text-white transition-colors shrink-0">
                   <span>{pillar.motif.label}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-
-              {/* Interactive Accent Line animation on bottom */}
-              <div
-                className={`absolute bottom-0 left-0 h-[2.5px] w-0 group-hover:w-full transition-all duration-500 ease-out ${lineAccent}`}
-              />
             </div>
           );
         })}
