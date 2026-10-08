@@ -14,56 +14,55 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { HeroStoryCarousel } from '@/components/home/HeroStoryCarousel';
 import { TechnologyUniverse } from '@/components/home/TechnologyUniverse';
 import { FlagshipProgramsShowcase } from '@/components/home/FlagshipProgramsShowcase';
-import { MoreTechnologiesToExplore } from '@/components/home/MoreTechnologiesToExplore';
 import { ProjectsVisual } from '@/components/home/ProjectsVisual';
 import { WhatWeOfferSection } from '@/components/home/WhatWeOfferSection';
 import { TechMarqueeRibbon, DomainTickerRibbon } from '@/components/ui/TechMarqueeRibbon';
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="pb-6">
+    <div className="pb-10">
       {/* ========================================================================= */}
-      {/* 1. SEAMLESS HERO CAROUSEL + TECHNOLOGY MARQUEE (NO SPLIT GAP)             */}
+      {/* 1. HERO CAROUSEL                                                          */}
       {/* ========================================================================= */}
-      <section className="w-full relative min-h-[calc(100vh-64px)] lg:h-[calc(100vh-64px)] flex flex-col justify-between">
+      <section className="w-full relative">
         <HeroStoryCarousel />
-        <TechMarqueeRibbon />
       </section>
 
-      {/* Main Content Flow with Balanced Vertical Cadence */}
-      <div className="space-y-14 lg:space-y-20 mt-6 sm:mt-8 lg:mt-10">
+      {/* ========================================================================= */}
+      {/* 2. TECHNOLOGY LOGO TRANSITION RIBBON                                      */}
+      {/*    Centered in its own deliberate space with ample breathing room         */}
+      {/* ========================================================================= */}
+      <div className="w-full py-7 sm:py-9 lg:py-12 relative z-10 flex items-center justify-center">
+        <TechMarqueeRibbon />
+      </div>
+
+      {/* Main Editorial Content Flow */}
+      <div className="space-y-16 lg:space-y-24">
 
       {/* ========================================================================= */}
-      {/* 2. TIER-1 FLAGSHIP PROGRAMS (CRPC & DAAP) — PRIMARY CAREER PATHWAYS       */}
+      {/* 3. TIER-1 FLAGSHIP PROGRAMS (CRPC & DAAP)                                 */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FlagshipProgramsShowcase />
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. THE CONNECTED TECHNOLOGY UNIVERSE (INTERACTIVE STACK MATRIX)           */}
+      {/* 4. THE CONNECTED TECHNOLOGY UNIVERSE                                      */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <TechnologyUniverse />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 6. SECONDARY OFFERINGS: MORE TECHNOLOGIES TO EXPLORE (LEVEL-4 DISCOVERY)  */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <MoreTechnologiesToExplore />
       </section>
 
       {/* Rhythm Divider */}
       <DomainTickerRibbon />
 
       {/* ========================================================================= */}
-      {/* 7. WHAT WE OFFER — REFINED EDITORIAL PILLARS                              */}
+      {/* 5. WHAT WE OFFER — REFINED EDITORIAL PILLARS                              */}
       {/* ========================================================================= */}
       <WhatWeOfferSection />
 
       {/* ========================================================================= */}
-      {/* 9. DOCUMENTED HANDS-ON PROJECTS SHOWCASE                                  */}
+      {/* 6. DOCUMENTED HANDS-ON PROJECTS SHOWCASE                                  */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
@@ -76,28 +75,30 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 10. INDUSTRY SESSIONS & CAREER PREPARATION (OPEN EDITORIAL LAYOUT)        */}
+      {/* 7. INDUSTRY SESSIONS & CAREER PREPARATION (DEEP BLUE/CYAN ATMOSPHERE)     */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start relative z-10">
           {/* LEFT COLUMN: Dominant Editorial Industry Narrative (60–65%) */}
           <div className="lg:col-span-7 xl:col-span-8 space-y-6 relative">
-            {/* Non-rectangular feathered atmospheric dark contrast zone for left narrative */}
+            {/* Cloudariss Deep-Blue/Cyan Atmospheric Wash (No black overlay block) */}
             <div
               className="absolute -top-16 -left-16 w-[125%] h-[130%] pointer-events-none -z-10"
               style={{
-                background: 'radial-gradient(ellipse 65% 60% at 35% 45%, rgba(2, 9, 26, 0.88) 0%, rgba(2, 9, 26, 0.65) 45%, rgba(2, 9, 26, 0.25) 70%, transparent 100%)',
+                background: 'radial-gradient(ellipse 70% 65% at 30% 40%, rgba(7, 26, 70, 0.75) 0%, rgba(4, 16, 45, 0.5) 50%, transparent 100%)',
               }}
             />
+            {/* Ambient subtle cyan accent glow */}
+            <div className="absolute top-0 right-10 w-64 h-64 bg-[#00D2FF]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase [text-shadow:_0_1px_6px_rgba(0,0,0,0.8)]">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
               <Building2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
               <span>Direct Industry Exposure</span>
             </div>
 
             {/* Large Dominant Editorial Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12] [text-shadow:_0_2px_12px_rgba(0,0,0,0.85)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-[1.12]">
               Virtual Company Sessions &amp;{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#19BCE8] to-white">
                 Practitioner Walkthroughs
@@ -105,60 +106,60 @@ export const HomePage: React.FC = () => {
             </h2>
 
             {/* Supporting Paragraph */}
-            <p className="text-sm sm:text-base text-[#F1F5F9] leading-relaxed font-normal max-w-2xl [text-shadow:_0_1px_8px_rgba(0,0,0,0.75)]">
+            <p className="text-sm sm:text-base text-[#E5EDF8] leading-relaxed font-normal max-w-2xl">
               Connect classroom learning with real-world engineering workflows. Students participate in technical walkthroughs and architecture discussions with working engineers and technology specialists from Visakhapatnam and online networks.
             </p>
 
             {/* Thin Subtle Separator */}
-            <div className="h-px w-full bg-gradient-to-r from-[#00D2FF]/40 via-white/10 to-transparent" />
+            <div className="h-px w-full bg-gradient-to-r from-[#00D2FF]/40 via-white/15 to-transparent" />
 
-            {/* Two Clean Editorial Information Items (Completely Open - No Boxes) */}
+            {/* Two Clean Editorial Information Items (Open - No Boxes) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-1">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.8)]">
+                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide">
                   <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] shrink-0" />
                   <Users className="w-4 h-4 text-[#00D2FF] shrink-0" />
                   <span>Practitioner Walkthroughs</span>
                 </div>
-                <p className="text-xs sm:text-[13.5px] text-[#E2E8F0] leading-relaxed pl-4 border-l-2 border-[#00D2FF]/40 font-normal [text-shadow:_0_1px_6px_rgba(0,0,0,0.7)]">
+                <p className="text-xs sm:text-[13.5px] text-[#CBD5E1] leading-relaxed pl-4 border-l-2 border-[#00D2FF]/40 font-normal">
                   Direct technical discussions and architecture deep dives with active tech leads and data specialists.
                 </p>
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.8)]">
+                <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base tracking-wide">
                   <span className="w-2 h-2 rounded-full bg-[#FF7A00] shadow-[0_0_8px_#FF7A00] shrink-0" />
                   <Code2 className="w-4 h-4 text-[#FF7A00] shrink-0" />
                   <span>Internship Selection Pathway</span>
                 </div>
-                <p className="text-xs sm:text-[13.5px] text-[#E2E8F0] leading-relaxed pl-4 border-l-2 border-[#FF7A00]/40 font-normal [text-shadow:_0_1px_6px_rgba(0,0,0,0.7)]">
+                <p className="text-xs sm:text-[13.5px] text-[#CBD5E1] leading-relaxed pl-4 border-l-2 border-[#FF7A00]/40 font-normal">
                   The top 5 performing students in each cohort earn eligibility for formal internship interview rounds with participating technology teams.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Dedicated Career Preparation (Completely Open - No Box / No Card) */}
+          {/* RIGHT COLUMN: Dedicated Career Preparation (Open - No Card) */}
           <div className="lg:col-span-5 xl:col-span-4 space-y-6 lg:pl-8 lg:border-l lg:border-white/10 relative">
-            {/* Non-rectangular feathered atmospheric dark contrast zone for right career content */}
+            {/* Atmospheric Indigo/Blue Glow */}
             <div
               className="absolute -top-12 -right-12 w-[130%] h-[130%] pointer-events-none -z-10"
               style={{
-                background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2, 9, 26, 0.82) 0%, rgba(2, 9, 26, 0.5) 50%, transparent 100%)',
+                background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 30, 80, 0.65) 0%, rgba(6, 18, 55, 0.4) 50%, transparent 100%)',
               }}
             />
 
             <div className="space-y-3 relative z-10">
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF9E40] uppercase [text-shadow:_0_1px_6px_rgba(0,0,0,0.8)]">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF9E40] uppercase">
                 <Briefcase className="w-3.5 h-3.5 text-[#FF7A00] shrink-0" />
                 <span>Career Preparation</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight leading-tight [text-shadow:_0_2px_12px_rgba(0,0,0,0.85)]">
+              <h3 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight leading-tight">
                 Dedicated Career Preparation
               </h3>
 
-              <p className="text-sm text-[#E2E8F0] leading-relaxed font-normal [text-shadow:_0_1px_8px_rgba(0,0,0,0.75)]">
+              <p className="text-sm text-[#CBD5E1] leading-relaxed font-normal">
                 Saturday ATS resume audits and LinkedIn positioning, followed by technical interview preparation and mock rounds.
               </p>
             </div>
