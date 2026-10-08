@@ -29,15 +29,17 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. TECHNOLOGY LOGO TRANSITION RIBBON                                      */}
-      {/*    Centered in its own deliberate space with ample breathing room         */}
+      {/* 2. TECHNOLOGY LOGO TRANSITION BAND                                        */}
+      {/*    A distinct band: hairline-defined, with its own space above and below  */}
       {/* ========================================================================= */}
-      <div className="w-full py-7 sm:py-9 lg:py-12 relative z-10 flex items-center justify-center">
+      <div data-tech-ribbon className="relative w-full mt-8 sm:mt-10 lg:mt-12 py-5 sm:py-6 lg:py-7">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         <TechMarqueeRibbon />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       </div>
 
-      {/* Main Editorial Content Flow */}
-      <div className="space-y-16 lg:space-y-24">
+      {/* Main Editorial Content Flow — generous gap so the band never touches the Flagship heading */}
+      <div className="mt-20 sm:mt-24 lg:mt-32 space-y-20 lg:space-y-28">
 
       {/* ========================================================================= */}
       {/* 3. TIER-1 FLAGSHIP PROGRAMS (CRPC & DAAP)                                 */}
@@ -178,59 +180,60 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 11. CERTIFICATE VERIFICATION PREVIEW                                      */}
+      {/* 8. CERTIFICATE VERIFICATION — SLIM TRUST BANNER                           */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-b from-[#091E58]/90 via-[#061540]/90 to-[#030E2B]/90 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden text-white">
-          <div className="flex items-center gap-4 sm:gap-5 relative z-10">
-            <div className="w-14 h-14 rounded-2xl bg-[#0878E8] flex items-center justify-center text-white border border-[#19BCE8]/50 shrink-0 shadow-[0_0_20px_rgba(8,120,232,0.35)]">
-              <ShieldCheck className="w-7 h-7" />
+        <div className="relative border-y border-white/10 py-7 sm:py-8">
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#0878E8]/12 via-transparent to-[#00D2FF]/8" />
+          <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-8 text-white">
+            <div className="flex items-start sm:items-center gap-4">
+              <ShieldCheck className="w-8 h-8 sm:w-9 sm:h-9 text-[#00D2FF] shrink-0 mt-0.5 sm:mt-0" />
+              <div>
+                <h3 className="text-lg font-bold text-white font-heading tracking-tight">
+                  Verify Cloudariss Certificates
+                </h3>
+                <p className="text-xs sm:text-sm text-[#CBD5E1] mt-0.5 font-normal max-w-2xl">
+                  Instant lookup portal for employers, recruiters, and institutions verifying student completion credentials.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-white font-heading tracking-tight">
-                Verify Cloudariss Certificates
-              </h3>
-              <p className="text-xs sm:text-sm text-[#CBD5E1] mt-0.5 font-normal">
-                Instant lookup portal for employers, recruiters, and institutions verifying student completion credentials.
-              </p>
+            <div className="shrink-0">
+              <Button
+                to="/verify-certificate"
+                variant="secondary"
+                size="md"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Go to Verification Portal
+              </Button>
             </div>
-          </div>
-          <div className="relative z-10 shrink-0">
-            <Button
-              to="/verify-certificate"
-              variant="secondary"
-              size="md"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Go to Verification Portal
-            </Button>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 12. CONNECT & ADMISSIONS DASHBOARD                                        */}
-      {/* ========================================================================= */}
-            {/* ========================================================================= */}
-      {/* 12. FINAL CTA SECTION                                                     */}
+      {/* 9. FINAL CTA — ATMOSPHERIC CONVERSION MOMENT                              */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] bg-gradient-to-b from-[#081F4E]/95 via-[#06143D]/95 to-[#030C28]/95 border border-brand-blue/40 p-8 sm:p-14 text-white text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative text-white text-center py-16 sm:py-24">
+          {/* Atmosphere participates directly — soft cyan and warm horizon glows, hairline boundaries */}
+          <div aria-hidden="true" className="absolute top-0 right-[18%] w-[26rem] h-[26rem] bg-[#0878E8]/20 rounded-full blur-[120px] pointer-events-none" />
+          <div aria-hidden="true" className="absolute bottom-0 left-[18%] w-[26rem] h-[22rem] bg-[#FF7A00]/15 rounded-full blur-[130px] pointer-events-none" />
+          <div aria-hidden="true" className="absolute inset-x-[8%] top-0 h-px bg-gradient-to-r from-transparent via-[#00D2FF]/40 to-transparent" />
+          <div aria-hidden="true" className="absolute inset-x-[8%] bottom-0 h-px bg-gradient-to-r from-transparent via-[#FF7A00]/35 to-transparent" />
 
-          <div className="relative z-10 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-brand-cyan" />
+          <div className="relative space-y-5 max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.22em] text-[#00D2FF]">
+              <Sparkles className="w-3.5 h-3.5" />
               <span>Ready for Your Next Step?</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-heading">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-[1.08]">
               Build Practical Capability.{' '}
               <span className="text-brand-orange">Advance Your Career.</span>
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-normal">
+            <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-normal">
               Join the upcoming cohort in Visakhapatnam or online. Transform foundational interest into verifiable engineering proficiency.
             </p>
 

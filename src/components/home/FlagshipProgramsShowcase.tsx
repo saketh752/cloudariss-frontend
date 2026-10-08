@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  Download,
-  MessageCircle,
-  CheckCircle2,
-} from 'lucide-react';
-import { BRAND_DATA } from '@/data/brandData';
+import { ArrowRight, BadgeCheck, Download, MessageCircle } from 'lucide-react';
+import { BRAND_DATA, ProgramInfo } from '@/data/brandData';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import {
   openWhatsApp,
@@ -28,17 +23,232 @@ import {
 } from '@/components/icons/TechLogos';
 import { SectionAtmosphere } from '@/components/layout/SectionAtmosphere';
 
+/* ========================================================================= */
+/* Editorial program showcase                                                */
+/* Image + typography + open space + hairlines. No outer card, no pills.      */
+/* ========================================================================= */
+
+interface ProgramView {
+  code: 'crpc' | 'daap';
+  label: string;
+  data: ProgramInfo;
+  image: string;
+  alt: string;
+  accent: string;
+  buttonGradient: string;
+  titleAccent: string;
+  titleRest: string;
+  to: string;
+  techs: { name: string; logo: React.ReactNode }[];
+}
+
+const LOGO = 'w-[18px] h-[18px] shrink-0 object-contain';
+
+// Feather the artwork on every edge so it dissolves into the Cloudariss atmosphere
+const FEATHER_MASK: React.CSSProperties = {
+  maskImage:
+    'linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%), linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%)',
+  maskComposite: 'intersect',
+  WebkitMaskImage:
+    'linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%), linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%)',
+  WebkitMaskComposite: 'source-in',
+};
+
+const ProgramShowcase: React.FC<{
+  view: ProgramView;
+  className?: string;
+  onSyllabus: () => void;
+  onEnquire: () => void;
+}> = ({ view, className = '', onSyllabus, onEnquire }) => {
+  const { data, accent } = view;
+
+  const facts = [
+    { label: 'Duration', value: data.duration },
+    { label: 'Structure', value: data.modulesCount },
+    { label: 'Format', value: data.format },
+  ];
+
+  return (
+    <article className={`group relative flex flex-col ${className}`}>
+      {/* Artwork — bleeds edge-to-edge on mobile, feathered into the background */}
+      <div
+        className="relative -mx-4 sm:mx-0 h-56 sm:h-72 lg:h-64 xl:h-72 overflow-hidden"
+        style={FEATHER_MASK}
+      >
+        <img
+          src={view.image}
+          alt={view.alt}
+          className="absolute inset-0 w-full h-full object-cover object-[center_32%] transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+
+      {/* Typography overlaps the faded lower edge of the artwork */}
+      <div className="relative -mt-14 sm:-mt-20 lg:-mt-16 flex-1 flex flex-col">
+        {/* Program identity — typographic label, not a pill */}
+        <div className="flex items-center gap-3">
+          <span
+            className="font-mono font-black text-sm tracking-[0.32em]"
+            style={{ color: accent }}
+          >
+            {data.code}
+          </span>
+          <span className="h-px w-8 shrink-0" style={{ background: accent, opacity: 0.55 }} />
+          <span className="font-mono text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-slate-300">
+            12-Week Career Accelerator
+          </span>
+        </div>
+
+        <h3 className="mt-3 text-3xl sm:text-4xl font-black font-heading tracking-tight leading-[1.08] text-white [text-shadow:0_2px_18px_rgba(2,8,23,0.85)]">
+          <span style={{ color: accent }}>{view.titleAccent}</span> {view.titleRest}
+        </h3>
+
+        {/* Placement assistance — a program-level statement, integrated in the header area */}
+        <div className="mt-4 flex items-center gap-2.5">
+          <BadgeCheck className="w-5 h-5 shrink-0" style={{ color: accent }} />
+          <p
+            className="font-heading font-extrabold text-base sm:text-lg tracking-tight"
+            style={{ color: accent }}
+          >
+            100% Placement Assistance Included
+          </p>
+        </div>
+
+        <p className="mt-4 text-sm sm:text-[15px] leading-relaxed text-[#CBD5E1] max-w-xl">
+          {data.description}
+        </p>
+
+        {/* Key facts — typography with a hairline rule, no boxes */}
+        <dl className="mt-5 flex flex-wrap gap-x-7 gap-y-3">
+          {facts.map((f) => (
+            <div key={f.label} className="border-l pl-3.5" style={{ borderColor: `${accent}66` }}>
+              <dt className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-400">
+                {f.label}
+              </dt>
+              <dd className="mt-0.5 text-sm font-semibold text-white">{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* Technology signature — small logos + clean labels */}
+        <div className="mt-6">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-400">
+            Core Technologies Mastered
+          </p>
+          <ul className="mt-2.5 flex flex-wrap items-center gap-x-5 gap-y-2.5">
+            {view.techs.map((t) => (
+              <li key={t.name} className="flex items-center gap-2 text-[13px] font-medium text-slate-100">
+                {t.logo}
+                <span>{t.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Secondary detail — muted, lower visual weight */}
+        <div className="mt-6 pt-5 border-t border-white/10">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-400">
+            Career Curriculum Highlights
+          </p>
+          <ul className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+            {data.features.slice(0, 4).map((feat) => (
+              <li key={feat} className="flex items-start gap-2.5 text-[13px] leading-snug text-slate-300">
+                <span
+                  className="mt-[7px] h-1 w-1 rounded-full shrink-0"
+                  style={{ background: accent }}
+                />
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Actions — one primary button, two quiet text actions */}
+        <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Link
+            to={view.to}
+            className="group/cta inline-flex items-center justify-center gap-2 h-12 px-6 rounded-lg text-white font-black text-sm tracking-wide transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+            style={{ backgroundImage: view.buttonGradient, boxShadow: `0 0 24px ${accent}55` }}
+          >
+            <span>Explore {data.code} Track</span>
+            <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1.5 transition-transform duration-300" />
+          </Link>
+
+          <button
+            type="button"
+            onClick={onSyllabus}
+            className="inline-flex items-center gap-2 pb-0.5 text-sm font-bold text-white border-b border-white/30 hover:border-white transition-colors cursor-pointer"
+          >
+            <Download className="w-4 h-4" style={{ color: accent }} />
+            <span>Download Syllabus</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={onEnquire}
+            className="inline-flex items-center gap-2 pb-0.5 text-sm font-bold text-[#6EE7A0] hover:text-white border-b border-[#25D366]/40 hover:border-white transition-colors cursor-pointer"
+          >
+            <MessageCircle className="w-4 h-4 text-[#25D366]" />
+            <span>Enquire via WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+};
+
 export const FlagshipProgramsShowcase: React.FC = () => {
   const { openCurriculum } = useCurriculumModal();
 
-  const crpc = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
-  const daap = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
+  const crpcData = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
+  const daapData = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
+
+  const crpc: ProgramView = {
+    code: 'crpc',
+    label: 'CRPC',
+    data: crpcData,
+    image: '/brand/hero/hero-crpc-card.jpg',
+    alt: 'CRPC Cloud & Data Architecture Ecosystem',
+    accent: '#00D2FF',
+    buttonGradient: 'linear-gradient(90deg, #00D2FF 0%, #0878E8 55%, #0052CC 100%)',
+    titleAccent: 'Cloud & Data',
+    titleRest: 'Career Accelerator',
+    to: '/courses/crpc',
+    techs: [
+      { name: 'AWS Cloud', logo: <AwsLogo className={LOGO} /> },
+      { name: 'Docker', logo: <DockerLogo className={LOGO} /> },
+      { name: 'Kubernetes', logo: <KubernetesLogo className={LOGO} /> },
+      { name: 'Jenkins', logo: <JenkinsLogo className={LOGO} /> },
+      { name: 'Python', logo: <PythonLogo className={LOGO} /> },
+      { name: 'ServiceNow', logo: <ServiceNowLogo className="h-4 w-auto shrink-0" /> },
+    ],
+  };
+
+  const daap: ProgramView = {
+    code: 'daap',
+    label: 'DAAP',
+    data: daapData,
+    image: '/brand/hero/hero-daap-card.jpg',
+    alt: 'DAAP Data Analytics & AI Workflows Ecosystem',
+    accent: '#C084FC',
+    buttonGradient: 'linear-gradient(90deg, #D946EF 0%, #A855F7 55%, #7C3AED 100%)',
+    titleAccent: 'Data Analyst',
+    titleRest: 'Accelerator Program',
+    to: '/courses/daap',
+    techs: [
+      { name: 'Power BI & DAX', logo: <PowerBiLogo className={LOGO} /> },
+      { name: 'SQL (Postgres)', logo: <SqlLogo className={LOGO} /> },
+      { name: 'Python & Pandas', logo: <PythonLogo className={LOGO} /> },
+      { name: 'Excel Modeling', logo: <ExcelLogo className={LOGO} /> },
+      { name: 'GenAI & RAG', logo: <RagLogo className={LOGO} /> },
+      { name: 'Agentic AI', logo: <AgenticAiLogo className={LOGO} /> },
+    ],
+  };
 
   return (
     <SectionAtmosphere variant="programs">
-      <section className="space-y-8 sm:space-y-10" id="flagship-programs">
+      <section className="space-y-10 sm:space-y-14" id="flagship-programs">
         {/* Section Editorial Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-2.5">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading leading-tight">
             Our Flagship <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] to-[#19BCE8]">Programs</span>
           </h2>
@@ -47,269 +257,26 @@ export const FlagshipProgramsShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* Editorial Programs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
-          {/* ========================================================================= */}
-          {/* 1. CRPC EDITORIAL SHOWCASE                                                */}
-          {/* ========================================================================= */}
-          <article className="group relative rounded-3xl bg-[#030C20]/80 border border-white/10 hover:border-[#00D2FF]/40 transition-all duration-500 overflow-hidden flex flex-col justify-between backdrop-blur-xl">
-            {/* Visual Header Artwork Layer */}
-            <div className="relative w-full h-48 sm:h-56 lg:h-60 overflow-hidden bg-[#020817]">
-              <img
-                src="/brand/hero/hero-crpc-card.jpg"
-                alt="CRPC Cloud & Data Architecture Ecosystem"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Natural feather gradient blending into editorial body */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030C20] via-[#030C20]/60 to-transparent pointer-events-none" />
-              
-              {/* Top Accent Indicators */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <span className="px-3 py-1 rounded-full bg-[#02091A]/85 backdrop-blur-md text-[#00D2FF] font-mono text-xs font-bold tracking-wider uppercase border border-[#00D2FF]/30">
-                  CRPC · 12 WEEKS
-                </span>
-                <span className="text-[11px] font-mono font-medium text-slate-300 bg-[#02091A]/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                  {crpc.format}
-                </span>
-              </div>
-            </div>
+        {/* Two open editorial compositions separated by a single hairline */}
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-y-16">
+          <ProgramShowcase
+            view={crpc}
+            className="lg:pr-10 xl:pr-14"
+            onSyllabus={() => openCurriculum('crpc')}
+            onEnquire={() => openWhatsApp(getCRPCEnquiryMessage())}
+          />
 
-            {/* Editorial Content Canvas */}
-            <div className="p-6 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
-              <div className="space-y-4">
-                {/* 100% Placement Assistance Statement */}
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#00D2FF] tracking-wide">
-                  <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] animate-pulse shrink-0" />
-                  <span className="font-heading uppercase tracking-wider text-[#00D2FF]">100% Placement Assistance Included</span>
-                </div>
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute inset-y-6 left-1/2 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent"
+          />
 
-                {/* Program Title */}
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black font-heading tracking-tight text-white leading-tight">
-                    Cloud &amp; Data Career Accelerator
-                  </h3>
-                  <p className="text-xs sm:text-sm font-medium text-slate-400 mt-1">
-                    {crpc.modulesCount} · Production Cloud Architecture · Hands-on Capstone
-                  </p>
-                </div>
-
-                {/* Narrative Description */}
-                <p className="text-sm text-[#CBD5E1] leading-relaxed font-normal">
-                  {crpc.description}
-                </p>
-
-                {/* Technology Logos (Floating Naturally without boxes) */}
-                <div className="pt-2 space-y-2">
-                  <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                    Core Technologies Mastered
-                  </div>
-                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-1 text-xs text-slate-200">
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <AwsLogo className="w-4 h-4 shrink-0" />
-                      <span>AWS Cloud</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <DockerLogo className="w-4 h-4 shrink-0" />
-                      <span>Docker</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <KubernetesLogo className="w-4 h-4 shrink-0" />
-                      <span>Kubernetes</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <JenkinsLogo className="w-4 h-4 shrink-0" />
-                      <span>Jenkins</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <PythonLogo className="w-4 h-4 shrink-0" />
-                      <span>Python</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <ServiceNowLogo className="w-4 h-4 shrink-0" />
-                      <span>ServiceNow</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Program Highlights with subtle dividers */}
-                <div className="pt-3 border-t border-white/10 space-y-2">
-                  <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                    Career Curriculum Highlights
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-[13px] text-slate-300">
-                    {crpc.features.slice(0, 4).map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
-                        <span className="leading-snug">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-white/10 space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Link
-                    to="/courses/crpc"
-                    className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#0878E8] to-[#0052CC] hover:from-[#00E5FF] hover:via-[#0A84FF] hover:to-[#0060E6] text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(0,180,255,0.4)] transition-all duration-300 cursor-pointer group"
-                  >
-                    <span>Explore CRPC Track</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-                  </Link>
-
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white font-bold text-xs sm:text-sm transition-all duration-300 cursor-pointer"
-                  >
-                    <Download className="w-4 h-4 text-[#00D2FF]" />
-                    <span>Download Syllabus</span>
-                  </button>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => openWhatsApp(getCRPCEnquiryMessage())}
-                  className="w-full inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/40 hover:border-[#25D366] text-[#E8FFF0] hover:text-white font-semibold text-xs transition-all duration-300 cursor-pointer"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                  <span>Enquire via WhatsApp</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          {/* ========================================================================= */}
-          {/* 2. DAAP EDITORIAL SHOWCASE                                                */}
-          {/* ========================================================================= */}
-          <article className="group relative rounded-3xl bg-[#090518]/80 border border-white/10 hover:border-[#A855F7]/40 transition-all duration-500 overflow-hidden flex flex-col justify-between backdrop-blur-xl">
-            {/* Visual Header Artwork Layer */}
-            <div className="relative w-full h-48 sm:h-56 lg:h-60 overflow-hidden bg-[#070214]">
-              <img
-                src="/brand/hero/hero-daap-card.jpg"
-                alt="DAAP Data Analytics & AI Workflows Ecosystem"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Natural feather gradient blending into editorial body */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#090518] via-[#090518]/60 to-transparent pointer-events-none" />
-              
-              {/* Top Accent Indicators */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <span className="px-3 py-1 rounded-full bg-[#090317]/85 backdrop-blur-md text-[#C084FC] font-mono text-xs font-bold tracking-wider uppercase border border-[#A855F7]/30">
-                  DAAP · 12 WEEKS
-                </span>
-                <span className="text-[11px] font-mono font-medium text-slate-300 bg-[#090317]/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                  {daap.format}
-                </span>
-              </div>
-            </div>
-
-            {/* Editorial Content Canvas */}
-            <div className="p-6 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
-              <div className="space-y-4">
-                {/* 100% Placement Assistance Statement */}
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#C084FC] tracking-wide">
-                  <span className="w-2 h-2 rounded-full bg-[#C084FC] shadow-[0_0_8px_#C084FC] animate-pulse shrink-0" />
-                  <span className="font-heading uppercase tracking-wider text-[#C084FC]">100% Placement Assistance Included</span>
-                </div>
-
-                {/* Program Title */}
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black font-heading tracking-tight text-white leading-tight">
-                    Data Analyst Accelerator Program
-                  </h3>
-                  <p className="text-xs sm:text-sm font-medium text-slate-400 mt-1">
-                    {daap.modulesCount} · AI &amp; Agentic Analytics · Portfolio Capstone
-                  </p>
-                </div>
-
-                {/* Narrative Description */}
-                <p className="text-sm text-[#CBD5E1] leading-relaxed font-normal">
-                  {daap.description}
-                </p>
-
-                {/* Technology Logos (Floating Naturally without boxes) */}
-                <div className="pt-2 space-y-2">
-                  <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                    Core Technologies Mastered
-                  </div>
-                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-1 text-xs text-slate-200">
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <PowerBiLogo className="w-4 h-4 shrink-0" />
-                      <span>Power BI &amp; DAX</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <SqlLogo className="w-4 h-4 shrink-0" />
-                      <span>SQL (Postgres)</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <PythonLogo className="w-4 h-4 shrink-0" />
-                      <span>Python &amp; Pandas</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <ExcelLogo className="w-4 h-4 shrink-0" />
-                      <span>Excel Modeling</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <RagLogo className="w-4 h-4 shrink-0" />
-                      <span>GenAI &amp; RAG</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <AgenticAiLogo className="w-4 h-4 shrink-0" />
-                      <span>Agentic AI</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Program Highlights with subtle dividers */}
-                <div className="pt-3 border-t border-white/10 space-y-2">
-                  <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                    Career Curriculum Highlights
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-[13px] text-slate-300">
-                    {daap.features.slice(0, 4).map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C084FC] shrink-0" />
-                        <span className="leading-snug">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-white/10 space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Link
-                    to="/courses/daap"
-                    className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-gradient-to-r from-[#D946EF] via-[#A855F7] to-[#7C3AED] hover:from-[#E879F9] hover:via-[#C084FC] hover:to-[#9333EA] text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300 cursor-pointer group"
-                  >
-                    <span>Explore DAAP Track</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-                  </Link>
-
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white font-bold text-xs sm:text-sm transition-all duration-300 cursor-pointer"
-                  >
-                    <Download className="w-4 h-4 text-[#C084FC]" />
-                    <span>Download Syllabus</span>
-                  </button>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => openWhatsApp(getDAAPEnquiryMessage())}
-                  className="w-full inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/40 hover:border-[#25D366] text-[#E8FFF0] hover:text-white font-semibold text-xs transition-all duration-300 cursor-pointer"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                  <span>Enquire via WhatsApp</span>
-                </button>
-              </div>
-            </div>
-          </article>
+          <ProgramShowcase
+            view={daap}
+            className="pt-16 border-t border-white/10 lg:pt-0 lg:border-t-0 lg:pl-10 xl:pl-14"
+            onSyllabus={() => openCurriculum('daap')}
+            onEnquire={() => openWhatsApp(getDAAPEnquiryMessage())}
+          />
         </div>
       </section>
     </SectionAtmosphere>
