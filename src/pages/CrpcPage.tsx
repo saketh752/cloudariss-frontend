@@ -198,8 +198,8 @@ export const CrpcPage: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <SectionHeading
           eyebrow="Demonstrated Capability"
-          title="Documented Capstone Projects"
-          subtitle="Real cloud architectures and automated pipelines that demonstrate your technical capability to engineering hiring managers."
+          title="Documented Capstone & Advanced Flagship Projects"
+          subtitle="Four advanced flagship projects spanning enterprise RAG knowledge agents, tool-using data agents, multi-agent workflows, and AI-assisted DevOps incident response."
         />
 
         <ProjectsVisual initialTab="crpc" />

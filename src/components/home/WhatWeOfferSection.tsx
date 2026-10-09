@@ -5,7 +5,6 @@ import {
   Cpu,
   Target,
   ArrowRight,
-  Sparkles,
 } from 'lucide-react';
 
 /* ========================================================================= */
@@ -51,7 +50,7 @@ const PILLARS: OfferPillar[] = [
     subtitle: 'Production-Grade Repositories',
     desc: 'Direct implementation on live cloud infrastructure and real business datasets with teacher-led code reviews and verified, deployment-ready GitHub capstones.',
     icon: <Layers className="w-5 h-5" />,
-    badge: '10+ Capstone Projects',
+    badge: '9 Verified Projects',
     techTags: ['Production CI/CD', 'Real Datasets', 'GitHub Repos'],
     motif: {
       label: 'Engineering Flow',
@@ -94,20 +93,21 @@ export const WhatWeOfferSection: React.FC = () => {
       {/* ===================================================================== */}
       {/* SECTION HEADER                                                        */}
       {/* ===================================================================== */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
-          <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />
-          <span>WHAT WE OFFER</span>
-        </div>
-
+      <div className="relative text-center max-w-3xl mx-auto space-y-3">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 -inset-y-8 pointer-events-none -z-10"
+          style={{
+            background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.18) 60%, transparent 100%)',
+          }}
+        />
         {/* Main Heading */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading leading-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading leading-tight">
           Build Skills That Move Your Career Forward.
         </h2>
 
         {/* Short Supporting Paragraph */}
-        <p className="text-sm sm:text-base text-[#DCE5F2] leading-relaxed max-w-2xl mx-auto font-normal">
+        <p className="text-xs sm:text-base text-[#DCE5F2] leading-relaxed max-w-2xl mx-auto font-normal">
           Cloudariss combines structured learning, practical projects, modern technology,
           and dedicated career preparation into one continuous engineering pathway.
         </p>
@@ -140,14 +140,67 @@ export const WhatWeOfferSection: React.FC = () => {
       {/* INTERCONNECTED 4-STAGE EDITORIAL JOURNEY                              */}
       {/* Open, unboxed columns with subtle hairline dividers                   */}
       {/* ===================================================================== */}
-      <div className="relative border-y border-white/10 py-10 lg:py-14">
+      <div className="relative border-y border-white/10 py-8 sm:py-10 lg:py-14">
+        {/* Subtle cinematic dark readability fade — minimal dark atmospheric wash */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 -inset-y-4 pointer-events-none -z-10"
+          style={{
+            background:
+              'radial-gradient(ellipse 95% 85% at 50% 50%, rgba(2, 6, 23, 0.42) 0%, rgba(2, 6, 23, 0.2) 65%, transparent 100%)',
+          }}
+        />
         {/* Subtle background atmospheric gradient across the entire journey */}
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#00D2FF]/5 via-transparent to-[#FF7A00]/5"
         />
 
-        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x lg:divide-white/10">
+        {/* =================================================================== */}
+        {/* MOBILE COMPACT VERTICAL TIMELINE (< md)                             */}
+        {/* =================================================================== */}
+        <div className="md:hidden space-y-0 relative pl-7 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-px before:bg-gradient-to-b before:from-[#00D2FF]/80 before:via-[#00D2FF]/30 before:to-[#FF7A00]/80">
+          {PILLARS.map((pillar) => (
+            <div key={pillar.step} className="relative pb-7 last:pb-1">
+              {/* Timeline Node */}
+              <div className="absolute -left-7 top-0.5 w-5 h-5 rounded-full bg-[#02091D] border-2 border-[#00D2FF] flex items-center justify-center shadow-[0_0_8px_#00D2FF]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" />
+              </div>
+
+              {/* Content */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono font-black text-xs text-[#00D2FF] tracking-widest uppercase">
+                    {pillar.step} — {pillar.stepName}
+                  </span>
+                </div>
+
+                <h3 className="text-base font-black text-white font-heading tracking-tight leading-snug">
+                  {pillar.title}
+                </h3>
+
+                <p className="text-xs text-[#DCE5F2]/85 leading-relaxed font-normal">
+                  {pillar.desc}
+                </p>
+
+                {/* Compact tech tags */}
+                <div className="pt-1 flex flex-wrap items-center gap-x-2 text-[10.5px] font-mono text-slate-300">
+                  {pillar.techTags.map((tag, tIdx) => (
+                    <React.Fragment key={tag}>
+                      {tIdx > 0 && <span className="text-white/20">·</span>}
+                      <span>{tag}</span>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* =================================================================== */}
+        {/* DESKTOP (4-col) & TABLET (2-col) GRID (md:grid)                     */}
+        {/* =================================================================== */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x lg:divide-white/10">
           {PILLARS.map((pillar) => {
             return (
               <div

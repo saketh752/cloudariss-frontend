@@ -52,7 +52,7 @@ export const TechMarqueeRibbon: React.FC<TechMarqueeRibbonProps> = ({
   ];
 
   return (
-    <div className={`py-3 sm:py-4 relative z-10 w-full bg-transparent flex items-center justify-center ${className}`}>
+    <div className={`py-3 sm:py-4 relative z-10 w-full overflow-hidden bg-transparent flex items-center justify-center ${className}`}>
       <Marquee speed={speed} fadeEdges={true}>
         {techItems.map((item, idx) => (
           <div

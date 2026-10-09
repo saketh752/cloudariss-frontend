@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroSlide {
   id: string;
@@ -50,6 +51,18 @@ const HERO_SLIDES: HeroSlide[] = [
     backgroundImage: '/brand/hero/banner_daap_v3.jpg?v=5',
     bgPosition: 'bg-[position:75%_center] md:bg-[position:70%_center] lg:bg-[position:85%_center]',
     accentColor: '#38BDF8',
+  },
+  {
+    id: 'fde',
+    label: 'FLAGSHIP ACCELERATOR',
+    headline: 'FDE',
+    accentHeadline: 'Forward Deployed Engineer',
+    description:
+      'Engineering AI-powered solutions and robust data systems where real-world enterprise problems meet production deployment.',
+    targetLink: '/courses',
+    backgroundImage: '/brand/hero/banner_fde_v1.jpg?v=6',
+    bgPosition: 'bg-[position:75%_center] md:bg-[position:70%_center] lg:bg-[position:85%_center]',
+    accentColor: '#00D2FF',
   },
   {
     id: 'python',
@@ -260,7 +273,7 @@ export const HeroStoryCarousel: React.FC = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="group/hero relative w-full flex-1 min-h-[500px] sm:min-h-[540px] lg:min-h-[620px] bg-[#020817] overflow-hidden select-none cursor-pointer flex flex-col justify-center"
+      className="group/hero relative w-full flex-1 min-h-[480px] sm:min-h-[540px] lg:min-h-[620px] bg-[#020817] overflow-hidden select-none cursor-pointer flex flex-col justify-center"
       role="region"
       aria-roledescription="carousel"
       aria-label="Cloudariss Technology Highlights"
@@ -280,18 +293,18 @@ export const HeroStoryCarousel: React.FC = () => {
         >
           {/* Natural cinematic lighting scrim */}
           <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/85 via-45% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/90 via-50% to-transparent sm:hidden pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/90 via-55% to-transparent sm:hidden pointer-events-none" />
 
           {/* Dynamic ambient color glow matching slide theme */}
           <div
-            className="absolute top-1/4 left-1/4 w-[460px] h-[460px] rounded-full blur-[140px] pointer-events-none opacity-20"
+            className="absolute top-1/4 left-1/4 w-[320px] sm:w-[460px] h-[320px] sm:h-[460px] rounded-full blur-[120px] sm:blur-[140px] pointer-events-none opacity-20"
             style={{ backgroundColor: currentSlide.accentColor }}
           />
         </motion.div>
       </AnimatePresence>
 
       {/* Content Canvas */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 flex flex-col justify-center py-12 sm:py-16 lg:py-20 pointer-events-none flex-1">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 flex flex-col justify-center py-10 sm:py-16 lg:py-20 pointer-events-none flex-1">
         <div className="max-w-2xl lg:max-w-3xl pointer-events-auto py-2">
           <AnimatePresence mode="wait">
             <motion.div
@@ -303,40 +316,74 @@ export const HeroStoryCarousel: React.FC = () => {
               className="space-y-3 sm:space-y-4"
             >
               {/* Refined Tracked Eyebrow Name */}
-              <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-slate-400/90 font-mono">
+              <div className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.22em] text-slate-400/90 font-mono">
                 {currentSlide.label}
               </div>
 
               {/* Slide 1: Cloudariss Official Brand Presentation */}
               {currentSlide.id === 'brand' ? (
                 <div className="space-y-2 sm:space-y-3">
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-heading tracking-tight leading-[0.95] text-white drop-shadow-sm">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-heading tracking-tight leading-[0.98] sm:leading-[0.95] text-white drop-shadow-sm">
                     Learn. Build.{' '}
                     <span className="text-[#19BCE8] drop-shadow-[0_0_24px_rgba(25,188,232,0.5)]">
                       Get Hired.
                     </span>
                   </h1>
-                  <p className="text-sm sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
+                  <p className="text-xs sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
                     {currentSlide.description}
                   </p>
                 </div>
               ) : (
                 /* Slides 2-6: Technology Program Worlds */
                 <div className="space-y-2 sm:space-y-3">
-                  <div className="text-5xl sm:text-7xl lg:text-8xl font-black font-heading tracking-tight leading-[0.9] text-white drop-shadow-md">
+                  <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-heading tracking-tight leading-[0.92] text-white drop-shadow-md">
                     {currentSlide.headline}
                   </div>
                   <div
-                    className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight leading-tight"
+                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight leading-tight"
                     style={{ color: currentSlide.accentColor }}
                   >
                     {currentSlide.accentHeadline}
                   </div>
-                  <p className="text-sm sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
+                  <p className="text-xs sm:text-base lg:text-lg text-slate-300/90 leading-relaxed font-normal max-w-xl pt-1">
                     {currentSlide.description}
                   </p>
                 </div>
               )}
+
+              {/* Accessible Touch CTA & Slide Indicator Bar */}
+              <div className="pt-2 sm:pt-3 flex items-center justify-between gap-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white transition-all group-hover/hero:brightness-110"
+                  style={{
+                    backgroundColor: `${currentSlide.accentColor}25`,
+                    border: `1px solid ${currentSlide.accentColor}66`,
+                    boxShadow: `0 0 16px ${currentSlide.accentColor}33`,
+                  }}
+                >
+                  <span>Explore Track</span>
+                  <ArrowRight className="w-3.5 h-3.5" style={{ color: currentSlide.accentColor }} />
+                </div>
+
+                {/* Minimal Slide Indicator Dots */}
+                <div className="flex items-center gap-1.5">
+                  {HERO_SLIDES.map((slide, idx) => (
+                    <button
+                      key={slide.id}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        goToSlide(idx, idx > currentIndex ? 1 : -1);
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === currentIndex
+                          ? 'w-6 bg-white shadow-xs'
+                          : 'w-1.5 bg-white/30 hover:bg-white/60'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}: ${slide.headline}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

@@ -260,14 +260,14 @@ export const CrpcHeroCard: React.FC<CrpcHeroCardProps> = ({
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4 text-amber-400" />
               <span className="text-[11px] font-mono font-bold text-amber-300 uppercase tracking-wider">
-                Flagship Capstone Deliverable
+                Advanced Flagship Capstone (Phase 2)
               </span>
             </div>
             <h4 className="text-sm font-black text-white leading-snug">
-              Enterprise 3-Tier Web Architecture on AWS with Kubernetes &amp; CI/CD
+              AI-Assisted DevOps Incident Response Agent
             </h4>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Build and defend a production-grade infrastructure solution incorporating multi-tier VPC subnets, automated Jenkins CI/CD, and Kubernetes container orchestration.
+              Build a production cloud incident response system with Prometheus/Grafana telemetry, LLM-powered root cause log analysis, and automated runbook execution with rollback controls.
             </p>
           </div>
 
@@ -275,19 +275,19 @@ export const CrpcHeroCard: React.FC<CrpcHeroCardProps> = ({
           <div className="space-y-1.5 text-xs text-slate-300">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span>GitHub repository with Dockerfiles &amp; K8s deployment manifests</span>
+              <span>Alert triage &amp; log analysis pipeline with false-positive filtering</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span>Automated Jenkins multi-branch CI/CD build &amp; test pipeline</span>
+              <span>Prometheus &amp; Grafana real-time metrics and telemetry bridge</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span>Multi-tier AWS VPC with public/private subnets &amp; NAT gateways</span>
+              <span>Docker &amp; Kubernetes containerized infrastructure with AWS hosting</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-              <span>Architecture defense presentation deck for hiring technical panels</span>
+              <span>Automated runbook remediation pipeline with human approval and rollback</span>
             </div>
           </div>
         </div>

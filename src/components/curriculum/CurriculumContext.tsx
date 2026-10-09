@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export type ProgramId = 'crpc' | 'daap';
+export type ProgramId = 'crpc' | 'daap' | 'fde';
 
 export interface ProgramCurriculumMeta {
   id: ProgramId;
@@ -33,6 +33,16 @@ export const CURRICULUM_DATA: Record<ProgramId, ProgramCurriculumMeta> = {
     fileName: 'DAAP_GenAI_Agentic_Original_Structure_With_Cloudariss_Logo.pdf',
     trackColor: '#19BCE8',
     duration: '12 Weeks (3 Months)',
+  },
+  fde: {
+    id: 'fde',
+    code: 'FDE',
+    name: 'FDE AI Engineer',
+    badge: 'Forward Deployed Engineer · Enterprise AI Implementation',
+    pdfUrl: '/curriculum/FDE_AI_Engineer_Curriculum.pdf',
+    fileName: 'FDE_AI_Engineer_Curriculum.pdf',
+    trackColor: '#00D2FF',
+    duration: '6 Months',
   },
 };
 

@@ -5,6 +5,7 @@ import { HomePage } from '@/pages/HomePage';
 import { CoursesPage } from '@/pages/CoursesPage';
 import { CrpcPage } from '@/pages/CrpcPage';
 import { DaapPage } from '@/pages/DaapPage';
+import { FdePage } from '@/pages/FdePage';
 import { WhyCloudarissPage } from '@/pages/WhyCloudarissPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
@@ -19,9 +20,11 @@ export const AppRoutes: React.FC = () => {
         <Route path="courses" element={<CoursesPage />} />
         <Route path="courses/crpc" element={<CrpcPage />} />
         <Route path="courses/daap" element={<DaapPage />} />
+        <Route path="courses/fde" element={<FdePage />} />
         <Route path="programs" element={<CoursesPage />} />
         <Route path="programs/crpc" element={<CrpcPage />} />
         <Route path="programs/daap" element={<DaapPage />} />
+        <Route path="programs/fde" element={<FdePage />} />
         <Route path="why-cloudariss" element={<WhyCloudarissPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />

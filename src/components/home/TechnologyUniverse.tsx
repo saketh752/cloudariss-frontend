@@ -1,10 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import {
   Check,
-  BookOpen,
-  ArrowRight,
 } from 'lucide-react';
 import {
   TECHNOLOGY_UNIVERSE,
@@ -166,7 +163,7 @@ export const TechnologyUniverse: React.FC = () => {
           </div>
 
           {/* Compact, Borderless Technology Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-2.5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1.5 sm:gap-2.5">
             {filteredTechnologies.map((tech) => {
               const isSelected = tech.id === selectedTechId;
               const isConnected = connectedIds.has(tech.id);
@@ -177,7 +174,7 @@ export const TechnologyUniverse: React.FC = () => {
                   key={tech.id}
                   type="button"
                   onClick={() => setSelectedTechId(tech.id)}
-                  className={`group relative p-2.5 sm:p-3 rounded-xl transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none ${
+                  className={`group relative p-2 sm:p-3 rounded-xl transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none min-h-[72px] sm:min-h-[88px] justify-center ${
                     isSelected
                       ? 'bg-[#08285E]/90 text-white shadow-[0_0_20px_rgba(0,210,255,0.35)] ring-2 ring-[#00D2FF] scale-[1.02] z-20'
                       : isConnected
@@ -197,7 +194,7 @@ export const TechnologyUniverse: React.FC = () => {
 
                   {/* Logo Container */}
                   <div
-                    className={`w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center mb-1.5 transition-all p-1.5 ${
+                    className={`w-8 h-8 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center mb-1 sm:mb-1.5 transition-all p-1 sm:p-1.5 ${
                       isSelected
                         ? 'bg-white shadow-md scale-105'
                         : isConnected
@@ -205,17 +202,17 @@ export const TechnologyUniverse: React.FC = () => {
                         : 'bg-white/90 group-hover:bg-white'
                     }`}
                   >
-                    {renderTechLogo(tech.id, tech.id === 'jenkins' ? 'w-7 h-7' : 'w-6 h-6')}
+                    {renderTechLogo(tech.id, tech.id === 'jenkins' ? 'w-5 h-5 sm:w-7 sm:h-7' : 'w-4.5 h-4.5 sm:w-6 sm:h-6')}
                   </div>
 
                   {/* Tech Name */}
-                  <span className="font-bold text-xs sm:text-[13px] tracking-tight leading-tight line-clamp-1">
+                  <span className="font-bold text-[11px] sm:text-[13px] tracking-tight leading-tight line-clamp-1">
                     {tech.gridName}
                   </span>
 
                   {/* Tag */}
                   <span
-                    className={`text-[9px] font-mono mt-0.5 leading-none line-clamp-1 ${
+                    className={`text-[8.5px] sm:text-[9px] font-mono mt-0.5 leading-none line-clamp-1 ${
                       isSelected ? 'text-[#00D2FF] font-semibold' : 'text-slate-400'
                     }`}
                   >
@@ -227,7 +224,7 @@ export const TechnologyUniverse: React.FC = () => {
           </div>
 
           {/* Connection Legend */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-400 pt-2">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 text-[11px] sm:text-xs text-slate-400 pt-1 sm:pt-2">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_6px_#00D2FF]" />
               <span className="text-slate-200 font-medium">Active Focus</span>
@@ -246,7 +243,7 @@ export const TechnologyUniverse: React.FC = () => {
         {/* ======================================================================= */}
         {/* RIGHT: SELECTED TECHNOLOGY PROFILE (Editorial Presentation)            */}
         {/* ======================================================================= */}
-        <div className="lg:col-span-5 lg:pl-6 lg:border-l lg:border-white/10 space-y-4">
+        <div className="lg:col-span-5 lg:pl-6 lg:border-l lg:border-white/10 space-y-3 sm:space-y-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedTech.id}
@@ -254,31 +251,31 @@ export const TechnologyUniverse: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="space-y-4 text-white"
+              className="space-y-3 sm:space-y-4 text-white"
             >
               {/* Header: Logo, Title, Category Badge */}
-              <div className="flex items-center justify-between gap-3 pb-3 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-md p-2">
-                    {renderTechLogo(selectedTech.id, 'w-7 h-7')}
+              <div className="flex items-center justify-between gap-3 pb-2.5 sm:pb-3 border-b border-white/10">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-md p-1.5 sm:p-2">
+                    {renderTechLogo(selectedTech.id, 'w-6 h-6 sm:w-7 sm:h-7')}
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-black text-white font-heading leading-tight">
+                    <h3 className="text-lg sm:text-2xl font-black text-white font-heading leading-tight">
                       {selectedTech.name}
                     </h3>
-                    <span className="text-xs font-mono font-bold text-[#00D2FF] tracking-wider uppercase">
+                    <span className="text-[11px] sm:text-xs font-mono font-bold text-[#00D2FF] tracking-wider uppercase">
                       {selectedTech.tag}
                     </span>
                   </div>
                 </div>
 
-                <span className="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold uppercase tracking-wider bg-white/10 text-[#00D2FF] border border-white/15 shrink-0">
+                <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-white/10 text-[#00D2FF] border border-white/15 shrink-0">
                   {selectedTech.categoryBadge}
                 </span>
               </div>
 
-              {/* Technology-Specific Visual Artwork */}
-              <div className="rounded-xl overflow-hidden">
+              {/* Technology-Specific Visual Artwork (Desktop/Tablet) */}
+              <div className="hidden sm:block rounded-xl overflow-hidden">
                 <TechVisualArtwork techId={selectedTech.id} />
               </div>
 
@@ -288,8 +285,8 @@ export const TechnologyUniverse: React.FC = () => {
               </p>
 
               {/* What You'll Learn */}
-              <div className="space-y-1.5">
-                <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+              <div className="space-y-1 sm:space-y-1.5">
+                <div className="text-[11px] sm:text-xs font-mono font-bold text-white uppercase tracking-wider">
                   What you'll master
                 </div>
                 <div className="space-y-1">
@@ -303,17 +300,17 @@ export const TechnologyUniverse: React.FC = () => {
               </div>
 
               {/* Included in Flagship Program */}
-              <div className="py-2.5 px-3 rounded-lg bg-white/5 border-l-2 border-[#00D2FF] flex items-center justify-between text-xs">
-                <span className="text-slate-400 font-mono">Flagship Program:</span>
-                <span className="font-bold text-white">{selectedTech.includedInProgramName}</span>
+              <div className="py-2 px-2.5 sm:py-2.5 sm:px-3 rounded-lg bg-white/5 border-l-2 border-[#00D2FF] flex items-center justify-between text-xs">
+                <span className="text-slate-400 font-mono text-[11px] sm:text-xs">Flagship Program:</span>
+                <span className="font-bold text-white text-xs">{selectedTech.includedInProgramName}</span>
               </div>
 
               {/* Frequently Paired With */}
-              <div className="space-y-1.5">
-                <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+              <div className="space-y-1 sm:space-y-1.5">
+                <div className="text-[10px] sm:text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
                   Frequently paired with
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
                   {selectedTech.connectedTechIds.map((connId) => {
                     const connItem = TECHNOLOGY_UNIVERSE.find((i) => i.id === connId);
                     if (!connItem) return null;
@@ -322,10 +319,10 @@ export const TechnologyUniverse: React.FC = () => {
                         key={connId}
                         type="button"
                         onClick={() => setSelectedTechId(connId)}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 hover:text-white transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[11px] sm:text-xs font-medium bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 hover:text-white transition-all cursor-pointer min-h-[32px]"
                       >
-                        <span className="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0">
-                          {renderTechLogo(connId, connId === 'jenkins' ? 'w-3.5 h-3.5' : 'w-3 h-3')}
+                        <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0">
+                          {renderTechLogo(connId, connId === 'jenkins' ? 'w-3 h-3 sm:w-3.5 sm:h-3.5' : 'w-2.5 h-2.5 sm:w-3 sm:h-3')}
                         </span>
                         <span>{connItem.gridName}</span>
                       </button>
@@ -334,17 +331,6 @@ export const TechnologyUniverse: React.FC = () => {
                 </div>
               </div>
 
-              {/* Single Clear Exploration CTA */}
-              <div className="pt-2">
-                <Link
-                  to={selectedTech.courseRoute || '/courses'}
-                  className="w-full inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#00A8FF] hover:from-[#00A8FF] hover:to-[#0878E8] text-white font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer group"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Explore {selectedTech.gridName} in Curriculum</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
             </motion.div>
           </AnimatePresence>
         </div>

@@ -247,14 +247,14 @@ export const DaapHeroCard: React.FC<DaapHeroCardProps> = ({
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4 text-orange-400" />
               <span className="text-[11px] font-mono font-bold text-orange-300 uppercase tracking-wider">
-                Flagship Capstone Deliverable
+                Flagship Capstone Deliverable (Week 12)
               </span>
             </div>
             <h4 className="text-sm font-black text-white leading-snug">
-              Enterprise BI Suite &amp; Autonomous Agentic Market Intelligence System
+              End-to-End Data Analytics Capstone
             </h4>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Design a complete analytics ecosystem taking enterprise transactions into a PostgreSQL data warehouse, modeling interactive Power BI dashboards, and integrating an autonomous LangChain RAG agent.
+              Take raw enterprise data through structured cleaning, SQL relational querying, Python EDA, and an executive Power BI dashboard, defending findings to hiring panels.
             </p>
           </div>
 
@@ -262,21 +262,21 @@ export const DaapHeroCard: React.FC<DaapHeroCardProps> = ({
           <div className="space-y-1.5 text-xs text-slate-300">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-              <span>Production Power BI (.pbix) executive dashboard with DAX KPI trees</span>
+              <span>End-to-end data pipeline from raw ingestion to cleaned schema</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-              <span>PostgreSQL relational data warehouse schema &amp; cleaning scripts</span>
+              <span>PostgreSQL relational SQL queries with CTEs &amp; window aggregations</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-              <span>Autonomous LangChain RAG agent capable of natural language queries</span>
+              <span>Python statistical EDA notebook with outlier &amp; correlation analysis</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3.5 h-3.5 flex items-center justify-center shrink-0">
                 <GitHubLogo className="w-3.5 h-3.5 text-orange-400" />
               </div>
-              <span>Portfolio walkthrough presentation defending business conclusions</span>
+              <span>Production Power BI (.pbix) executive dashboard with DAX KPI trees</span>
             </div>
           </div>
         </div>

@@ -199,8 +199,8 @@ export const DaapPage: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <SectionHeading
           eyebrow="Demonstrated Capability"
-          title="Documented Capstone Projects"
-          subtitle="Real business datasets and autonomous analytical pipelines that demonstrate your quantitative skills to hiring teams."
+          title="Documented Capstone & Portfolio Projects"
+          subtitle="Five source-defined portfolio projects spanning spreadsheet modeling, relational SQL, Python EDA, Power BI intelligence, and the end-to-end analytics capstone."
         />
 
         <ProjectsVisual initialTab="daap" />

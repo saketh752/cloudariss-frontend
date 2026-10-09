@@ -338,7 +338,7 @@ export const WhyCloudarissPage: React.FC = () => {
 
             <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-400">
-                12 Weeks · 8 Modules · Capstone
+                12 Weeks · 8 Modules · 4 Projects
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -414,7 +414,7 @@ export const WhyCloudarissPage: React.FC = () => {
 
             <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
               <div className="text-xs font-semibold text-slate-400">
-                12 Weeks · 5+ Projects · Capstone
+                12 Weeks · 5 Projects · Capstone
               </div>
               <div className="flex items-center gap-2">
                 <button

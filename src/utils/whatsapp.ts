@@ -19,10 +19,15 @@ export function getDAAPEnquiryMessage(): string {
   return `Hi Cloudariss Team,\n\nI came across the DAAP – Data Analyst Accelerator Program and I’m interested in learning more about the program.\n\nCould you please share the course curriculum, duration, fees, upcoming batch details, and enrollment process?\n\nThank you.`;
 }
 
+export function getFDEEnquiryMessage(): string {
+  return `Hi Cloudariss Team,\n\nI’m interested in the FDE AI Engineer program (Forward Deployed Engineer / Enterprise AI Implementation). I’d like to know more about the 6-month program, curriculum, fees, and admission process.\n\nCould you please guide me with the enrollment details?\n\nThank you.`;
+}
+
 export function getCourseEnquiryMessage(courseName: string): string {
   const normalized = courseName.toLowerCase().trim();
   if (normalized === 'crpc') return getCRPCEnquiryMessage();
   if (normalized === 'daap') return getDAAPEnquiryMessage();
+  if (normalized === 'fde' || normalized === 'fde ai engineer') return getFDEEnquiryMessage();
   if (normalized === 'java') {
     return `Hi Cloudariss Team,\n\nI’m interested in the Java course offered by Cloudariss and would like to know more about the program.\n\nCould you please share the course curriculum, duration, fees, upcoming batch details, and enrollment process?\n\nThank you.`;
   }
@@ -45,6 +50,8 @@ export function getWhatsAppEnquiryUrl(options?: WhatsAppMessageOptions): string 
     message = getCRPCEnquiryMessage();
   } else if (courseId === 'daap') {
     message = getDAAPEnquiryMessage();
+  } else if (courseId === 'fde') {
+    message = getFDEEnquiryMessage();
   } else if (courseId === 'java' || courseName?.toLowerCase() === 'java') {
     message = getCourseEnquiryMessage('Java');
   } else if (courseId === 'python' || courseName?.toLowerCase() === 'python') {

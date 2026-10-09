@@ -9,154 +9,149 @@ import {
   Cloud,
   Wrench,
   CheckCircle2,
+  Plus,
+  Minus,
+  Cpu,
 } from 'lucide-react';
 import {
   PythonLogo,
   SqlLogo,
+  PostgreSqlLogo,
   PowerBiLogo,
+  ExcelLogo,
   AwsLogo,
   DockerLogo,
-  JenkinsLogo,
+  KubernetesLogo,
+  GrafanaLogo,
   RagLogo,
   AgenticAiLogo,
   ChatGptLogo,
+  LangChainLogo,
 } from '@/components/icons/TechLogos';
+import { DAAP_PROJECTS, CRPC_PROJECTS, FDE_PROJECTS, ProjectData } from '@/data/projectsData';
 
 /* ========================================================================= */
 /* PROJECTS VISUAL — OPEN ENGINEERING CASE STUDIES                           */
-/* Replaces boxed 3-column card grid with open editorial case-study ledger   */
-/* No card walls, no pill chip wrappers around logos, clear number anchors    */
+/* Replaces boxed card grid with open editorial case-study ledger            */
+/* Reflects official Cloudariss Project Route Map:                           */
+/* DAAP: exactly 5 projects | CRPC: exactly 4 projects (9 projects total)    */
 /* ========================================================================= */
 
-interface ProjectTile {
-  title: string;
-  category: string;
-  tag: string;
+interface ProjectTile extends ProjectData {
   icon: React.ReactNode;
   logos: React.ReactNode[];
-  description: string;
-  deliverables: string[];
 }
 
-export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ initialTab = 'daap' }) => {
-  const [activeTab, setActiveTab] = useState<'daap' | 'crpc'>(initialTab);
+export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' | 'fde' }> = ({ initialTab = 'daap' }) => {
+  const [activeTab, setActiveTab] = useState<'daap' | 'crpc' | 'fde'>(initialTab);
 
   const daapProjects: ProjectTile[] = [
     {
-      title: 'AI-Assisted Sales Dashboard',
-      category: 'Spreadsheet & GenAI',
-      tag: '01',
+      ...DAAP_PROJECTS[0],
       icon: <BarChart3 className="w-5 h-5 text-emerald-400" />,
-      logos: [<ChatGptLogo key="c" className="w-5 h-5" />],
-      description: 'Interactive commercial sales dashboard comparing human-calculated KPIs with AI-synthesized narrative insights.',
-      deliverables: ['Excel Dynamic Arrays', 'Pivot KPI Deck', 'AI Executive Summary'],
+      logos: [<ExcelLogo key="ex" className="w-5 h-5" />],
     },
     {
-      title: 'SQL Database Analysis',
-      category: 'Relational Database',
-      tag: '02',
+      ...DAAP_PROJECTS[1],
       icon: <Database className="w-5 h-5 text-[#19BCE8]" />,
-      logos: [<SqlLogo key="s" className="w-5 h-5" />],
-      description: 'Multi-table relational schema analysis with complex business queries, aggregations, and query optimization.',
-      deliverables: ['PostgreSQL Schemas', 'Window Functions & CTEs', 'Query Optimization Report'],
+      logos: [
+        <SqlLogo key="sql" className="w-5 h-5" />,
+        <PostgreSqlLogo key="pg" className="w-5 h-5" />,
+      ],
     },
     {
-      title: 'Python EDA & Customer Segmentation',
-      category: 'Exploratory Analytics',
-      tag: '03',
+      ...DAAP_PROJECTS[2],
       icon: <Terminal className="w-5 h-5 text-cyan-400" />,
-      logos: [<PythonLogo key="p" className="w-5 h-5" />],
-      description: 'Comprehensive statistical distribution, feature correlation, outlier treatment, and demographic clustering.',
-      deliverables: ['Jupyter Notebook Artifact', 'Seaborn & Plotly Deck', 'Statistical Summary Memo'],
+      logos: [<PythonLogo key="py" className="w-5 h-5" />],
     },
     {
-      title: 'Executive BI Dashboard',
-      category: 'Business Intelligence',
-      tag: '04',
+      ...DAAP_PROJECTS[3],
       icon: <LineChart className="w-5 h-5 text-[#EAA600]" />,
-      logos: [<PowerBiLogo key="pb" className="w-5 h-5" />],
-      description: 'Production Power BI dashboard with star schema architecture, time-intelligence DAX measures, and drill-throughs.',
-      deliverables: ['Star Schema Data Model', 'DAX Measure Library', 'Executive KPI Canvas'],
+      logos: [<PowerBiLogo key="pbi" className="w-5 h-5" />],
     },
     {
-      title: 'RAG Document Intelligence App',
-      category: 'Generative AI',
-      tag: '05',
-      icon: <Bot className="w-5 h-5 text-purple-400" />,
-      logos: [<RagLogo key="r" className="w-5 h-5" />],
-      description: 'Retrieval-Augmented Generation application for semantic document querying with chunking strategies and citation synthesis.',
-      deliverables: ['Vector Store Embeddings', 'Context Retrieval Pipeline', 'Interactive Streamlit UI'],
-    },
-    {
-      title: 'Autonomous Data Agent',
-      category: 'Agentic AI Capstone',
-      tag: '06',
+      ...DAAP_PROJECTS[4],
       icon: <Layers className="w-5 h-5 text-brand-orange" />,
       logos: [
-        <AgenticAiLogo key="a" className="w-5 h-5" />,
-        <PythonLogo key="p2" className="w-5 h-5" />,
+        <ExcelLogo key="ex" className="w-5 h-5" />,
+        <SqlLogo key="sql" className="w-5 h-5" />,
+        <PythonLogo key="py" className="w-5 h-5" />,
+        <PowerBiLogo key="pbi" className="w-5 h-5" />,
       ],
-      description: 'Comprehensive portfolio capstone: automated planning → tool execution → data analysis → verification → executive reporting.',
-      deliverables: ['Multi-Agent Architecture', 'SQL & Python Tool Suite', 'Autonomous Analytical Briefing'],
     },
   ];
 
   const crpcProjects: ProjectTile[] = [
     {
-      title: 'Data / EDA Project',
-      category: 'Python & Data Engineering',
-      tag: '01',
-      icon: <Terminal className="w-5 h-5 text-[#19BCE8]" />,
-      logos: [<PythonLogo key="p" className="w-5 h-5" />],
-      description: 'End-to-end exploratory data analysis and baseline machine learning workflow covering data preprocessing and evaluation.',
-      deliverables: ['Data Preprocessing Pipelines', 'Scikit-Learn Baseline Model', 'Model Validation Metrics'],
+      ...CRPC_PROJECTS[0],
+      icon: <Bot className="w-5 h-5 text-purple-400" />,
+      logos: [
+        <RagLogo key="rag" className="w-5 h-5" />,
+        <LangChainLogo key="lc" className="w-5 h-5" />,
+        <PythonLogo key="py" className="w-5 h-5" />,
+      ],
     },
     {
-      title: 'AWS Application Deployment',
-      category: 'Cloud Architecture',
-      tag: '02',
+      ...CRPC_PROJECTS[1],
+      icon: <Wrench className="w-5 h-5 text-[#19BCE8]" />,
+      logos: [
+        <AgenticAiLogo key="ag" className="w-5 h-5" />,
+        <SqlLogo key="sql" className="w-5 h-5" />,
+        <PythonLogo key="py" className="w-5 h-5" />,
+      ],
+    },
+    {
+      ...CRPC_PROJECTS[2],
+      icon: <Layers className="w-5 h-5 text-cyan-400" />,
+      logos: [
+        <AgenticAiLogo key="ag" className="w-5 h-5" />,
+        <LangChainLogo key="lc" className="w-5 h-5" />,
+        <ChatGptLogo key="cg" className="w-5 h-5" />,
+      ],
+    },
+    {
+      ...CRPC_PROJECTS[3],
       icon: <Cloud className="w-5 h-5 text-[#FF9900]" />,
-      logos: [<AwsLogo key="a" className="w-6 h-4" />],
-      description: 'Three-tier web application deployed across public and private subnets behind an Application Load Balancer with secure database access.',
-      deliverables: ['Multi-AZ VPC & Routing', 'EC2 Auto Scaling Groups', 'RDS MySQL Isolation'],
-    },
-    {
-      title: 'DevOps CI/CD Project',
-      category: 'Automation & Containers',
-      tag: '03',
-      icon: <Wrench className="w-5 h-5 text-brand-orange" />,
       logos: [
-        <DockerLogo key="d" className="w-5 h-5" />,
-        <JenkinsLogo key="j" className="w-5 h-5" />,
+        <AwsLogo key="aws" className="w-6 h-4" />,
+        <DockerLogo key="doc" className="w-5 h-5" />,
+        <KubernetesLogo key="k8s" className="w-5 h-5" />,
+        <GrafanaLogo key="grf" className="w-5 h-5" />,
       ],
-      description: 'Automated continuous integration and deployment pipeline triggered from repository pushes to containerized EC2 hosting.',
-      deliverables: ['Docker Image Build Pipeline', 'Jenkins Declarative Jenkinsfile', 'Zero-Downtime Container Pull'],
-    },
-    {
-      title: 'Enterprise Integration Capstone',
-      category: 'Full-Stack Infrastructure',
-      tag: '04',
-      icon: <Layers className="w-5 h-5 text-[#19BCE8]" />,
-      logos: [
-        <AwsLogo key="aw" className="w-6 h-4" />,
-        <DockerLogo key="do" className="w-5 h-5" />,
-      ],
-      description: 'Production-style infrastructure setup with centralized monitoring via Prometheus & Grafana, incident response, and demo-ready presentation.',
-      deliverables: ['Prometheus/Grafana Dashboards', 'ServiceNow Incident Bridge', 'Architectural Walkthrough'],
     },
   ];
 
-  const projects = activeTab === 'daap' ? daapProjects : crpcProjects;
+  const fdeProjects: ProjectTile[] = [
+    {
+      ...FDE_PROJECTS[0],
+      icon: <Cpu className="w-5 h-5 text-[#00D2FF]" />,
+      logos: [
+        <PythonLogo key="py" className="w-5 h-5" />,
+        <RagLogo key="rag" className="w-5 h-5" />,
+        <AgenticAiLogo key="ag" className="w-5 h-5" />,
+        <DockerLogo key="doc" className="w-5 h-5" />,
+        <KubernetesLogo key="k8s" className="w-5 h-5" />,
+      ],
+    },
+  ];
+
+  const [openProjectTag, setOpenProjectTag] = useState<string | null>('01');
+
+  const projects =
+    activeTab === 'daap' ? daapProjects : activeTab === 'crpc' ? crpcProjects : fdeProjects;
 
   return (
-    <div className="space-y-10 sm:space-y-12">
+    <div className="space-y-6 sm:space-y-10 lg:space-y-12">
       {/* Program Selector Tabs — Clean Editorial Tab Bar */}
       <div className="flex justify-center">
-        <div className="inline-flex p-1 rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/10">
+        <div className="inline-flex p-1 rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/10 flex-wrap justify-center gap-1">
           <button
             type="button"
-            onClick={() => setActiveTab('daap')}
-            className={`px-5 py-2 rounded-lg text-xs sm:text-sm font-bold font-heading transition-all duration-200 cursor-pointer ${
+            onClick={() => {
+              setActiveTab('daap');
+              setOpenProjectTag('01');
+            }}
+            className={`px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-bold font-heading transition-all duration-200 cursor-pointer min-h-[38px] ${
               activeTab === 'daap'
                 ? 'bg-[#0878E8] text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
@@ -166,8 +161,11 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab('crpc')}
-            className={`px-5 py-2 rounded-lg text-xs sm:text-sm font-bold font-heading transition-all duration-200 cursor-pointer ${
+            onClick={() => {
+              setActiveTab('crpc');
+              setOpenProjectTag('01');
+            }}
+            className={`px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-bold font-heading transition-all duration-200 cursor-pointer min-h-[38px] ${
               activeTab === 'crpc'
                 ? 'bg-[#0878E8] text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
@@ -175,26 +173,146 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
           >
             CRPC Projects ({crpcProjects.length})
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab('fde');
+              setOpenProjectTag('01');
+            }}
+            className={`px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-bold font-heading transition-all duration-200 cursor-pointer min-h-[38px] ${
+              activeTab === 'fde'
+                ? 'bg-[#0878E8] text-white shadow-sm'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            FDE AI Engineer ({fdeProjects.length})
+          </button>
         </div>
       </div>
 
-      {/* Open Engineering Case Studies Layout (No Card Boxes, No Thick Borders) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12">
+      {/* =================================================================== */}
+      {/* MOBILE ACCORDION VIEW (< md) — Drastically reduces scroll depth      */}
+      {/* =================================================================== */}
+      <div className="md:hidden space-y-2.5">
+        {projects.map((proj) => {
+          const isOpen = openProjectTag === proj.tag;
+          return (
+            <div
+              key={proj.title}
+              className={`rounded-xl transition-all duration-300 border ${
+                isOpen
+                  ? 'bg-white/[0.04] border-[#00D2FF]/40 shadow-[0_0_16px_rgba(0,210,255,0.12)]'
+                  : 'bg-white/[0.02] border-white/10 hover:border-white/20'
+              }`}
+            >
+              {/* Accordion Header Row */}
+              <button
+                type="button"
+                onClick={() => setOpenProjectTag(isOpen ? null : proj.tag)}
+                className="w-full flex items-center justify-between p-3.5 text-left cursor-pointer select-none min-h-[48px]"
+                aria-expanded={isOpen}
+              >
+                <div className="flex items-center gap-3 pr-2">
+                  <span className="font-mono text-sm font-black text-[#00D2FF]">
+                    {proj.tag}
+                  </span>
+                  <div className="h-3 w-px bg-white/20" />
+                  <span className="font-heading font-black text-xs sm:text-sm text-white leading-tight">
+                    {proj.title}
+                  </span>
+                </div>
+
+                <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-slate-300">
+                  {isOpen ? <Minus className="w-3.5 h-3.5 text-[#00D2FF]" /> : <Plus className="w-3.5 h-3.5" />}
+                </div>
+              </button>
+
+              {/* Accordion Expanded Content */}
+              {isOpen && (
+                <div className="px-3.5 pb-3.5 pt-1 space-y-3 border-t border-white/10 animate-in fade-in duration-200">
+                  <div className="flex items-center justify-between pt-1 gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
+                        {proj.category}
+                      </span>
+                      <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                        {proj.levelStage}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {proj.logos.map((logo, lIdx) => (
+                        <span key={lIdx} className="scale-90">
+                          {logo}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-[#DCE5F2]/85 leading-relaxed font-normal">
+                    {proj.description}
+                  </p>
+
+                  {/* Production Focus */}
+                  <div className="p-2.5 rounded-lg bg-white/[0.03] border border-white/10 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-slate-300 uppercase block tracking-wider">
+                      Production Focus
+                    </span>
+                    <p className="text-[11px] text-slate-300/90 leading-relaxed">
+                      {proj.productionFocus}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/10 space-y-1.5">
+                    <span className="text-[10px] font-mono font-bold tracking-wider text-slate-400 uppercase block">
+                      Verified Deliverables
+                    </span>
+                    <div className="space-y-1.5">
+                      {proj.deliverables.map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-300">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* =================================================================== */}
+      {/* DESKTOP & TABLET OPEN CASE STUDIES GRID (hidden md:grid)            */}
+      {/* =================================================================== */}
+      <div className="hidden md:grid md:grid-cols-2 gap-x-12 gap-y-10 lg:gap-y-12">
         {projects.map((proj) => (
           <div
             key={proj.title}
             className="group relative border-t border-white/10 pt-8 flex flex-col justify-between space-y-6"
           >
+            {/* Subtle cinematic dark readability fade — minimal dark atmospheric wash */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 -inset-y-4 pointer-events-none -z-10"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 85% at 50% 50%, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.18) 60%, transparent 100%)',
+              }}
+            />
             <div className="space-y-4">
-              {/* Meta Row: Case Number + Category + Standalone Floating Tech Logos */}
+              {/* Meta Row: Case Number + Category + Level / Stage + Floating Tech Logos */}
               <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   <span className="font-mono text-xl sm:text-2xl font-black text-white/20 group-hover:text-[#00D2FF]/50 transition-colors">
                     {proj.tag}
                   </span>
                   <div className="h-3 w-px bg-white/20" />
                   <span className="text-[11px] font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
                     {proj.category}
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                    {proj.levelStage}
                   </span>
                 </div>
 
@@ -217,6 +335,16 @@ export const ProjectsVisual: React.FC<{ initialTab?: 'daap' | 'crpc' }> = ({ ini
               <p className="text-sm text-[#DCE5F2]/85 leading-relaxed font-normal">
                 {proj.description}
               </p>
+
+              {/* Production Focus Callout */}
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+                <span className="text-[10px] font-mono font-bold text-slate-300 uppercase block tracking-wider">
+                  Production Engineering Focus
+                </span>
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  {proj.productionFocus}
+                </p>
+              </div>
             </div>
 
             {/* Deliverables Checklist (Clean Editorial Ledger) */}

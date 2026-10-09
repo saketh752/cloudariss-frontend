@@ -66,7 +66,7 @@ export const Layout: React.FC = () => {
 
   return (
     <CurriculumProvider>
-      <div className="min-h-screen flex flex-col bg-[#020817] text-slate-100 antialiased selection:bg-[#0878E8] selection:text-white relative">
+      <div className="min-h-screen flex flex-col bg-[#020817] text-slate-100 antialiased selection:bg-[#0878E8] selection:text-white relative overflow-x-clip">
         {/* Global Futuristic Cloud City Horizon Background System */}
         <CloudarissBackground />
 

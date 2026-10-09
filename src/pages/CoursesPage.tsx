@@ -33,9 +33,11 @@ export const CoursesPage: React.FC = () => {
 
   const [selectedCrpcStep, setSelectedCrpcStep] = useState<number>(2); // Default to AWS Cloud
   const [selectedDaapStep, setSelectedDaapStep] = useState<number>(3); // Default to Power BI
+  const [selectedFdeStep, setSelectedFdeStep] = useState<number>(2); // Default to Agents & MCP
 
   const crpc = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
   const daap = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
+  const fde = BRAND_DATA.programs.find((p) => p.id === 'fde')!;
 
   const crpcPathway = [
     { step: '01', title: 'Python Basics', detail: 'Data types, loops, functions & algorithms' },
@@ -53,6 +55,15 @@ export const CoursesPage: React.FC = () => {
     { step: '04', title: 'Power BI & DAX', detail: 'Data modeling, KPIs & executive decks' },
     { step: '05', title: 'Generative AI', detail: 'Prompt engineering & RAG architectures' },
     { step: '06', title: 'Agentic AI', detail: 'Multi-tool agents & autonomous analytics' },
+  ];
+
+  const fdePathway = [
+    { step: '01', title: 'SWE & APIs', detail: 'Python, Linux, Git, REST APIs & Databases' },
+    { step: '02', title: 'GenAI & RAG', detail: 'LLMs, Embeddings, Vector DBs & Search' },
+    { step: '03', title: 'Agents & MCP', detail: 'Tool calling, Loops, MCP & Multi-Agent' },
+    { step: '04', title: 'FastAPI & Docker', detail: 'Async APIs, Containerization & Serving' },
+    { step: '05', title: 'CI/CD & Cloud', detail: 'Kubernetes, Cloud Deploy, Caching & Queues' },
+    { step: '06', title: 'Security & Eval', detail: 'Prompt injection defense & Model evaluation' },
   ];
 
   // Dynamic Blueprints for CRPC steps
@@ -200,6 +211,84 @@ export const CoursesPage: React.FC = () => {
   const currentCrpcBlueprint = crpcStepBlueprints[selectedCrpcStep];
   const currentDaapBlueprint = daapStepBlueprints[selectedDaapStep];
 
+  // Dynamic Blueprints for FDE steps
+  const fdeStepBlueprints = [
+    {
+      title: 'Backend Systems & API Architecture',
+      badge: 'Software Engineering',
+      category: 'Production Foundations',
+      description: 'Master core Python, Linux tooling, relational database querying with SQL, REST APIs, JSON handling, and modular software design.',
+      tools: [
+        { name: 'Python 3.11', icon: <PythonLogo className="w-3.5 h-3.5" /> },
+        { name: 'PostgreSQL / SQL', icon: <SqlLogo className="w-3.5 h-3.5" /> },
+        { name: 'REST APIs', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
+      ],
+      deliverable: 'Production-Ready Modular Backend API with Relational Persistence',
+    },
+    {
+      title: 'Retrieval-Augmented Generation (RAG)',
+      badge: 'Generative AI',
+      category: 'Vector Intelligence',
+      description: 'Implement document chunking, text embeddings, vector similarity search, and citation-grounded RAG pipelines over enterprise documentation.',
+      tools: [
+        { name: 'Vector DBs', icon: <RagLogo className="w-3.5 h-3.5" /> },
+        { name: 'LLM APIs', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
+        { name: 'Embeddings', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
+      ],
+      deliverable: 'Enterprise Document Q&A Engine with Citation Synthesis',
+    },
+    {
+      title: 'Autonomous Agents & MCP Architecture',
+      badge: 'Agentic AI',
+      category: 'Autonomous Workflows',
+      description: 'Design autonomous agents with tool/function calling, memory loops, Model Context Protocol (MCP) integrations, and multi-agent coordination.',
+      tools: [
+        { name: 'AI Agents', icon: <AgenticAiLogo className="w-3.5 h-3.5" /> },
+        { name: 'Tool Calling', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
+        { name: 'MCP Protocol', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
+      ],
+      deliverable: 'Multi-Tool Business Agent with Human-in-the-Loop Validation Gates',
+    },
+    {
+      title: 'High-Throughput Model Serving & Docker',
+      badge: 'Model Serving',
+      category: 'Container Architecture',
+      description: 'Build asynchronous endpoints with FastAPI, containerize AI microservices with Docker, optimize inference latency, and implement caching layers.',
+      tools: [
+        { name: 'FastAPI', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
+        { name: 'Docker', icon: <DockerLogo className="w-3.5 h-3.5" /> },
+        { name: 'Redis Caching', icon: <Database className="w-3.5 h-3.5 text-emerald-400" /> },
+      ],
+      deliverable: 'Containerized Model Serving Microservice with Caching & Rate Limiting',
+    },
+    {
+      title: 'Cloud Deployment, CI/CD & Orchestration',
+      badge: 'Cloud & Infrastructure',
+      category: 'Enterprise Operations',
+      description: 'Automate build-test-deploy delivery with GitHub Actions CI/CD pipelines, orchestrate pods on Kubernetes, and deploy to cloud environments.',
+      tools: [
+        { name: 'Kubernetes Pods', icon: <KubernetesLogo className="w-3.5 h-3.5" /> },
+        { name: 'CI/CD Automation', icon: <JenkinsLogo className="w-3.5 h-3.5" /> },
+        { name: 'Cloud Infrastructure', icon: <AwsLogo className="w-3.5 h-3" /> },
+      ],
+      deliverable: 'Automated CI/CD Delivery Pipeline to Cloud Kubernetes Cluster',
+    },
+    {
+      title: 'Security Guardrails & Evaluation Benchmarks',
+      badge: 'AI Security & Governance',
+      category: 'Production Reliability',
+      description: 'Harden enterprise deployments against prompt injection, safeguard data privacy, set up structured audit logging, and run model evaluation suites.',
+      tools: [
+        { name: 'Guardrails & Security', icon: <Terminal className="w-3.5 h-3.5 text-brand-orange" /> },
+        { name: 'Observability', icon: <Cloud className="w-3.5 h-3.5 text-brand-cyan" /> },
+        { name: 'Evaluation Suites', icon: <FileText className="w-3.5 h-3.5 text-slate-300" /> },
+      ],
+      deliverable: 'Security-Hardened AI Gateway with Comprehensive Evaluation Benchmark',
+    },
+  ];
+
+  const currentFdeBlueprint = fdeStepBlueprints[selectedFdeStep];
+
   return (
     <div className="space-y-16 lg:space-y-24 pb-20">
       {/* ========================================================================= */}
@@ -224,7 +313,7 @@ export const CoursesPage: React.FC = () => {
               Explore Cloudariss flagship programs designed around practical technology skills, hands-on lab projects, and systematic career preparation.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 flex-wrap">
               <Button
                 to="/courses/crpc"
                 variant="secondary"
@@ -235,11 +324,20 @@ export const CoursesPage: React.FC = () => {
               </Button>
               <Button
                 to="/courses/daap"
+                variant="outline"
+                size="lg"
+                className="text-white border-brand-orange/40 hover:bg-brand-orange/20"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explore DAAP Track
+              </Button>
+              <Button
+                to="/courses/fde"
                 variant="primary"
                 size="lg"
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                Explore DAAP Track
+                Explore FDE Track
               </Button>
             </div>
           </div>
@@ -254,7 +352,7 @@ export const CoursesPage: React.FC = () => {
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <SectionHeading
-          eyebrow="Two Specialized Flagships"
+          eyebrow="Three Specialized Flagships"
           title="Engineered for Depth. Grounded in Production."
           subtitle="Click any module along the structured pathway to dynamically inspect its live technical blueprint and deliverables."
         />
@@ -592,6 +690,180 @@ export const CoursesPage: React.FC = () => {
                   Target Roles:
                 </div>
                 <div>Data Analyst · BI Developer · SQL Specialist · AI Operations Analyst</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ----------------------------------------------------------------------- */}
+        {/* FDE SHOWCASE BLOCK (INTERACTIVE) */}
+        {/* ----------------------------------------------------------------------- */}
+        <div className="rounded-3xl bg-gradient-to-b from-[#061C38]/95 via-[#04142B]/98 to-[#020A17]/98 backdrop-blur-xl border border-[#00D2FF]/30 shadow-2xl overflow-hidden hover:border-[#00D2FF]/60 transition-all duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            {/* Left Pathway Column */}
+            <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 shadow-xs">
+                    {fde.code} FLAGSHIP
+                  </span>
+                  <span className="text-xs font-mono font-bold text-[#00E599] bg-[#00E599]/15 px-3 py-1 rounded-full border border-[#00E599]/30">
+                    Python · FastAPI · GenAI · RAG · Agents · Cloud
+                  </span>
+                  <span className="text-xs font-semibold text-slate-300">
+                    6 Months · Live Online
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                    {fde.name}
+                  </h3>
+                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
+                    Designed for engineers who want to deploy real-world enterprise AI systems — unifying software engineering, Generative AI, autonomous agents, containerization, and production cloud infrastructure.
+                  </p>
+                </div>
+
+                {/* Step-by-Step Interactive Pathway Stepper */}
+                <div className="space-y-2 pt-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                      Structured Curriculum Pathway:
+                    </span>
+                    <span className="text-[10px] text-[#00D2FF] font-semibold">
+                      Click to inspect live blueprint ▾
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    {fdePathway.map((st, idx) => {
+                      const isSelected = selectedFdeStep === idx;
+                      return (
+                        <button
+                          key={st.step}
+                          type="button"
+                          onClick={() => setSelectedFdeStep(idx)}
+                          className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
+                            isSelected
+                              ? 'bg-[#00D2FF]/20 border-2 border-[#00D2FF] shadow-[0_0_15px_rgba(0,210,255,0.25)] scale-[1.02]'
+                              : 'bg-[#031124]/85 border-white/10 hover:border-[#00D2FF]/40 hover:bg-[#051833]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
+                            <span className={`font-mono ${isSelected ? 'text-[#00D2FF] font-extrabold' : 'text-slate-400'}`}>
+                              {st.step}
+                            </span>
+                            <span className="truncate">{st.title}</span>
+                          </div>
+                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
+                            {st.detail}
+                          </p>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                    PROGRAM TUITION
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-extrabold text-white">
+                      ₹25,000
+                    </span>
+                    <span className="text-xs font-semibold text-[#00E599]">
+                      100% Placement Assistance Included
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => openCurriculum('fde')}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-[#00D2FF]/15 text-[#00D2FF] hover:bg-[#00D2FF]/25 hover:text-white border border-[#00D2FF]/40 transition-colors cursor-pointer"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>View Curriculum (PDF)</span>
+                  </button>
+                  <Button
+                    to="/courses/fde"
+                    variant="primary"
+                    size="md"
+                    rightIcon={<ArrowRight className="w-4 h-4" />}
+                  >
+                    Explore FDE
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Dynamic Technical Canvas Column (Reactive to selectedFdeStep) */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-[#020A17] via-[#04142B] to-[#020A17] p-6 sm:p-8 text-white flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-xs font-mono font-bold text-[#00D2FF] uppercase tracking-wider">
+                    Engineering Blueprint
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#00E599]/20 text-[#00E599] border border-[#00E599]/30">
+                    Step {fdePathway[selectedFdeStep].step} Active
+                  </span>
+                </div>
+
+                {/* Dynamic Blueprint Card */}
+                <div className="space-y-3">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2.5 transition-all">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-mono font-extrabold text-[#00D2FF] uppercase tracking-wider">
+                        {currentFdeBlueprint.badge}
+                      </span>
+                      <span className="text-[10px] text-slate-400">
+                        {currentFdeBlueprint.category}
+                      </span>
+                    </div>
+
+                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                      <Bot className="w-4 h-4 text-[#00D2FF] shrink-0" />
+                      <span>{currentFdeBlueprint.title}</span>
+                    </h4>
+
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      {currentFdeBlueprint.description}
+                    </p>
+
+                    {/* Tools in this module */}
+                    <div className="flex items-center gap-2 flex-wrap pt-1 text-xs">
+                      {currentFdeBlueprint.tools.map((t, tIdx) => (
+                        <span key={tIdx} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/10 text-slate-200 text-xs">
+                          {t.icon}
+                          <span>{t.name}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Targeted Lab Deliverable */}
+                  <div className="p-3 rounded-xl bg-[#061E3D] border border-[#00D2FF]/25 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-[#00D2FF] uppercase tracking-wider block">
+                      Targeted Production Deliverable:
+                    </span>
+                    <div className="flex items-start gap-1.5 text-xs text-slate-200">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span className="leading-snug">{currentFdeBlueprint.deliverable}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Roles Summary */}
+              <div className="pt-4 border-t border-white/10 space-y-1.5 text-xs text-slate-300">
+                <div className="font-bold text-white text-[11px] uppercase tracking-wider">
+                  Target Roles:
+                </div>
+                <div>Forward-Deployed AI Engineer · AI Solutions Engineer · AI Application Engineer · AI Implementation Engineer</div>
               </div>
             </div>
           </div>

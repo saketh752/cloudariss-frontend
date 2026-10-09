@@ -30,6 +30,16 @@ const NAVBAR_THEMES: Record<string, NavbarTheme> = {
     leftRadial: 'rgba(56,189,248,0.07)',
     rightRadial: 'rgba(139,92,246,0.04)',
   },
+  '/courses/fde': {
+    gradientClass: 'from-[#02091D] via-[#041938] to-[#02091D]',
+    leftRadial: 'rgba(0,210,255,0.07)',
+    rightRadial: 'rgba(0,229,153,0.04)',
+  },
+  '/programs/fde': {
+    gradientClass: 'from-[#02091D] via-[#041938] to-[#02091D]',
+    leftRadial: 'rgba(0,210,255,0.07)',
+    rightRadial: 'rgba(0,229,153,0.04)',
+  },
   '/why-cloudariss': {
     gradientClass: 'from-[#02091D] via-[#041436] to-[#02091D]',
     leftRadial: 'rgba(25,188,232,0.06)',
@@ -105,7 +115,7 @@ export const Navbar: React.FC = () => {
             <img
               src="/brand/cloudariss-logo.png"
               alt="Cloudariss Technologies"
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain brightness-0 invert filter drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] drop-shadow-[0_0_24px_rgba(25,188,232,0.6)] group-hover:scale-105 transition-all duration-300"
+              className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain brightness-0 invert filter drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] drop-shadow-[0_0_24px_rgba(25,188,232,0.6)] group-hover:scale-105 transition-all duration-300"
             />
           </Link>
 
@@ -133,7 +143,7 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* RIGHT: CTAs - 'Verify Certificate' + 'Contact' */}
+          {/* RIGHT: CTAs - 'Verify Certificate' + 'Contact' (Desktop) */}
           <div className="hidden lg:flex items-center gap-2.5 xl:gap-3 shrink-0">
             <Link
               to="/verify-certificate"
@@ -155,12 +165,25 @@ export const Navbar: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Tablet & Mobile Right Action Cluster */}
           <div className="flex lg:hidden items-center gap-2">
+            {/* Tablet Quick Action: WhatsApp link (visible on tablet 640px+) */}
+            <a
+              href={BRAND_DATA.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#0878E8]/20 text-[#00D2FF] border border-[#00D2FF]/40 text-xs font-bold hover:bg-[#0878E8]/30 transition-colors"
+              title="Contact on WhatsApp"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+              <span>Admissions</span>
+            </a>
+
+            {/* Mobile / Tablet Menu Toggle Button (44px min touch target) */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white bg-[#06122c] border border-white/[0.1] hover:bg-[#081a3d] focus:outline-none focus:ring-2 focus:ring-[#19BCE8] transition-colors"
+              className="min-w-[44px] min-h-[44px] p-2.5 rounded-xl text-slate-300 hover:text-white bg-[#06122c] border border-white/[0.1] hover:bg-[#081a3d] focus:outline-none focus:ring-2 focus:ring-[#19BCE8] transition-colors flex items-center justify-center cursor-pointer"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -184,7 +207,7 @@ export const Navbar: React.FC = () => {
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold transition-colors ${
+                  className={`flex items-center justify-between px-3.5 py-3 min-h-[44px] rounded-xl text-base font-semibold transition-colors ${
                     isCurrent
                       ? 'text-[#19BCE8] bg-white/[0.06] font-bold shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
                       : 'text-slate-300 hover:bg-white/[0.04] hover:text-white'
@@ -200,7 +223,7 @@ export const Navbar: React.FC = () => {
             <NavLink
               to="/verify-certificate"
               className={({ isActive }) =>
-                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-semibold border-t border-white/[0.08] mt-1 pt-3 ${
+                `flex items-center justify-between px-3.5 py-3 min-h-[44px] rounded-xl text-base font-semibold border-t border-white/[0.08] mt-1 pt-3 ${
                   isActive
                     ? 'text-[#19BCE8] bg-white/[0.06] font-bold'
                     : 'text-slate-300 hover:bg-white/[0.04] hover:text-white'
@@ -221,7 +244,7 @@ export const Navbar: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110 cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 p-3 min-h-[44px] rounded-xl bg-gradient-to-r from-[#0878E8] to-[#0984FC] text-white font-bold text-sm shadow-[0_4px_14px_rgba(8,120,232,0.4)] border border-[#19BCE8]/40 hover:brightness-110 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>Contact Admissions on WhatsApp</span>
@@ -237,7 +260,7 @@ export const Navbar: React.FC = () => {
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <a
                   href={BRAND_DATA.phone1Tel}
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-200 font-semibold hover:text-[#19BCE8]"
+                  className="flex items-center justify-center gap-1.5 p-2.5 min-h-[44px] rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-200 font-semibold hover:text-[#19BCE8]"
                   aria-label={`Call ${BRAND_DATA.phone1}`}
                 >
                   <Phone className="w-3.5 h-3.5 text-[#19BCE8]" />
@@ -247,7 +270,7 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-white font-semibold text-xs transition-all group"
+                  className="flex items-center justify-center gap-1.5 p-2.5 min-h-[44px] rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-white font-semibold text-xs transition-all group"
                   aria-label={`WhatsApp ${BRAND_DATA.whatsappPhone}`}
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-[#25D366] transition-transform group-hover:scale-110" />
@@ -260,7 +283,7 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-pink-400 transition-colors"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-pink-400 transition-colors"
                   aria-label="Cloudariss Instagram @cloudariss.tech"
                   title="Instagram: @cloudariss.tech"
                 >
@@ -270,7 +293,7 @@ export const Navbar: React.FC = () => {
                   href={BRAND_DATA.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-[#19BCE8] transition-colors"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-[#06122c] border border-white/[0.08] text-slate-300 hover:text-[#19BCE8] transition-colors"
                   aria-label="Cloudariss Technologies LinkedIn"
                   title="LinkedIn: Cloudariss Technologies"
                 >
