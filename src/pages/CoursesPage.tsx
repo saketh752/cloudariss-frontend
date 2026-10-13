@@ -1,879 +1,123 @@
-import React, { useState } from 'react';
-import {
-  ArrowRight,
-  FileText,
-  Cloud,
-  Database,
-  Terminal,
-  Bot,
-  CheckCircle2,
-} from 'lucide-react';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
-import { BRAND_DATA } from '@/data/brandData';
-import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
+import { CoursesFlagshipSection } from '@/components/courses/CoursesFlagshipSection';
 import { AllTechnologyCourses } from '@/components/courses/AllTechnologyCourses';
-import {
-  AwsLogo,
-  DockerLogo,
-  KubernetesLogo,
-  JenkinsLogo,
-  PythonLogo,
-  ServiceNowLogo,
-  SqlLogo,
-  PowerBiLogo,
-  RagLogo,
-  AgenticAiLogo,
-} from '@/components/icons/TechLogos';
 
 export const CoursesPage: React.FC = () => {
-  const { openCurriculum } = useCurriculumModal();
-
-  const [selectedCrpcStep, setSelectedCrpcStep] = useState<number>(2); // Default to AWS Cloud
-  const [selectedDaapStep, setSelectedDaapStep] = useState<number>(3); // Default to Power BI
-  const [selectedFdeStep, setSelectedFdeStep] = useState<number>(2); // Default to Agents & MCP
-
-  const crpc = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
-  const daap = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
-  const fde = BRAND_DATA.programs.find((p) => p.id === 'fde')!;
-
-  const crpcPathway = [
-    { step: '01', title: 'Python Basics', detail: 'Data types, loops, functions & algorithms' },
-    { step: '02', title: 'Data Science', detail: 'NumPy, statistics & data exploration' },
-    { step: '03', title: 'AWS Cloud', detail: 'VPC subnets, EC2 clusters, ALB & IAM' },
-    { step: '04', title: 'DevOps & CI/CD', detail: 'Docker containers, Kubernetes & Jenkins' },
-    { step: '05', title: 'ServiceNow ITSM', detail: 'Incident, change workflows & admin' },
-    { step: '06', title: 'Career Prep', detail: 'Saturday resume audits & Sunday mocks' },
-  ];
-
-  const daapPathway = [
-    { step: '01', title: 'Advanced Excel', detail: 'Dynamic arrays, XLOOKUP & Pivot models' },
-    { step: '02', title: 'PostgreSQL & SQL', detail: 'JOINs, window functions, CTEs & queries' },
-    { step: '03', title: 'Python EDA', detail: 'Pandas data wrangling & visualizations' },
-    { step: '04', title: 'Power BI & DAX', detail: 'Data modeling, KPIs & executive decks' },
-    { step: '05', title: 'Generative AI', detail: 'Prompt engineering & RAG architectures' },
-    { step: '06', title: 'Agentic AI', detail: 'Multi-tool agents & autonomous analytics' },
-  ];
-
-  const fdePathway = [
-    { step: '01', title: 'SWE & APIs', detail: 'Python, Linux, Git, REST APIs & Databases' },
-    { step: '02', title: 'GenAI & RAG', detail: 'LLMs, Embeddings, Vector DBs & Search' },
-    { step: '03', title: 'Agents & MCP', detail: 'Tool calling, Loops, MCP & Multi-Agent' },
-    { step: '04', title: 'FastAPI & Docker', detail: 'Async APIs, Containerization & Serving' },
-    { step: '05', title: 'CI/CD & Cloud', detail: 'Kubernetes, Cloud Deploy, Caching & Queues' },
-    { step: '06', title: 'Security & Eval', detail: 'Prompt injection defense & Model evaluation' },
-  ];
-
-  // Dynamic Blueprints for CRPC steps
-  const crpcStepBlueprints = [
-    {
-      title: 'Python Automation Engine',
-      badge: 'Core Programming',
-      category: 'Procedural Scripting & OOP',
-      description: 'Build algorithmic problem-solving habits, command-line data processing, and Linux terminal pipeline automation.',
-      tools: [
-        { name: 'Python 3.11', icon: <PythonLogo className="w-3.5 h-3.5" /> },
-        { name: 'Linux Bash', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Automated Log Parsing & System File Auditing CLI Utility',
-    },
-    {
-      title: 'Numerical Computing & EDA',
-      badge: 'Analytical Computing',
-      category: 'Statistical Foundations',
-      description: 'Learn NumPy multidimensional array manipulation, matrix mathematics, and statistical dataset exploration.',
-      tools: [
-        { name: 'NumPy Arrays', icon: <PythonLogo className="w-3.5 h-3.5" /> },
-        { name: 'Statistical Testing', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Exploratory Statistical Dataset Profiling Script',
-    },
-    {
-      title: 'Multi-Tier AWS Virtual Private Cloud',
-      badge: 'Cloud Infrastructure',
-      category: 'Live Multi-Tier Architecture',
-      description: 'Design and deploy multi-AZ VPC architectures, public/private subnets, NAT gateways, EC2 clusters, and S3 storage.',
-      tools: [
-        { name: 'AWS VPC & EC2', icon: <AwsLogo className="w-3.5 h-3" /> },
-        { name: 'S3 & IAM Roles', icon: <AwsLogo className="w-3.5 h-3" /> },
-        { name: 'CloudWatch Alarms', icon: <Cloud className="w-3.5 h-3.5 text-brand-cyan" /> },
-      ],
-      deliverable: 'High-Availability Multi-Subnet VPC with Application Load Balancer',
-    },
-    {
-      title: 'Continuous Integration & Deployment',
-      badge: 'DevOps & Containers',
-      category: 'Production Automation',
-      description: 'Containerize microservices with Docker, deploy to Kubernetes pods, and orchestrate automated Jenkins pipelines.',
-      tools: [
-        { name: 'Docker Containers', icon: <DockerLogo className="w-3.5 h-3.5" /> },
-        { name: 'Kubernetes Pods', icon: <KubernetesLogo className="w-3.5 h-3.5" /> },
-        { name: 'Jenkins CI/CD', icon: <JenkinsLogo className="w-3.5 h-3.5" /> },
-      ],
-      deliverable: 'Automated GitHub-to-Kubernetes CI/CD Pipeline with Health Checks',
-    },
-    {
-      title: 'Enterprise ServiceNow ITSM',
-      badge: 'ITSM Automation',
-      category: 'Enterprise IT Workflows',
-      description: 'Configure and administer ServiceNow instance workflows, incident lifecycles, change requests, and service catalogs.',
-      tools: [
-        { name: 'ServiceNow ITSM', icon: <ServiceNowLogo className="w-3.5 h-3.5" /> },
-        { name: 'Workflow Admin', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Enterprise Incident & Change Request Lifecycle Workflow',
-    },
-    {
-      title: 'Weekend Placement Acceleration Circuit',
-      badge: 'Career Strategy',
-      category: 'Interview Defense',
-      description: 'Saturday ATS resume optimization and GitHub repository positioning, followed by Sunday technical mock interviews.',
-      tools: [
-        { name: 'ATS Resume Audit', icon: <FileText className="w-3.5 h-3.5 text-brand-cyan" /> },
-        { name: 'Technical Live Mocks', icon: <Terminal className="w-3.5 h-3.5 text-brand-orange" /> },
-      ],
-      deliverable: 'Defensible GitHub Portfolio & Technical Interview Clearance',
-    },
-  ];
-
-  // Dynamic Blueprints for DAAP steps
-  const daapStepBlueprints = [
-    {
-      title: 'Advanced Spreadsheet Modeling',
-      badge: 'Data Modeling',
-      category: 'Business Analysis',
-      description: 'Master dynamic arrays, nested XLOOKUP formulas, Power Query ingestion, and executive scenario modeling.',
-      tools: [
-        { name: 'Advanced Excel', icon: <Database className="w-3.5 h-3.5 text-emerald-400" /> },
-        { name: 'Power Query', icon: <Database className="w-3.5 h-3.5 text-emerald-400" /> },
-      ],
-      deliverable: 'Executive Financial Sensitivity & Scenario Analysis Model',
-    },
-    {
-      title: 'Enterprise Relational Query Engine',
-      badge: 'Database Engineering',
-      category: 'SQL Mastery',
-      description: 'Author multi-table JOINs, subqueries, window functions (ROW_NUMBER, DENSE_RANK), and CTE data wrangling.',
-      tools: [
-        { name: 'PostgreSQL & SQL', icon: <SqlLogo className="w-3.5 h-3.5" /> },
-        { name: 'pgAdmin Console', icon: <Database className="w-3.5 h-3.5 text-emerald-400" /> },
-      ],
-      deliverable: 'E-Commerce Transactional Warehouse with Complex Analytical Views',
-    },
-    {
-      title: 'Exploratory Data Analysis Pipeline',
-      badge: 'Python Analytics',
-      category: 'Data Transformation',
-      description: 'Clean raw data with Pandas, handle missing values, calculate correlations, and visualize distributions with Seaborn.',
-      tools: [
-        { name: 'Python EDA', icon: <PythonLogo className="w-3.5 h-3.5" /> },
-        { name: 'Pandas & NumPy', icon: <PythonLogo className="w-3.5 h-3.5" /> },
-      ],
-      deliverable: 'Automated Customer Churn & Segmentation EDA Notebook',
-    },
-    {
-      title: 'Executive Business Intelligence Suite',
-      badge: 'BI & Reporting',
-      category: 'Data Visualization',
-      description: 'Design star schemas, author custom DAX measures, configure row-level security, and publish executive dashboards.',
-      tools: [
-        { name: 'Power BI Desktop', icon: <PowerBiLogo className="w-3.5 h-3.5" /> },
-        { name: 'DAX Calculations', icon: <PowerBiLogo className="w-3.5 h-3.5" /> },
-      ],
-      deliverable: 'Enterprise Sales & Operations Multi-Page Power BI Suite',
-    },
-    {
-      title: 'Retrieval-Augmented Generation (RAG)',
-      badge: 'Generative AI',
-      category: 'Vector Intelligence',
-      description: 'Embed unstructured text, configure vector similarity search, and generate grounded answers using modern LLMs.',
-      tools: [
-        { name: 'RAG Architectures', icon: <RagLogo className="w-3.5 h-3.5" /> },
-        { name: 'Vector Databases', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
-      ],
-      deliverable: 'Domain-Specific Q&A Assistant Grounded in Corporate PDFs',
-    },
-    {
-      title: 'Autonomous Multi-Agent AI Systems',
-      badge: 'Agentic AI',
-      category: 'Autonomous Workflows',
-      description: 'Build LangChain multi-agent loops with automated tool execution, self-correcting logic, and executive report synthesis.',
-      tools: [
-        { name: 'Multi-Agent Systems', icon: <AgenticAiLogo className="w-3.5 h-3.5" /> },
-        { name: 'LangChain Agents', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
-      ],
-      deliverable: 'Autonomous Market Research & Financial Synthesis Multi-Agent System',
-    },
-  ];
-
-  const currentCrpcBlueprint = crpcStepBlueprints[selectedCrpcStep];
-  const currentDaapBlueprint = daapStepBlueprints[selectedDaapStep];
-
-  // Dynamic Blueprints for FDE steps
-  const fdeStepBlueprints = [
-    {
-      title: 'Backend Systems & API Architecture',
-      badge: 'Software Engineering',
-      category: 'Production Foundations',
-      description: 'Master core Python, Linux tooling, relational database querying with SQL, REST APIs, JSON handling, and modular software design.',
-      tools: [
-        { name: 'Python 3.11', icon: <PythonLogo className="w-3.5 h-3.5" /> },
-        { name: 'PostgreSQL / SQL', icon: <SqlLogo className="w-3.5 h-3.5" /> },
-        { name: 'REST APIs', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Production-Ready Modular Backend API with Relational Persistence',
-    },
-    {
-      title: 'Retrieval-Augmented Generation (RAG)',
-      badge: 'Generative AI',
-      category: 'Vector Intelligence',
-      description: 'Implement document chunking, text embeddings, vector similarity search, and citation-grounded RAG pipelines over enterprise documentation.',
-      tools: [
-        { name: 'Vector DBs', icon: <RagLogo className="w-3.5 h-3.5" /> },
-        { name: 'LLM APIs', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
-        { name: 'Embeddings', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Enterprise Document Q&A Engine with Citation Synthesis',
-    },
-    {
-      title: 'Autonomous Agents & MCP Architecture',
-      badge: 'Agentic AI',
-      category: 'Autonomous Workflows',
-      description: 'Design autonomous agents with tool/function calling, memory loops, Model Context Protocol (MCP) integrations, and multi-agent coordination.',
-      tools: [
-        { name: 'AI Agents', icon: <AgenticAiLogo className="w-3.5 h-3.5" /> },
-        { name: 'Tool Calling', icon: <Bot className="w-3.5 h-3.5 text-brand-cyan" /> },
-        { name: 'MCP Protocol', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Multi-Tool Business Agent with Human-in-the-Loop Validation Gates',
-    },
-    {
-      title: 'High-Throughput Model Serving & Docker',
-      badge: 'Model Serving',
-      category: 'Container Architecture',
-      description: 'Build asynchronous endpoints with FastAPI, containerize AI microservices with Docker, optimize inference latency, and implement caching layers.',
-      tools: [
-        { name: 'FastAPI', icon: <Terminal className="w-3.5 h-3.5 text-slate-300" /> },
-        { name: 'Docker', icon: <DockerLogo className="w-3.5 h-3.5" /> },
-        { name: 'Redis Caching', icon: <Database className="w-3.5 h-3.5 text-emerald-400" /> },
-      ],
-      deliverable: 'Containerized Model Serving Microservice with Caching & Rate Limiting',
-    },
-    {
-      title: 'Cloud Deployment, CI/CD & Orchestration',
-      badge: 'Cloud & Infrastructure',
-      category: 'Enterprise Operations',
-      description: 'Automate build-test-deploy delivery with GitHub Actions CI/CD pipelines, orchestrate pods on Kubernetes, and deploy to cloud environments.',
-      tools: [
-        { name: 'Kubernetes Pods', icon: <KubernetesLogo className="w-3.5 h-3.5" /> },
-        { name: 'CI/CD Automation', icon: <JenkinsLogo className="w-3.5 h-3.5" /> },
-        { name: 'Cloud Infrastructure', icon: <AwsLogo className="w-3.5 h-3" /> },
-      ],
-      deliverable: 'Automated CI/CD Delivery Pipeline to Cloud Kubernetes Cluster',
-    },
-    {
-      title: 'Security Guardrails & Evaluation Benchmarks',
-      badge: 'AI Security & Governance',
-      category: 'Production Reliability',
-      description: 'Harden enterprise deployments against prompt injection, safeguard data privacy, set up structured audit logging, and run model evaluation suites.',
-      tools: [
-        { name: 'Guardrails & Security', icon: <Terminal className="w-3.5 h-3.5 text-brand-orange" /> },
-        { name: 'Observability', icon: <Cloud className="w-3.5 h-3.5 text-brand-cyan" /> },
-        { name: 'Evaluation Suites', icon: <FileText className="w-3.5 h-3.5 text-slate-300" /> },
-      ],
-      deliverable: 'Security-Hardened AI Gateway with Comprehensive Evaluation Benchmark',
-    },
-  ];
-
-  const currentFdeBlueprint = fdeStepBlueprints[selectedFdeStep];
-
   return (
-    <div className="space-y-16 lg:space-y-24 pb-20">
+    <div className="space-y-6 sm:space-y-16 lg:space-y-20 pb-10 sm:pb-20">
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
+      <section className="relative overflow-hidden pt-6 pb-8 sm:pt-14 sm:pb-16 lg:pt-18 lg:pb-20 bg-gradient-atmospheric border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
-              <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
-              <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
-                CAREER ACCELERATOR PROGRAMS
-              </span>
-            </div>
+          <div className="relative max-w-3xl mx-auto">
+            {/* Atmospheric subtle radial scrim */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-[-15%] -inset-y-10 pointer-events-none -z-10"
+              style={{
+                background:
+                  'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(2, 8, 23, 0.72) 0%, rgba(2, 8, 23, 0.42) 55%, transparent 100%)',
+              }}
+            />
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
-              Build Skills. Build Projects.{' '}
-              <span className="text-gradient-tech">Build Your Career.</span>
+            {/* Main Headline */}
+            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] sm:leading-[1.14] font-heading">
+              <span className="block sm:inline">Build Skills. Build Projects.</span>{' '}
+              <span className="text-gradient-tech block sm:inline mt-1 sm:mt-0">Build Your Career.</span>
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-[#E5EAF3] font-normal max-w-2xl mx-auto leading-relaxed">
+            {/* Supporting Description */}
+            <p className="mt-2.5 sm:mt-4 text-xs sm:text-base lg:text-lg text-[#CBD5E1] font-normal max-w-2xl mx-auto leading-relaxed">
               Explore Cloudariss flagship programs designed around practical technology skills, hands-on lab projects, and systematic career preparation.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 flex-wrap">
-              <Button
+            {/* Mobile Hero Actions: Single Primary CTA + Horizontal Flagship Links (Mobile Only) */}
+            <div className="sm:hidden pt-4 w-full max-w-xs mx-auto space-y-2.5">
+              <a
+                href="#flagship-programs"
+                className="group inline-flex items-center justify-center gap-2 h-10 px-6 rounded-xl text-xs font-bold tracking-wide transition-all duration-300 w-full bg-gradient-to-r from-[#0878E8] via-[#098BF0] to-[#00D2FF] hover:brightness-110 text-white border border-[#00D2FF]/40 shadow-[0_4px_14px_rgba(8,120,232,0.35)] min-h-[40px] cursor-pointer"
+              >
+                <span>Explore Flagship Programs</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+
+              {/* Direct Flagship Links: Compact, Non-Wrapping, Accessible */}
+              <div className="flex items-center justify-center gap-2 text-xs font-mono font-bold tracking-wider pt-0.5">
+                <span className="text-[10px] text-slate-400 font-sans uppercase font-medium">Direct:</span>
+                <Link
+                  to="/courses/crpc"
+                  className="text-[#00D2FF] hover:text-white transition-colors py-1 px-1.5 rounded hover:bg-white/5 underline underline-offset-4 decoration-[#00D2FF]/40 inline-flex items-center"
+                >
+                  CRPC
+                </Link>
+                <span className="text-slate-600 select-none">·</span>
+                <Link
+                  to="/courses/daap"
+                  className="text-[#C084FC] hover:text-white transition-colors py-1 px-1.5 rounded hover:bg-white/5 underline underline-offset-4 decoration-[#C084FC]/40 inline-flex items-center"
+                >
+                  DAAP
+                </Link>
+                <span className="text-slate-600 select-none">·</span>
+                <Link
+                  to="/courses/fde"
+                  className="text-[#00E599] hover:text-white transition-colors py-1 px-1.5 rounded hover:bg-white/5 underline underline-offset-4 decoration-[#00E599]/40 inline-flex items-center"
+                >
+                  FDE
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop & Tablet Hero Actions: Approved Three Distinct Flagship CTAs */}
+            <div className="hidden sm:flex items-center justify-center gap-3 sm:gap-4 pt-5 sm:pt-6 w-full max-w-none mx-auto flex-wrap lg:flex-nowrap">
+              {/* CRPC: Cloudariss Blue Primary */}
+              <Link
                 to="/courses/crpc"
-                variant="secondary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="group inline-flex items-center justify-center gap-2.5 h-11 sm:h-12 px-6 sm:px-7 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#0878E8] focus:ring-offset-2 focus:ring-offset-[#020817] min-h-[44px] sm:min-h-[48px] select-none whitespace-nowrap min-w-[200px] lg:min-w-[214px] bg-[#0878E8] hover:bg-[#0667CB] active:bg-[#0556AB] text-white border border-[#19BCE8]/40 hover:border-[#19BCE8]/70 shadow-[0_4px_14px_rgba(8,120,232,0.25)] hover:shadow-[0_6px_20px_rgba(8,120,232,0.38)]"
               >
-                Explore CRPC Track
-              </Button>
-              <Button
+                <span>Explore CRPC Track</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              {/* DAAP: Rich Violet Primary */}
+              <Link
                 to="/courses/daap"
-                variant="outline"
-                size="lg"
-                className="text-white border-brand-orange/40 hover:bg-brand-orange/20"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="group inline-flex items-center justify-center gap-2.5 h-11 sm:h-12 px-6 sm:px-7 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#7438D5] focus:ring-offset-2 focus:ring-offset-[#020817] min-h-[44px] sm:min-h-[48px] select-none whitespace-nowrap min-w-[200px] lg:min-w-[214px] bg-[#7438D5] hover:bg-[#632EC0] active:bg-[#5323A0] text-white border border-[#B69AFF]/40 hover:border-[#B69AFF]/70 shadow-[0_4px_14px_rgba(116,56,213,0.25)] hover:shadow-[0_6px_20px_rgba(116,56,213,0.38)]"
               >
-                Explore DAAP Track
-              </Button>
-              <Button
+                <span>Explore DAAP Track</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              {/* FDE: Approved Orange Accent */}
+              <Link
                 to="/courses/fde"
-                variant="primary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="group inline-flex items-center justify-center gap-2.5 h-11 sm:h-12 px-6 sm:px-7 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#FF7A00] focus:ring-offset-2 focus:ring-offset-[#020817] min-h-[44px] sm:min-h-[48px] select-none whitespace-nowrap min-w-[200px] lg:min-w-[214px] bg-[#FF7A00] hover:bg-[#E86E00] active:bg-[#D46200] text-white border border-[#FFB15C]/40 hover:border-[#FFB15C]/70 shadow-[0_4px_14px_rgba(255,122,0,0.25)] hover:shadow-[0_6px_20px_rgba(255,122,0,0.38)]"
               >
-                Explore FDE Track
-              </Button>
+                <span>Explore FDE Track</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ribbon Movement */}
+      {/* 2. Ribbon Movement */}
       <TechMarqueeRibbon />
 
       {/* ========================================================================= */}
-      {/* 2. PROGRAM SHOWCASE: PATHWAY EXPLORATION */}
+      {/* 3. TIER-1 FLAGSHIP PROGRAMS (CRPC, DAAP & FDE)                             */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <SectionHeading
-          eyebrow="Three Specialized Flagships"
-          title="Engineered for Depth. Grounded in Production."
-          subtitle="Click any module along the structured pathway to dynamically inspect its live technical blueprint and deliverables."
-        />
-
-        {/* ----------------------------------------------------------------------- */}
-        {/* CRPC SHOWCASE BLOCK (INTERACTIVE) */}
-        {/* ----------------------------------------------------------------------- */}
-        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl overflow-hidden hover:border-[#19BCE8]/60 transition-all duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            {/* Left Pathway Column */}
-            <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <Badge variant="blue" size="md">
-                    {crpc.code} FLAGSHIP
-                  </Badge>
-                  <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
-                    Cloud · Data · DevOps · ServiceNow
-                  </span>
-                  <span className="text-xs font-semibold text-slate-300">
-                    12 Weeks · Live Online
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-                    {crpc.name}
-                  </h3>
-                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
-                    Designed for students targeting cloud infrastructure, automation pipelines, container orchestration, and enterprise IT service management.
-                  </p>
-                </div>
-
-                {/* Step-by-Step Interactive Pathway Stepper */}
-                <div className="space-y-2 pt-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      Structured Curriculum Pathway:
-                    </span>
-                    <span className="text-[10px] text-brand-blue font-semibold">
-                      Click to inspect live blueprint ▾
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    {crpcPathway.map((st, idx) => {
-                      const isSelected = selectedCrpcStep === idx;
-                      return (
-                        <button
-                          key={st.step}
-                          type="button"
-                          onClick={() => setSelectedCrpcStep(idx)}
-                          className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
-                            isSelected
-                              ? 'bg-[#0878E8]/25 border-2 border-[#19BCE8] shadow-[0_0_15px_rgba(25,188,232,0.25)] scale-[1.02]'
-                              : 'bg-[#05143A]/85 border-white/10 hover:border-[#19BCE8]/40 hover:bg-[#071A4D]'
-                          }`}
-                        >
-                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-                            <span className={`font-mono ${isSelected ? 'text-[#19BCE8] font-extrabold' : 'text-slate-400'}`}>
-                              {st.step}
-                            </span>
-                            <span className="truncate">{st.title}</span>
-                          </div>
-                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
-                            {st.detail}
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
-                <div>
-                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
-                    PROGRAM TUITION
-                  </span>
-                  <span className="text-2xl font-extrabold text-white">
-                    ₹17,000
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('crpc')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-[#0878E8]/20 text-[#19BCE8] hover:bg-[#0878E8]/30 hover:text-white border border-[#19BCE8]/40 transition-colors cursor-pointer"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                  <Button
-                    to="/courses/crpc"
-                    variant="secondary"
-                    size="md"
-                    rightIcon={<ArrowRight className="w-4 h-4" />}
-                  >
-                    Explore CRPC
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Dynamic Technical Canvas Column (Reactive to selectedCrpcStep) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-brand-navy via-brand-dark-surface to-brand-navy p-6 sm:p-8 text-white flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
-                    Infrastructure Blueprint
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    Step {crpcPathway[selectedCrpcStep].step} Active
-                  </span>
-                </div>
-
-                {/* Dynamic Blueprint Card */}
-                <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2.5 transition-all">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-mono font-extrabold text-[#7DD3FC] uppercase tracking-wider">
-                        {currentCrpcBlueprint.badge}
-                      </span>
-                      <span className="text-[10px] text-slate-400">
-                        {currentCrpcBlueprint.category}
-                      </span>
-                    </div>
-
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <Cloud className="w-4 h-4 text-brand-cyan shrink-0" />
-                      <span>{currentCrpcBlueprint.title}</span>
-                    </h4>
-
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {currentCrpcBlueprint.description}
-                    </p>
-
-                    {/* Tools in this module */}
-                    <div className="flex items-center gap-2 flex-wrap pt-1 text-xs">
-                      {currentCrpcBlueprint.tools.map((t, tIdx) => (
-                        <span key={tIdx} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/10 text-slate-200 text-xs">
-                          {t.icon}
-                          <span>{t.name}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Targeted Lab Deliverable */}
-                  <div className="p-3 rounded-xl bg-[#091E4E] border border-blue-400/25 space-y-1">
-                    <span className="text-[10px] font-mono font-bold text-[#19BCE8] uppercase tracking-wider block">
-                      Targeted Production Deliverable:
-                    </span>
-                    <div className="flex items-start gap-1.5 text-xs text-slate-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="leading-snug">{currentCrpcBlueprint.deliverable}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Roles Summary */}
-              <div className="pt-4 border-t border-white/10 space-y-1.5 text-xs text-slate-300">
-                <div className="font-bold text-white text-[11px] uppercase tracking-wider">
-                  Target Roles:
-                </div>
-                <div>Cloud Engineer · DevOps Specialist · Systems Admin · ServiceNow Developer</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ----------------------------------------------------------------------- */}
-        {/* DAAP SHOWCASE BLOCK (INTERACTIVE) */}
-        {/* ----------------------------------------------------------------------- */}
-        <div className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-brand-orange/40 shadow-2xl overflow-hidden hover:border-brand-orange/70 transition-all duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            {/* Left Pathway Column */}
-            <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <Badge variant="orange" size="md">
-                    {daap.code} FLAGSHIP
-                  </Badge>
-                  <span className="text-xs font-mono font-bold text-brand-orange bg-brand-orange/15 px-3 py-1 rounded-full border border-brand-orange/30">
-                    SQL · Python · Power BI · Agentic AI
-                  </span>
-                  <span className="text-xs font-semibold text-slate-300">
-                    12 Weeks · Live Online
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-                    {daap.name}
-                  </h3>
-                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
-                    Designed for students targeting quantitative analysis, relational databases, business intelligence reporting, and modern Agentic AI workflows.
-                  </p>
-                </div>
-
-                {/* Step-by-Step Interactive Pathway Stepper */}
-                <div className="space-y-2 pt-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      Structured Curriculum Pathway:
-                    </span>
-                    <span className="text-[10px] text-[#FF7A00] font-semibold">
-                      Click to inspect live blueprint ▾
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    {daapPathway.map((st, idx) => {
-                      const isSelected = selectedDaapStep === idx;
-                      return (
-                        <button
-                          key={st.step}
-                          type="button"
-                          onClick={() => setSelectedDaapStep(idx)}
-                          className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
-                            isSelected
-                              ? 'bg-brand-orange/20 border-2 border-brand-orange shadow-[0_0_15px_rgba(255,122,0,0.25)] scale-[1.02]'
-                              : 'bg-[#05143A]/85 border-white/10 hover:border-brand-orange/40 hover:bg-[#071A4D]'
-                          }`}
-                        >
-                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-                            <span className={`font-mono ${isSelected ? 'text-brand-orange font-extrabold' : 'text-slate-400'}`}>
-                              {st.step}
-                            </span>
-                            <span className="truncate">{st.title}</span>
-                          </div>
-                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
-                            {st.detail}
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
-                <div>
-                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
-                    PROGRAM TUITION
-                  </span>
-                  <span className="text-2xl font-extrabold text-white">
-                    ₹17,000
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('daap')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-brand-orange/20 text-brand-orange hover:bg-brand-orange/30 hover:text-white border border-brand-orange/40 transition-colors cursor-pointer"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                  <Button
-                    to="/courses/daap"
-                    variant="primary"
-                    size="md"
-                    rightIcon={<ArrowRight className="w-4 h-4" />}
-                  >
-                    Explore DAAP
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Dynamic Technical Canvas Column (Reactive to selectedDaapStep) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-brand-dark-section via-[#1c2242] to-brand-dark-surface p-6 sm:p-8 text-white flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="text-xs font-mono font-bold text-brand-orange uppercase tracking-wider">
-                    Data to AI Pipeline
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    Step {daapPathway[selectedDaapStep].step} Active
-                  </span>
-                </div>
-
-                {/* Dynamic Blueprint Card */}
-                <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2.5 transition-all">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-mono font-extrabold text-[#FBBF24] uppercase tracking-wider">
-                        {currentDaapBlueprint.badge}
-                      </span>
-                      <span className="text-[10px] text-slate-400">
-                        {currentDaapBlueprint.category}
-                      </span>
-                    </div>
-
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <Database className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>{currentDaapBlueprint.title}</span>
-                    </h4>
-
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {currentDaapBlueprint.description}
-                    </p>
-
-                    {/* Tools in this module */}
-                    <div className="flex items-center gap-2 flex-wrap pt-1 text-xs">
-                      {currentDaapBlueprint.tools.map((t, tIdx) => (
-                        <span key={tIdx} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/10 text-slate-200 text-xs">
-                          {t.icon}
-                          <span>{t.name}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Targeted Lab Deliverable */}
-                  <div className="p-3 rounded-xl bg-[#24170E] border border-orange-500/25 space-y-1">
-                    <span className="text-[10px] font-mono font-bold text-[#FF7A00] uppercase tracking-wider block">
-                      Targeted Production Deliverable:
-                    </span>
-                    <div className="flex items-start gap-1.5 text-xs text-slate-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="leading-snug">{currentDaapBlueprint.deliverable}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Roles Summary */}
-              <div className="pt-4 border-t border-white/10 space-y-1.5 text-xs text-slate-300">
-                <div className="font-bold text-white text-[11px] uppercase tracking-wider">
-                  Target Roles:
-                </div>
-                <div>Data Analyst · BI Developer · SQL Specialist · AI Operations Analyst</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ----------------------------------------------------------------------- */}
-        {/* FDE SHOWCASE BLOCK (INTERACTIVE) */}
-        {/* ----------------------------------------------------------------------- */}
-        <div className="rounded-3xl bg-gradient-to-b from-[#061C38]/95 via-[#04142B]/98 to-[#020A17]/98 backdrop-blur-xl border border-[#00D2FF]/30 shadow-2xl overflow-hidden hover:border-[#00D2FF]/60 transition-all duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            {/* Left Pathway Column */}
-            <div className="lg:col-span-7 p-6 sm:p-10 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00D2FF]/20 text-[#00D2FF] border border-[#00D2FF]/40 shadow-xs">
-                    {fde.code} FLAGSHIP
-                  </span>
-                  <span className="text-xs font-mono font-bold text-[#00E599] bg-[#00E599]/15 px-3 py-1 rounded-full border border-[#00E599]/30">
-                    Python · FastAPI · GenAI · RAG · Agents · Cloud
-                  </span>
-                  <span className="text-xs font-semibold text-slate-300">
-                    6 Months · Live Online
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-                    {fde.name}
-                  </h3>
-                  <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed">
-                    Designed for engineers who want to deploy real-world enterprise AI systems — unifying software engineering, Generative AI, autonomous agents, containerization, and production cloud infrastructure.
-                  </p>
-                </div>
-
-                {/* Step-by-Step Interactive Pathway Stepper */}
-                <div className="space-y-2 pt-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      Structured Curriculum Pathway:
-                    </span>
-                    <span className="text-[10px] text-[#00D2FF] font-semibold">
-                      Click to inspect live blueprint ▾
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    {fdePathway.map((st, idx) => {
-                      const isSelected = selectedFdeStep === idx;
-                      return (
-                        <button
-                          key={st.step}
-                          type="button"
-                          onClick={() => setSelectedFdeStep(idx)}
-                          className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border ${
-                            isSelected
-                              ? 'bg-[#00D2FF]/20 border-2 border-[#00D2FF] shadow-[0_0_15px_rgba(0,210,255,0.25)] scale-[1.02]'
-                              : 'bg-[#031124]/85 border-white/10 hover:border-[#00D2FF]/40 hover:bg-[#051833]'
-                          }`}
-                        >
-                          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-                            <span className={`font-mono ${isSelected ? 'text-[#00D2FF] font-extrabold' : 'text-slate-400'}`}>
-                              {st.step}
-                            </span>
-                            <span className="truncate">{st.title}</span>
-                          </div>
-                          <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
-                            {st.detail}
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
-                <div>
-                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block">
-                    PROGRAM TUITION
-                  </span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-extrabold text-white">
-                      ₹25,000
-                    </span>
-                    <span className="text-xs font-semibold text-[#00E599]">
-                      100% Placement Assistance Included
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => openCurriculum('fde')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-[#00D2FF]/15 text-[#00D2FF] hover:bg-[#00D2FF]/25 hover:text-white border border-[#00D2FF]/40 transition-colors cursor-pointer"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>View Curriculum (PDF)</span>
-                  </button>
-                  <Button
-                    to="/courses/fde"
-                    variant="primary"
-                    size="md"
-                    rightIcon={<ArrowRight className="w-4 h-4" />}
-                  >
-                    Explore FDE
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Dynamic Technical Canvas Column (Reactive to selectedFdeStep) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-[#020A17] via-[#04142B] to-[#020A17] p-6 sm:p-8 text-white flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="text-xs font-mono font-bold text-[#00D2FF] uppercase tracking-wider">
-                    Engineering Blueprint
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#00E599]/20 text-[#00E599] border border-[#00E599]/30">
-                    Step {fdePathway[selectedFdeStep].step} Active
-                  </span>
-                </div>
-
-                {/* Dynamic Blueprint Card */}
-                <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2.5 transition-all">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-mono font-extrabold text-[#00D2FF] uppercase tracking-wider">
-                        {currentFdeBlueprint.badge}
-                      </span>
-                      <span className="text-[10px] text-slate-400">
-                        {currentFdeBlueprint.category}
-                      </span>
-                    </div>
-
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <Bot className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                      <span>{currentFdeBlueprint.title}</span>
-                    </h4>
-
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {currentFdeBlueprint.description}
-                    </p>
-
-                    {/* Tools in this module */}
-                    <div className="flex items-center gap-2 flex-wrap pt-1 text-xs">
-                      {currentFdeBlueprint.tools.map((t, tIdx) => (
-                        <span key={tIdx} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/10 text-slate-200 text-xs">
-                          {t.icon}
-                          <span>{t.name}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Targeted Lab Deliverable */}
-                  <div className="p-3 rounded-xl bg-[#061E3D] border border-[#00D2FF]/25 space-y-1">
-                    <span className="text-[10px] font-mono font-bold text-[#00D2FF] uppercase tracking-wider block">
-                      Targeted Production Deliverable:
-                    </span>
-                    <div className="flex items-start gap-1.5 text-xs text-slate-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="leading-snug">{currentFdeBlueprint.deliverable}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Roles Summary */}
-              <div className="pt-4 border-t border-white/10 space-y-1.5 text-xs text-slate-300">
-                <div className="font-bold text-white text-[11px] uppercase tracking-wider">
-                  Target Roles:
-                </div>
-                <div>Forward-Deployed AI Engineer · AI Solutions Engineer · AI Application Engineer · AI Implementation Engineer</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <CoursesFlagshipSection />
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. SPECIALIZED TECHNOLOGY COURSES (13 COURSES CATALOG)                     */}
+      {/* 4. SPECIALIZED TECHNOLOGY COURSES (13 COURSES CATALOG)                     */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <AllTechnologyCourses />
       </section>
     </div>

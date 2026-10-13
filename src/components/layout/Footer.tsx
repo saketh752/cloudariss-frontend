@@ -7,13 +7,13 @@ import { ContactEditorialBlock } from '@/components/contact/ContactEditorialBloc
 export const Footer: React.FC = () => {
   return (
     <footer className="relative z-20 bg-brand-dark-section/95 backdrop-blur-xl text-[#DCE5F2] border-t border-brand-blue/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-10 sm:pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-8 sm:pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
           
           {/* ======================================================================= */}
           {/* LEFT SIDE (4 Cols): Brand Identity, Navigation & Certificate Verification */}
           {/* ======================================================================= */}
-          <div className="lg:col-span-4 space-y-5 sm:space-y-6">
+          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
             {/* Brand Logo with High-Contrast Plate */}
             <Link to="/" className="inline-block focus:outline-none group">
               <div className="inline-flex items-center px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-white/95 backdrop-blur-md border border-white/80 shadow-md group-hover:bg-white group-hover:scale-102 transition-all">

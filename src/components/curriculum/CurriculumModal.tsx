@@ -7,10 +7,10 @@ import {
   Shield,
   Sparkles,
 } from 'lucide-react';
-import { useCurriculumModal, CURRICULUM_DATA } from './CurriculumContext';
+import { useCurriculumModal, CURRICULUM_DATA, ProgramCurriculumMeta } from './CurriculumContext';
 
 export const CurriculumModal: React.FC = () => {
-  const { isOpen, activeProgram, closeCurriculum } = useCurriculumModal();
+  const { isOpen, activeProgram, customCurriculum, closeCurriculum } = useCurriculumModal();
 
   // Escape key listener & body scroll lock
   useEffect(() => {
@@ -33,9 +33,25 @@ export const CurriculumModal: React.FC = () => {
     };
   }, [isOpen, closeCurriculum]);
 
-  if (!isOpen || !activeProgram) return null;
+  if (!isOpen) return null;
 
-  const program = CURRICULUM_DATA[activeProgram];
+  let program: ProgramCurriculumMeta | null = null;
+  if (activeProgram && CURRICULUM_DATA[activeProgram]) {
+    program = CURRICULUM_DATA[activeProgram];
+  } else if (customCurriculum) {
+    program = {
+      id: 'custom',
+      code: customCurriculum.code || 'CURRICULUM',
+      name: customCurriculum.title,
+      badge: customCurriculum.badge || 'Official Curriculum Document',
+      pdfUrl: customCurriculum.pdfUrl,
+      fileName: customCurriculum.fileName || customCurriculum.pdfUrl.split('/').pop() || 'Curriculum.pdf',
+      trackColor: '#19BCE8',
+      duration: customCurriculum.duration || 'Comprehensive Curriculum',
+    };
+  }
+
+  if (!program) return null;
 
   return (
     <div

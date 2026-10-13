@@ -332,3 +332,14 @@ export const FullStackLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) =>
     </div>
   </div>
 );
+
+// SAP Logo
+export const SapLogo: React.FC<LogoProps> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="24" height="24" rx="4" fill="#0070F2" />
+    <path
+      d="M4.5 14.5c.3.9 1.1 1.5 2.2 1.5 1.4 0 2.3-.8 2.3-2 0-2.4-3.5-1.7-3.5-3.6 0-.8.7-1.4 1.8-1.4.9 0 1.6.4 1.9 1.1l-1 .6c-.2-.4-.5-.6-1-.6-.6 0-.9.3-.9.7 0 2.2 3.5 1.5 3.5 3.5 0 1.2-.9 2.1-2.4 2.1-1.4 0-2.4-.8-2.8-1.9l1-.5zM10.8 7h1.4l2.8 9.8h-1.3l-.7-2.6h-3.1l-.7 2.6h-1.3L10.8 7zm1.9 6.1l-1.2-4.5-1.2 4.5h2.4zm4.2-6.1h2.6c1.6 0 2.6.9 2.6 2.5 0 1.5-1 2.5-2.6 2.5h-1.4v4.8h-1.2V7zm1.2 3.9h1.3c.9 0 1.4-.5 1.4-1.4s-.5-1.4-1.4-1.4h-1.3v2.8z"
+      fill="#FFFFFF"
+    />
+  </svg>
+);

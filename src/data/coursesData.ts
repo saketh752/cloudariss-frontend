@@ -408,6 +408,7 @@ export const TECHNOLOGY_UNIVERSE: TechItem[] = [
 export interface SecondaryCourse {
   id: string;
   name: string;
+  subtitle?: string;
   tagline: string;
   parentExplanation: string;
   category: string;
@@ -546,5 +547,16 @@ export const SECONDARY_COURSES: SecondaryCourse[] = [
     tools: ['Neural Networks', 'CNNs', 'RNNs', 'Model Training'],
     accentColor: '#6366F1',
     whatsappUrl: getWhatsAppEnquiryUrl({ courseName: 'Deep Learning' }),
+  },
+  {
+    id: 'sap',
+    name: 'SAP',
+    subtitle: 'Systems, Applications, and Products in Data Processing',
+    tagline: 'Enterprise Resource Planning & Business Systems',
+    parentExplanation: 'Learn how businesses manage finance, sales, procurement, inventory, and operations using SAP and enterprise business systems.',
+    category: 'Enterprise Systems',
+    tools: ['SAP ERP', 'S/4HANA', 'SAP MM / SD', 'SAP FI/CO', 'ABAP'],
+    accentColor: '#0070F2',
+    whatsappUrl: getWhatsAppEnquiryUrl({ courseId: 'sap', courseName: 'SAP (Enterprise Resource Planning)' }),
   },
 ];

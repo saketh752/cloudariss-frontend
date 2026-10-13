@@ -157,23 +157,20 @@
   animation-play-state: paused;
 }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: -1000;
+/* Team Scrolling Banner styles */
+@media (min-width: 768px) {
+  .team-marquee-track {
+    animation: marquee var(--team-marquee-duration, 42s) linear infinite;
+  }
+  .team-marquee-track:hover {
+    animation-play-state: paused;
   }
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+@media (prefers-reduced-motion: reduce) {
+  .team-marquee-track {
+    animation: none !important;
   }
-  50% {
-    transform: translateY(-10px) rotate(2deg);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
 }
 
 @keyframes dash {
@@ -194,3 +191,136 @@
 .animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
 }
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* ========================================================================= */
+/* 360-DEGREE 3D ROTATING BADGES SHOWCASE                                    */
+/* ========================================================================= */
+:root {
+  --badge-orbit-radius-x: 130px;
+  --badge-orbit-radius-y: 28px;
+  --badge-orbit-depth: 140px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --badge-orbit-radius-x: 165px;
+    --badge-orbit-radius-y: 35px;
+    --badge-orbit-depth: 170px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --badge-orbit-radius-x: 185px;
+    --badge-orbit-radius-y: 40px;
+    --badge-orbit-depth: 190px;
+  }
+}
+
+@keyframes orbit-badge-1 {
+  0% {
+    transform: translate(-50%, -50%) translate3d(calc(var(--badge-orbit-radius-x) * -1), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+  25% {
+    transform: translate(-50%, -50%) translate3d(0px, 0px, var(--badge-orbit-depth));
+    z-index: 30;
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate3d(var(--badge-orbit-radius-x), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+  75% {
+    transform: translate(-50%, -50%) translate3d(0px, 0px, calc(var(--badge-orbit-depth) * -1));
+    z-index: 5;
+    opacity: 0.78;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(calc(var(--badge-orbit-radius-x) * -1), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+}
+
+@keyframes orbit-badge-2 {
+  0% {
+    transform: translate(-50%, -50%) translate3d(var(--badge-orbit-radius-x), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+  25% {
+    transform: translate(-50%, -50%) translate3d(0px, 0px, calc(var(--badge-orbit-depth) * -1));
+    z-index: 5;
+    opacity: 0.78;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate3d(calc(var(--badge-orbit-radius-x) * -1), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+  75% {
+    transform: translate(-50%, -50%) translate3d(0px, 0px, var(--badge-orbit-depth));
+    z-index: 30;
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(var(--badge-orbit-radius-x), 0px, 0px);
+    z-index: 15;
+    opacity: 0.95;
+  }
+}
+
+.badge-orbital-slot-1 {
+  animation: orbit-badge-1 14s ease-in-out infinite;
+}
+
+.badge-orbital-slot-2 {
+  animation: orbit-badge-2 14s ease-in-out infinite;
+}
+
+/* Pause rotation smoothly on hover */
+.badges-carousel-stage:hover .badge-orbital-slot {
+  animation-play-state: paused;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .badge-orbital-slot-1 {
+    animation: none !important;
+    transform: translate3d(calc(var(--badge-orbit-radius-x) * -0.75), 0, 0) scale(0.95) !important;
+    opacity: 1 !important;
+  }
+  .badge-orbital-slot-2 {
+    animation: none !important;
+    transform: translate3d(calc(var(--badge-orbit-radius-x) * 0.75), 0, 0) scale(0.95) !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Dedicated Showcase Wrapper Alignment */
+.badge-showcase-wrapper {
+  transform: none;
+}
+

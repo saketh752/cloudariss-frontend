@@ -1,607 +1,587 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  Code2,
-  Layers,
-  Cpu,
-  Briefcase,
-  Building2,
-  Compass,
   CheckCircle2,
-  Cloud,
-  BarChart3,
+  ShieldCheck,
+  MessageCircle,
+  Award,
+  ExternalLink,
 } from 'lucide-react';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
-import { BRAND_DATA } from '@/data/brandData';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
-import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
-import { WhyUsHeroFlywheel } from '@/components/curriculum/WhyUsHeroFlywheel';
-import {
-  AwsLogo,
-  DockerLogo,
-  KubernetesLogo,
-  JenkinsLogo,
-  GitHubLogo,
-  GrafanaLogo,
-  ServiceNowLogo,
-  PythonLogo,
-  SqlLogo,
-  PowerBiLogo,
-  LangChainLogo,
-  RagLogo,
-  AgenticAiLogo,
-  ChatGptLogo,
-} from '@/components/icons/TechLogos';
+import { RotatingBadges } from '@/components/credentials/RotatingBadges';
+import { openWhatsApp, getGenericEnquiryMessage } from '@/utils/whatsapp';
 
 export const WhyCloudarissPage: React.FC = () => {
-  const crpc = BRAND_DATA.programs.find((p) => p.id === 'crpc')!;
-  const daap = BRAND_DATA.programs.find((p) => p.id === 'daap')!;
-  const { openCurriculum } = useCurriculumModal();
-
-  // 6 Core Differentiators
-  const differentiators = [
+  // Specific career support activities
+  const careerActivities = [
     {
-      num: '01',
-      title: 'Practical Learning',
-      subtitle: 'Hands-on Application Over Passive Theory',
-      desc: 'We focus on applying concepts through hands-on work from day one. Instead of watching pre-recorded slide decks, learners write code, configure real cloud infrastructure, and query relational databases in live sessions.',
-      icon: <Code2 className="w-5 h-5 text-brand-blue" />,
-      accent: 'blue' as const,
+      title: 'Resume & ATS Optimization',
+      desc: 'Restructuring projects with quantified business impact, clean technical vocabulary, ATS keyword tuning, and direct links to verifiable GitHub repositories.',
+      badge: 'ATS Compliant',
     },
     {
-      num: '02',
-      title: 'Project-Driven Experience',
-      subtitle: 'Verifiable Portfolio Artifacts',
-      desc: 'Projects form an indispensable part of the learning journey. Students graduate with documented multi-tier deployments, CI/CD automation pipelines, interactive dashboards, and agentic AI tools hosted on personal repositories.',
-      icon: <Layers className="w-5 h-5 text-brand-orange" />,
-      accent: 'orange' as const,
+      title: 'GitHub & Portfolio Presentation',
+      desc: 'Auditing repository cleanliness, writing professional architectural READMEs, publishing deployment diagrams, and verifying live containerized demo endpoints.',
+      badge: 'Proof of Code',
     },
     {
-      num: '03',
-      title: 'Modern Technology',
-      subtitle: 'Direct Exposure to Today’s Stacks',
-      desc: 'Our curricula are engineered around current industry areas including Cloud Computing, Data Engineering, DevOps, Business Analytics, Generative AI (RAG), and autonomous Agentic AI frameworks.',
-      icon: <Cpu className="w-5 h-5 text-[#0a6680]" />,
-      accent: 'cyan' as const,
+      title: 'Mock Interviews & Live Evaluations',
+      desc: 'Simulated system design rounds, whiteboard architecture walkthroughs, timed coding questions, and behavioral HR drills with structured feedback loops.',
+      badge: 'Rigorous Drills',
     },
     {
-      num: '04',
-      title: 'Career Preparation',
-      subtitle: 'Integrated Weekend Strategy Circuit',
-      desc: 'Structured preparation conducted throughout the program. Saturday workshops focus on ATS resume tuning, LinkedIn positioning, and job search strategy, while Sundays run live mock interviews and communication drills.',
-      icon: <Briefcase className="w-5 h-5 text-brand-blue" />,
-      accent: 'blue' as const,
-    },
-    {
-      num: '05',
-      title: 'Industry Exposure',
-      subtitle: 'Virtual Company & Practitioner Sessions',
-      desc: 'Direct interaction with working software engineers and data practitioners from regional technology clusters, including Visakhapatnam’s Rushikonda IT Park and VSEZ, alongside top-5 internship eligibility.',
-      icon: <Building2 className="w-5 h-5 text-brand-orange" />,
-      accent: 'orange' as const,
-    },
-    {
-      num: '06',
-      title: 'Rigorous Engineering Standards',
-      subtitle: 'Deep Foundations & Defensible Code',
-      desc: 'A coherent, systematic curriculum that transforms raw interest into confident technical competence and structured capability without skipped foundations.',
-      icon: <Compass className="w-5 h-5 text-[#0a6680]" />,
-      accent: 'cyan' as const,
+      title: 'Project Presentation & Defense',
+      desc: 'Learning how to confidently explain engineering trade-offs, database normalization choices, CI/CD pipeline triggers, and cloud security boundaries to senior panelists.',
+      badge: 'Interview Ready',
     },
   ];
 
-  const [activeTechFilter, setActiveTechFilter] = useState<'all' | 'crpc' | 'daap'>('all');
-
-  // Structured Technology Ecosystem categories with SVG logos
-  const techCategories = [
+  // Verifiable Portfolio Assets
+  const portfolioAssets = [
     {
-      title: 'Cloud & Infrastructure',
-      track: 'crpc' as const,
-      tools: [
-        { name: 'AWS Cloud', logo: <AwsLogo className="w-4 h-4" /> },
-        { name: 'Docker Containers', logo: <DockerLogo className="w-4 h-4" /> },
-        { name: 'Kubernetes', logo: <KubernetesLogo className="w-4 h-4" /> },
-      ],
+      domain: 'Cloud & Infrastructure',
+      title: 'Multi-Tier Resilient AWS VPC',
+      desc: 'Production cloud architecture featuring custom public/private subnets, EC2 auto-scaling groups, Application Load Balancers, and strict security groups.',
+      deliverable: 'Terraform / AWS Console Architecture Blueprint',
     },
     {
-      title: 'DevOps & Enterprise Automation',
-      track: 'crpc' as const,
-      tools: [
-        { name: 'Jenkins CI/CD', logo: <JenkinsLogo className="w-4 h-4" /> },
-        { name: 'GitHub Actions', logo: <GitHubLogo className="w-4 h-4" /> },
-        { name: 'Grafana Monitoring', logo: <GrafanaLogo className="w-4 h-4" /> },
-        { name: 'ServiceNow ITSM', logo: <ServiceNowLogo className="w-4 h-4" /> },
-      ],
+      domain: 'DevOps & Automation',
+      title: 'Automated Multi-Branch CI/CD',
+      desc: 'Jenkins multi-stage pipeline automatically pulling GitHub commits, running unit tests, building Docker images, and deploying to a Kubernetes cluster.',
+      deliverable: 'Jenkinsfile · Dockerfile · K8s Deployment YAMLs',
     },
     {
-      title: 'Data & Business Intelligence',
-      track: 'daap' as const,
-      tools: [
-        { name: 'Python & Pandas', logo: <PythonLogo className="w-4 h-4" /> },
-        { name: 'PostgreSQL / SQL', logo: <SqlLogo className="w-4 h-4" /> },
-        { name: 'Power BI & DAX', logo: <PowerBiLogo className="w-4 h-4" /> },
-      ],
+      domain: 'Data Analytics & BI',
+      title: 'Executive BI Dashboard & DAX Model',
+      desc: 'Relational PostgreSQL warehouse modeled into star schema, visualized through interactive Power BI executive dashboards with custom DAX calculations.',
+      deliverable: 'SQL Schema · Power BI .pbix File · Executive Deck',
     },
     {
-      title: 'Generative & Agentic AI',
-      track: 'daap' as const,
-      tools: [
-        { name: 'Generative AI & LLMs', logo: <ChatGptLogo className="w-4 h-4" /> },
-        { name: 'RAG Architectures', logo: <RagLogo className="w-4 h-4" /> },
-        { name: 'LangChain Orchestration', logo: <LangChainLogo className="w-4 h-4" /> },
-        { name: 'Agentic Workflows', logo: <AgenticAiLogo className="w-4 h-4" /> },
-      ],
+      domain: 'Production AI Systems',
+      title: 'Enterprise RAG & Agentic Workflow',
+      desc: 'Retrieval-Augmented Generation pipeline integrated with vector embeddings, PostgreSQL storage, and autonomous LangChain agent loops with human verification.',
+      deliverable: 'Python Backend · API Endpoints · Vector Database',
     },
   ];
 
-  const filteredTechCategories = techCategories.filter(
-    (c) => activeTechFilter === 'all' || c.track === activeTechFilter
-  );
-
-  // 7 Documented Career Support Areas
-  const careerSupportList = [
+  // Official Credential Standards
+  const credentialStandards = [
     {
-      title: 'Resume Optimization',
-      desc: 'Structuring achievements with measurable business impact, ATS compliance, and verifiable project links.',
+      label: 'Unique Credential ID',
+      desc: 'Every certificate is assigned a permanent alphanumeric verification code verifiable against Cloudariss graduation archives.',
     },
     {
-      title: 'LinkedIn Profile Building',
-      desc: 'Refining headline keywords, optimizing skills sections, and building an active technical presence.',
+      label: 'Curriculum Milestone Verification',
+      desc: 'Confirms completed live lab hours, hands-on terminal milestones, and technical mentor project sign-offs.',
     },
     {
-      title: 'Job Search Strategy',
-      desc: 'Navigating hiring portals using targeted Boolean searches and tracking active applications methodically.',
+      label: 'LinkedIn One-Click Integration',
+      desc: 'Directly embeddable to your LinkedIn profile under Licenses & Certifications with verifiable organizational issuer data.',
     },
     {
-      title: 'Mock Interviews',
-      desc: 'Simulated technical Q&A rounds, live coding evaluations, and behavioral HR interview practice.',
-    },
-    {
-      title: 'Career Guidance',
-      desc: 'One-on-one clarity on specialization paths, industry career ladders, and salary expectation benchmarks.',
-    },
-    {
-      title: 'Placement Assistance',
-      desc: 'Curated job opportunity feeds, application review checkpoints, and interview feedback loops.',
-    },
-    {
-      title: 'Industry & Company Sessions',
-      desc: 'Webinars and Q&A sessions with engineers from tech companies operating in Vizag IT corridors.',
+      label: 'Technical Portfolio Defense',
+      desc: 'Accompanied by an architectural walkthrough summary that learners use to defend their work before technical hiring panels.',
     },
   ];
 
   return (
-    <div className="space-y-16 lg:space-y-24 pb-20">
+    <div className="pb-16 sm:pb-20">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION WITH VALUE PROGRESSION FLYWHEEL */}
+      {/* SECTION A — EDITORIAL HERO (Art-Directed Single Atmospheric Composition)  */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Narrative Column */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
-                <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
-                <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
-                  WHY CLOUDARISS
+      <section className="relative overflow-hidden pt-8 pb-10 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24 min-h-[480px] sm:min-h-[540px] lg:min-h-[600px] flex flex-col justify-center">
+        {/* Full-Bleed Atmospheric Background Layer (Zero Blur on Subject, Seamless Gradient Scrim) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden"
+        >
+          {/* Master Source Image — 100% Uncompressed, Crisp Hair and Workstation */}
+          <div
+            className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-[position:75%_center] sm:bg-[position:70%_center] md:bg-[position:65%_center] lg:bg-[position:82%_center] transition-all duration-700 ease-out"
+            style={{
+              backgroundImage: 'url(/brand/hero/banner_brand_v3.jpg)',
+            }}
+          />
+
+          {/* Gradual Natural Gradient Scrim — Seamlessly blends into #020817 canvas */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#020817] via-[#020817]/85 via-45% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/90 via-55% to-transparent sm:hidden pointer-events-none" />
+
+          {/* Top and Bottom Natural Edge Blending */}
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020817] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#020817]/70 to-transparent pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="max-w-xl lg:max-w-xl xl:max-w-2xl space-y-4 sm:space-y-5 relative">
+            {/* Subtle local black fade behind text — Strict max 35% opacity (#000000) */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-x-6 sm:-inset-x-8 -inset-y-6 sm:-inset-y-8 pointer-events-none select-none -z-10"
+              style={{
+                background:
+                  'radial-gradient(ellipse 110% 90% at 30% 45%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 60%, transparent 100%)',
+              }}
+            />
+
+            {/* Headline — Balanced 2-line structure with restrained cyan accent */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.14] font-heading drop-shadow-sm">
+              <span className="block text-white">Learn the concept.</span>
+              <span className="block text-slate-200 mt-1 sm:mt-1.5 font-bold">
+                Build the ability to <span className="text-[#00D2FF]">use it.</span>
+              </span>
+            </h1>
+
+            {/* Concise Supporting Copy — Realistic, specific, applied engineering focus */}
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed">
+              Most technology courses stop at passive lecture videos. At Cloudariss, learners build practical competence through mentor-led labs, guided terminal practice, and defensible capstone projects from week one.
+            </p>
+
+            {/* Prominent Supporting Benefit: 100% Placement Assistance */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-200 pt-0.5 sm:pt-1">
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-white text-base sm:text-lg tracking-tight">
+                  100% <span className="text-[#00E599]">Placement Assistance</span>
                 </span>
+                <span className="text-slate-400 text-xs sm:text-sm">· Continuous interview prep &amp; referral network</span>
               </div>
+            </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
-                Technology Skills That{' '}
-                <span className="text-gradient-tech">Move Beyond Theory.</span>
-              </h1>
+            {/* Distinct CTA Hierarchy: Primary Explore Programs, Secondary Talk to Advisor, Subtle WhatsApp */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3.5 pt-2">
+              <Button
+                to="/courses"
+                variant="primary"
+                size="md"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="justify-center min-h-[44px]"
+              >
+                Explore Programs
+              </Button>
 
-              <p className="text-lg sm:text-xl text-[#E5EAF3] font-normal max-w-2xl leading-relaxed">
-                Build practical knowledge through structured learning, hands-on projects, modern technologies, and career-focused preparation designed for real software engineering and analytics workflows.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                <Button
-                  to="/courses"
-                  variant="primary"
-                  size="lg"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Explore Programs
-                </Button>
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <Button
                   to="/contact"
-                  variant="dark"
-                  size="lg"
-                  className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
+                  variant="outline"
+                  size="md"
+                  className="border-white/20 hover:border-white/35 text-white min-h-[44px] justify-center flex-1 sm:flex-initial"
                 >
-                  Talk to Us
+                  Talk to an Advisor
                 </Button>
-              </div>
-            </div>
 
-            {/* Right: The 5-Point Value Progression Visual */}
-            <div className="lg:col-span-5">
-              <WhyUsHeroFlywheel />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Rhythm Ribbon */}
-      <TechMarqueeRibbon />
-
-      {/* ========================================================================= */}
-      {/* 2. SIX CORE DIFFERENTIATORS */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Our Differentiators"
-          title="Engineered for Practical Technical Depth"
-          subtitle="Six foundational pillars that distinguish Cloudariss learning from passive tutorial videos and superficial certificates."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {differentiators.map((item) => (
-            <div
-              key={item.num}
-              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 sm:p-7 hover:border-[#19BCE8]/50 transition-all duration-300 flex flex-col justify-between space-y-4 group overflow-hidden"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/15 flex items-center justify-center border border-[#19BCE8]/30 text-[#19BCE8]">
-                    {item.icon}
-                  </div>
-                  <span className="text-xs font-mono font-extrabold text-[#19BCE8] bg-[#0878E8]/10 px-2.5 py-1 rounded-md border border-[#19BCE8]/25">
-                    {item.num}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
-                    {item.title}
-                  </h3>
-                  <div className="text-xs font-semibold text-[#19BCE8] mt-1 font-mono">
-                    {item.subtitle}
-                  </div>
-                </div>
-
-                <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed font-normal">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 3. CRPC + DAAP SPECIALIZATION: BALANCED PATHWAYS */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Program Specializations"
-          title="Two Distinct Engineering Directions"
-          subtitle="Cloudariss offers two flagship career accelerators serving distinct technology domains. Neither program is ranked above the other; both provide identical standards of depth, practical projects, and career mentoring."
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {/* CRPC Box */}
-          <div
-            className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/30 shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 text-white"
-          >
-            <div className="space-y-5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <Badge variant="blue" size="md">
-                  {crpc.code}
-                </Badge>
-                <span className="text-xs font-mono font-bold text-[#19BCE8] bg-[#0878E8]/15 px-3 py-1 rounded-full border border-[#19BCE8]/30">
-                  Cloud, Data &amp; Infrastructure
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-extrabold text-white font-heading">
-                  Cloud &amp; Data Career Accelerator
-                </h3>
-                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
-                  Focused on infrastructure architecture, automated cloud deployments, enterprise CI/CD, and IT service management.
-                </p>
-              </div>
-
-              {/* Who it is for */}
-              <div className="p-4 rounded-xl bg-gradient-to-r from-[#05143A]/90 to-[#030E28]/90 border border-[#19BCE8]/25 space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#19BCE8] flex items-center gap-1.5">
-                  <Cloud className="w-3.5 h-3.5" />
-                  <span>Direction Focus</span>
-                </div>
-                <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
-                  Best suited for learners targeting roles in Cloud Engineering, DevOps Engineering, System Administration, Infrastructure Support, or ServiceNow Enterprise Management.
-                </p>
-              </div>
-
-              {/* Key Domains */}
-              <div className="space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Primary Technology Areas
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {['Python Basics', 'Data Science', 'AWS Cloud (EC2, VPC, ALB)', 'Docker & Kubernetes', 'Jenkins CI/CD', 'ServiceNow ITSM'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md bg-[#0878E8]/20 text-[#19BCE8] border border-[#19BCE8]/30 text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
-              <div className="text-xs font-semibold text-slate-400">
-                12 Weeks · 8 Modules · 4 Projects
-              </div>
-              <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => openCurriculum('crpc')}
-                  className="px-3.5 py-2 rounded-lg bg-[#0878E8]/20 text-[#19BCE8] hover:bg-[#0878E8]/30 hover:text-white text-xs font-bold border border-[#19BCE8]/40 transition-colors"
+                  onClick={() => openWhatsApp(getGenericEnquiryMessage())}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs text-slate-300 hover:text-[#00E599] bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-pointer shrink-0 min-h-[44px]"
+                  title="Chat on WhatsApp"
                 >
-                  View Curriculum (PDF)
+                  <MessageCircle className="w-4 h-4 text-[#00E599]" />
+                  <span className="font-medium">WhatsApp</span>
                 </button>
-                <Button
-                  to="/courses/crpc"
-                  variant="secondary"
-                  size="sm"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Explore CRPC
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* DAAP Box */}
-          <div
-            className="rounded-3xl bg-gradient-to-b from-[#081F54]/95 via-[#061540]/98 to-[#030E2B]/98 backdrop-blur-xl border border-brand-orange/35 shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 text-white"
-          >
-            <div className="space-y-5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <Badge variant="orange" size="md">
-                  {daap.code}
-                </Badge>
-                <span className="text-xs font-mono font-bold text-brand-orange bg-brand-orange/15 px-3 py-1 rounded-full border border-brand-orange/30">
-                  Data Analytics &amp; AI
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-extrabold text-white font-heading">
-                  Data Analyst Accelerator Program
-                </h3>
-                <p className="text-sm text-[#CBD5E1] mt-2 leading-relaxed font-normal">
-                  Focused on quantitative reasoning, relational SQL querying, interactive executive dashboards, and cutting-edge agentic AI analytics.
-                </p>
-              </div>
-
-              {/* Who it is for */}
-              <div className="p-4 rounded-xl bg-gradient-to-r from-[#05143A]/90 to-[#030E28]/90 border border-brand-orange/25 space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-brand-orange flex items-center gap-1.5">
-                  <BarChart3 className="w-3.5 h-3.5" />
-                  <span>Direction Focus</span>
-                </div>
-                <p className="text-xs text-[#CBD5E1] leading-relaxed font-normal">
-                  Best suited for learners targeting roles in Data Analysis, Business Intelligence, Data Operations, Quantitative Reporting, or AI-Assisted Business Analytics.
-                </p>
-              </div>
-
-              {/* Key Domains */}
-              <div className="space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Primary Technology Areas
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {['Advanced Excel', 'PostgreSQL & SQL', 'Python EDA (Pandas)', 'Power BI & DAX', 'Generative AI (RAG)', 'Agentic AI Workflows'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-4 flex-wrap">
-              <div className="text-xs font-semibold text-slate-400">
-                12 Weeks · 5 Projects · Capstone
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => openCurriculum('daap')}
-                  className="px-3.5 py-2 rounded-lg bg-brand-orange/20 text-brand-orange hover:bg-brand-orange/30 hover:text-white text-xs font-bold border border-brand-orange/40 transition-colors"
-                >
-                  View Curriculum (PDF)
-                </button>
-                <Button
-                  to="/courses/daap"
-                  variant="primary"
-                  size="sm"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Explore DAAP
-                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 4. ENTERPRISE TOOLS TAUGHT HANDS-ON */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <SectionHeading
-          eyebrow="Technology Coverage"
-          title="Enterprise Tools Taught Hands-On"
-          subtitle="Every tool in our programs is selected for its direct relevance to modern software engineering, cloud infrastructure, and data workflows."
+      {/* Marquee Movement — soft floating ribbon without hard edges */}
+      <div
+        className="relative w-full overflow-hidden py-3.5 sm:py-5 [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none -z-10"
+          style={{
+            background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(7, 26, 70, 0.35) 0%, transparent 100%)',
+          }}
         />
+        <TechMarqueeRibbon />
+      </div>
 
-        {/* Interactive Track Filter Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-          <button
-            type="button"
-            onClick={() => setActiveTechFilter('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeTechFilter === 'all'
-                ? 'bg-[#0878E8] text-white shadow-md shadow-blue-500/30'
-                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-[#19BCE8]/40'
-            }`}
-          >
-            All Stacks (4)
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTechFilter('crpc')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeTechFilter === 'crpc'
-                ? 'bg-[#0878E8] text-white shadow-md shadow-blue-500/30'
-                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-[#19BCE8]/40'
-            }`}
-          >
-            CRPC Track (Cloud &amp; DevOps)
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTechFilter('daap')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeTechFilter === 'daap'
-                ? 'bg-brand-orange text-white shadow-md shadow-orange-500/30'
-                : 'bg-[#05143A]/85 text-slate-300 hover:text-white border border-white/10 hover:border-brand-orange/40'
-            }`}
-          >
-            DAAP Track (Data &amp; AI)
-          </button>
-        </div>
-
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${filteredTechCategories.length === 2 ? 'lg:grid-cols-2 max-w-4xl mx-auto' : 'lg:grid-cols-4'} gap-6`}>
-          {filteredTechCategories.map((cat, idx) => (
+      {/* Main Editorial Content Flow — Rebalanced Spacing Without "How Learning Works" */}
+      <div className="mt-8 sm:mt-12 lg:mt-16 space-y-12 sm:space-y-16 lg:space-y-20">
+        {/* ========================================================================= */}
+        {/* SECTION B — 100% PLACEMENT ASSISTANCE (PRIMARY FEATURE HIGHLIGHT)          */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative pt-4 sm:pt-6">
             <div
-              key={idx}
-              className="rounded-2xl bg-gradient-to-b from-[#081F54]/90 via-[#061540]/95 to-[#030E2B]/98 backdrop-blur-xl border border-[#19BCE8]/25 p-5 shadow-xl space-y-3 text-white"
-            >
-              <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
-                <h3 className="text-sm font-extrabold text-white font-heading">
-                  {cat.title}
-                </h3>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
-                  cat.track === 'crpc' ? 'bg-[#0878E8]/20 text-[#19BCE8] border border-[#19BCE8]/30' : 'bg-brand-orange/20 text-brand-orange border border-brand-orange/30'
-                }`}>
-                  {cat.track === 'crpc' ? 'CRPC' : 'DAAP'}
-                </span>
-              </div>
-              <div className="space-y-2">
-                {cat.tools.map((t) => (
-                  <div
-                    key={t.name}
-                    className="p-2.5 rounded-xl bg-[#05143A]/85 border border-white/10 flex items-center gap-2.5 hover:border-[#19BCE8]/40 transition-colors shadow-xs"
-                  >
-                    <div className="p-1.5 rounded-lg bg-white/95 border border-white/80 shrink-0">
-                      {t.logo}
+              aria-hidden="true"
+              className="absolute inset-x-0 -inset-y-10 pointer-events-none -z-10"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 75% at 50% 50%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.12) 70%, transparent 100%)',
+              }}
+            />
+
+            {/* Primary Editorial Highlight Presentation */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              {/* Left Column: The Placement Assistance Core Feature */}
+              <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-heading tracking-tight leading-snug">
+                  100% Placement Assistance Included With Every Flagship Track.
+                </h2>
+
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                  Career preparation is not an afterthought squeezed into the final week of class. Our dedicated Weekend Career Strategy Circuit runs in parallel with technical instruction, giving you the portfolio depth, technical communication skills, and mock interview practice required to interview effectively.
+                </p>
+
+                {/* The 4 Specific Career Support Pillars */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  {careerActivities.map((act, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 sm:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1.5 hover:border-[#00E599]/30 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-sm font-bold text-white font-heading">
+                          {act.title}
+                        </h3>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#00E599]/70 shrink-0" />
+                      </div>
+                      <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                        {act.desc}
+                      </p>
                     </div>
-                    <span className="text-xs font-bold text-[#E5EAF3]">{t.name}</span>
+                  ))}
+                </div>
+
+                {/* Direct Industry Corridor Tie-in */}
+                <div className="pt-2 border-l-2 border-[#00E599]/60 pl-4 space-y-1">
+                  <div className="text-xs font-semibold text-white">
+                    Regional IT Corridor Exposure
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    Direct interaction with practicing software engineers and data practitioners from technology firms operating out of Visakhapatnam, including the Rushikonda IT Park and VSEZ corridors.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column: Honest Placement Clarification & Advisory Action Hub */}
+              <div className="lg:col-span-5 space-y-5 pt-2 lg:pt-6 lg:border-l lg:border-white/[0.08] lg:pl-8">
+                {/* Transparent Placement Assistance Disclaimer */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-[#00E599]/30 space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#00E599]">
+                    <ShieldCheck className="w-4 h-4 text-[#00E599] shrink-0" />
+                    <span>Honest Professional Standard</span>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-white font-heading">
+                    Assistance Availability, Not a Job Guarantee
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    The phrase <strong>"100% Placement Assistance"</strong> communicates the continuous availability of dedicated career coaching, profile auditing, mock interview panels, and curated referral opportunities throughout and after your program.
+                  </p>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Cloudariss does not make false or misleading claims of guaranteed jobs or automatic placement. Your consistent effort, code quality, and interview performance determine your career outcome.
+                  </p>
+                </div>
+
+                {/* Fast Action Enrolment Connection */}
+                <div className="space-y-3 pt-2">
+                  <div className="text-xs font-medium text-slate-300">
+                    Speak With a Career Advisor
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-3">
+                    <Button
+                      to="/contact"
+                      variant="primary"
+                      size="md"
+                      rightIcon={<ArrowRight className="w-4 h-4" />}
+                      className="justify-center min-h-[42px] sm:min-h-[44px]"
+                    >
+                      Enquire for Next Batch
+                    </Button>
+                    <button
+                      type="button"
+                      onClick={() => openWhatsApp(getGenericEnquiryMessage())}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-pointer min-h-[42px] sm:min-h-[44px]"
+                    >
+                      <MessageCircle className="w-4 h-4 text-[#00E599]" />
+                      <span>WhatsApp Career Desk</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* SECTION C — CERTIFIED CREDENTIALS & 360° ROTATING BADGES SHOWCASE         */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 -inset-y-10 pointer-events-none -z-10"
+            style={{
+              background:
+                'radial-gradient(ellipse 90% 70% at 50% 45%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.12) 65%, transparent 100%)',
+            }}
+          />
+
+          {/* Section Heading & Framing */}
+          <div className="max-w-3xl space-y-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-heading tracking-tight">
+              Recognise Your Achievement
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              Technical hiring managers value engineers who can demonstrate what they have built. Every Cloudariss graduate earns an official Certificate of Completion and shareable achievement badges backed by rigorous curriculum milestones and defended capstone architectures.
+            </p>
+          </div>
+
+          {/* Feature 1: Certificate of Completion Showcase */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column (7 cols): High-Quality Certificate Image Presentation */}
+            <div className="lg:col-span-7">
+              <div className="relative group">
+                {/* Subtle atmospheric ambient glow behind certificate */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-3 sm:-inset-4 rounded-2xl pointer-events-none -z-10"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 50%, rgba(8, 120, 232, 0.20) 0%, rgba(0, 210, 255, 0.08) 50%, transparent 80%)',
+                  }}
+                />
+
+                {/* Certificate Showcase Presentation */}
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-[#06143D]/40 backdrop-blur-sm shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+                  <img
+                    src="/brand/credentials/cloudariss-certificate-of-completion.png"
+                    alt="Official Cloudariss Certificate of Completion signed by Founder & CTO and Cofounder & CEO, MSME Registered"
+                    className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.01]"
+                    loading="lazy"
+                  />
+                  {/* Subtle edge gradient overlay to integrate with dark page */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 pointer-events-none rounded-xl sm:rounded-2xl ring-1 ring-inset ring-white/10"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column (5 cols): Credential Verification Standards & Actions */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#00E599]">
+                  <Award className="w-4 h-4 text-[#00E599] shrink-0" />
+                  <span>Official Course Completion Credential</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white font-heading">
+                  Verifiable Proof of Practical Competence
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Upon successfully defending all required capstone projects and completing mandatory lab hours, learners receive the official Cloudariss Certificate of Completion, registered under the Ministry of MSME (Govt. of India).
+                </p>
+              </div>
+
+              {/* Four Standards */}
+              <div className="space-y-3 pt-1">
+                {credentialStandards.map((std, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00D2FF] shrink-0 mt-0.5" />
+                    <div className="space-y-0.5">
+                      <div className="text-xs font-bold text-white font-heading">
+                        {std.label}
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        {std.desc}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ========================================================================= */}
-      {/* 5. CAREER SUPPORT */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <SectionHeading
-          eyebrow="Career Support"
-          title="Seven Pillars of Professional Preparation"
-          subtitle="Our career support framework runs in tandem with technical modules to give you the confidence, clarity, and portfolio strength to interview effectively."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {careerSupportList.map((pillar, idx) => (
-            <div
-              key={idx}
-              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-6 hover:border-[#19BCE8]/50 transition-all duration-300 space-y-3 group overflow-hidden"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-mono font-bold text-[#19BCE8] bg-[#0878E8]/10 px-2.5 py-0.5 rounded-full border border-[#19BCE8]/25">
-                  PILLAR 0{idx + 1}
+              {/* Direct Certificate Verification Link */}
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00D2FF] hover:text-white transition-colors"
+                >
+                  <span>Verify an Issued Certificate</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <span className="text-slate-600 text-xs">·</span>
+                <span className="text-xs font-mono text-slate-400">
+                  verify.cloudariss.com
                 </span>
-                <CheckCircle2 className="w-4 h-4 text-[#19BCE8]/70 group-hover:text-[#19BCE8] transition-colors" />
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs sm:text-[13px] text-[#CBD5E1] leading-relaxed font-normal mt-1.5">
-                  {pillar.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="p-4 rounded-xl bg-gradient-to-r from-[#081F54]/70 to-[#041136]/70 border border-[#19BCE8]/25 text-center max-w-2xl mx-auto">
-          <p className="text-xs text-[#CBD5E1] leading-relaxed">
-            * Cloudariss focuses on cultivating demonstrable engineering capability, portfolio excellence, and interview confidence. We do not make misleading claims of guaranteed job placement.
-          </p>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 7. FINAL CTA */}
-      {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark-section border border-brand-blue/30 p-8 sm:p-14 text-white text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-surface-blue/20 border border-brand-blue/30 text-brand-cyan text-xs font-bold uppercase tracking-wider">
-              <span>Choose Your Track</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
-              Find the Program That Fits Your Direction.
-            </h2>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
-              Explore the detailed syllabi, live lab exercises, and capstone projects designed to take you from foundational concepts to verified technical competence.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Button
-                to="/courses/crpc"
-                variant="secondary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore CRPC Track
-              </Button>
-              <Button
-                to="/courses/daap"
-                variant="primary"
-                size="lg"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-              >
-                Explore DAAP Track
-              </Button>
             </div>
           </div>
-        </div>
-      </section>
+
+          {/* Feature 2: 360-Degree Rotating LinkedIn Achievement Badges Showcase */}
+          <div className="pt-6 sm:pt-10 border-t border-white/[0.08]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column (5 cols): Achievement Story & LinkedIn Value */}
+              <div className="lg:col-span-5 space-y-5">
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#00D2FF]">
+                    <ShieldCheck className="w-4 h-4 text-[#00D2FF] shrink-0" />
+                    <span>LinkedIn Profile Recognition</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white font-heading">
+                    Shareable Achievement Badges
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    In addition to graduation certificates, learners defending core curriculum milestones earn distinct Cloudariss achievement badges designed for public LinkedIn profile recognition.
+                  </p>
+                </div>
+
+                {/* Badge Specifics */}
+                <div className="space-y-3 pt-1">
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-white font-heading">
+                        Certified Cloud &amp; Platform Engineer
+                      </span>
+                      <span className="text-xs text-cyan-400 font-medium">
+                        Level 1
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                      Awarded to learners demonstrating verified multi-tier AWS cloud architecture, containerized Docker deployments, and Jenkins CI/CD automation pipelines.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-white font-heading">
+                        Certified AI Engineer
+                      </span>
+                      <span className="text-xs text-emerald-400 font-medium">
+                        Level 1
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                      Awarded upon successful capstone defense of production Python data systems, relational SQL schemas, and enterprise RAG / generative AI workflows.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-1 flex items-center gap-3">
+                  <a
+                    href="https://www.linkedin.com/company/cloudariss"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-2 rounded-lg transition-colors"
+                  >
+                    <span>Cloudariss on LinkedIn</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                  </a>
+                  <span className="text-xs text-slate-400">
+                    Add directly to Licenses &amp; Certifications
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column (7 cols): The 360-Degree Orbital 3D Badge Experience */}
+              <div className="lg:col-span-7 flex items-center justify-center badge-showcase-wrapper">
+                <RotatingBadges />
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 3: Verifiable Capstone Portfolio Deliverables */}
+          <div className="pt-6 sm:pt-10 border-t border-white/[0.08] space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 border-b border-white/[0.08] pb-3">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white font-heading">
+                  Verifiable Portfolio Deliverables
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-400 font-normal">
+                  All credentials and badges correspond directly to public GitHub-hosted capstone codebases.
+                </p>
+              </div>
+              <span className="text-xs font-mono text-[#00D2FF] shrink-0">
+                Public GitHub Repositories
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {portfolioAssets.map((asset, idx) => (
+                <div
+                  key={idx}
+                  className="p-3.5 sm:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2 hover:border-[#00D2FF]/30 transition-colors flex flex-col justify-between"
+                >
+                  <div className="space-y-1.5">
+                    <div className="text-xs font-semibold text-[#00D2FF]">
+                      {asset.domain}
+                    </div>
+                    <h4 className="text-sm font-bold text-white font-heading">
+                      {asset.title}
+                    </h4>
+                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                      {asset.desc}
+                    </p>
+                  </div>
+                  <div className="pt-2 text-[11px] font-mono text-slate-400 border-t border-white/[0.04]">
+                    {asset.deliverable}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* SECTION D — FINAL CTA (INVITATION TO EXPLORE PROGRAMS OR ENQUIRE)          */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative pt-8 sm:pt-10 border-t border-white/[0.08]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 -inset-y-10 pointer-events-none -z-10"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 75% at 50% 50%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.12) 70%, transparent 100%)',
+              }}
+            />
+
+            <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-5">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-heading tracking-tight">
+                Ready to Build Demonstrable Technical Capability?
+              </h2>
+
+              <p className="text-xs sm:text-sm lg:text-base text-slate-300 leading-relaxed font-normal max-w-xl mx-auto">
+                Explore our flagship accelerator tracks in Cloud &amp; DevOps (CRPC), Data Analytics &amp; AI (DAAP), or Forward-Deployed AI Systems Engineering (FDE). Get hands-on from your very first session.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <Button
+                  to="/courses"
+                  variant="primary"
+                  size="md"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                  className="w-full sm:w-auto justify-center min-h-[42px] sm:min-h-[44px]"
+                >
+                  Explore All Programs
+                </Button>
+
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="md"
+                  className="w-full sm:w-auto border-white/15 hover:border-white/30 text-white justify-center min-h-[42px] sm:min-h-[44px]"
+                >
+                  Speak With an Advisor
+                </Button>
+
+                <button
+                  type="button"
+                  onClick={() => openWhatsApp(getGenericEnquiryMessage())}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-pointer min-h-[42px] sm:min-h-[44px]"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#00E599]" />
+                  <span>WhatsApp Career Desk</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

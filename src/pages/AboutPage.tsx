@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import {
   ArrowRight,
   MapPin,
-  Cpu,
-  GraduationCap,
-  Globe2,
   Cloud,
   Database,
   Wrench,
@@ -15,6 +12,9 @@ import {
   Terminal,
   Layers,
   Check,
+  GitBranch,
+  BookOpen,
+  Users,
 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
@@ -23,6 +23,7 @@ import { BRAND_DATA } from '@/data/brandData';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
 import { AboutHeroCanvas } from '@/components/curriculum/AboutHeroCanvas';
+import { TeamHeroSlider } from '@/components/about/TeamHeroSlider';
 import {
   AwsLogo,
   DockerLogo,
@@ -42,31 +43,64 @@ export const AboutPage: React.FC = () => {
   const { openCurriculum } = useCurriculumModal();
   const [selectedTechDomain, setSelectedTechDomain] = useState<'all' | 'cloud' | 'data' | 'ai'>('all');
 
-  // Editorial Who We Are Pillars
-  const whoWeArePillars = [
+  // 5 Core Approach Values directly from Cloudariss Plan PDF
+  const ourApproachValues = [
     {
-      title: 'Vizag-Based Engineering Identity',
-      tag: 'Regional Roots',
-      desc: 'Headquartered in Visakhapatnam, Andhra Pradesh. We draw inspiration from the city’s expanding IT landscape, maintaining active links to technology corridors including Rushikonda IT Park and VSEZ.',
-      icon: <MapPin className="w-5 h-5 text-brand-orange" />,
+      number: '01',
+      title: 'Practical Learning',
+      summary:
+        'Moving beyond passive video lectures into active terminal execution, cloud resource provisioning, and real code authoring from day one.',
+      focus: 'Terminal & Cloud Consoles',
     },
     {
-      title: 'Technology-Focused',
-      tag: 'Core Modern Stacks',
-      desc: 'Our instruction centers purely on high-demand, modern technology disciplines: Cloud infrastructure, distributed data systems, automated CI/CD pipelines, business analytics, and agentic AI.',
-      icon: <Cpu className="w-5 h-5 text-brand-blue" />,
+      number: '02',
+      title: 'Guided Practice',
+      summary:
+        'Regular mentor check-ins, architectural debugging sessions, and immediate corrective guidance when code or infrastructure configurations fail.',
+      focus: 'Live Error Resolution',
     },
     {
-      title: 'Outcome-Driven Pedagogy',
-      tag: 'Methodical Learning',
-      desc: 'We are committed to structured, outcome-driven education that prioritizes hands-on lab work, code authoring, real architectural debugging, and demonstrable portfolio artifacts over passive lecture viewing.',
-      icon: <GraduationCap className="w-5 h-5 text-brand-blue" />,
+      number: '03',
+      title: 'Build Real Projects',
+      summary:
+        'Designing multi-tier cloud architectures, live automated CI/CD pipelines, and analytical data systems built to simulate enterprise standards.',
+      focus: 'Enterprise Architectures',
     },
     {
-      title: 'Accessible Virtual Classrooms',
-      tag: '100% Live Online',
-      desc: 'Our interactive live classrooms break geographic boundaries, connecting students with experienced instructors, live code walkthroughs, and collaborative peer learning environments.',
-      icon: <Globe2 className="w-5 h-5 text-[#0a6680]" />,
+      number: '04',
+      title: 'Learn in Public',
+      summary:
+        'Documenting architectural decisions, committing to structured GitHub repositories, and publishing defensible technical portfolio artifacts.',
+      focus: 'Public Proof & GitHub',
+    },
+    {
+      number: '05',
+      title: 'Keep Growing',
+      summary:
+        'Continually expanding capabilities across modern infrastructure, distributed data engineering, business intelligence, and autonomous agentic AI.',
+      focus: 'Continuous Skill Expansion',
+    },
+  ];
+
+  // College & Community Work directly from Cloudariss Plan PDF
+  const communityCollaborations = [
+    {
+      badge: 'Campus Workshops',
+      title: 'Hands-On Engineering Bootcamps',
+      desc: 'Conducting intensive technical workshops on Cloud Computing, Docker, Git, and SQL across engineering colleges in Andhra Pradesh and beyond, giving students direct experience with industry workflows.',
+      icon: <Terminal className="w-5 h-5 text-[#00D2FF]" />,
+    },
+    {
+      badge: 'Hackathons & Challenges',
+      title: 'Technical Mentorship & Code Defense',
+      desc: 'Guiding student teams through hackathons, architecture reviews, and real-time debugging challenges to build deployable prototypes under industry engineering standards.',
+      icon: <GitBranch className="w-5 h-5 text-brand-orange" />,
+    },
+    {
+      badge: 'Curriculum Bridging',
+      title: 'Academic-to-Industry Alignment',
+      desc: 'Collaborating with academic faculties to bridge university curricula with active enterprise engineering stacks, drawing direct inspiration from Vizag’s Rushikonda IT Park and VSEZ corridors.',
+      icon: <BookOpen className="w-5 h-5 text-brand-blue" />,
     },
   ];
 
@@ -131,47 +165,56 @@ export const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-16 lg:space-y-24 pb-20">
+    <div className="space-y-14 sm:space-y-16 lg:space-y-20 pb-20">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: EDITORIAL + REGIONAL ENGINEERING CANVAS */}
+      {/* 1. CINEMATIC HERO: THE PEOPLE BEHIND CLOUDARISS SLIDER                    */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 bg-gradient-atmospheric border-b border-brand-border/60">
+      <TeamHeroSlider />
+
+      {/* ========================================================================= */}
+      {/* 2. ABOUT CLOUDARISS: STORY & REGIONAL ENGINEERING IDENTITY               */}
+      {/* ========================================================================= */}
+      <section className="relative overflow-hidden pt-2 pb-6 sm:pt-4 sm:pb-10 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Narrative Column */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/20 border border-[#19BCE8]/40 shadow-subtle">
-                <span className="w-2 h-2 rounded-full bg-[#19BCE8] animate-pulse" />
-                <span className="text-xs font-extrabold tracking-widest text-[#19BCE8] uppercase font-heading">
-                  ABOUT CLOUDARISS
+            <div className="lg:col-span-7 space-y-5 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0878E8]/15 border border-[#00D2FF]/30">
+                <span className="w-2 h-2 rounded-full bg-[#00D2FF] animate-pulse" />
+                <span className="text-[11px] font-bold tracking-wider text-[#00D2FF] uppercase font-heading">
+                  About Cloudariss Technologies
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] font-heading">
-                Building Careers{' '}
-                <span className="text-gradient-tech">Through Technology.</span>
-              </h1>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-heading">
+                Bridging Theory with{' '}
+                <span className="text-[#00D2FF]">Practical Implementation.</span>
+              </h2>
 
-              <p className="text-lg sm:text-xl text-[#E5EAF3] font-normal max-w-2xl leading-relaxed">
-                Cloudariss Technologies is a Visakhapatnam-based technology and learning organization dedicated to hands-on competence across Cloud, Data, DevOps, Business Analytics, and emerging Agentic AI systems.
+              <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl leading-relaxed">
+                Cloudariss Technologies is an industry-focused technology learning and career development organization headquartered in Visakhapatnam. We help aspiring engineers and tech professionals bridge the gap between knowing a concept and demonstrating real-world competence.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <p className="text-sm sm:text-base text-slate-400 font-normal max-w-2xl leading-relaxed">
+                Through mentor-led cohorts, guided hands-on labs, and defended capstone architectures across Cloud &amp; DevOps, Data Engineering, and Agentic AI, learners build defensible proof of capability from day one.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-start gap-3.5 pt-2">
                 <Button
                   to="/courses"
                   variant="primary"
-                  size="lg"
+                  size="md"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
                   Explore Programs
                 </Button>
                 <Button
                   to="/contact"
-                  variant="dark"
-                  size="lg"
-                  className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
+                  variant="outline"
+                  size="md"
+                  className="border-white/20 hover:border-white/35 text-white"
                 >
-                  Talk to Us
+                  Talk to an Advisor
                 </Button>
               </div>
             </div>
@@ -191,53 +234,121 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Ribbon Movement */}
-      <TechMarqueeRibbon />
+      {/* Marquee Technology Movement Ribbon */}
+      <div className="py-2">
+        <TechMarqueeRibbon />
+      </div>
 
       {/* ========================================================================= */}
-      {/* 2. WHO WE ARE */}
+      {/* 2. WHO WE ARE & OUR APPROACH                                              */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeading
-          eyebrow="Company Identity"
-          title="Who We Are"
-          subtitle="A focused technology and education organization established to bridge the gap between academic theory and practical software engineering capability."
+          eyebrow="Pedagogy & Values"
+          title="How We Approach Technical Learning"
+          subtitle="Grounded in real engineering practice, Cloudariss transforms passive lecture consumption into active, defensible capability."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {whoWeArePillars.map((item, idx) => (
-            <div
-              key={idx}
-              className="relative rounded-2xl bg-gradient-to-b from-[#081F54]/75 via-[#061540]/80 to-[#030E2B]/85 backdrop-blur-md border border-[#19BCE8]/20 p-7 sm:p-8 hover:border-[#19BCE8]/50 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#0878E8]/5 rounded-bl-full pointer-events-none group-hover:bg-[#0878E8]/10 transition-colors" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Left Column: Organization & Regional Roots Editorial Brief */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0878E8]/10 border border-[#00D2FF]/20 text-[11px] font-mono font-bold text-[#00D2FF] uppercase tracking-wider">
+                <MapPin className="w-3.5 h-3.5 text-brand-orange" />
+                <span>Visakhapatnam &middot; Global Virtual</span>
+              </div>
 
-              <div className="space-y-4 relative z-10">
-                <div className="flex items-center justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-[#0878E8]/15 border border-[#19BCE8]/30 flex items-center justify-center text-[#19BCE8]">
-                    {item.icon}
-                  </div>
-                  <span className="text-[11px] font-mono font-bold text-[#19BCE8] bg-[#0878E8]/10 px-3 py-1 rounded-full border border-[#19BCE8]/25 tracking-wider uppercase">
-                    {item.tag}
-                  </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight leading-tight">
+                Rooted in Andhra’s Coastal Tech Hub, Delivered Everywhere.
+              </h3>
+
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                Headquartered in Visakhapatnam, Andhra Pradesh, Cloudariss draws inspiration from the region’s expanding technology corridor—connecting with the engineering energy around Rushikonda IT Park and the VSEZ zone.
+              </p>
+
+              <p className="text-sm text-slate-400 font-normal leading-relaxed">
+                Through our structured, 100% live virtual cohorts, we eliminate geographic boundaries—delivering high-touch mentorship, collaborative coding sessions, and continuous feedback to learners across India and beyond.
+              </p>
+            </div>
+
+            {/* 3 Core Grounding Attributes */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/10">
+                <div className="w-8 h-8 rounded-lg bg-[#0878E8]/15 border border-[#00D2FF]/25 flex items-center justify-center text-[#00D2FF] shrink-0 mt-0.5">
+                  <Terminal className="w-4 h-4" />
                 </div>
-
                 <div>
-                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-cyan-200 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-[#CBD5E1] mt-2.5 leading-relaxed font-normal">
-                    {item.desc}
+                  <h4 className="text-sm font-bold text-white font-heading">
+                    Active Terminal &amp; Cloud Work
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    No simulated slides. Learners deploy real AWS VPCs, configure Docker containers, and query live PostgreSQL databases.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
-                <span>PILLAR 0{idx + 1}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#19BCE8]/40 group-hover:bg-[#19BCE8] transition-colors" />
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/10">
+                <div className="w-8 h-8 rounded-lg bg-[#FF7A00]/15 border border-[#FF7A00]/30 flex items-center justify-center text-brand-orange shrink-0 mt-0.5">
+                  <GitBranch className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white font-heading">
+                    Public Defensible Artifacts
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Every project is maintained in structured GitHub repositories with architecture diagrams and technical documentation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/10">
+                <div className="w-8 h-8 rounded-lg bg-[#0878E8]/15 border border-[#00D2FF]/25 flex items-center justify-center text-[#00D2FF] shrink-0 mt-0.5">
+                  <Users className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white font-heading">
+                    Mentor-Led, Low-Ratio Cohorts
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Direct access to experienced technology mentors who conduct architecture reviews and unblock complex pipeline errors.
+                  </p>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column: The 5 Tenets of Applied Capability */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 pb-1">
+              The 5 Pillars of Our Pedagogy
+            </div>
+
+            <div className="divide-y divide-white/[0.08] border-t border-b border-white/[0.08]">
+              {ourApproachValues.map((val) => (
+                <div
+                  key={val.number}
+                  className="py-5 sm:py-6 group transition-colors hover:bg-white/[0.015]"
+                >
+                  <div className="flex items-baseline justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-mono font-bold text-[#00D2FF]">
+                        {val.number}
+                      </span>
+                      <h4 className="text-lg sm:text-xl font-bold text-white font-heading group-hover:text-[#00D2FF] transition-colors">
+                        {val.title}
+                      </h4>
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-400 bg-white/[0.04] px-2.5 py-0.5 rounded-full border border-white/5 shrink-0 hidden sm:inline-block">
+                      {val.focus}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed font-normal pl-7">
+                    {val.summary}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -565,66 +676,100 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. GUIDING BRAND STATEMENT */}
+      {/* 5. COLLEGE & COMMUNITY WORK                                               */}
       {/* ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-dark-section border border-brand-blue/40 p-8 sm:p-14 text-white text-center relative overflow-hidden shadow-xl">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <SectionHeading
+          eyebrow="Community & Campus Outreach"
+          title="College & Institutional Work"
+          subtitle="Collaborating with academic faculties, engineering departments, and student communities to bring industry workflows directly onto campuses."
+        />
 
-          <div className="relative z-10 max-w-3xl mx-auto space-y-4">
-            <div className="text-xs font-bold uppercase tracking-widest text-brand-cyan">
-              Our Guiding Brand Principle
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {communityCollaborations.map((collab, idx) => (
+            <div
+              key={idx}
+              className="rounded-2xl bg-white/[0.02] border border-white/10 p-6 sm:p-7 flex flex-col justify-between space-y-4 hover:border-white/25 transition-all group"
+            >
+              <div className="space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-[#0878E8]/15 border border-[#00D2FF]/25 flex items-center justify-center">
+                    {collab.icon}
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-[#00D2FF] bg-[#0878E8]/10 px-2.5 py-0.5 rounded-full border border-[#00D2FF]/20 uppercase tracking-wider">
+                    {collab.badge}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-white font-heading group-hover:text-[#00D2FF] transition-colors">
+                  {collab.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  {collab.desc}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+                <span>CAMPUS INITIATIVE 0{idx + 1}</span>
+              </div>
             </div>
-
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-heading">
-              Learn. Build.{' '}
-              <span className="text-brand-orange">Get Hired.</span>
-            </h2>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto pt-2 font-medium">
-              {BRAND_DATA.positioning}
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. CONTACT CTA */}
+      {/* 6. GUIDING BRAND PRINCIPLE                                                */}
       {/* ========================================================================= */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl bg-gradient-to-b from-[#081F54]/80 via-[#061540]/85 to-[#030E2B]/90 backdrop-blur-xl border border-[#19BCE8]/30 p-8 sm:p-12 text-center overflow-hidden shadow-2xl space-y-5 text-white">
-          <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#0878E8]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#19BCE8]/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/15 border border-[#19BCE8]/30 text-xs font-mono font-bold text-[#19BCE8] uppercase tracking-wider">
-            <span>Direct Admissions & Guidance</span>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-8 sm:py-10 border-t border-b border-white/[0.08] text-center space-y-3">
+          <div className="text-[11px] font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
+            Guiding Principle
           </div>
 
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-heading tracking-tight">
-            Have Questions About Cloudariss Programs?
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight">
+            Learn the concepts. Build demonstrable capability.
+          </h2>
+
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal">
+            {BRAND_DATA.positioning}
+          </p>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. WANT TO LEARN WITH US OR COLLABORATE? (FINAL CTA)                      */}
+      {/* ========================================================================= */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-2xl bg-white/[0.02] border border-white/10 p-6 sm:p-10 text-center space-y-4 text-white">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0878E8]/15 border border-[#00D2FF]/30 text-xs font-mono font-bold text-[#00D2FF] uppercase tracking-wider">
+            <span>Direct Admissions &amp; Campus Collaboration</span>
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight">
+            Ready to Move from Learning to Doing?
           </h3>
 
-          <p className="text-sm sm:text-base text-[#CBD5E1] max-w-xl mx-auto leading-relaxed font-normal">
-            Reach out to our engineering and admissions desk for detailed course structures, upcoming batch schedules, or curriculum guidance.
+          <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed font-normal">
+            Whether you are an aspiring engineer seeking hands-on cohort mentorship or an institution looking to bring practical bootcamps to campus, our team is ready to connect.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Button
-              to="/contact"
-              variant="primary"
-              size="lg"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Talk to Admissions
-            </Button>
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <Button
               to="/courses"
-              variant="dark"
-              size="lg"
-              className="bg-[#05143A]/90 hover:bg-[#082260] text-white font-bold border border-[#19BCE8]/40 hover:border-[#19BCE8] shadow-md"
+              variant="primary"
+              size="md"
+              rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Explore All Programs
+              Explore Programs
+            </Button>
+            <Button
+              to="/contact"
+              variant="outline"
+              size="md"
+              className="border-white/20 hover:border-white/35 text-white"
+            >
+              Partner With Cloudariss
             </Button>
           </div>
         </div>
