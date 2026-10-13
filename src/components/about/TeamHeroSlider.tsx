@@ -16,7 +16,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'founder',
     name: 'Founder',
-    designation: 'Yet to Be Revealed',
+    designation: 'Yet to be revealed',
     roleBadge: 'Leadership & Vision',
     description:
       'Guiding Cloudariss with an industry-first vision to transform theoretical technology learning into verifiable, real-world engineering capability.',
@@ -74,9 +74,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: 'saketh',
-    name: 'Saketh Yadav',
+    name: 'Saketh',
     designation: 'Technology & Growth Lead',
-    roleBadge: 'Technology & Marketing',
+    roleBadge: 'Technology & Scalability',
     description:
       'Spearheading modern technical stacks, web platforms, and growth architecture to scale hands-on learning experiences.',
     image: '/brand/team/Saketh.jpeg',
@@ -111,6 +111,7 @@ interface TeamHeroSliderProps {
 export const TeamHeroSlider: React.FC<TeamHeroSliderProps> = ({ className = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const total = TEAM_MEMBERS.length;
 
   const nextPerson = useCallback(() => {
@@ -127,6 +128,18 @@ export const TeamHeroSlider: React.FC<TeamHeroSliderProps> = ({ className = '' }
     setTimeout(() => setIsAnimating(false), 450);
   }, [isAnimating, total]);
 
+  // Smooth cinematic autoplay (respects prefers-reduced-motion and pauses on hover)
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches || isPaused) return;
+
+    const timer = setInterval(() => {
+      nextPerson();
+    }, 6500);
+
+    return () => clearInterval(timer);
+  }, [nextPerson, isPaused]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -142,12 +155,14 @@ export const TeamHeroSlider: React.FC<TeamHeroSliderProps> = ({ className = '' }
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
     setTouchStart(e.targetTouches[0].clientX);
   };
   const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
   const handleTouchEnd = () => {
+    setIsPaused(false);
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > 50) nextPerson();
@@ -165,11 +180,13 @@ export const TeamHeroSlider: React.FC<TeamHeroSliderProps> = ({ className = '' }
 
   return (
     <section
-      className={`relative w-full overflow-hidden bg-[#020817] text-white pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-20 border-b border-white/[0.08] select-none ${className}`}
-      aria-label="The People Behind Cloudariss"
+      className={`relative w-full overflow-hidden bg-[#020817] text-white pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 border-b border-white/[0.08] select-none ${className}`}
+      aria-label="People Behind Cloudariss"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background ambient lighting */}
       <div
@@ -181,16 +198,13 @@ export const TeamHeroSlider: React.FC<TeamHeroSliderProps> = ({ className = '' }
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading & Subtitle */}
-        <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0878E8]/15 border border-[#00D2FF]/30 text-xs font-mono font-bold text-[#00D2FF] uppercase tracking-wider">
-            <span>Leadership &amp; Mentorship</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight leading-tight uppercase">
-            PEOPLE BEHIND CLOUDARISS
+        {/* Section Heading: Exact "People Behind Cloudariss" with minimal supporting text */}
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
+            People Behind Cloudariss
           </h1>
-          <p className="text-xs sm:text-sm lg:text-base text-slate-300 font-normal leading-relaxed max-w-xl mx-auto">
-            Practicing software engineers, technology mentors, and curriculum coordinators guiding your applied technical journey from day one.
+          <p className="text-xs sm:text-sm lg:text-base text-slate-300 font-normal leading-relaxed">
+            Practicing software engineers, technology mentors, and platform coordinators guiding your applied technical journey.
           </p>
         </div>
 

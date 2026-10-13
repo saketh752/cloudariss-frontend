@@ -22,7 +22,6 @@ import { Badge } from '@/components/ui/Badge';
 import { BRAND_DATA } from '@/data/brandData';
 import { TechMarqueeRibbon } from '@/components/ui/TechMarqueeRibbon';
 import { useCurriculumModal } from '@/components/curriculum/CurriculumContext';
-import { AboutHeroCanvas } from '@/components/curriculum/AboutHeroCanvas';
 import { TeamHeroSlider } from '@/components/about/TeamHeroSlider';
 import {
   AwsLogo,
@@ -167,68 +166,81 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="space-y-14 sm:space-y-16 lg:space-y-20 pb-20">
       {/* ========================================================================= */}
-      {/* 1. CINEMATIC HERO: THE PEOPLE BEHIND CLOUDARISS SLIDER                    */}
+      {/* 1. CINEMATIC HERO: PEOPLE BEHIND CLOUDARISS                               */}
       {/* ========================================================================= */}
       <TeamHeroSlider />
 
       {/* ========================================================================= */}
-      {/* 2. ABOUT CLOUDARISS: STORY & REGIONAL ENGINEERING IDENTITY               */}
+      {/* 2. OUR STORY & WHY WE STARTED                                             */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-2 pb-6 sm:pt-4 sm:pb-10 border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Narrative Column */}
-            <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0878E8]/15 border border-[#00D2FF]/30">
-                <span className="w-2 h-2 rounded-full bg-[#00D2FF] animate-pulse" />
-                <span className="text-[11px] font-bold tracking-wider text-[#00D2FF] uppercase font-heading">
-                  About Cloudariss Technologies
-                </span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-heading">
-                Bridging Theory with{' '}
-                <span className="text-[#00D2FF]">Practical Implementation.</span>
-              </h2>
-
-              <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl leading-relaxed">
-                Cloudariss Technologies is an industry-focused technology learning and career development organization headquartered in Visakhapatnam. We help aspiring engineers and tech professionals bridge the gap between knowing a concept and demonstrating real-world competence.
-              </p>
-
-              <p className="text-sm sm:text-base text-slate-400 font-normal max-w-2xl leading-relaxed">
-                Through mentor-led cohorts, guided hands-on labs, and defended capstone architectures across Cloud &amp; DevOps, Data Engineering, and Agentic AI, learners build defensible proof of capability from day one.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-start gap-3.5 pt-2">
-                <Button
-                  to="/courses"
-                  variant="primary"
-                  size="md"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Explore Programs
-                </Button>
-                <Button
-                  to="/contact"
-                  variant="outline"
-                  size="md"
-                  className="border-white/20 hover:border-white/35 text-white"
-                >
-                  Talk to an Advisor
-                </Button>
-              </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Our Story */}
+          <div className="lg:col-span-7 space-y-5 text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0878E8]/15 border border-[#00D2FF]/30">
+              <span className="w-2 h-2 rounded-full bg-[#00D2FF] animate-pulse" />
+              <span className="text-[11px] font-bold tracking-wider text-[#00D2FF] uppercase font-heading">
+                Our Story &amp; Origin
+              </span>
             </div>
 
-            {/* Right: Interactive Organization & Regional Identity Canvas */}
-            <div className="lg:col-span-5">
-              <AboutHeroCanvas
-                onExploreCrpc={() => {
-                  window.location.href = '/courses/crpc';
-                }}
-                onExploreDaap={() => {
-                  window.location.href = '/courses/daap';
-                }}
-              />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-heading">
+              Moving from Understanding Concepts to{' '}
+              <span className="text-[#00D2FF]">Demonstrating Capability.</span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
+              Cloudariss Technologies is an industry-focused technology learning and career development organization headquartered in Visakhapatnam. We help aspiring engineers and tech professionals bridge the critical divide between knowing a concept and demonstrating real-world competence.
+            </p>
+
+            <p className="text-sm sm:text-base text-slate-400 font-normal leading-relaxed">
+              Through mentor-led cohorts, guided hands-on terminal labs, and defended capstone architectures across Cloud &amp; DevOps, Data Engineering, and Agentic AI, learners build defensible proof of capability from day one.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-start gap-3.5 pt-2">
+              <Button
+                to="/courses"
+                variant="primary"
+                size="md"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Explore Programs
+              </Button>
+              <Button
+                to="/contact"
+                variant="outline"
+                size="md"
+                className="border-white/20 hover:border-white/35 text-white"
+              >
+                Talk to Admissions
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column: Why We Started (The Learning Gap Addressed) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4 relative overflow-hidden">
+              <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#00D2FF] flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-brand-orange" />
+                <span>Why We Started Cloudariss</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-white font-heading leading-snug">
+                Traditional education teaches what tools are. We teach how to build and defend them.
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Most students and aspiring developers are overwhelmed by endless video tutorials without ever touching a real terminal, deploying a live cloud service, or troubleshooting production errors.
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                Cloudariss was built to replace passive lecture viewing with interactive virtual classrooms, direct terminal work, and real portfolio assets that prove engineering ability to recruiters and clients.
+              </p>
+
+              <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span className="text-white font-semibold">Visakhapatnam HQ</span>
+                <span className="text-[#00D2FF]">&middot; 100% Live Online</span>
+              </div>
             </div>
           </div>
         </div>
