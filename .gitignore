@@ -38,10 +38,8 @@ vite.config.d.ts
 .env.development.local
 .env.test.local
 .env.production.local
-
-
-.vercel
 .env*
+!.env.example
 
 # Reference uploads
 public/brand/reference/
