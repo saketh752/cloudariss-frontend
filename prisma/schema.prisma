@@ -1,0 +1,271 @@
+// Cloudariss Admin System — PostgreSQL schema (V1)
+// Nine tables only. No email outbox in V1: enquiries persist without email coupling.
+// Table and column names are snake_case in PostgreSQL; Prisma fields are camelCase.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // Supabase transaction pooler (runtime)
+  directUrl = env("DIRECT_URL") // Supabase direct connection (migrations + provisioning CLI)
+}
+
+// -----------------------------------------------------------------------------
+// Enums
+// -----------------------------------------------------------------------------
+
+/// Display/audit distinction only. All three roles hold identical Super Admin permissions.
+enum AdminRoleLabel {
+  CEO
+  CO_FOUNDER
+  WEB_ADMIN
+}
+
+/// Mirrors the existing Contact page options exactly: "CRPC", "DAAP", "General Inquiry".
+/// The API maps the form value "General Inquiry" to GENERAL_INQUIRY.
+enum EnquiryProgram {
+  CRPC
+  DAAP
+  GENERAL_INQUIRY
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  IN_PROGRESS
+  RESOLVED
+}
+
+enum CertificateType {
+  WORKSHOP_PARTICIPATION
+  COURSE_COMPLETION
+}
+
+enum CertificateStatus {
+  ACTIVE
+  DEACTIVATED
+}
+
+// -----------------------------------------------------------------------------
+// 1. admin_users — exactly one account per role label (enforced by UNIQUE role_label)
+// -----------------------------------------------------------------------------
+model AdminUser {
+  id                String         @id @default(uuid()) @db.Uuid
+  /// Stored lowercased + trimmed (CHECK constraint in migration).
+  email             String         @unique @db.VarChar(254)
+  name              String         @db.VarChar(120)
+  roleLabel         AdminRoleLabel @unique @map("role_label")
+  /// Argon2id hash. Never logged, never returned by any API.
+  passwordHash      String         @map("password_hash") @db.VarChar(255)
+  isActive          Boolean        @default(true) @map("is_active")
+  passwordChangedAt DateTime       @default(now()) @map("password_changed_at") @db.Timestamptz(6)
+  lastLoginAt       DateTime?      @map("last_login_at") @db.Timestamptz(6)
+  createdAt         DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime       @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  sessions            AdminSession[]
+  enquiryNotes        EnquiryNote[]
+  importStagings      CertificateImportStaging[]
+  importBatches       CertificateImportBatch[]
+  certificatesCreated Certificate[]
+  auditLogs           AuditLog[]
+
+  @@map("admin_users")
+}
+
+// -----------------------------------------------------------------------------
+// 2. admin_sessions — server-managed sessions; only the SHA-256 token digest is stored
+// -----------------------------------------------------------------------------
+model AdminSession {
+  id          String    @id @default(uuid()) @db.Uuid
+  adminUserId String    @map("admin_user_id") @db.Uuid
+  /// SHA-256 hex digest of the cookie session token (64 chars).
+  tokenHash   String    @unique @map("token_hash") @db.Char(64)
+  /// Session-bound CSRF token; rotated with the session on login and password change.
+  csrfToken   String    @map("csrf_token") @db.VarChar(128)
+  ipAddress   String?   @map("ip_address") @db.VarChar(64)
+  userAgent   String?   @map("user_agent") @db.VarChar(512)
+  expiresAt   DateTime  @map("expires_at") @db.Timestamptz(6)
+  revokedAt   DateTime? @map("revoked_at") @db.Timestamptz(6)
+  lastSeenAt  DateTime? @map("last_seen_at") @db.Timestamptz(6)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  adminUser      AdminUser                  @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+  importStagings CertificateImportStaging[]
+
+  @@index([adminUserId])
+  @@index([expiresAt])
+  @@map("admin_sessions")
+}
+
+// -----------------------------------------------------------------------------
+// 3. rate_limit_buckets — shared, atomic fixed-window counters (no Redis, no in-memory)
+// -----------------------------------------------------------------------------
+model RateLimitBucket {
+  /// e.g. "login:ip:203.0.113.5", "login:email:<sha256>", "verify:ip:203.0.113.5"
+  key             String   @id @db.VarChar(200)
+  points          Int
+  windowExpiresAt DateTime @map("window_expires_at") @db.Timestamptz(6)
+
+  @@index([windowExpiresAt])
+  @@map("rate_limit_buckets")
+}
+
+// -----------------------------------------------------------------------------
+// 4. contact_enquiries — persisted public "Send an Inquiry" submissions
+// -----------------------------------------------------------------------------
+model ContactEnquiry {
+  id         String         @id @default(uuid()) @db.Uuid
+  fullName   String         @map("full_name") @db.VarChar(160)
+  phone      String         @db.VarChar(32)
+  email      String         @db.VarChar(254)
+  program    EnquiryProgram
+  message    String?        @db.Text
+  status     EnquiryStatus  @default(NEW)
+  resolvedAt DateTime?      @map("resolved_at") @db.Timestamptz(6)
+  createdAt  DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime       @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  notes EnquiryNote[]
+
+  @@index([status, createdAt(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@index([email])
+  @@index([phone])
+  @@map("contact_enquiries")
+}
+
+// -----------------------------------------------------------------------------
+// 5. enquiry_notes — append-only internal notes
+// -----------------------------------------------------------------------------
+model EnquiryNote {
+  id        String   @id @default(uuid()) @db.Uuid
+  enquiryId String   @map("enquiry_id") @db.Uuid
+  authorId  String   @map("author_id") @db.Uuid
+  body      String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  enquiry ContactEnquiry @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  author  AdminUser      @relation(fields: [authorId], references: [id], onDelete: Restrict)
+
+  @@index([enquiryId, createdAt])
+  @@index([authorId])
+  @@map("enquiry_notes")
+}
+
+// -----------------------------------------------------------------------------
+// 6. certificate_import_stagings — short-lived, session-bound, single-use import tokens
+//    Guarantees commit uses the exact workbook/sheet/header row/mapping that was previewed.
+// -----------------------------------------------------------------------------
+model CertificateImportStaging {
+  /// Doubles as the opaque importToken returned by /preview.
+  id             String    @id @default(uuid()) @db.Uuid
+  adminSessionId String    @map("admin_session_id") @db.Uuid
+  adminUserId    String    @map("admin_user_id") @db.Uuid
+  fileName       String    @map("file_name") @db.VarChar(255)
+  fileSha256     String    @map("file_sha256") @db.Char(64)
+  sheetName      String    @map("sheet_name") @db.VarChar(255)
+  headerRowIndex Int       @map("header_row_index")
+  columnMapping  Json      @map("column_mapping")
+  /// Normalized VALID rows only; revalidated against the database at commit time.
+  validatedRows  Json      @map("validated_rows")
+  previewCounts  Json      @map("preview_counts")
+  expiresAt      DateTime  @map("expires_at") @db.Timestamptz(6)
+  consumedAt     DateTime? @map("consumed_at") @db.Timestamptz(6)
+  createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  adminSession AdminSession            @relation(fields: [adminSessionId], references: [id], onDelete: Cascade)
+  adminUser    AdminUser               @relation(fields: [adminUserId], references: [id], onDelete: Restrict)
+  batch        CertificateImportBatch?
+
+  @@index([adminSessionId])
+  @@index([expiresAt])
+  @@map("certificate_import_stagings")
+}
+
+// -----------------------------------------------------------------------------
+// 7. certificate_import_batches — committed import summaries
+// -----------------------------------------------------------------------------
+model CertificateImportBatch {
+  id             String   @id @default(uuid()) @db.Uuid
+  importedById   String   @map("imported_by_id") @db.Uuid
+  stagingId      String?  @unique @map("staging_id") @db.Uuid
+  fileName       String   @map("file_name") @db.VarChar(255)
+  fileSha256     String   @map("file_sha256") @db.Char(64)
+  sheetName      String   @map("sheet_name") @db.VarChar(255)
+  headerRowIndex Int      @map("header_row_index")
+  columnMapping  Json     @map("column_mapping")
+  totalRows      Int      @map("total_rows")
+  insertedCount  Int      @map("inserted_count")
+  conflictCount  Int      @map("conflict_count")
+  errorCount     Int      @map("error_count")
+  reportSummary  Json?    @map("report_summary")
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  importedBy   AdminUser                 @relation(fields: [importedById], references: [id], onDelete: Restrict)
+  staging      CertificateImportStaging? @relation(fields: [stagingId], references: [id], onDelete: SetNull)
+  certificates Certificate[]
+
+  @@index([importedById])
+  @@index([createdAt(sort: Desc)])
+  @@map("certificate_import_batches")
+}
+
+// -----------------------------------------------------------------------------
+// 8. certificates — public verification only for ACTIVE + WORKSHOP_PARTICIPATION
+// -----------------------------------------------------------------------------
+model Certificate {
+  id                 String            @id @default(uuid()) @db.Uuid
+  /// Normalized: trimmed + uppercase (CHECK constraint in migration).
+  certificateId      String            @unique @map("certificate_id") @db.VarChar(100)
+  certificateType    CertificateType   @default(WORKSHOP_PARTICIPATION) @map("certificate_type")
+  status             CertificateStatus @default(ACTIVE)
+  participantName    String            @map("participant_name") @db.VarChar(200)
+  workshopName       String            @map("workshop_name") @db.VarChar(255)
+  institutionOrVenue String?           @map("institution_or_venue") @db.VarChar(255)
+  eventDate          DateTime?         @map("event_date") @db.Date
+  /// Preserves human-formatted or multi-day dates from source records when present.
+  eventDateText      String?           @map("event_date_text") @db.VarChar(120)
+  /// Internal only; never returned by public verification.
+  extraMetadata      Json?             @map("extra_metadata")
+  importBatchId      String?           @map("import_batch_id") @db.Uuid
+  deactivatedReason  String?           @map("deactivated_reason") @db.Text
+  deactivatedAt      DateTime?         @map("deactivated_at") @db.Timestamptz(6)
+  createdById        String            @map("created_by_id") @db.Uuid
+  createdAt          DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime          @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  importBatch CertificateImportBatch? @relation(fields: [importBatchId], references: [id], onDelete: SetNull)
+  createdBy   AdminUser               @relation(fields: [createdById], references: [id], onDelete: Restrict)
+
+  @@index([certificateType, status])
+  @@index([participantName])
+  @@index([importBatchId])
+  @@map("certificates")
+}
+
+// -----------------------------------------------------------------------------
+// 9. audit_logs — append-only record of administrative mutations
+// -----------------------------------------------------------------------------
+model AuditLog {
+  id          String   @id @default(uuid()) @db.Uuid
+  /// Null only for CLI-originated actions (e.g. provisioning), which set action accordingly.
+  actorId     String?  @map("actor_id") @db.Uuid
+  action      String   @db.VarChar(80)
+  entityType  String   @map("entity_type") @db.VarChar(60)
+  entityId    String   @map("entity_id") @db.VarChar(100)
+  beforeState Json?    @map("before_state")
+  afterState  Json?    @map("after_state")
+  reason      String?  @db.Text
+  ipAddress   String?  @map("ip_address") @db.VarChar(64)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  actor AdminUser? @relation(fields: [actorId], references: [id], onDelete: Restrict)
+
+  @@index([entityType, entityId, createdAt(sort: Desc)])
+  @@index([actorId, createdAt(sort: Desc)])
+  @@map("audit_logs")
+}
+

@@ -49,5 +49,6 @@ public/brand/reference/
 /*.jpg
 /*.mjs
 /*.txt
-/scripts/
+/scripts/*
+!/scripts/provision-admins.ts
 scratch_*
