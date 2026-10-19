@@ -29,8 +29,14 @@ These rules govern all work inside `D:\Projects\Cloudarris_Frontend`. Follow the
 - **Strict Scope Discipline:** Modify only files directly required by the user's request. Do not introduce unrequested features, mock data, or speculative abstractions.
 - **Token & Tool Efficiency:** Use targeted searches and file reads; avoid redundant tool calls, unnecessary re-reads, or verbose recaps while never skipping mandatory build, type, or security checks.
 
-## 6. Git Safety & Honest Reporting
-- **Protect `main`:** Treat `main` as the stable production branch. Implement new features (such as the admin backend) on a dedicated feature branch (e.g., `feature/admin-backend`) and merge via reviewed pull requests.
-- **No Destructive Git Commands:** Never run `git reset --hard`, `git clean -fd`, `git rebase`, `git push --force`, or delete branches without explicit user instruction.
-- **Verified Reporting Only:** Report only commands, builds, tests, and visual checks that were actually executed and verified on disk.
+## 6. Git Safety, Milestone Push Policy & Honest Reporting
+- **Protect `main`:** Treat `main` as the stable production branch. Never commit directly to `main` and never push milestone work to `main`. Implement features on a dedicated feature branch (e.g., `feature/admin-backend`) and merge only via reviewed pull requests when explicitly requested.
+- **Push After Every Major Milestone:** After completing each major milestone:
+  1. Run all relevant tests, typechecks, build, and security audits.
+  2. Review the diff to guarantee zero secrets, credentials, or `.env` files are included.
+  3. Commit the completed milestone on the feature branch with a descriptive message.
+  4. Push the feature branch to GitHub (`git push -u origin <feature-branch>`) and verify the remote commit.
+  5. Report commit hash, push status, test results, and branch URL, then wait for explicit user approval before beginning the next milestone.
+- **No Destructive Git Commands:** Never run `git reset --hard`, `git clean -fd`, `git rebase`, `git push --force`, or delete branches without explicit user instruction. Never silently overwrite remote history.
+- **Verified Reporting Only:** Report only commands, builds, tests, push operations, and visual checks that were actually executed and verified on disk or remote.
 
